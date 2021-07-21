@@ -29,8 +29,6 @@ maven_job:
     - v1.0.1
     - v1.0.2
     - v1.0.3
-  tags:
-    - docker-executer
 
 maven_build:
   stage: package
@@ -41,8 +39,6 @@ maven_build:
     - v1.0.1
     - v1.0.2
     - v1.0.3
-  tags:
-    - docker-executer
 
   artifacts:
     paths:
@@ -65,5 +61,3 @@ code_coverage:
   artifacts:
     paths:
       - target/site/jacoco/
-  tags:
-    - docker-executer
