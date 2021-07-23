@@ -1,0 +1,50 @@
+.banner {
+    height: 55vh;
+    width: 100vw;
+    border-bottom: 10px;
+    border-bottom-color: #652cb3;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    
+}
+.basicInfo{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0;
+}
+.basicInfoCard{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-content:center;
+    color: #652cb3;    
+}
+.basicInfoCard h5{
+    text-align:center;
+    align-items:center;
+    justify-content:center;
+    margin-left: 10px;
+}
+.registerCard{
+    margin-left: 15vw;
+    margin-right: 15vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top:20px
+}
+.challengeAbstract{
+    margin-top: 30px;
+    margin-left:10vw;
+    margin-right: 10vw;
+    text-align:justify;
+    font-family:sans-serif, Geneva, Tahoma, sans-serif;
+    font-weight: lighter;
+    font-size:  1.1em;
+    
+}
+.challengeTitle{
+    color: #652cb3;
+    width: 50vw;
+}
+

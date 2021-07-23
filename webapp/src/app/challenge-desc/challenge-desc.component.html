@@ -1,0 +1,76 @@
+<div>
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer  class="example-sidenav" mode="side">
+      <p>Auto-resizing sidenav</p>
+    </mat-drawer>
+
+
+    <div class="banner">
+        <img
+          width="100%"
+          height="100%"
+          src="https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/banner/60f95db3b3711_copy_of_linkedin_post__3_.png?d=1920x1920"
+          alt="banner"
+        />
+      </div>
+    
+      <mat-card class="registerCard">
+        <div style="display: flex; flex-direction: row">
+          <mat-card style="width: 12vh; height: 12vh">
+            <img
+              width="100%"
+              height="100%"
+              src="https://st2.depositphotos.com/1104517/11967/v/950/depositphotos_119675554-stock-illustration-male-avatar-profile-picture-vector.jpg"
+              alt="challenger profile"
+          /></mat-card>
+          <div style="display: flex; flex-direction: row">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                margin-left: 10px;
+                justify-content: flex-start;
+              "
+            >
+              <h1 class="challengeTitle">{{ challenge.challengeName }}</h1>
+              <h3 style="color: gray; font-weight: lighter">
+                {{ users[challenge.challengerId - 1].userName }}
+              </h3>
+            </div>
+            <div style="justify-self: flex-end">
+              <button mat-raised-button color="primary">Register</button>
+            </div>
+          </div>
+        </div>
+        <div class="basicInfo">
+          <div class="basicInfoCard">
+            <i class="fas fa-hourglass-half fa-lg"></i>
+            <h5>{{ challenge.endDate }}</h5>
+          </div>
+          <span>&#124;</span>
+          <div class="basicInfoCard">
+            <i class="fas fa-rupee-sign fa-lg"></i>
+            <h5>{{ challenge.rewardPrize }}</h5>
+          </div>
+          <span>&#124;</span>
+          <div class="basicInfoCard">
+            <i class="fas fa-user-plus fa-lg"></i>
+            <h5>{{ challenge.registrations }}</h5>
+          </div>
+        </div>
+        <mat-chip-list cdkDropListOrientation="horizontal">
+          <mat-chip
+            style="background-color: #8440e4; color: white"
+            *ngFor="let domain of challenge.domains"
+          >
+            {{ domain }}
+          </mat-chip>
+        </mat-chip-list>
+      </mat-card>
+    
+      <div class="challengeAbstract">
+        <p>{{ challenge.abstraction }}</p>
+      </div>
+  </mat-drawer-container>
+  
+</div>
