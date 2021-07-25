@@ -12,7 +12,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { HeaderComponent } from './header/header.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { DashboardComponent } from './dashboard/dashboard.component'
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ChallengeListComponent } from './challenge-list/challenge-list.component'
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { DashboardComponent } from './dashboard/dashboard.component'
     AppComponent,
     ChallengeDescComponent,
     HeaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    ChallengeListComponent
   ],
   imports: [
     BrowserModule,
