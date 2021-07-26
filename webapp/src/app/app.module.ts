@@ -14,10 +14,8 @@ import { HeaderComponent } from './header/header.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChallengeListComponent } from './challenge-list/challenge-list.component';
-<<<<<<< HEAD
 import { CreateChallengeComponent } from './create-challenge/create-challenge.component'
 
-=======
 import { LoginComponent } from './login/login.component'
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -25,7 +23,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatInputModule} from '@angular/material/input';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HeaderLandingPageComponent } from './header-landing-page/header-landing-page.component';
->>>>>>> a217ce4527a25d51088867e27804a05f7cdceed5
 
 @NgModule({
   declarations: [
@@ -34,13 +31,10 @@ import { HeaderLandingPageComponent } from './header-landing-page/header-landing
     HeaderComponent,
     DashboardComponent,
     ChallengeListComponent,
-<<<<<<< HEAD
-    CreateChallengeComponent
-=======
+    CreateChallengeComponent,
     LoginComponent,
     LandingPageComponent,
     HeaderLandingPageComponent
->>>>>>> a217ce4527a25d51088867e27804a05f7cdceed5
   ],
   imports: [
     BrowserModule,
