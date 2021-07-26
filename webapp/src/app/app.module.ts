@@ -13,7 +13,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { HeaderComponent } from './header/header.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ChallengeListComponent } from './challenge-list/challenge-list.component'
+import { ChallengeListComponent } from './challenge-list/challenge-list.component';
+import { CreateChallengeComponent } from './create-challenge/create-challenge.component'
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ChallengeListComponent } from './challenge-list/challenge-list.componen
     ChallengeDescComponent,
     HeaderComponent,
     DashboardComponent,
-    ChallengeListComponent
+    ChallengeListComponent,
+    CreateChallengeComponent
   ],
   imports: [
     BrowserModule,
