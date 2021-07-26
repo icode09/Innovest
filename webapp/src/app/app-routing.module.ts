@@ -5,6 +5,7 @@ import { ChallengeListComponent } from './challenge-list/challenge-list.componen
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 
+
 const routes: Routes = [
   {path:'ch-desc', component:ChallengeDescComponent},
   {path:'dashboard', component:DashboardComponent},
