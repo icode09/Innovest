@@ -1,3 +1,9 @@
+.input-group{
+    margin: 0 auto;
+    width: 50vw;
+    margin-top: 5vh;
+}
+
 .card {
     margin: 0 auto;
     float: none;
