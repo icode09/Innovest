@@ -13,16 +13,19 @@ import {MatIconModule} from '@angular/material/icon';
 import { HeaderComponent } from './header/header.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ChallengeListComponent } from './challenge-list/challenge-list.component'
-
-
+import { ChallengeListComponent } from './challenge-list/challenge-list.component';
+import { LoginComponent } from './login/login.component'
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
     AppComponent,
     ChallengeDescComponent,
     HeaderComponent,
     DashboardComponent,
-    ChallengeListComponent
+    ChallengeListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,9 @@ import { ChallengeListComponent } from './challenge-list/challenge-list.componen
     MatChipsModule,
     MatToolbarModule,
     MatIconModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
     MatSidenavModule
   ],
   providers: [],
