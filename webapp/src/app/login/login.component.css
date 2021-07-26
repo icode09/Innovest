@@ -50,11 +50,17 @@
     color: white;
     font-weight: bold;
     border: none;
-    outline: none;
-    border-radius: 20px;
-    font-size: 1.2rem
+    border-left: none;
 }
 #submit:hover{
     cursor: pointer;
-    background-color:rgb(100, 21, 100);
+    background-color: rgb(90, 32, 90);
+}
+.side{
+    display: flex;
+
+}
+.side img{
+    width: 450px;
+    height: 450px
 }
