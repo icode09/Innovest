@@ -13,8 +13,11 @@ const routes: Routes = [
   { path: '', component:LandingPageComponent },
   { path: 'challenge-desc', component: ChallengeDescComponent },
   { path: 'solution-form', component: SolutionFormComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'ch-list', component: ChallengeListComponent },
+  { path: 'dashboard', component: DashboardComponent,
+    children: [
+      { path: 'ch-list', component: ChallengeListComponent },
+    ]
+  },
   { path: 'login', component: LoginComponent },
   {path : 'signup',component : SignupComponent},
   { path: '**', component: PageNotFoundComponent }
