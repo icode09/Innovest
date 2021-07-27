@@ -1,10 +1,10 @@
 <div class="main-div">
 
      
-    <form class="form">
+    <form class="form" [formGroup]="loginform" (ngSubmit)="loginProcess">
             <h2>LOGIN</h2>
-            <input type="username" class="box" placeholder="username" required>
-            <input type="password" class="box" placeholder="password" required >
+            <input type="username" class="box" placeholder="username" formControlName="username">
+            <input type="password" class="box" placeholder="password" formControlName="password">
             
           <!--<mat-form-field >
             <input matInput placeholder="Password" >
@@ -16,7 +16,7 @@
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
           </mat-form-field>-->
-          <button mat-raised-button id="submit">Login</button>
+        <button type="submit" id="submit">Login</button>
          <!--<input type="submit" value="SIGN IN" id="submit">-->
     </form>
     <div class="side">
