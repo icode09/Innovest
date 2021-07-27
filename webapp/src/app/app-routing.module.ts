@@ -1,3 +1,4 @@
+import { SignupComponent } from './signup/signup.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChallengeDescComponent } from './challenge-desc/challenge-desc.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'ch-list', component: ChallengeListComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', component: PageNotFoundComponent },
+  {path : 'signup',component : SignupComponent}
 ];
 
 @NgModule({

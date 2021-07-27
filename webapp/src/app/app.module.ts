@@ -27,6 +27,7 @@ import { MatInputModule } from '@angular/material/input';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HeaderLandingPageComponent } from './header-landing-page/header-landing-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     LandingPageComponent,
     HeaderLandingPageComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
