@@ -14,14 +14,16 @@ import { HeaderComponent } from './header/header.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChallengeListComponent } from './challenge-list/challenge-list.component';
+import { CreateChallengeComponent } from './create-challenge/create-challenge.component'
+
 import { LoginComponent } from './login/login.component'
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatInputModule} from '@angular/material/input';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HeaderLandingPageComponent } from './header-landing-page/header-landing-page.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +31,7 @@ import { HeaderLandingPageComponent } from './header-landing-page/header-landing
     HeaderComponent,
     DashboardComponent,
     ChallengeListComponent,
+    CreateChallengeComponent,
     LoginComponent,
     LandingPageComponent,
     HeaderLandingPageComponent
@@ -46,7 +49,9 @@ import { HeaderLandingPageComponent } from './header-landing-page/header-landing
     ReactiveFormsModule,
     FlexLayoutModule,
     MatInputModule,
-    MatSidenavModule
+    HttpClientModule,
+    MatSidenavModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

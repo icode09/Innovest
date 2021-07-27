@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:'dashboard', component:DashboardComponent},
   {path:'ch-list',component:ChallengeListComponent},
   {path:'', redirectTo:'/ch-desc', pathMatch:'full'},
-  {path:'', component:LoginComponent},
+  {path:'login', component:LoginComponent},
 ];
 
 @NgModule({
