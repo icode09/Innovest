@@ -12,8 +12,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
-  list() {
+
+  myChallengeList() {
     this.router.navigate(['ch-list'],{relativeTo: this.route});
+  }
+  createChallenge() {
+    this.router.navigate(['create-ch'],{relativeTo: this.route});
   }
 }

@@ -25,7 +25,7 @@
       <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet" />
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" data-toggle="collapse" (click)="list()" href="#">
+                <a class="nav-link collapsed" data-toggle="collapse" (click)="myChallengeList()" href="#">
                     <span>My Challenges</span>
                 </a>
             </li>
@@ -53,7 +53,7 @@
             <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="../../assets/images/undraw_rocket.svg" alt="...">
                 <p class="text-center mb-2">Help improve our website</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Feedback</a>
+                <a class="btn btn-success btn-sm" href="#">Feedback</a>
             </div>
   
         </ul>
@@ -91,7 +91,7 @@
                     <ul class="navbar-nav ml-auto">
           
             <li class="nav-item">
-              <a class="nav-link" href="#" id="userDropdown" role="button">
+              <a class="nav-link" id="userDropdown" role="button" (click)="createChallenge()">
               <span class="mr-2 d-none d-lg-inline btn btn-success btn-sm ">Add Challenge</span>
               </a>
             </li>
