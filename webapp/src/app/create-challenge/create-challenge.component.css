@@ -1,0 +1,153 @@
+
+
+.bg-black {
+    background-color: purple;
+    position: sticky;
+}
+
+.navbar-brand {
+    padding: 11px 20px;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+}
+
+.logo{
+    color: red;
+    font-size:xx-large;
+}
+
+
+
+.navbar-nav {
+    width: 100%;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    justify-content: space-between;
+}
+
+.nav-link {
+    color: #fff !important;
+    padding: 1em;
+    width: 40%;
+    margin: auto;
+    text-align: center;
+    font-size: x-large;
+    font-family:cursive;
+    text-shadow: 2px 2px 5px white;
+}
+
+.nav-item {
+    padding: 6px 12px;
+    text-align: center;
+}
+#item1 {
+    color:aliceblue;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+.nav-link:hover {
+    color: red !important;
+    text-decoration: none;
+}
+
+.dropdown-menu{
+    min-width: 160px;
+}
+
+.right {
+    margin-left: auto
+}
+
+.navbar-collapse.collapse.in {
+    display: block !important
+}
+
+@media (max-width: 992px) {
+    .right {
+        margin-left: 0
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: left
+    }
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px,3fr));
+    grid-gap :20px;
+    grid-auto-rows: minmax(100px,auto);
+    grid-auto-columns:minmax(50px, auto);
+    padding: 1em;
+    
+}
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+  select {
+    box-sizing: border-box;
+  }
+  input[type=text]:focus {
+    border: 3px solid #555;
+  }
+  input[type=radio]:focus{
+      border :border-box
+  }
+  input[class=description-box]:focus {
+    border: 3px solid #555;
+    height: 450px;
+  }
+
+#item-2{
+    grid-row-start: 1;
+    grid-row-end: 5;
+    grid-column-start: 2;
+    grid-column-end: 3
+    
+}
+
+.item-6-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: subgrid;
+    
+    text-align: center;
+}
+#single-box{
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+#team-box{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3
+    
+}
+#both-box{
+    grid-row-start: 2;
+    grid-row-end: 3
+}
+.item-7-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: subgrid;
+
+    text-align: center;
+}
+#unpaid-box{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3
+}
+#paid-box{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3
+}
