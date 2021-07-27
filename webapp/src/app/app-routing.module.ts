@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent,
     children: [
       { path: 'ch-list', component: ChallengeListComponent },
+      { path:'', redirectTo:'/dashboard/ch-list', pathMatch:'full' },
     ]
   },
   { path: 'login', component: LoginComponent },

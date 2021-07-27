@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   list() {
     this.router.navigate(['ch-list'],{relativeTo: this.route});
   }
