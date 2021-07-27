@@ -22,6 +22,7 @@ body {
 }
 
 .navbar-nav {
+    height: 5vh;
     width: 100%;
     margin-top: 4vh;
     margin-bottom: 4vh;
@@ -45,12 +46,10 @@ body {
     text-decoration: none;
 }
 
-.dropdown-menu{
-    min-width: 160px;
-}
 
 .right {
-    margin-left: auto
+    margin-left: auto;
+    padding-right: 3vw;
 }
 
 .navbar-collapse.collapse.in {
