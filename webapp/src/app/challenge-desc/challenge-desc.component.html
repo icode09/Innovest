@@ -6,6 +6,7 @@
 
 
     <div class="banner">
+      {{isSidebarVisible}}
         <img
           width="100%"
           height="100%"
@@ -38,7 +39,7 @@
               </h3>
             </div>
             <div style="justify-self: flex-end">
-              <button mat-raised-button color="primary">Register</button>
+              <button mat-raised-button routerLink="/solution-form" routerActive="active"  color="primary">Register</button>
             </div>
           </div>
         </div>
