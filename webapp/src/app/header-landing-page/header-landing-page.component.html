@@ -1,5 +1,8 @@
 <div class="container-fluid px-0">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black py-0 px-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black py-0 px-0 justify-content">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleSidebar()">
+            <mat-icon>menu</mat-icon>
+          </button>
         <a class="navbar-brand" href="#">
             <h1 class="logo"><strong><i>INNOVEST</i></strong></h1>
         </a>
@@ -37,8 +40,9 @@
                     </div>
                 </li>
                 <li class="nav-item right"> <a class="nav-link" href="http://localhost:4200/dashboard">Dashboard</a> </li>
-                <li class="nav-item right"><a class="nav-link" href="http://localhost:4200/signup">Sign Up</a></li>
-                <li class="nav-item right"> <a class="nav-link" href="http://localhost:4200/login"><span class="fa fa-fw fa-user"></span>Login</a> </li>
+                <li class="nav-item right"> <a class="nav-link" [routerLink]="['/signup']" routerLinkActive="router-link-active" >Sign Up</a></li>
+                <li class="nav-item right"> <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active"><span class="fa fa-fw fa-user"></span>Login</a> </li>
+
             </ul>
         </div>
     </nav>

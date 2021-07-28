@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {SharedDataService} from '../shared-data.service'
 import {MatSidenav} from '@angular/material/sidenav'
+import {Router} from '@angular/router'
 ////https://stackoverflow.com/questions/43159090/how-can-i-detect-service-variable-change-when-updated-from-another-component
 export interface Domain {
   name: string;
@@ -52,7 +53,7 @@ export class ChallengeDescComponent implements OnInit {
     endDate: Date.now() + 3,
     paid: true,
     rewardPrize: 50000,
-    challengeImage: 'string',
+    challengeImage: "https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/banner/60f95db3b3711_copy_of_linkedin_post__3_.png?d=1920x1920",
     imageName: 'string',
     documentUrl: 'string',
     domains: [
@@ -80,7 +81,7 @@ export class ChallengeDescComponent implements OnInit {
   }]
   asideVisible: boolean;
 
-  constructor(private sidebarService: SharedDataService) {
+  constructor(private sidebarService: SharedDataService, private router:Router) {
       this.asideVisible = this.sidebarService.isSidebarVisible;
       console.log(this.sidebarService.isSidebarVisible)
   }
@@ -90,4 +91,8 @@ export class ChallengeDescComponent implements OnInit {
   }
   @ViewChild('drawer') drawer!: MatSidenav;
   ngOnInit(): void {}
+
+  register(challenge:Challenge){
+    this.router.navigate(['/solution-form',JSON.stringify({challengeId:challenge.challengeId,challengeName:challenge.challengeName})])
+  }
 }

@@ -1,9 +1,9 @@
 <div class="main-div">
 
      
-    <form class="form" [formGroup]="loginform" (ngSubmit)="loginProcess">
+    <form class="form" [formGroup]="loginform" (ngSubmit)="signIn()">
             <h2>LOGIN</h2>
-            <input type="username" class="box" placeholder="username" formControlName="username">
+            <input type=text class="box" placeholder="username" formControlName="username">
             <input type="password" class="box" placeholder="password" formControlName="password">
             
           <!--<mat-form-field >
@@ -18,6 +18,8 @@
           </mat-form-field>-->
         <button type="submit" id="submit">Login</button>
          <!--<input type="submit" value="SIGN IN" id="submit">-->
+         <div  *ngIf="isLoginFailed"><br />{{ errorMessage }}
+        </div>
     </form>
     <div class="side">
       <img src="../../assets/images/image4.jfif" alt="">

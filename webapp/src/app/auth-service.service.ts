@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AppConstants } from './common/app.constants';
+import { Router } from '@angular/router';
 
 
 const httpOptions = {
@@ -14,11 +15,9 @@ const httpOptions = {
 
 export class AuthServiceService {
 
-  constructor(private http:HttpClient) { }
-
-  login(data:any):Observable<any>{
-    console.log(data);
-    return this.http.post('http://localhost:8100/api/user',data)
+  constructor(private http:HttpClient, private myroute: Router) { }
+  login(data:any):Observable<any>{ 
+    return this.http.post(AppConstants.login_API,data)
 }
 
 register(user:any): Observable<any> {
@@ -33,8 +32,8 @@ register(user:any): Observable<any> {
 storeToken(token:any){
   sessionStorage.setItem("mytoken",token);
 }
-getToken():any{
-  return sessionStorage.getItem("mytoken");
-}
+opendashboard(){
+  this.myroute.navigate(['dashboard']);
 
+}
 }
