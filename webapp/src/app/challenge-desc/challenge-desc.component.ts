@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {SharedDataService} from '../shared-data.service'
+import {MatSidenav} from '@angular/material/sidenav'
 ////https://stackoverflow.com/questions/43159090/how-can-i-detect-service-variable-change-when-updated-from-another-component
 export interface Domain {
   name: string;
@@ -77,8 +78,16 @@ export class ChallengeDescComponent implements OnInit {
     avatar:"String",
     avatarName:"String"
   }]
-  
-  constructor(private sharedDataService: SharedDataService) {}
+  asideVisible: boolean;
 
+  constructor(private sidebarService: SharedDataService) {
+      this.asideVisible = this.sidebarService.isSidebarVisible;
+      console.log(this.sidebarService.isSidebarVisible)
+  }
+  get isSidebarVisible(): boolean {
+    console.log(this.sidebarService.isSidebarVisible)
+    return this.sidebarService.isSidebarVisible;
+  }
+  @ViewChild('drawer') drawer!: MatSidenav;
   ngOnInit(): void {}
 }

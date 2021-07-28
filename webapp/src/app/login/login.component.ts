@@ -10,6 +10,8 @@ import { AuthServiceService } from '../auth-service.service';
 export class LoginComponent implements OnInit {
   
   loginform : FormGroup;
+  isSignUpFailed = false;
+  errorMessage = '';
   constructor(private authService:AuthServiceService) { 
     this.loginform=new FormGroup({
       username: new FormControl('',[Validators.required]),
@@ -24,13 +26,21 @@ export class LoginComponent implements OnInit {
   }
   
   signIn(){
-    
       this.authService.login(this.loginform.value).subscribe((res)=>{
-        this.authService.storeToken(res["token"]);
-        console.log(res);
+       
+          this.authService.storeToken(res["token"]);
+        this.authService.opendashboard();
+        this.isSignUpFailed = false;
         
+      }
+      ,
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
       })
+    }
+      
     }
   
 
-}
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SharedDataService} from '../shared-data.service'
 
 @Component({
   selector: 'app-header-landing-page',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderLandingPageComponent implements OnInit {
 
-  constructor() { }
+  ngOnInit(): void {}
+  constructor(private sidebarService: SharedDataService) { }
 
-  ngOnInit(): void {
+  get isSidebarVisible(): boolean {
+      return this.sidebarService.isSidebarVisible;
+  }
+
+  toggleSidebar() {
+      console.log("in toggle Headers")
+      this.sidebarService.toggleSidebarVisibility()
   }
 
 }
