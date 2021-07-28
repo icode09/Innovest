@@ -12,7 +12,7 @@ import { CreateChallengeComponent } from './create-challenge/create-challenge.co
 const routes: Routes = [
   { path: '', component:LandingPageComponent },
   { path: 'challenge-desc', component: ChallengeDescComponent },
-  { path: 'solution-form', component: SolutionFormComponent },
+  { path: 'solution-form/:chalDesc', component: SolutionFormComponent },
   { path: 'dashboard', component: DashboardComponent,
     children: [
       { path: 'ch-list', component: ChallengeListComponent },

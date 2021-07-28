@@ -1,1 +1,25 @@
-<p>solution-form works!</p>
+<form class="needs-validation" id="solutionForm" #solutionForm="ngForm" action="">
+  <div class="form-group">
+    <label>{{challenge}}</label>
+    <input type="text" class="form-control" placeholder="Solution Title" required />
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <textarea
+      type="text"
+      class="form-control"
+      placeholder="Description"
+      rows="7" cols="50"
+      required
+    ></textarea>
+  </div>
+  <div class="form-group">
+    <label>Code Url</label>
+    <input type="url" class="form-control" placeholder="Code Url" />
+  </div>
+  <div class="form-group">
+    <label>Documents</label>
+    <input type="file" class="form-control-file" placeholder="Documents" />
+  </div>
+  <input  class="btn btn-primary" type="submit">
+</form>
