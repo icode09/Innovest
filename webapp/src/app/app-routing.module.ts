@@ -9,7 +9,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import {LandingPageComponent} from './landing-page/landing-page.component'
 import { CreateChallengeComponent } from './create-challenge/create-challenge.component';
-
 const routes: Routes = [
   { path: '', component:LandingPageComponent },
   { path: 'challenge-desc', component: ChallengeDescComponent },

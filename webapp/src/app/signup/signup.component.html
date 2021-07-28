@@ -40,6 +40,9 @@
 			<div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
 				Signup failed!<br />{{ errorMessage }}
 			</div>
+			<span>Already have an account?
+				<a [routerLink]="['../login']" routerLinkActive="router-link-active" >Sign In</a>
+			</span>
 		</form>
 		<div class="alert alert-success" *ngIf="isSuccessful">Your registration is successful!</div>
 	</div>
