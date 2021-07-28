@@ -10,7 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { HeaderComponent } from './header/header.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SolutionFormComponent } from './challenge-desc/solution-form/solution-form.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -32,7 +31,6 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     ChallengeDescComponent,
-    HeaderComponent,
     SolutionFormComponent,
     PageNotFoundComponent,
     DashboardComponent,
