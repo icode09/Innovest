@@ -28,6 +28,7 @@ import { HeaderLandingPageComponent } from './header-landing-page/header-landing
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

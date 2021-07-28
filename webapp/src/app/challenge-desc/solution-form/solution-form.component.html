@@ -1,25 +1,26 @@
-<form class="needs-validation" id="solutionForm" #solutionForm="ngForm" action="">
-  <div class="form-group">
-    <label>{{challenge}}</label>
-    <input type="text" class="form-control" placeholder="Solution Title" required />
-  </div>
-  <div class="form-group">
-    <label>Description</label>
-    <textarea
-      type="text"
-      class="form-control"
-      placeholder="Description"
-      rows="7" cols="50"
-      required
-    ></textarea>
-  </div>
-  <div class="form-group">
-    <label>Code Url</label>
-    <input type="url" class="form-control" placeholder="Code Url" />
-  </div>
-  <div class="form-group">
-    <label>Documents</label>
-    <input type="file" class="form-control-file" placeholder="Documents" />
-  </div>
-  <input  class="btn btn-primary" type="submit">
+<form
+  class="needs-validation"
+  id="solutionForm"
+  #solutionForm="ngForm"
+  action=""
+  class="example-form"
+>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Solution Title</mat-label>
+    <input matInput type="text" placeholder="Solution Title" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput placeholder="Description" rows="7" cols="50"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Code Url</mat-label>
+    <input matInput type="url" placeholder="Code Url" />
+  </mat-form-field>
+  <input style="margin-bottom: 20px;background-color: primary;" class="ng-hide" id="input-file-id" multiple type="file" />
+  <button mat-raised-button color="primary">Submit</button>
 </form>
+
+
