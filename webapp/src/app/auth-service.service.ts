@@ -17,7 +17,7 @@ export class AuthServiceService {
 
   constructor(private http:HttpClient, private myroute: Router) { }
   login(data:any):Observable<any>{ 
-    return this.http.post('http://localhost:8100/login',data)
+    return this.http.post(AppConstants.login_API,data)
 }
 
 register(user:any): Observable<any> {
