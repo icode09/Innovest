@@ -7,15 +7,11 @@ import { Observable } from 'rxjs';
 export class AuthServiceService {
 
   constructor(private http:HttpClient) { }
-  login(data:any):Observable<any>{
-    console.log(data);
-    return this.http.post('http://localhost:8100/api/user',data)
+  login(data:any):Observable<any>{ 
+    return this.http.post('http://localhost:8100/login',data)
 }
 storeToken(token:any){
   sessionStorage.setItem("mytoken",token);
-}
-getToken():any{
-  return sessionStorage.getItem("mytoken");
 }
 
 }

@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService:AuthServiceService) { 
     this.loginform=new FormGroup({
       username: new FormControl('',[Validators.required]),
-      password: new FormControl('',[Validators.required])
+      password: new FormControl('',[Validators.required]),
 
     })
 
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   }
   
-  loginProcess(){
+  signIn(){
     
       this.authService.login(this.loginform.value).subscribe((res)=>{
         this.authService.storeToken(res["token"]);
