@@ -10,7 +10,7 @@ import { AuthServiceService } from '../auth-service.service';
 export class LoginComponent implements OnInit {
   
   loginform : FormGroup;
-  isSignUpFailed = false;
+  isLoginFailed = false;
   errorMessage = '';
   constructor(private authService:AuthServiceService) { 
     this.loginform=new FormGroup({
@@ -30,13 +30,13 @@ export class LoginComponent implements OnInit {
        
           this.authService.storeToken(res["token"]);
         this.authService.opendashboard();
-        this.isSignUpFailed = false;
+        this.isLoginFailed = false;
         
       }
       ,
       err => {
         this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
+        this.isLoginFailed = true;
       })
     }
       

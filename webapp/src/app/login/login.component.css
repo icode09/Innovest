@@ -11,6 +11,8 @@
     border: 1px solid black;
     margin: auto;
     margin-top: 50px;
+    box-shadow: 15px 10px 20px lightgrey;
+    
 }
 .side{
     display: flex;
