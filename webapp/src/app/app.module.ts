@@ -5,38 +5,43 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChallengeDescComponent } from './challenge-desc/challenge-desc.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import { HeaderComponent } from './header/header.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SolutionFormComponent } from './challenge-desc/solution-form/solution-form.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChallengeListComponent } from './challenge-list/challenge-list.component';
-import { CreateChallengeComponent } from './create-challenge/create-challenge.component'
+import { CreateChallengeComponent } from './create-challenge/create-challenge.component';
 
-import { LoginComponent } from './login/login.component'
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { LoginComponent } from './login/login.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HeaderLandingPageComponent } from './header-landing-page/header-landing-page.component';
 import { HttpClientModule } from '@angular/common/http';
-import { HeroLandingPageComponent } from './hero-landing-page/hero-landing-page.component';
+import { SignupComponent } from './signup/signup.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     ChallengeDescComponent,
-    HeaderComponent,
+    SolutionFormComponent,
+    PageNotFoundComponent,
     DashboardComponent,
     ChallengeListComponent,
     CreateChallengeComponent,
     LoginComponent,
     LandingPageComponent,
     HeaderLandingPageComponent,
-    HeroLandingPageComponent
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,9 +58,9 @@ import { HeroLandingPageComponent } from './hero-landing-page/hero-landing-page.
     MatInputModule,
     HttpClientModule,
     MatSidenavModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

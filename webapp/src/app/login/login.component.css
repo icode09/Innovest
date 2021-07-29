@@ -11,6 +11,8 @@
     border: 1px solid black;
     margin: auto;
     margin-top: 50px;
+    box-shadow: 15px 10px 20px lightgrey;
+    
 }
 .side{
     display: flex;
@@ -25,7 +27,7 @@
     flex-direction: column;
     width: 50% ;
     align-items: center;
-    background-color: rgb(156, 128, 233);
+    background-color: rgb(121, 56, 121);
 
 }
 .form h2{

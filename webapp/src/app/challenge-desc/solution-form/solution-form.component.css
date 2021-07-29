@@ -1,0 +1,10 @@
+#solutionForm{
+    margin-top:10vh;
+    margin-left:15vw;
+    margin-right:15vw;
+    font-family: sans-serif;
+    font-size:medium;
+    font-weight: lighter;
+    display:flex;
+    flex-direction: column;
+}

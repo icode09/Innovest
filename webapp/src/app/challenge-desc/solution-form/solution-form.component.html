@@ -1,0 +1,31 @@
+
+<form
+  class="needs-validation"
+  id="solutionForm"
+  #solutionForm="ngForm"
+  action=""
+  class="example-form"
+>
+
+<mat-label class="challengeTitle" style="font-size: 1.8em;color: purple;margin-bottom: 50px;"
+    >| {{challenge.challengeName}}</mat-label
+  >
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Solution Title</mat-label>
+    <input matInput type="text" placeholder="Solution Title" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput placeholder="Description" rows="7" cols="50"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Code Url</mat-label>
+    <input matInput type="url" placeholder="Code Url" />
+  </mat-form-field>
+  <input style="margin-bottom: 20px;background-color: primary;" class="ng-hide" id="input-file-id" multiple type="file" />
+  <button mat-raised-button color="primary">Submit</button>
+</form>
+
+

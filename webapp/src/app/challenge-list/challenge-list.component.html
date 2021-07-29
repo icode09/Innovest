@@ -4,13 +4,28 @@
     <button type="button" class="btn btn-outline-primary">search</button>
 </div>
 
-<a href="#">
+<a (click)="viewChallenge(challenge)">
     <div class="card mb-3">
         <img class="card-img-top" src="../../assets/images/water.jpg" alt="Card image cap" style="height:40vh; padding:0.5em">
         <div class="card-body">
-            <h5 class="card-title">Card title - 1</h5>
-            <p class="card-text">Description--------	---- Description	 -------     	Description</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <h5 class="card-title">{{challenge.challengeName}}}</h5>
+            <p class="card-text">{{challenge.description}}</p>
+            <div class="basicInfo">
+                <div class="basicInfoCard">
+                  <i class="fas fa-hourglass-half fa-lg"></i>
+                  <h5>{{ challenge.endDate }}</h5>
+                </div>
+                <span>&#124;</span>
+                <div class="basicInfoCard">
+                  <i class="fas fa-rupee-sign fa-lg"></i>
+                  <h5>{{ challenge.rewardPrize }}</h5>
+                </div>
+                <span>&#124;</span>
+                <div class="basicInfoCard">
+                  <i class="fas fa-user-plus fa-lg"></i>
+                  <h5>{{ challenge.registrations }}</h5>
+                </div>
+              </div>
         </div>
     </div>
 </a>
