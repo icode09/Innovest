@@ -1,14 +1,46 @@
 
 #intro {
-    height: 70vh;
+    margin-top: 10vh;
+    min-height: 70vh;
     background: url("/assets/images/bulb.jpg");
+    background-size: auto;
+    background-position: top right;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
 
+.hover-underline-animation:hover{
+    background-color: rgb(63, 1, 63);
+    border-radius: 20px;
+    width: 8vw;
+    color: wheat;
+}
 
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: black;
+}
+  
+.hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(255, 99, 9);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+  
+.hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
 
 .paper-layout{
     background-color: whitesmoke;
