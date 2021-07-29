@@ -114,7 +114,7 @@ export class ChallengeListComponent implements OnInit {
         paid: true,
         rewardPrize: 24000,
         challengeImage:
-          'https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/banner/60f95db3b3711_copy_of_linkedin_post__3_.png?d=1920x1920',
+          'https://images.theconversation.com/files/340018/original/file-20200605-176546-1vkao9j.jpg?ixlib=rb-1.1.0&rect=7%2C30%2C5081%2C3357&q=45&auto=format&w=496&fit=clip',
         imageName: 'string',
         documentUrl: 'string',
         domains: ['environmental', 'science', 'engineering', 'Rural development'],
