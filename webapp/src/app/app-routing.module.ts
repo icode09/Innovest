@@ -7,11 +7,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ChallengeListComponent } from './challenge-list/challenge-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
-import {LandingPageComponent} from './landing-page/landing-page.component'
+import { HeaderLandingPageComponent } from './header-landing-page/header-landing-page.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 import { CreateChallengeComponent } from './create-challenge/create-challenge.component';
 const routes: Routes = [
   { path: '', component:LandingPageComponent },
-  { path: 'challenge-desc', component: ChallengeDescComponent },
+  { path: 'challenge-desc/:chalDesc', component: ChallengeDescComponent },
   { path: 'solution-form/:chalDesc', component: SolutionFormComponent },
   { path: 'dashboard', component: DashboardComponent,
     children: [

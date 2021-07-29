@@ -35,16 +35,35 @@
 }
 .challengeAbstract{
     margin-top: 30px;
-    margin-left:10vw;
-    margin-right: 10vw;
     text-align:justify;
     font-family:sans-serif, Geneva, Tahoma, sans-serif;
     font-weight: lighter;
     font-size:  1.1em;
     
 }
+.challengeRules{
+    margin-top: 30px;
+    margin-bottom: 15px;
+    text-align:justify;
+    font-family:sans-serif, Geneva, Tahoma, sans-serif;
+    font-weight: lighter;
+    font-size:  1.1em;
+}
 .challengeTitle{
     color: #652cb3;
     width: 50vw;
+}
+.downloads{
+    margin-top: 30px;
+    margin-bottom: 15px;
+    text-align:justify;
+    font-family:sans-serif, Geneva, Tahoma, sans-serif;
+    font-weight: lighter;
+    font-size:  1.1em;
+    width: 34vw;
+    align-items:center;
+    justify-content: center;
+    justify-items: center;
+
 }
 

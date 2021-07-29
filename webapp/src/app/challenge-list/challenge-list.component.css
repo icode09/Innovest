@@ -3,11 +3,35 @@
     width: 50vw;
     margin-top: 5vh;
 }
-
+.challenges{
+    margin: 0 auto;
+    width: 55rem;
+    align-items:center;
+    justify-content:center;
+}
 .card {
     margin: 0 auto;
     float: none;
     margin-top: 5vh;
     width: 55rem;
     height: 25rem;
+    box-shadow: 5px 5px 30px grey;
+}
+.basicInfo{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0;
+}
+.basicInfoCard{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-content:center;
+    color: #652cb3;    
+}
+.basicInfoCard h5{
+    text-align:center;
+    align-items:center;
+    justify-content:center;
+    margin-left: 10px;
 }

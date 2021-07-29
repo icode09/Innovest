@@ -1,28 +1,59 @@
 package com.cgi.searchService.configuration;
 
+
+import org.apache.http.HttpHost;
+import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.beans.factory.config.AbstractFactoryBean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.elasticsearch.client.ClientConfiguration;
-import org.springframework.data.elasticsearch.client.RestClients;
-import org.springframework.data.elasticsearch.config.AbstractElasticsearchConfiguration;
-import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
 @Configuration
-@EnableElasticsearchRepositories(basePackages = "com.cgi.searchService.repositories")
-@ComponentScan(basePackages = {"com.cgi.searchService.repositories"})
-public class Config extends AbstractElasticsearchConfiguration {
-	
-	@Value("${elasticsearch.url}")
-	public String elasticsearchUrl;
+public class Config extends AbstractFactoryBean<RestHighLevelClient> {
 
-	@Bean
+
+	private static final Logger logger = LoggerFactory.getLogger(Config.class);
+	@Value("${spring.data.elasticsearch.cluster-nodes}")
+	private String clusterNodes;
+	@Value("${spring.data.elasticsearch.cluster-name}")
+	private String clusterName;
+	private RestHighLevelClient restHighLevelClient;
+
 	@Override
-	public RestHighLevelClient elasticsearchClient() {
-		final ClientConfiguration config = ClientConfiguration.builder().connectedTo(elasticsearchUrl).build();
-		return RestClients.create(config).rest();
+	public void destroy() {
+		try {
+			if (restHighLevelClient != null) {
+				restHighLevelClient.close();
+			}
+		} catch (final Exception e) {
+			logger.error("Error closing ElasticSearch client: ", e);
+		}
 	}
 
+	@Override
+	public Class<RestHighLevelClient> getObjectType() {
+		return RestHighLevelClient.class;
+	}
+
+	@Override
+	public boolean isSingleton() {
+		return false;
+	}
+
+	@Override
+	public RestHighLevelClient createInstance() {
+		return buildClient();
+	}
+
+	private RestHighLevelClient buildClient() {
+		try {
+			restHighLevelClient = new RestHighLevelClient(RestClient.builder(new HttpHost("localhost", 9200, "http"),
+					new HttpHost("localhost", 9201, "http")));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return restHighLevelClient;
+	}
 }
