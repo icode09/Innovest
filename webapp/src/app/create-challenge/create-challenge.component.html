@@ -20,14 +20,14 @@
 
 <div class="container">
     <div class="item" id = "item-1"> Challenge Name* <div><input type="text" placeholder="Name of Challenge.." name ="challengeName" [(ngModel)] = "challengeModel.challengeName" > </div></div>
-    <div class="item" id = "item-2"> Challenge Description*<div><input type="text" class = "description-box" name ="challengeDesc" [(ngModel)] = "challengeModel.challengeDesc" placeholder="Type your challenge decription here...." ></div></div>
-    <div class="item" id = "item-3"> Challenge Domain* <div><input type="text" placeholder="Aerospace Engineering" name ="challengeDomain" [(ngModel)] = "challengeModel.challengeDom"l> </div></div>
-    <div class="item" id = "item-4"> Registration Start Date and Time* <div><input type="datetime-local" placeholder="datetime-local"  name ="challengeStartDnT" [(ngModel)] = "challengeModel.challengeStartDT"> </div></div>
-    <div class="item" id = "item-5"> Registration End Date and Time* <div><input type="datetime-local" placeholder="datetime-local"  name ="challengeEndDnT" [(ngModel)] = "challengeModel.challengeEndDT"> </div></div>
+    <div class="item" id = "item-2"> Challenge Description*<div><input type="text" class = "description-box" name ="challengeDesc" [(ngModel)] = "challengeModel.description" placeholder="Type your challenge decription here...." ></div></div>
+    <div class="item" id = "item-3"> Challenge Domain* <div><input type="text" placeholder="Aerospace Engineering" name ="challengeDomain" [(ngModel)] = "challengeModel.domain"l> </div></div>
+    <div class="item" id = "item-4"> Registration Start Date and Time* <div><input type="datetime-local" placeholder="datetime-local"  name ="challengeStartDnT" [(ngModel)] = "challengeModel.startDate"> </div></div>
+    <div class="item" id = "item-5"> Registration End Date and Time* <div><input type="datetime-local" placeholder="datetime-local"  name ="challengeEndDnT" [(ngModel)] = "challengeModel.endDate"> </div></div>
     <div class="item item-6-container" id = "item-6"> Registration Type*
-        <div class="nested-item" id = "single-box"><input type="radio" id="single" [(ngModel)] = "challengeModel.registration_type" name="registration_type" value="SINGLE" ><label for="single">Single</label></div>
-        <div class="nested-item" id = "team-box"><input type="radio" id="team" [(ngModel)] = "challengeModel.registration_type" name="registration_type" value="TEAM"><label for="team">Team</label></div>
-        <div class="nested-item" id = "both-box"><input type="radio" id="bothAllowed" [(ngModel)] = "challengeModel.registration_type" name="registration_type" value="BOTH"><label for="boothAllowed">Both Allowed</label></div>      
+        <div class="nested-item" id = "single-box"><input type="radio" id="single" [(ngModel)] = "challengeModel.registrationType" name="registration_type" value="SINGLE" ><label for="single">Single</label></div>
+        <div class="nested-item" id = "team-box"><input type="radio" id="team" [(ngModel)] = "challengeModel.registrationType" name="registration_type" value="TEAM"><label for="team">Team</label></div>
+        <div class="nested-item" id = "both-box"><input type="radio" id="bothAllowed" [(ngModel)] = "challengeModel.registrationType" name="registration_Type" value="BOTH"><label for="boothAllowed">Both Allowed</label></div>      
     </div>
     <div class="item item-7-container" id = "item-7"> Participation Type* 
         <div class="nested-item" id = "unpaid-box"><input type="radio" id="unpaid" [(ngModel)] = "challengeModel.participationType" name="participation_type" value="UNPAID"><label for="single">Unpaid</label></div>

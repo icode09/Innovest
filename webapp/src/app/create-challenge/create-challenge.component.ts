@@ -13,7 +13,7 @@ export class CreateChallengeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  challengeModel = new Challenge("New Challenge", "this is some random dedc", "Aerospace", new Date(), new Date(), "SINGLE","PAID");
+   challengeModel = new Challenge("Challenge Name", "Description", "",new Date(),new Date(),"","",true,"","")
 
   onSubmit(){
     this._creatingChallenge.createChallenge(this.challengeModel)
