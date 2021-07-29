@@ -21,8 +21,6 @@ import javax.validation.Valid;
 @RequestMapping("/api/auth")
 public class UserController {
 
-    @Autowired
-    AuthenticationManager authenticationManager;
 
     @Autowired
     UserService userService;
