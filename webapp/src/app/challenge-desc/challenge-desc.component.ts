@@ -46,7 +46,7 @@ export class ChallengeDescComponent implements OnInit {
     challengerId: 1,
     challengeName: 'eSahayak Blogging Competition Week-3',
     description: 'string',
-    rules: 'string',
+    rules: 'These are Rules : 1Eligibility: Open to all Only one entry/hackathon submission is permitted per participant/teamTeam Size: 1-5Registration Fee: FreeDate: 01st September 2021 - 30th September 2021',
     abstraction:
       "'All that you need to know about eSahayak Blogging Competition Week-3 eSahayak is back with the Blogging Competition. In this week we will select the top 5 published articles from eSahayak Blog and award them a certificate of excellence. Moreover, the top 2 blogs of the week will get a reward of INR 1,000 each.One person can submit as many articles as they want to. However, only one article submitted by an individual in a week will be considered for the prize money. But, submitting more articles will increase your chances of winning.We hope that this competition will provide you with an opportunity to publish your pieces, and to give you early experience with a competitive edge in the marketplace!'",
     startDate: Date.now(),
