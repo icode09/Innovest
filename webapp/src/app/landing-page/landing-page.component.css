@@ -4,7 +4,7 @@
     min-height: 70vh;
     background: url("/assets/images/bulb.jpg");
     background-size: auto;
-    background-position: top right;
+    background-position: top;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
