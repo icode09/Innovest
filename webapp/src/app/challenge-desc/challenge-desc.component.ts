@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {SharedDataService} from '../shared-data.service'
 import {MatSidenav} from '@angular/material/sidenav'
-import {Router} from '@angular/router'
+import {Router,ActivatedRoute } from '@angular/router'
 ////https://stackoverflow.com/questions/43159090/how-can-i-detect-service-variable-change-when-updated-from-another-component
 export interface Domain {
   name: string;
@@ -41,30 +41,7 @@ export interface Challenge {
   styleUrls: ['./challenge-desc.component.css'],
 })
 export class ChallengeDescComponent implements OnInit {
-  challenge: Challenge = {
-    challengeId: 1,
-    challengerId: 1,
-    challengeName: 'eSahayak Blogging Competition Week-3',
-    description: 'string',
-    rules: 'These are Rules : 1Eligibility: Open to all Only one entry/hackathon submission is permitted per participant/teamTeam Size: 1-5Registration Fee: FreeDate: 01st September 2021 - 30th September 2021',
-    abstraction:
-      "'All that you need to know about eSahayak Blogging Competition Week-3 eSahayak is back with the Blogging Competition. In this week we will select the top 5 published articles from eSahayak Blog and award them a certificate of excellence. Moreover, the top 2 blogs of the week will get a reward of INR 1,000 each.One person can submit as many articles as they want to. However, only one article submitted by an individual in a week will be considered for the prize money. But, submitting more articles will increase your chances of winning.We hope that this competition will provide you with an opportunity to publish your pieces, and to give you early experience with a competitive edge in the marketplace!'",
-    startDate: Date.now(),
-    endDate: Date.now() + 3,
-    paid: true,
-    rewardPrize: 50000,
-    challengeImage: "https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/banner/60f95db3b3711_copy_of_linkedin_post__3_.png?d=1920x1920",
-    imageName: 'string',
-    documentUrl: 'string',
-    domains: [
-      'aerospace' ,
-      'science' ,
-      'engineering' ,
-      "rocket science"
-    ],
-    registrations: 5645,
-    views: 6504,
-  };
+  challenge: Challenge 
   users:UserProfile[] = [{
     userId:1,
     userName:"Parag More",
@@ -81,8 +58,10 @@ export class ChallengeDescComponent implements OnInit {
   }]
   asideVisible: boolean;
 
-  constructor(private sidebarService: SharedDataService, private router:Router) {
+  constructor(private sidebarService: SharedDataService, private router:Router, private route:ActivatedRoute) {
       this.asideVisible = this.sidebarService.isSidebarVisible;
+      this.challenge= JSON.parse(this.route.snapshot.paramMap.get('chalDesc')|| '{}') 
+      //https://stackoverflow.com/questions/46915002/argument-of-type-string-null-is-not-assignable-to-parameter-of-type-string
       console.log(this.sidebarService.isSidebarVisible)
   }
   get isSidebarVisible(): boolean {

@@ -4,14 +4,14 @@ import { Router } from '@angular/router';
 export interface Domain {
   name: string;
 }
-export interface UserProfile{
-    userId:number;
-    userName:String;
-    password:String;
-    domain:String[];
-    bio:String;
-    avatar:String;
-    avatarName:String
+export interface UserProfile {
+  userId: number;
+  userName: String;
+  password: String;
+  domain: String[];
+  bio: String;
+  avatar: String;
+  avatarName: String;
 }
 export interface Challenge {
   challengeId: number;
@@ -34,10 +34,9 @@ export interface Challenge {
 @Component({
   selector: 'app-challenge-list',
   templateUrl: './challenge-list.component.html',
-  styleUrls: ['./challenge-list.component.css']
+  styleUrls: ['./challenge-list.component.css'],
 })
 export class ChallengeListComponent implements OnInit {
-
   challenge: Challenge = {
     challengeId: 1,
     challengerId: 1,
@@ -50,37 +49,29 @@ export class ChallengeListComponent implements OnInit {
     endDate: Date.now() + 3,
     paid: true,
     rewardPrize: 50000,
-    challengeImage: "https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/banner/60f95db3b3711_copy_of_linkedin_post__3_.png?d=1920x1920",
+    challengeImage:
+      'https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/banner/60f95db3b3711_copy_of_linkedin_post__3_.png?d=1920x1920',
     imageName: 'string',
     documentUrl: 'string',
-    domains: [
-      'aerospace' ,
-      'science' ,
-      'engineering' ,
-      "rocket science"
-    ],
+    domains: ['aerospace', 'science', 'engineering', 'rocket science'],
     registrations: 5645,
     views: 6504,
   };
-  users:UserProfile[] = [{
-    userId:1,
-    userName:"Rohit Kumar",
-    password:"String;",
-    domain: [
-      'aerospace' ,
-      'science' ,
-      'engineering' ,
-      "rocket science"
-    ],
-    bio:"String",
-    avatar:"String",
-    avatarName:"String"
-  }]
-  constructor(private router:Router) { }
-  
-  ngOnInit(): void {
-  }
-  viewChallenge(challenge:Challenge){
-    this.router.navigate(['/challenge-desc',JSON.stringify({challengeId:challenge.challengeId,challengeName:challenge.challengeName})])
+  users: UserProfile[] = [
+    {
+      userId: 1,
+      userName: 'Rohit Kumar',
+      password: 'String;',
+      domain: ['aerospace', 'science', 'engineering', 'rocket science'],
+      bio: 'String',
+      avatar: 'String',
+      avatarName: 'String',
+    },
+  ];
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {}
+  viewChallenge(challenge: Challenge) {
+    this.router.navigate(['/challenge-desc', JSON.stringify(challenge)]);
   }
 }

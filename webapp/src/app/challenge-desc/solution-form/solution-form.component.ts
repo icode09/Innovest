@@ -12,7 +12,7 @@ export class SolutionFormComponent implements OnInit {
 
   constructor(private route:ActivatedRoute) { }
   ngOnInit(): void {
-    let challenge= this.route.snapshot.paramMap.get('chalDesc')
+    let challenge= JSON.parse(this.route.snapshot.paramMap.get('chalDesc')||'{}') //https://stackoverflow.com/questions/46915002/argument-of-type-string-null-is-not-assignable-to-parameter-of-type-string
     this.challenge=challenge
   }
 
