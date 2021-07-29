@@ -23,7 +23,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatInputModule } from '@angular/material/input';
-import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HeaderLandingPageComponent } from './header-landing-page/header-landing-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
@@ -39,7 +38,6 @@ import { SignupComponent } from './signup/signup.component';
     ChallengeListComponent,
     CreateChallengeComponent,
     LoginComponent,
-    LandingPageComponent,
     HeaderLandingPageComponent,
     SignupComponent,
   ],
