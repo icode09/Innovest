@@ -6,17 +6,14 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
-import org.springframework.data.elasticsearch.annotations.Setting;
 
 @Document(indexName = "challenges")
-@Setting(settingPath = "static/es-settings.json")
 public class ChallengeDoc {
 	
 	@Id
 	@Field(type = FieldType.Keyword)
 	private String challengeId;
 	
-	@Id
 	@Field(type = FieldType.Keyword)
 	private String challengerId;
 	
@@ -40,9 +37,6 @@ public class ChallengeDoc {
 	
 	@Field(type = FieldType.Boolean)
 	private boolean paid;
-	
-	@Field(type = FieldType.Boolean)
-	private boolean rewardPrize;
 	
 	@Field(type = FieldType.Byte)
 	private Byte[] challengeImage;
@@ -134,13 +128,6 @@ public class ChallengeDoc {
 		this.paid = paid;
 	}
 
-	public boolean isRewardPrize() {
-		return rewardPrize;
-	}
-
-	public void setRewardPrize(boolean rewardPrize) {
-		this.rewardPrize = rewardPrize;
-	}
 
 	public Byte[] getChallengeImage() {
 		return challengeImage;
