@@ -28,6 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
+import { SubmitSolutionService } from './submit-solution.service';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,10 +45,12 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     HeaderLandingPageComponent,
     SignupComponent,
     LandingPageComponent,
+    AlertDialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
@@ -59,8 +64,9 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     HttpClientModule,
     MatSidenavModule,
     FormsModule,
+    MatDialogModule,
   ],
-  providers: [],
+  providers: [SubmitSolutionService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
