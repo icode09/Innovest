@@ -3,12 +3,12 @@
       aria-describedby="search-addon" />
     <button type="button" class="btn btn-outline-primary">search</button>
 </div>
-<div *ngFor="let challenge of challengeList">
-    <a (click)="viewChallenge(challenge)">
+<div class="challenges" *ngFor="let challenge of challengeList">
+    <a type="button" (click)="viewChallenge(challenge)">
         <div class="card mb-3">
             <img class="card-img-top" src="{{ challenge.challengeImage }}" alt="Card image cap" style="height:40vh; padding:0.5em">
             <div class="card-body">
-                <h5 class="card-title">{{challenge.challengeName}}}</h5>
+                <h3 class="card-title">{{challenge.challengeName}}}</h3>
                 <p class="card-text">{{challenge.description}}</p>
                 <div class="basicInfo">
                     <div class="basicInfoCard">
