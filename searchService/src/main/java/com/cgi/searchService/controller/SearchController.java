@@ -11,25 +11,38 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cgi.searchService.document.ChallengeDoc;
 import com.cgi.searchService.service.ChallengeSearchService;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/challenges")
+@RequestMapping("/api/challenge")
 public class SearchController {
 	
-	private final ChallengeSearchService service;
-	
 	@Autowired
-	public SearchController(ChallengeSearchService service) {
-		this.service = service;
-	}
+	private ChallengeSearchService service;
 	
-	@PostMapping("/addchallenge")
-	public void add(@RequestBody final ChallengeDoc challenge) {
+	
+	@PostMapping
+	public void add(@RequestBody ChallengeDoc challenge) {
 		service.addChallenge(challenge);
 	}
+
+	@PostMapping("/addAll")
+	public void addAll(@RequestBody List<ChallengeDoc> challenges) { service.addChallengesList(challenges);}
 	
 	@GetMapping("/{challengeId}")
-	public ChallengeDoc findById(@PathVariable final String challengeId) {
+	public ChallengeDoc findById(@PathVariable String challengeId) {
 		return service.findById(challengeId);
+	}
+
+	/*
+	@GetMapping("/findBy/{challengeName}")
+	public List<ChallengeDoc> findByName(@PathVariable String challengeName) {
+		return service.findByChallengeName(challengeName);
+	} */
+
+	@GetMapping("/getAll")
+	public Iterable<ChallengeDoc> getAll() {
+		return service.findAll();
 	}
 	
 
