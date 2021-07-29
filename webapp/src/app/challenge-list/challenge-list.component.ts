@@ -20,8 +20,8 @@ export interface Challenge {
   description: string;
   rules: string;
   abstraction: string;
-  startDate: number;
-  endDate: number;
+  startDate: Date;
+  endDate: Date;
   paid: boolean;
   rewardPrize: number;
   challengeImage: string;
@@ -45,8 +45,8 @@ export class ChallengeListComponent implements OnInit {
     rules: 'string',
     abstraction:
       "'All that you need to know about eSahayak Blogging Competition Week-3 eSahayak is back with the Blogging Competition. In this week we will select the top 5 published articles from eSahayak Blog and award them a certificate of excellence. Moreover, the top 2 blogs of the week will get a reward of INR 1,000 each.One person can submit as many articles as they want to. However, only one article submitted by an individual in a week will be considered for the prize money. But, submitting more articles will increase your chances of winning.We hope that this competition will provide you with an opportunity to publish your pieces, and to give you early experience with a competitive edge in the marketplace!'",
-    startDate: Date.now(),
-    endDate: Date.now() + 3,
+    startDate: new Date(),
+    endDate: new Date(),
     paid: true,
     rewardPrize: 50000,
     challengeImage:

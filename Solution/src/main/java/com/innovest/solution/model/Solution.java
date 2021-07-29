@@ -1,7 +1,8 @@
 package com.innovest.solution.model;
 
-import org.springframework.data.annotation.Id;
+
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
