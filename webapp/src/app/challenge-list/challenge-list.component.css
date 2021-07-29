@@ -11,3 +11,21 @@
     width: 55rem;
     height: 25rem;
 }
+.basicInfo{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0;
+}
+.basicInfoCard{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-content:center;
+    color: #652cb3;    
+}
+.basicInfoCard h5{
+    text-align:center;
+    align-items:center;
+    justify-content:center;
+    margin-left: 10px;
+}
