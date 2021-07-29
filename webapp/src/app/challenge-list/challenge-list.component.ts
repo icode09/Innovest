@@ -129,6 +129,6 @@ export class ChallengeListComponent implements OnInit {
   }
 
   viewChallenge(challenge: Challenge) {
-    this.router.navigate(['/challenge-desc', JSON.stringify(this.challengeList[0])]);
+    this.router.navigate(['/challenge-desc', JSON.stringify(challenge)]);
   }
 }
