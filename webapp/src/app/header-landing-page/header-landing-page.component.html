@@ -1,44 +1,136 @@
-<div class="container-fluid px-0">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black py-0 px-0">
-        <a class="navbar-brand" href="#">
-            <h1 class="logo"><strong><i>INNOVEST</i></strong></h1>
-        </a>
-        <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item center dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="true" aria-expanded="false">CHALLENGES</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Challenge</a>
-                        <a class="dropdown-item" href="#">Challenge</a>
-                        <a class="dropdown-item" href="#">Challenge</a>
-                    </div>
-                </li>
-                <li class="nav-item center dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="true" aria-expanded="false">INNOVATORS</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Challenge</a>
-                        <a class="dropdown-item" href="#">Challenge</a>
-                        <a class="dropdown-item" href="#">Challenge</a>
-                    </div>
-                </li>
-                <li class="nav-item center dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="true" aria-expanded="false">ABOUT US</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Challenge</a>
-                        <a class="dropdown-item" href="#">Challenge</a>
-                        <a class="dropdown-item" href="#">Challenge</a>
-                    </div>
-                </li>
-                <li class="nav-item right"> <a class="nav-link" href="http://localhost:4200/dashboard">Dashboard</a> </li>
-                <li class="nav-item right"> <a class="nav-link" href="http://localhost:4200/login"><span class="fa fa-fw fa-user"></span>Login</a> </li>
-            </ul>
+<!--Navigation Bar-->
+<nav class="navbar navbar-expand-md bg-info navbar-dark sticky-top">
+    <a class="navbar-brand" href="#">
+        <h1><i>INNOVEST</i></h1>
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb"
+        aria-expanded="true">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navb" class="navbar-collapse collapse hide">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <p class="hover-underline-animation">View Challenges</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <p class="hover-underline-animation">Become a Solver</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <p class="hover-underline-animation">Contact Us</p>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#"><span class="fas fa-user"></span> Sign Up</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><span class="fas fa-sign-in-alt"></span> Login</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--Navigation Ends-->
+
+<!--Hero-unit-->
+<div id="intro" class="view">
+
+    <div class="mask rgba-black-strong">
+
+        <div class="container-fluid d-flex align-items-left justify-content-left h-100">
+
+            <div class="row d-flex justify-content-left text-left">
+
+                <div class="col-md-15">
+
+                    <!-- Heading -->
+                    <h1 class="display-4 font-weight-bold white-text pt-5 mb-2">Innovates with our InnoVestors</h1>
+
+                    <!-- Divider -->
+                    <hr class="hr-light">
+
+                    <!-- Description -->
+                    <h4 class="white-text">Solve the world's greatest challenges.</h4>
+
+                    <section class="collapse-section md-5">
+                        <button class="btn btn-outline-white" data-toggle="collapse" href="#readmore" role="button"
+                            aria-expanded="false" aria-controls="collapseExample">
+                            Read More
+                            <i class="fa fa-book ml-2"></i></button>
+                        <div class="collapse col-md-5" id="readmore">
+                            <div class="card card-body" style="width: 45vw; height:fit-content; background-color: rgb(63,1,63); color: wheat;">
+                            <h2 class="white-text" style="color: white;">Innovators + Investors = Innovest</h2>
+                            <h4 class="white-text">We have created Open Innovest as a crowdsourcing platform for
+                                start-ups, entrepreneurs, companies, government - anyone who aspires to create solutions
+                                that can transform the world in a sustainable way.
+                                <br>
+                                We are looking for the protagonists of the future, those who dare to dream big and who
+                                want to turn their innovative ideas into real and impactful projects together with us.
+                                <br>
+                                Are you ready to join the adventure?</h4>
+                                </div>
+                        </div>
+                    </section>
+
+                </div>
+
+            </div>
+
         </div>
-    </nav>
+
+    </div>
+
 </div>
+<!--Hero-unit ends-->
+
+<section class="paper-layout">
+    <h1 class="ml-5 mr-5">Here's how it works</h1>
+    <p class="ml-5 mr-5">Innovates Open Innovation Marketplace connects organizations seeking solutions to important
+        challenges they face
+        with an unrivalled network of expert problem solvers – both experts from within your industry, but more
+        importantly
+        experts from outside of your industry that can offer diverse perspectives and fresh insight. Our proven
+        Challenge
+        Driven InnovationTM (CDI) model delivers real innovative solutions to complex problems and empowers Seeker
+        organizations to uncover and harness new business opportunities.
+    </p>
+    <section class="paper-card">
+        <div class="card">
+            <img class="card-centered" src="assets/images/register.png">
+            <div class="card-body">
+                <h2>Register</h2>
+                <p>
+                    Sign up and complete your Solver profile
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/images/review.png">
+            <h2 class="card-title">Review & Accept</h2>
+            <p class="card-text">
+                Read the description of the Open Challenges in the Challenge Center and accept the Challenge Specific
+                Agreement
+            </p>
+        </div>
+        <div class="card">
+            <img src="assets/images/submit.png">
+            <h2>Submit</h2>
+            <p>
+                Upload proposed solution(s) you have developed for a specific Challenge.
+            </p>
+        </div>
+        <div class="card">
+            <img src="assets/images/win.png">
+            <h2>Win</h2>
+            <p>
+                Receive cash awards for solutions accepted by Seeker organizations
+            </p>
+        </div>
+    </section>
+</section>

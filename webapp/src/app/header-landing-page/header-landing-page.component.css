@@ -1,68 +1,95 @@
-body {
-    background-color: #BBDEFB
+.bg-info{
+    background-color: rgb(63, 1, 63) !important;
+    border-color: antiquewhite;
 }
 
-.bg-black {
-    background-color: purple;
+.nav-link{
+    color: wheat !important;
+    font-weight: 400;
+    font-size:small;
+    justify-content: space-around;
 }
 
-.navbar-brand {
-    padding: 11px 20px;
-    margin-top: 4vh;
-    margin-bottom: 4vh;
-}
 
-.logo{
-    color: red;
-    font-size:xx-large;
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: wheat;
 }
-
-.active {
-    background-color: blue
-}
-
-.navbar-nav {
-    height: 5vh;
+  
+.hover-underline-animation:after {
+    content: '';
+    position: absolute;
     width: 100%;
-    margin-top: 4vh;
-    margin-bottom: 4vh;
-    justify-content: space-between;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(255, 99, 9);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+  
+.hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
-.nav-link {
-    color: #fff !important;
-    padding: 1em;
-    width: auto;
-    margin-left: 8vh;
+.carousel-section{
+    background-color: whitesmoke;
+    height: 85vh;
 }
 
-.nav-item {
-    padding: 6px 12px;
+.carousel-inner > .item > .img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 50%;
+    height: 2vh;
+}
+
+#intro {
+    height: 70vh;
+    background: url("/assets/images/bulb.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+
+.paper-layout{
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5vh;
+}
+
+.paper-card{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 5vh;
+}
+.card img{
+    align-self:center;
+    height: 25vh;
+    width:15vw;
+}
+
+.card{
+    background-color: white;
     text-align: center;
+    height: 50vh;
+    width: 20vw;
+    padding: 1em;
+    box-shadow: 5px 5px 30px grey;
 }
 
-.nav-link:hover {
-    color: red !important;
-    text-decoration: none;
-}
+.container {
+    padding: 2px 16px;
+  }
 
 
-.right {
-    margin-left: auto;
-    padding-right: 3vw;
-}
-
-.navbar-collapse.collapse.in {
-    display: block !important
-}
-
-@media (max-width: 992px) {
-    .right {
-        margin-left: 0
-    }
-
-    .nav-item {
-        width: 100%;
-        text-align: left
-    }
-}

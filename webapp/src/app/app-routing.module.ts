@@ -4,6 +4,9 @@ import { ChallengeDescComponent } from './challenge-desc/challenge-desc.componen
 import { ChallengeListComponent } from './challenge-list/challenge-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { HeaderLandingPageComponent } from './header-landing-page/header-landing-page.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+
 
 
 const routes: Routes = [
@@ -12,6 +15,8 @@ const routes: Routes = [
   {path:'ch-list',component:ChallengeListComponent},
   {path:'', redirectTo:'/ch-desc', pathMatch:'full'},
   {path:'login', component:LoginComponent},
+  {path:'landing', component: HeaderLandingPageComponent},
+  {path:'landing1', component: LandingPageComponent},
 ];
 
 @NgModule({
