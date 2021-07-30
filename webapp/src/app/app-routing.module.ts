@@ -11,20 +11,21 @@ import { HeaderLandingPageComponent } from './header-landing-page/header-landing
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { CreateChallengeComponent } from './create-challenge/create-challenge.component';
 const routes: Routes = [
-  { path: '', component:LandingPageComponent },
+  { path: '', component: LandingPageComponent },
   { path: 'challenge-desc/:chalDesc', component: ChallengeDescComponent },
   { path: 'solution-form/:chalDesc', component: SolutionFormComponent },
-  { path: 'dashboard', component: DashboardComponent,
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
     children: [
       { path: 'ch-list', component: ChallengeListComponent },
-      { path: 'create-ch',component:CreateChallengeComponent},
-      { path:'', redirectTo:'/dashboard/ch-list', pathMatch:'full' },
-    ]
+      { path: 'create-ch', component: CreateChallengeComponent },
+      { path: '', redirectTo: '/dashboard/ch-list', pathMatch: 'full' },
+    ],
   },
   { path: 'login', component: LoginComponent },
-  {path : 'signup',component : SignupComponent},
-  { path: '**', component: PageNotFoundComponent }
-
+  { path: 'signup', component: SignupComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

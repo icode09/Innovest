@@ -1,59 +1,75 @@
-<form
-  class="needs-validation"
-  id="solutionForm"
-  #solutionForm="ngForm"
-  action=""
-  class="example-form"
->
-  <!-- {{ solutionForm.value | json }} -->
-  <mat-label
-    class="challengeTitle"
-    style="font-size: 1.8em; color: purple; margin-bottom: 50px"
-    >| {{ challenge.challengeName }}</mat-label
-  >
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Solution Title</mat-label>
-    <input
-      [(ngModel)]="formData.solutionTitle"
-      name="solutionTitle"
-      matInput
-      required
-      type="text"
-      placeholder="Solution Title"
-    />
-  </mat-form-field>
+<div class="container">
+  <mat-label class="challengeTitle">| {{ challenge.challengeName }}</mat-label>
+  <div class="innerContainer">
+    <div class="item">
+      <mat-card class="challengeInfoCard">
+        <div class="scrollable">
+          <mat-label class="challengeTitle">Abstract:</mat-label>
+          <hr />
+          <p>
+            {{ challenge.abstraction }}
+          </p>
+          <mat-label class="challengeTitle">Rules:</mat-label>
+          <hr />
+          <p>
+            {{ challenge.rules }}
+          </p>
+        </div>
+      </mat-card>
+    </div>
+    <form
+      id="solutionForm"
+      #solutionForm="ngForm"
+      action=""
+      class="item"
+    >
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Solution Title</mat-label>
+        <input
+          [(ngModel)]="formData.solutionTitle"
+          name="solutionTitle"
+          matInput
+          required
+          type="text"
+          placeholder="Solution Title"
+        />
+      </mat-form-field>
 
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Description</mat-label>
-    <textarea
-      [(ngModel)]="formData.solutionDescription"
-      name="solutionDescription"
-      required
-      matInput
-      placeholder="Description"
-      rows="7"
-      cols="50"
-    ></textarea>
-  </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea
+          [(ngModel)]="formData.solutionDescription"
+          name="solutionDescription"
+          required
+          matInput
+          placeholder="Description"
+          rows="7"
+          cols="50"
+        ></textarea>
+      </mat-form-field>
 
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Code Url</mat-label>
-    <input
-      [(ngModel)]="formData.codeUrl"
-      name="codeUrl"
-      matInput
-      type="url"
-      placeholder="Code Url"
-    />
-  </mat-form-field>
-  <input
-    [(ngModel)]="formData.documentUrl"
-    name="documentUrl"
-    style="margin-bottom: 20px; background-color: primary"
-    class="ng-hide"
-    id="input-file-id"
-    multiple
-    type="file"
-  />
-  <button (click)="submitSolution()" mat-raised-button color="primary">Submit</button>
-</form>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Code Url</mat-label>
+        <input
+          [(ngModel)]="formData.codeUrl"
+          name="codeUrl"
+          matInput
+          type="url"
+          placeholder="Code Url"
+        />
+      </mat-form-field>
+      <input
+        [(ngModel)]="formData.documentUrl"
+        name="documentUrl"
+        style="margin-bottom: 20px; background-color: primary"
+        class="ng-hide"
+        id="input-file-id"
+        multiple
+        type="file"
+      />
+      <button (click)="submitSolution()" mat-raised-button color="primary">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

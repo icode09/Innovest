@@ -16,4 +16,6 @@ public interface ChallengeSearchService {
 
 	Iterable<ChallengeDoc> findAll();
 
+	public List<ChallengeDoc> findChallenge(String text);
+
 }
