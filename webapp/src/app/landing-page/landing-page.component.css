@@ -67,6 +67,8 @@
     height: 50vh;
     width: 20vw;
     padding: 1em;
+    display: flex;
+    order: 5;
     box-shadow: 5px 5px 30px grey;
 }
 .container {

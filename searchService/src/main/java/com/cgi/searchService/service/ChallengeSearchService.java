@@ -12,8 +12,10 @@ public interface ChallengeSearchService {
 
 	public ChallengeDoc findById (String id);
 
-	List<ChallengeDoc> findByChallengeNameContaining (String name);
+	public void DeleteById (String id);
 
 	Iterable<ChallengeDoc> findAll();
+
+	public List<ChallengeDoc> findChallenge(String text);
 
 }
