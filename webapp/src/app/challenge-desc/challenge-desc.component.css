@@ -1,69 +1,142 @@
 .banner {
-    height: 55vh;
-    width: 100vw;
-    border-bottom: 10px;
-    border-bottom-color: #652cb3;
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-    
+  height:auto;
+  width: 100vw;
+  border-bottom: 10px;
+  border-bottom-color: #652cb3;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  min-height: 15vh;
 }
-.basicInfo{
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 0;
+.basicInfo {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0;
+  flex-wrap: wrap;
 }
-.basicInfoCard{
-    display: flex;
-    flex-direction: row;
-    margin: 10px;
-    justify-content:center;
-    color: #652cb3;    
+.basicInfoCard {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  justify-content: center;
+  color: #652cb3;
+  flex-wrap: wrap;
 }
-.basicInfoCard h5{
-    text-align:center;
-    align-items:center;
-    justify-content:center;
-    margin-left: 10px;
+.basicInfoCard h5 {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
 }
-.registerCard{
-    margin-left: 15vw;
-    margin-right: 15vw;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    margin-top:20px
+.registerCard {
+  margin-left: 15vw;
+  margin-right: 15vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
-.challengeAbstract{
-    margin-top: 30px;
-    text-align:justify;
-    font-family:sans-serif, Geneva, Tahoma, sans-serif;
-    font-weight: lighter;
-    font-size:  1.1em;
-    
+.abstractCard {
+  margin-left: 15vw;
+  margin-right: 15vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
-.challengeRules{
-    margin-top: 30px;
-    margin-bottom: 15px;
-    text-align:justify;
-    font-family:sans-serif, Geneva, Tahoma, sans-serif;
-    font-weight: lighter;
-    font-size:  1.1em;
+p {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 30px;
 }
-.challengeTitle{
-    color: #652cb3;
-    width: 50vw;
+mat-label {
+  font-size: 1.6em;
 }
-.downloads{
-    margin-top: 30px;
-    margin-bottom: 15px;
-    text-align:justify;
-    font-family:sans-serif, Geneva, Tahoma, sans-serif;
-    font-weight: lighter;
-    font-size:  1.1em;
-    width: 34vw;
-    align-items:center;
-    justify-content: center;
-    justify-items: center;
+.challengeAbstract {
+  margin-top: 30px;
+  text-align: justify;
+  font-family: sans-serif, Geneva, Tahoma, sans-serif;
+  font-weight: lighter;
+  font-size: 1.1em;
+}
+.challengeRules {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  text-align: justify;
+  font-family: sans-serif, Geneva, Tahoma, sans-serif;
+  font-weight: lighter;
+  font-size: 1.1em;
+}
+.challengeTitle {
+  color: #652cb3;
+  width: 50vw;
+}
+.downloads {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  text-align: justify;
+  font-family: sans-serif, Geneva, Tahoma, sans-serif;
+  font-weight: lighter;
+  font-size: 1.1em;
+  width: 34vw;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+mat-label {
+  font-size: 1.6em;
+}
+.rewardDiv {
+  color: white;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  padding: 30px;
+}
+.challengeInfoDiv {
+  display: flex;
+  flex-direction: row;
+}
+.profileImageCard {
+  width: 12vh;
+  height: 12vh;
+}
+.challengeName {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  justify-content: flex-start;
+}
+.registerButtonDiv {
+  
+}
+.mat-chip {
+  background-color: #8440e4;
+  color: white;
+}
+.smallCardsDiv {
+  display: flex;
+  margin-left: 15vw;
+  margin-right: 15vw;
+  justify-content: space-between;
+}
+.rewardsContainer {
+  background-color: white;
+  width: 100vw;
+  height: 80vh;
+}
+.rewardBanner {
+  width: 50vw;
+  margin-left: 15vw;
+  margin-top: 50px;
+  height: 30vh;
+  color: primary;
+  background-color: rgb(224, 72, 224);
+}
+.feedBackContainer {
+  width: 100vw;
+  height: 50vh;
+}
 
-}
 

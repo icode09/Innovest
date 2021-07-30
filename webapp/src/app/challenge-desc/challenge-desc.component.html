@@ -1,21 +1,18 @@
 <div>
-  <mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-      <p>Auto-resizing sidenav</p>
-    </mat-drawer>
-
+  <mat-drawer-container autosize>
     <div class="banner">
       <img
         width="100%"
         height="100%"
         src="{{ challenge.challengeImage }}"
         alt="banner"
+        
       />
     </div>
 
     <mat-card class="registerCard">
-      <div style="display: flex; flex-direction: row">
-        <mat-card style="width: 12vh; height: 12vh">
+      <div class="challengeInfoDiv">
+        <mat-card class="profileImageCard">
           <img
             width="100%"
             height="100%"
@@ -23,20 +20,13 @@
             alt="challenger profile"
         /></mat-card>
         <div style="display: flex; flex-direction: row">
-          <div
-            style="
-              display: flex;
-              flex-direction: column;
-              margin-left: 10px;
-              justify-content: flex-start;
-            "
-          >
+          <div class="challengeName">
             <h1 class="challengeTitle">{{ challenge.challengeName }}</h1>
             <h3 style="color: gray; font-weight: lighter">
               {{ users[challenge.challengerId - 1].userName }}
             </h3>
           </div>
-          <div style="justify-self: flex-end">
+          <div class="registerButtonDiv">
             <button
               mat-raised-button
               (click)="register(challenge)"
@@ -65,81 +55,58 @@
         </div>
       </div>
       <mat-chip-list cdkDropListOrientation="horizontal">
-        <mat-chip
-          style="background-color: #8440e4; color: white"
-          *ngFor="let domain of challenge.domains"
-        >
+        <mat-chip *ngFor="let domain of challenge.domains">
           {{ domain }}
         </mat-chip>
       </mat-chip-list>
     </mat-card>
 
-    <mat-card class="registerCard">
+    <mat-card class="abstractCard">
       <div class="challengeAbstract">
-        <mat-label class="challengeTitle" style="font-size: 1.6em"
-          >Abstract:</mat-label
-        >
-        <p style="margin-left: 40px; margin-right: 40px; margin-top: 30px">
+        <mat-label class="challengeTitle">Abstract:</mat-label>
+        <p>
           {{ challenge.abstraction }}
         </p>
       </div>
       <div class="challengeRules">
-        <mat-label class="challengeTitle" style="font-size: 1.6em"
-          >Rules:</mat-label
-        >
-        <p style="margin-left: 40px; margin-right: 40px; margin-top: 30px">
+        <mat-label class="challengeTitle">Rules:</mat-label>
+        <p>
           {{ challenge.rules }}
         </p>
       </div>
     </mat-card>
-    <div
-      style="
-        display: flex;
-        margin-left: 15vw;
-        margin-right: 15vw;
-        justify-content: space-between;
-      "
-    >
+    <div class="smallCardsDiv">
       <mat-card class="downloads">
-        <mat-label class="challengeTitle" style="font-size: 1.6em"
-          >Download Attachments:</mat-label
-        >
+        <mat-label class="challengeTitle">Download Attachments:</mat-label>
         <button style="margin-left: 30px" mat-stroked-button color="primary">
           Download
         </button>
       </mat-card>
-      <mat-card class="downloads" style="text-align: left;">
-        <mat-label class="challengeTitle" style="font-size: 1.6em"
+      <mat-card class="downloads" style="text-align: left">
+        <mat-label class="challengeTitle"
           >Important dates& deadlines: {{ challenge.endDate }}</mat-label
         >
       </mat-card>
     </div>
   </mat-drawer-container>
-  <mat-drawer-container
-    style="background-color: white; width: 100vw; height: 80vh"
-  >
-  <div style="margin-left: 10vw;margin-top: 60px;">
-    <mat-label class="challengeTitle" style="font-size: 1.8em"
-    >| Rewards and Prizes</mat-label
-  >
-  <mat-card style="width:50vw;margin-left: 15vw;margin-top: 50px;height: 30vh; color: primary; background-color: rgb(224, 72, 224);" >
-    <div style="color: white; display: flex;text-align: center;justify-content: center;justify-items: center;align-items: center;padding: 30px;" >
-      <i class="fas fa-rupee-sign fa-10x"></i>
-      <h1 style="font-size: 11em;">{{ challenge.rewardPrize }}</h1>
+  <mat-drawer-container class="rewardsContainer">
+    <div style="margin-left: 10vw; margin-top: 60px">
+      <mat-label class="challengeTitle" style="font-size: 1.8em"
+        >| Rewards and Prizes</mat-label
+      >
+      <mat-card class="rewardBanner">
+        <div class="rewardDiv">
+          <i class="fas fa-rupee-sign fa-10x"></i>
+          <h1 style="font-size: 11vw">{{ challenge.rewardPrize }}</h1>
+        </div>
+      </mat-card>
     </div>
-  </mat-card>
-  </div>
-
   </mat-drawer-container>
-  <mat-drawer-container
-  style="width: 100vw; height: 50vh"
->
-<div style="margin-left: 10vw;margin-top: 60px;">
-  <mat-label class="challengeTitle" style="font-size: 1.8em"
-  >| Voice your opinion by leaving a feedback</mat-label
->
-
-</div>
-
-</mat-drawer-container>
+  <mat-drawer-container class="feedBackContainer">
+    <div style="margin-left: 10vw; margin-top: 60px">
+      <mat-label class="challengeTitle" style="font-size: 1.8em"
+        >| Voice your opinion by leaving a feedback</mat-label
+      >
+    </div>
+  </mat-drawer-container>
 </div>
