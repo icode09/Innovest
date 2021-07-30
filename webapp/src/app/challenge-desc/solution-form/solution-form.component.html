@@ -1,59 +1,109 @@
-<form
-  class="needs-validation"
-  id="solutionForm"
-  #solutionForm="ngForm"
-  action=""
-  class="example-form"
->
-  <!-- {{ solutionForm.value | json }} -->
+<div style="margin-top: 15vh; max-width: 100vw">
   <mat-label
     class="challengeTitle"
-    style="font-size: 1.8em; color: purple; margin-bottom: 50px"
+    style="
+      font-size: 1.8em;
+      color: purple;
+      margin-bottom: 50px;
+      margin-left: 30px;
+    "
     >| {{ challenge.challengeName }}</mat-label
   >
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Solution Title</mat-label>
-    <input
-      [(ngModel)]="formData.solutionTitle"
-      name="solutionTitle"
-      matInput
-      required
-      type="text"
-      placeholder="Solution Title"
-    />
-  </mat-form-field>
+  <div style="display: flex; max-width: 100vw">
+    <div style="width: 40vw">
+      <mat-card
+        style="
+          margin-left: 5vw;
+          margin-top: 10vh;
+          height: 60vh;
+          background-color: lavender;
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <mat-label
+          class="challengeTitle"
+          style="
+            font-size: 1.5em;
+            color: purple;
+            width: 100vw;
+            margin-left: 10px;
+          "
+          >Abstract:</mat-label
+        >
+        <hr />
+        <p style="margin-left: 10px; margin-right: 10px; text-align: justify">
+          {{ challenge.abstraction }}
+        </p>
+        <mat-label
+          class="challengeTitle"
+          style="
+            font-size: 1.5em;
+            color: purple;
+            width: 100vw;
+            margin-left: 10px;
+          "
+          >Rules:</mat-label
+        >
+        <hr />
+        <p style="margin-left: 10px; margin-right: 10px; text-align: justify">
+          {{ challenge.rules }}
+        </p>
+      </mat-card>
+    </div>
+    <form
+      id="solutionForm"
+      #solutionForm="ngForm"
+      action=""
+      style="width: 40vw"
+    >
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Solution Title</mat-label>
+        <input
+          [(ngModel)]="formData.solutionTitle"
+          name="solutionTitle"
+          matInput
+          required
+          type="text"
+          placeholder="Solution Title"
+        />
+      </mat-form-field>
 
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Description</mat-label>
-    <textarea
-      [(ngModel)]="formData.solutionDescription"
-      name="solutionDescription"
-      required
-      matInput
-      placeholder="Description"
-      rows="7"
-      cols="50"
-    ></textarea>
-  </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea
+          [(ngModel)]="formData.solutionDescription"
+          name="solutionDescription"
+          required
+          matInput
+          placeholder="Description"
+          rows="7"
+          cols="50"
+        ></textarea>
+      </mat-form-field>
 
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Code Url</mat-label>
-    <input
-      [(ngModel)]="formData.codeUrl"
-      name="codeUrl"
-      matInput
-      type="url"
-      placeholder="Code Url"
-    />
-  </mat-form-field>
-  <input
-    [(ngModel)]="formData.documentUrl"
-    name="documentUrl"
-    style="margin-bottom: 20px; background-color: primary"
-    class="ng-hide"
-    id="input-file-id"
-    multiple
-    type="file"
-  />
-  <button (click)="submitSolution()" mat-raised-button color="primary">Submit</button>
-</form>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Code Url</mat-label>
+        <input
+          [(ngModel)]="formData.codeUrl"
+          name="codeUrl"
+          matInput
+          type="url"
+          placeholder="Code Url"
+        />
+      </mat-form-field>
+      <input
+        [(ngModel)]="formData.documentUrl"
+        name="documentUrl"
+        style="margin-bottom: 20px; background-color: primary"
+        class="ng-hide"
+        id="input-file-id"
+        multiple
+        type="file"
+      />
+      <button (click)="submitSolution()" mat-raised-button color="primary">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
