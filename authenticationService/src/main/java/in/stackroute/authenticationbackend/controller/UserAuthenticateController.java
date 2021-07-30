@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +23,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 @RestController
+@CrossOrigin
 public class UserAuthenticateController {
 	static final long EXPIRATIONTIME = 300000;
 	Map<String, String> map = new HashMap<>();
@@ -38,6 +40,7 @@ public class UserAuthenticateController {
 		try {
 			jwtToken = getToken(user.getUsername(), user.getPassword());
 			map.clear();
+			map.put("username",user.getUsername()); 
 			map.put("message", "user successfully logged in");
 			map.put("token", jwtToken);
 		} catch (Exception e) {
