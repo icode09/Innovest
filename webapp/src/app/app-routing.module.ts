@@ -8,9 +8,10 @@ import { ChallengeListComponent } from './challenge-list/challenge-list.componen
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderLandingPageComponent } from './header-landing-page/header-landing-page.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 import { CreateChallengeComponent } from './create-challenge/create-challenge.component';
 const routes: Routes = [
-  { path: '', component:HeaderLandingPageComponent },
+  { path: '', component:LandingPageComponent },
   { path: 'challenge-desc/:chalDesc', component: ChallengeDescComponent },
   { path: 'solution-form/:chalDesc', component: SolutionFormComponent },
   { path: 'dashboard', component: DashboardComponent,
@@ -23,7 +24,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {path : 'signup',component : SignupComponent},
   { path: '**', component: PageNotFoundComponent }
-  
+
 ];
 
 @NgModule({

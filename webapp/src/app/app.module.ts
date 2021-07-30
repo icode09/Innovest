@@ -25,6 +25,8 @@ import { MatInputModule } from '@angular/material/input';
 import { HeaderLandingPageComponent } from './header-landing-page/header-landing-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+
 import { SubmitSolutionService } from './submit-solution.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
@@ -41,6 +43,7 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
     LoginComponent,
     HeaderLandingPageComponent,
     SignupComponent,
+    LandingPageComponent,
     AlertDialogComponent,
   ],
   imports: [

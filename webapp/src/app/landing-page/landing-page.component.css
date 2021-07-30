@@ -1,0 +1,75 @@
+
+#intro {
+    margin-top: 10vh;
+    min-height: 70vh;
+    background: url("/assets/images/bulb.jpg");
+    background-size: auto;
+    background-position: top;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.hover-underline-animation:hover{
+    background-color: rgb(63, 1, 63);
+    border-radius: 20px;
+    width: 8vw;
+    color: wheat;
+}
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: black;
+}
+  
+.hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(255, 99, 9);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+  
+.hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.paper-layout{
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5vh;
+}
+
+.paper-card{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 5vh;
+}
+.card img{
+    align-self:center;
+    height: 25vh;
+    width:15vw;
+}
+
+.card{
+    background-color: white;
+    text-align: center;
+    height: 50vh;
+    width: 20vw;
+    padding: 1em;
+    box-shadow: 5px 5px 30px grey;
+}
+.container {
+    padding: 2px 16px;
+  }
