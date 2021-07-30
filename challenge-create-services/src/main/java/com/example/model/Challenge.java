@@ -2,7 +2,6 @@ package com.example.model;
 
 import java.util.Arrays;
 import java.util.Date;
-import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,9 +10,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Challenge {
 	
 	@Id
-	private UUID challengeId;
+	private String challengeId;
 	
-	private UUID challengerId;
+	private String challengerId;
 	private String challengeName;
 	private String description;
 	private String rules;
@@ -22,28 +21,46 @@ public class Challenge {
 	private Date endDate;
 	private boolean paid;
 	private double rewardPrize;
-	private Byte[] challengeImage;
+	private Integer[] challengeImage;
 	private String imageName;
 	private String documentUrl;
-	private String[] domain;
+	private String domain;
 	private Integer registrations;
 	private Integer views;
+	private String registrationType;
+	private String participationType;
 	
+	public String getRegistrationType() {
+		return registrationType;
+	}
+
+	public void setRegistrationType(String registrationType) {
+		this.registrationType = registrationType;
+	}
+
+	public String getParticipationType() {
+		return participationType;
+	}
+
+	public void setParticipationType(String participationType) {
+		this.participationType = participationType;
+	}
+
 	public Challenge() {}
 
-	public UUID getChallengeId() {
+	public String getChallengeId() {
 		return challengeId;
 	}
 
-	public void setChallengeId(UUID challengeId) {
+	public void setChallengeId(String challengeId) {
 		this.challengeId = challengeId;
 	}
 
-	public UUID getChallengerId() {
+	public String getChallengerId() {
 		return challengerId;
 	}
 
-	public void setChallengerId(UUID challengerId) {
+	public void setChallengerId(String challengerId) {
 		this.challengerId = challengerId;
 	}
 
@@ -111,11 +128,11 @@ public class Challenge {
 		this.rewardPrize = rewardPrize;
 	}
 
-	public Byte[] getChallengeImage() {
+	public Integer[] getChallengeImage() {
 		return challengeImage;
 	}
 
-	public void setChallengeImage(Byte[] challengeImage) {
+	public void setChallengeImage(Integer[] challengeImage) {
 		this.challengeImage = challengeImage;
 	}
 
@@ -135,11 +152,11 @@ public class Challenge {
 		this.documentUrl = documentUrl;
 	}
 
-	public String[] getDomain() {
+	public String getDomain() {
 		return domain;
 	}
 
-	public void setDomain(String[] domain) {
+	public void setDomain(String domain) {
 		this.domain = domain;
 	}
 
@@ -165,7 +182,7 @@ public class Challenge {
 				+ challengeName + ", description=" + description + ", rules=" + rules + ", abstraction=" + abstraction
 				+ ", startDate=" + startDate + ", endDate=" + endDate + ", paid=" + paid + ", rewardPrize="
 				+ rewardPrize + ", challengeImage=" + Arrays.toString(challengeImage) + ", imageName=" + imageName
-				+ ", documentUrl=" + documentUrl + ", domain=" + Arrays.toString(domain) + ", registrations="
+				+ ", documentUrl=" + documentUrl + ", domain=" + "domain" + ", registrations="
 				+ registrations + ", views=" + views + "]";
 	}
 	

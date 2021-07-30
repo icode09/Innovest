@@ -13,6 +13,7 @@ export class CreateChallengeComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  submitted = false;
   challengeModel = new Challenge(
     uuidv4(),
     uuidv4(),
@@ -35,11 +36,13 @@ export class CreateChallengeComponent implements OnInit {
   );
 
   onSubmit() {
+    this.submitted = true;
     this.challengeModel.challengeId = uuidv4();
     this.challengeModel.challengerId = uuidv4();
     this._creatingChallenge.createChallenge(this.challengeModel).subscribe(
       (data) => console.log('Success!', data),
       (error) => console.log('Error!', error)
     );
+    console.log(this.challengeModel);
   }
 }
