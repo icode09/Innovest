@@ -40,6 +40,11 @@ public class SearchController {
 		return service.findByChallengeName(challengeName);
 	} */
 
+	@GetMapping("/search/{queries}")
+	public List<ChallengeDoc> ChallengeSearch(@PathVariable String queries)  {
+		return service.findChallenge(queries);
+	}
+
 	@GetMapping("/getAll")
 	public Iterable<ChallengeDoc> getAll() {
 		return service.findAll();
