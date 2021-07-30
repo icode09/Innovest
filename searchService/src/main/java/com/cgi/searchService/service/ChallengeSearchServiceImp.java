@@ -53,10 +53,9 @@ public class ChallengeSearchServiceImp implements ChallengeSearchService {
 		return repo.findById(id).orElse(null);
 	}
 
-
 	@Override
-	public List<ChallengeDoc> findByChallengeNameContaining(String name) {
-		return null;
+	public void DeleteById(String id) {
+		repo.deleteById(id);
 	}
 
 	@Override
