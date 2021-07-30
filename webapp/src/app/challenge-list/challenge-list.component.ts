@@ -80,11 +80,11 @@ export class ChallengeListComponent implements OnInit {
         views: 6504,
       },
       {
-        challengeId: 1,
+        challengeId: 2,
         challengerId: 1,
         challengeName: 'Water Problem in village',
         description: 'Village aaaa facing water shortage... read more',
-        rules: 'string',
+        rules: 'rule1....rule2',
         abstraction:
           "'All that you need to know about eSahayak Blogging Competition Week-3 eSahayak is back with the Blogging Competition. In this week we will select the top 5 published articles from eSahayak Blog and award them a certificate of excellence. Moreover, the top 2 blogs of the week will get a reward of INR 1,000 each.One person can submit as many articles as they want to. However, only one article submitted by an individual in a week will be considered for the prize money. But, submitting more articles will increase your chances of winning.We hope that this competition will provide you with an opportunity to publish your pieces, and to give you early experience with a competitive edge in the marketplace!'",
         startDate: new Date(),
