@@ -29,8 +29,10 @@ register(user:any): Observable<any> {
     socialProvider: 'LOCAL'
   }, httpOptions);
 }
-storeToken(token:any){
-  sessionStorage.setItem("mytoken",token);
+storeToken(token:any,username:any){
+  localStorage.setItem("mytoken",token);
+  localStorage.setItem("currently logged in user",username);
+  //sessionStorage.setItem("mytoken",token);
 }
 opendashboard(){
   this.myroute.navigate(['dashboard']);
