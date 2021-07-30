@@ -2,7 +2,6 @@ package com.example.service;
 
 import java.util.Collection;
 import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,12 +28,6 @@ public class ChallengeServiceImpl implements ChallengeService{
 		return dao.findAll();
 	}
 
-	@Override
-	public void deleteChallengeById(UUID id) {
-		// TODO Auto-generated method stub
-		dao.deleteById(id);
-		
-	}
 
 	@Override
 	public void updateChallenge(Challenge ch) {
@@ -42,10 +35,18 @@ public class ChallengeServiceImpl implements ChallengeService{
 		dao.save(ch);
 	}
 
+
+
 	@Override
-	public Optional<Challenge> findChallengeById(UUID id) {
+	public Optional<Challenge> findChallengeById(String id) {
 		// TODO Auto-generated method stub
-		return dao.findById(id);
+		return null;
+	}
+
+	@Override
+	public void deleteChallengeById(String id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
