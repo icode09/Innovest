@@ -29,6 +29,7 @@ import { SignupComponent } from './signup/signup.component';
 import { SubmitSolutionService } from './submit-solution.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
     MatSidenavModule,
     FormsModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
   ],
   providers: [SubmitSolutionService],
   bootstrap: [AppComponent],

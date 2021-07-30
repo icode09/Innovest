@@ -1,13 +1,13 @@
-<div [ngStyle]="{'color': data.error== false ? 'darkgreen':'red' }" *ngIf="data.error === false">
-  <h1 mat-dialog-title>Submit Sucessful</h1>
-  <div mat-dialog-content >
-    Your solution was sucessfully submited and is under review.
-  </div>
-</div>
-
-<div *ngIf="data.error === true">
-  <h1 mat-dialog-title>Submit Failed</h1>
-  <div mat-dialog-content>An error occurred please try again.</div>
+<div [ngStyle]="{ color: data.message === '' ? 'darkgreen' : 'red' }">
+  <h1 mat-dialog-title *ngIf="data.message === ''; else error">
+    Submit Sucessful
+  </h1>
+  <ng-template #error>
+    <h1 mat-dialog-title>An error occured.</h1>
+    <div mat-dialog-content>
+      {{ data.message }}
+    </div>
+  </ng-template>
 </div>
 
 <div mat-dialog-actions>
