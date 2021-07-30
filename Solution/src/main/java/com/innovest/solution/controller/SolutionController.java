@@ -33,6 +33,7 @@ public class SolutionController {
 	@PostMapping("/add")
 	public ResponseEntity<Solution> addSolution(@RequestBody Solution solution){
 		UUID uuid = UUID.randomUUID();
+		solution.setSolutionId(uuid);
 		solution.setSolutionStatus(SolutionStatus.NotReviewed);
 		return new ResponseEntity<Solution>(solutionService.addSolution(solution),HttpStatus.CREATED);
 	}
