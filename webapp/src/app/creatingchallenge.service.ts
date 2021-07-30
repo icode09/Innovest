@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Challenge } from './challenge';
 
 @Injectable({
@@ -11,6 +11,10 @@ export class CreatingchallengeService {
   constructor(private _http: HttpClient) { }
 
   createChallenge(cd : Challenge){
-    return this._http.post<any>(this._url, cd);
+    return this._http.post<any>(this._url, cd, {
+      headers : new HttpHeaders({
+        'Content-Type' : 'application/json'
+      })
+    });
   }
 }
