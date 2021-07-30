@@ -1,6 +1,8 @@
 export class Challenge {
     
         constructor(
+            public challengeId : string,
+            public challengerId :string,
             public challengeName : string,
             public description :string,
             public domain :string,
@@ -11,6 +13,12 @@ export class Challenge {
             public paid :boolean,
             public rules :String,
             public abstraction: String,
+            public imageName:String,
+            public documentUrl:String,
+            public rewardPrize: number,
+            public challengeImage :number[],
+            public registrations: number,
+            public views: number
             
         
         ){}
