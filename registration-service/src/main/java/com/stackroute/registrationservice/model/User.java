@@ -7,8 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.UUID;
 
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Data
 @Document(collection = "users")
 public class User {
