@@ -55,9 +55,6 @@
 			<div class="form-group">
 				<button class="btn btn-primary btn-block">Sign Up</button>
 			</div>
-			<div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-				Signup failed!<br />{{ errorMessage }}
-			</div>
 			<div class="already-user">Already have an account?
 				<a [routerLink]="['../login']" routerLinkActive="router-link-active">Sign In</a>
 			</div>

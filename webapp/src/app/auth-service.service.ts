@@ -21,13 +21,7 @@ export class AuthServiceService {
 }
 
 register(user:any): Observable<any> {
-  return this.http.post(AppConstants.AUTH_API + 'signup', {
-    displayName: user.displayName,
-    email: user.email,
-    password: user.password,
-    matchingPassword: user.matchingPassword,
-    socialProvider: 'LOCAL'
-  }, httpOptions);
+  return this.http.post('http://localhost:8100/api/v1/register/registered', user);
 }
 storeToken(token:any,username:any){
   localStorage.setItem("mytoken",token);
