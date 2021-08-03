@@ -19,7 +19,7 @@ export class CreateChallengeComponent implements OnInit {
     uuidv4(),
     'Challenge Name',
     'Description',
-    '',
+    [],
     new Date(),
     new Date(),
     '',
