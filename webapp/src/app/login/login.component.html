@@ -1,5 +1,16 @@
 <div class="main-div" style="margin-top: 20vh;">
-
+  <ul class="circles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
      
     <form class="form" [formGroup]="loginform" (ngSubmit)="signIn()">
             <h2>LOGIN</h2>
@@ -18,10 +29,10 @@
           </mat-form-field>-->
         <button type="submit" id="submit">Login</button>
          <!--<input type="submit" value="SIGN IN" id="submit">-->
-         <div  *ngIf="isLoginFailed"><br />{{ errorMessage }}
+         <div class="error" *ngIf="isLoginFailed"><br />{{ errorMessage }}
         </div>
     </form>
     <div class="side">
-      <img src="../../assets/images/image4.jfif" alt="">
+      <img src="../../assets/images/image3.png" alt="">
     </div>
 </div>
