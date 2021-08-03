@@ -27,13 +27,17 @@
     flex-direction: column;
     width: 50% ;
     align-items: center;
-    background-color: rgb(121, 56, 121);
+    background-color: rgb(63, 1, 63);
 
+}
+.error{
+    color: red;
 }
 .form h2{
     font-size: 3rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     margin: 40px;
+    color: wheat;
 
 }
 .box{
@@ -48,15 +52,16 @@
     padding: 3px 10px;
     width: 30%;
     margin-top: 40px;
-    background-color: black;
-    color: white;
+    background-color: rgb(216, 214, 214);
+    color:black;
     font-weight: bold;
     border: none;
     border-left: none;
+    border-radius: 20px;
 }
 #submit:hover{
     cursor: pointer;
-    background-color: rgb(90, 32, 90);
+    background-color: rgb(136, 134, 236);
 }
 .side{
     display: flex;
