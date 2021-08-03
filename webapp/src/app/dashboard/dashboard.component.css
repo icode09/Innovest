@@ -1852,8 +1852,13 @@ margin-left:.25rem
 }
 .sidebar .sidebar-card .sidebar-card-illustration
 {height:3rem;
-display:block}.sidebar .sidebar-card .sidebar-card-title{font-weight:700}.sidebar .sidebar-card p{font-size:.75rem;
-color:rgba(255,255,255,.5)}@media (min-width:768px){.sidebar{width:14rem!important}.sidebar .nav-item .collapse{position:relative;
+display:block}
+.sidebar .sidebar-card .sidebar-card-title{font-weight:700}
+.sidebar .sidebar-card p{
+	font-size:.75rem;
+	color:#fff;		/* feedback text color*/
+}
+@media (min-width:768px){.sidebar{width:14rem!important}.sidebar .nav-item .collapse{position:relative;
 left:0;
 z-index:1;
 top:0;
