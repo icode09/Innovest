@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Challenge } from '../challenge';
 
 export interface Domain {
   name: string;
@@ -15,24 +16,24 @@ export interface UserProfile {
   avatar: String;
   avatarName: String;
 }
-export interface Challenge {
-  challengeId: number;
-  challengerId: number;
-  challengeName: string;
-  description: string;
-  rules: string;
-  abstraction: string;
-  startDate: Date;
-  endDate: Date;
-  paid: boolean;
-  rewardPrize: number;
-  challengeImage: string;
-  imageName: string;
-  documentUrl: string;
-  domains: String[];
-  registrations: number;
-  views: number;
-}
+// export interface Challenge {
+//   challengeId: number;
+//   challengerId: number;
+//   challengeName: string;
+//   description: string;
+//   rules: string;
+//   abstraction: string;
+//   startDate: Date;
+//   endDate: Date;
+//   paid: boolean;
+//   rewardPrize: number;
+//   challengeImage: string;
+//   imageName: string;
+//   documentUrl: string;
+//   domains: String[];
+//   registrations: number;
+//   views: number;
+// }
 @Component({
   selector: 'app-challenge-list',
   templateUrl: './challenge-list.component.html',
