@@ -30,6 +30,8 @@ import { SubmitSolutionService } from './submit-solution.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 @NgModule({
   declarations: [
@@ -64,6 +66,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     FormsModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatTooltipModule
   ],
   providers: [SubmitSolutionService],
   bootstrap: [AppComponent],

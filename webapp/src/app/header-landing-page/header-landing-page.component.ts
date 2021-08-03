@@ -8,7 +8,18 @@ import {SharedDataService} from '../shared-data.service'
 })
 export class HeaderLandingPageComponent implements OnInit {
 
-  ngOnInit(): void {}
+  userName: any;
+  loggedIn: any;
+
+  ngOnInit(): void {
+    this.userName = localStorage.getItem("currently logged in user");
+    console.log("username:", this.userName);
+    if (this.userName != null) {
+      this.loggedIn = true;
+    } else {
+      this.loggedIn = false;
+    }
+  }
   constructor(private sidebarService: SharedDataService) { }
 
   get isSidebarVisible(): boolean {
