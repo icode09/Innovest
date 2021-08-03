@@ -1,42 +1,95 @@
-<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-black py-0 px-0">
-    <a class="navbar-brand" href="#">
-        <h1 class="logo"><strong><i>INNOVEST</i></strong></h1>
-    </a>
-    <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <a class="nav-link"><li>Create Challenge</li></a>
-        </ul>
+<div class="container-fluid">
+  <h2>Create Challenge</h2>
+  <form [formGroup]="createChallengeForm" (ngSubmit)="onSubmit()">
+   
+    <div class="form-group">
+      <label>Challenge Name</label>
+      <input type="text" [class.is-invalid]="createChallengeForm?.get('challengeName')?.invalid && createChallengeForm?.get('challengeName')?.touched" formControlName="challengeName" class="form-control">
+      <div *ngIf="createChallengeForm.get('challengeName')?.invalid && createChallengeForm.get('challengeName')?.touched"> 
+      <small *ngIf= "createChallengeForm?.get('challengeName')?.errors?.required" class = "text-danger">Challenge Name is required</small>
+      <small *ngIf= "createChallengeForm?.get('challengeName')?.errors?.minlength" class = "text-danger">Challenge Name must be 3 charachters or more</small>
+      </div>
     </div>
- </nav> -->
-<form (ngSubmit) = "onSubmit()" *ngIf ="!submitted ; else elseBlock" novalidate>
-    
- 
+    <div class="form-group">
+      <label>Description</label>
+      <textarea type="text" [class.is-invalid]="createChallengeForm?.get('description')?.invalid &&
+      createChallengeForm?.get('description')?.touched"  formControlName="description" class="form-control" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Rules</label>
+      <input type="text" [class.is-invalid]="createChallengeForm?.get('rules')?.invalid &&
+      createChallengeForm?.get('rules')?.touched" formControlName="rules" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Abstraction</label>
+      <input type="text"  [class.is-invalid]="createChallengeForm.get('abstraction')?.invalid &&
+      createChallengeForm.get('abstraction')?.touched" formControlName="abstraction" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Start Date</label>
+      <input type="datetime-local"  [class.is-invalid]="createChallengeForm?.get('startDate')?.invalid &&
+      createChallengeForm?.get('startDate')?.touched"  formControlName="startDate" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>End Date</label>
+      <input type="datetime-local" [class.is-invalid]="createChallengeForm?.errors?.orderError" formControlName="endDate" class="form-control">
+       <div *ngIf="createChallengeForm?.get('endDate')?.touched && createChallengeForm?.errors?.orderError">
+          <small class="text-danger">Start Date is after End Date</small>
+        </div>
+    </div>
+    <div class="form-group">
+      <label>Reward Prize</label>
+      <input type="number" [class.is-invalid]="createChallengeForm?.get('rewardPrize')?.invalid &&
+      createChallengeForm?.get('rewardPrize')?.touched" formControlName="rewardPrize" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Domain</label>
+      <select [class.is-invalid]="createChallengeForm?.get('domain')?.invalid &&
+      createChallengeForm?.get('domain')?.touched" formControlName="domain" class="form-control" data-width="100%" class="selectpicker" multiple>
+        <option *ngFor="let dm of domainList" [value]="dm">{{dm}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Registration Type</label>
 
-<div class="container">
-    <div class="item" id = "item-1"> Challenge Name* <div><input type="text" placeholder="Name of Challenge.." name ="challengeName" [(ngModel)] = "challengeModel.challengeName" > </div></div>
-    <div class="item" id = "item-2"> Challenge Description*<div><input type="text" class = "description-box" name ="challengeDesc" [(ngModel)] = "challengeModel.description" placeholder="Type your challenge decription here...." ></div></div>
-    <div class="item" id = "item-3"> Challenge Domain* <div><input type="text" placeholder="Aerospace Engineering" name ="challengeDomain" [(ngModel)] = "challengeModel.domain"l> </div></div>
-    <div class="item" id = "item-4"> Registration Start Date and Time* <div><input type="datetime-local" placeholder="datetime-local"  name ="challengeStartDnT" [(ngModel)] = "challengeModel.startDate"> </div></div>
-    <div class="item" id = "item-5"> Registration End Date and Time* <div><input type="datetime-local" placeholder="datetime-local"  name ="challengeEndDnT" [(ngModel)] = "challengeModel.endDate"> </div></div>
-    <div class="item item-6-container" id = "item-6"> Registration Type*
-        <div class="nested-item" id = "single-box"><input type="radio" id="single" [(ngModel)] = "challengeModel.registrationType" name="registration_type" value="SINGLE" ><label for="single">Single</label></div>
-        <div class="nested-item" id = "team-box"><input type="radio" id="team" [(ngModel)] = "challengeModel.registrationType" name="registration_type" value="TEAM"><label for="team">Team</label></div>
-        <div class="nested-item" id = "both-box"><input type="radio" id="bothAllowed" [(ngModel)] = "challengeModel.registrationType" name="registration_Type" value="BOTH"><label for="boothAllowed">Both Allowed</label></div>      
+
+      <div class="form-check  form-control" class="form-check-inline ">
+        <input class="form-check-input" type="radio" id="inlineRadio1" value="option1"
+        [class.is-invalid]="createChallengeForm?.get('registrationType')?.invalid &&
+      createChallengeForm?.get('registrationType')?.touched"  formControlName="registrationType">
+        <label class="form-check-label" for="inlineRadio1">Single</label>
+      </div>
+      <div class="form-check  form-control" class="form-check-inline">
+        <input class="form-check-input" type="radio" id="inlineRadio2" value="option2"
+        [class.is-invalid]="createChallengeForm?.get('registrationType')?.invalid &&
+      createChallengeForm?.get('registrationType')?.touched"  formControlName="registrationType">
+        <label class="form-check-label" for="inlineRadio2">Team</label>
+      </div>
     </div>
-    <div class="item item-7-container" id = "item-7"> Participation Type* 
-        <div class="nested-item" id = "unpaid-box"><input type="radio" id="unpaid" [(ngModel)] = "challengeModel.participationType" name="participation_type" value="UNPAID"><label for="single">Unpaid</label></div>
-        <div class="nested-item" id = "paid-box"><input type="radio" id="paid" [(ngModel)] = "challengeModel.participationType" name="participation_type" value="PAID"><label for="team">Paid</label></div>
+    <div class="form-group">
+      <label>Participation Type</label>
+
+
+      <div class="form-check  form-control" class="form-check-inline">
+        <input class="form-check-input" type="radio" id="inlineRadio1" value="option1"
+          formControlName="participationType">
+        <label class="form-check-label" for="inlineRadio11">Paid</label>
+      </div>
+      <div class="form-check  form-control" class="form-check-inline">
+        <input class="form-check-input" type="radio" id="inlineRadio2" value="option2"
+          formControlName="participationType">
+        <label class="form-check-label" for="inlineRadio22">Unpaid</label>
+      </div>
+      <div *ngIf="createChallengeForm.get('participationType')?.value == 'option1'">
+        <label>Amount </label>
+        <input [class.is-invalid]="createChallengeForm?.get('amount')?.invalid &&
+        createChallengeForm?.get('amount')?.touched" type="number" formControlName="amount" class="form-control">
+      </div>
     </div>
+    <div>
+      <button [disabled]='!createChallengeForm.valid' class="btn btn-primary m2" type="submit" routerLink="/dashboard">Create Challenge</button>
+    </div> 
+  </form>
+
 
 </div>
-
-<button class="btn btn-primary">Upload This Challenge</button>
-</form>
-
-<ng-template #elseBlock>
-    <h2> Challenge is Created, Thank You!</h2>
-</ng-template>

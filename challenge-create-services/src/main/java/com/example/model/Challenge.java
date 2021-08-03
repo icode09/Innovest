@@ -24,7 +24,7 @@ public class Challenge {
 	private Integer[] challengeImage;
 	private String imageName;
 	private String documentUrl;
-	private String domain;
+	private String[] domain;
 	private Integer registrations;
 	private Integer views;
 	private String registrationType;
@@ -152,11 +152,11 @@ public class Challenge {
 		this.documentUrl = documentUrl;
 	}
 
-	public String getDomain() {
+	public String[] getDomain() {
 		return domain;
 	}
 
-	public void setDomain(String domain) {
+	public void setDomain(String[] domain) {
 		this.domain = domain;
 	}
 
