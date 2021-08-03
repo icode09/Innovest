@@ -9,7 +9,7 @@ import { StartEndDateValidator } from '../shared/OrderChecker.validator';
 @Component({
   selector: 'app-create-challenge',
   templateUrl: './create-challenge.component.html',
-  styleUrls: ['./create-challenge.component.css']
+  styleUrls: ['./create-challenge.component.css'],
 })
 export class CreateChallengeComponent implements OnInit {
   

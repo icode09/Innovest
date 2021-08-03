@@ -5,7 +5,7 @@ export class Challenge {
             public challengerId :string,
             public challengeName : string,
             public description :string,
-            public domain :string,
+            public domain :string[],
             public startDate : Date,
             public endDate :Date,
             public registrationType : string,
