@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SearchService } from '../search.service';
+
 
 export interface Domain {
   name: string;
@@ -37,6 +39,8 @@ export interface Challenge {
   styleUrls: ['./challenge-list.component.css'],
 })
 export class ChallengeListComponent implements OnInit {
+  queries = {query :''};
+  searchArr: object[] = [];
   challengeList: Challenge[] = [];
   users: UserProfile[] = [
     {
@@ -50,7 +54,7 @@ export class ChallengeListComponent implements OnInit {
     },
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private searchService: SearchService) {}
 
   ngOnInit(): void {
     this.getChallengeListFromServer();
@@ -110,4 +114,23 @@ export class ChallengeListComponent implements OnInit {
   viewChallenge(challenge: Challenge) {
     this.router.navigate(['/challenge-desc', JSON.stringify(challenge)]);
   }
+  
+
+  search(): void {
+    if(this.queries.query == "") {
+      this.searchService.getAll().subscribe( arr => {
+        this.searchArr = arr;
+      });
+      console.log(this.searchArr);
+    }
+    else {
+    this.searchService.get(this.queries.query).subscribe( arr => {
+      this.searchArr = arr;
+    });
+    console.log(this.searchArr);
+  }
+
+  }
+
+
 }

@@ -31,6 +31,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { SearchService } from './search.service';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     SignupComponent,
     AlertDialogComponent,
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -68,7 +70,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatProgressSpinnerModule,
     MatTooltipModule
   ],
-  providers: [SubmitSolutionService],
+  providers: [SubmitSolutionService, SearchService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
