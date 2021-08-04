@@ -64,13 +64,13 @@ public class ChallengeSearchServiceImp implements ChallengeSearchService {
 	}
 
 	@Override
-	public List<ChallengeDoc> findChallenge(String text) {
+	public Iterable<ChallengeDoc> findChallenge(String text) {
 		try {
 			SearchRequest request = new SearchRequest(INDEX);
-			SearchSourceBuilder scb = new SearchSourceBuilder();
-			SimpleQueryStringBuilder mcb = QueryBuilders.simpleQueryStringQuery(text);
-			scb.query(mcb);
-			request.source(scb);
+			SearchSourceBuilder ssb = new SearchSourceBuilder();
+			SimpleQueryStringBuilder sqsb = QueryBuilders.simpleQueryStringQuery(text);
+			ssb.query(sqsb);
+			request.source(ssb);
 
 			RequestOptions builder = RequestOptions.DEFAULT;
 
@@ -85,10 +85,12 @@ public class ChallengeSearchServiceImp implements ChallengeSearchService {
 					challenges.add(gson.fromJson(sourceAsString, ChallengeDoc.class));
 				}
 			}
-			return challenges;
+			Iterable<ChallengeDoc> results = challenges;
+			return results;
 		} catch (IOException ex) {
 		}
-		return Collections.emptyList();
+		Iterable<ChallengeDoc> empty = Collections.emptyList();
+		return empty;
 	}
 
 }

@@ -31,6 +31,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { SearchService } from './search.service';
 import {MatSelectModule} from '@angular/material/select';
 
 
@@ -49,6 +50,7 @@ import {MatSelectModule} from '@angular/material/select';
     SignupComponent,
     AlertDialogComponent,
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -72,7 +74,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatSelectModule,
     ReactiveFormsModule
   ],
-  providers: [SubmitSolutionService],
+  providers: [SubmitSolutionService, SearchService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

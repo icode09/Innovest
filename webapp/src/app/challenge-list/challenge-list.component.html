@@ -1,7 +1,7 @@
-<div class="input-group">
-    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-      aria-describedby="search-addon" />
-    <button type="button" class="btn btn-outline-primary">search</button>
+<div class="input-group" >
+    <input type="search" class="form-control rounded"  placeholder="Search" aria-label="Search"
+      aria-describedby="search-addon" [(ngModel)]="queries.query" />
+    <button type="button" class="btn btn-outline-primary" (click)="search()">search</button>
 </div>
 <div class="challenges" *ngFor="let challenge of challengeList">
     <a type="button" (click)="viewChallenge(challenge)">
