@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Challenge } from '../challenge';
+import { SearchService } from '../search.service';
+
+import { Observable } from 'rxjs';
+
 
 export interface Domain {
   name: string;
@@ -40,6 +43,8 @@ export interface UserProfile {
   styleUrls: ['./challenge-list.component.css'],
 })
 export class ChallengeListComponent implements OnInit {
+  queries = {query :''};
+  searchArr: object[] = [];
   challengeList: Challenge[] = [];
   users: UserProfile[] = [
     {
@@ -53,7 +58,7 @@ export class ChallengeListComponent implements OnInit {
     },
   ];
 
-  constructor(private router: Router,private http: HttpClient) {}
+  constructor(private router: Router, private searchService: SearchService, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.getChallengeListFromServer();
@@ -119,4 +124,23 @@ export class ChallengeListComponent implements OnInit {
   viewChallenge(challenge: Challenge) {
     this.router.navigate(['/challenge-desc', JSON.stringify(challenge)]);
   }
+  
+
+  search(): void {
+    if(this.queries.query == "") {
+      this.searchService.getAll().subscribe( arr => {
+        this.searchArr = arr;
+      });
+      console.log(this.searchArr);
+    }
+    else {
+    this.searchService.get(this.queries.query).subscribe( arr => {
+      this.searchArr = arr;
+    });
+    console.log(this.searchArr);
+  }
+
+  }
+
+
 }

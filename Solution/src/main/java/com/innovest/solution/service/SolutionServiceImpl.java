@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import com.innovest.solution.model.Solution;
@@ -22,6 +25,8 @@ public class SolutionServiceImpl implements SolutionService {
 		super();
 		this.repo=repo;
 	}
+	@Autowired
+	private MongoTemplate mongoTemplate;
 
 	@Override
 	public Solution addSolution(Solution solution) {
@@ -55,7 +60,10 @@ public class SolutionServiceImpl implements SolutionService {
 	@Override
 	public List<Solution> getSolutionsByChallenge(UUID challengeId) {
 		// TODO Auto-generated method stub
-		return null;
+		Query query=new Query();
+		query.addCriteria(Criteria.where("challengeId").is(challengeId));
+		List<Solution> solutions=mongoTemplate.find(query,Solution.class);
+		return solutions;
 	}
 
 	@Override

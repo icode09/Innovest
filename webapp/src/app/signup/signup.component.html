@@ -71,7 +71,7 @@
 									<i class="fas fa-lock"></i>
 									<input type="password" placeholder="Confirm Password"
 										class="myInput" name="matchingPassword" [(ngModel)]="form.matchingPassword"
-										required minlength="6" #matchingPassword="ngModel" />
+										required minlength="6" #matchingPassword="ngModel"  pattern="{{form.password}}"/>
 									<div class="alert-danger" *ngIf="f.submitted && matchingPassword.invalid">
 										<div *ngIf="matchingPassword.errors?.required">Confirm Password is required
 										</div>
@@ -79,6 +79,7 @@
 											least 6
 											characters
 										</div>
+										<div *ngIf = "f.submitted && matchingPassword.errors?.pattern">Password and Confirm Password is not Matching.</div>
 									</div>
 								</div>
 								<div class="form-group">
