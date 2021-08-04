@@ -85,11 +85,12 @@
 								<div class="form-group">
 									<button class="btn btn-primary btn-block">Sign Up</button>
 								</div>
+								<div class="alert alert-success" *ngIf="isSuccessful">Your registration is successful!</div>
 								<div class="already-user">Already have an account?
 									<a [routerLink]="['../login']" routerLinkActive="router-link-active">Sign In</a>
 								</div>
 							</form>
-							<div class="alert alert-success" *ngIf="isSuccessful">Your registration is successful!</div>
+							
 					</div>
 				</div>
 				<div class="col-md-6">

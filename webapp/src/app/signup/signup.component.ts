@@ -1,6 +1,7 @@
 import { AuthServiceService } from './../auth-service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -17,7 +18,7 @@ export class SignupComponent implements OnInit {
   domainList : string[] = ['Environment' , 'Power' , "AutoMobile" , "Aerospace" , "Infrastructure"];
 
   
-  constructor(private authService: AuthServiceService) { }
+  constructor(private authService: AuthServiceService,private router : Router) { }
   
 
   ngOnInit(): void {
@@ -27,9 +28,9 @@ export class SignupComponent implements OnInit {
     console.log("form details:", this.form);
     this.authService.register(this.form).subscribe(
       data => {
-        console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        this.router.navigate(['/login'], {queryParams: { registered: 'true' } });
       },
       err => {
         this.errorMessage = err.error.message;
