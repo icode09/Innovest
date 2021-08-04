@@ -9,6 +9,7 @@ import com.cgi.searchService.service.ChallengeSearchService;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/challenge")
 public class SearchController {
 	
@@ -33,7 +34,7 @@ public class SearchController {
 	public void deleteById(@PathVariable String id) { service.DeleteById(id);}
 
 	@GetMapping("/search/{queries}")
-	public List<ChallengeDoc> ChallengeSearch(@PathVariable String queries)  {
+	public Iterable<ChallengeDoc> ChallengeSearch(@PathVariable String queries)  {
 		return service.findChallenge(queries);
 	}
 

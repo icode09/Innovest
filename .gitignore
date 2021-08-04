@@ -68,6 +68,7 @@ bin
 # Intellij
 ######################
 .idea/*
+.idea/
 *.iml
 *.iws
 *.ipr
