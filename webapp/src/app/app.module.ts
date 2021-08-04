@@ -69,7 +69,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatDialogModule,
     MatProgressSpinnerModule,
     MatTooltipModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   providers: [SubmitSolutionService],
   bootstrap: [AppComponent],
