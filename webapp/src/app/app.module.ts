@@ -32,6 +32,7 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
+import { ListSolutionsComponent } from './list-solutions/list-solutions.component';
 
 
 
@@ -48,6 +49,7 @@ import {MatSelectModule} from '@angular/material/select';
     HeaderLandingPageComponent,
     SignupComponent,
     AlertDialogComponent,
+    ListSolutionsComponent,
   ],
   imports: [
     BrowserModule,

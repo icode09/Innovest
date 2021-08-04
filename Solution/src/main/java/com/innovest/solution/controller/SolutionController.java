@@ -16,6 +16,7 @@ import com.innovest.solution.service.SolutionService;
 
 @RestController
 @RequestMapping("/solutions/")
+@CrossOrigin
 public class SolutionController {
 	private SolutionService solutionService;
 
@@ -24,7 +25,6 @@ public class SolutionController {
 		super();
 		this.solutionService = solutionService;
 	}
-	@CrossOrigin
 	@PostMapping("/add")
 	public ResponseEntity<Solution> addSolution(@RequestBody Solution solution){
 		UUID uuid = UUID.randomUUID();
@@ -32,12 +32,19 @@ public class SolutionController {
 		solution.setSolutionStatus(SolutionStatus.NotReviewed);
 		return new ResponseEntity<Solution>(solutionService.addSolution(solution),HttpStatus.CREATED);
 	}
-	@GetMapping("/listall")
-	public ResponseEntity<List<Solution>> getAllSolutions(){
+	@CrossOrigin
+	@GetMapping("/")
+	public ResponseEntity<List<Solution>> getAllSolutions(@RequestParam(required = false) String challengeId ,@RequestParam(required = false) String solvedBy ,@RequestParam(required = false) String solutionStatus){
+		if(challengeId!=null){
+			return new ResponseEntity<List<Solution>>(solutionService.getSolutionsByChallenge(UUID.fromString(challengeId)), HttpStatus.OK);
+		}
+		if(solvedBy!=null){
+			return new ResponseEntity<List<Solution>>(solutionService.getSolutionsByUser(UUID.fromString(solvedBy)), HttpStatus.OK);
+		}
+		if(solutionStatus!=null){
+			return new ResponseEntity<List<Solution>>(solutionService.getSolutionsBySolutionStatus(SolutionStatus.valueOf(solutionStatus)), HttpStatus.OK);
+		}
 		return new ResponseEntity<List<Solution>>(solutionService.getAllSolutions(), HttpStatus.OK);
 	}
-	@GetMapping("/challenge")
-	public ResponseEntity<List<Solution>> getSolutionsById(@RequestParam String challengeId){
-		return new ResponseEntity<List<Solution>>(solutionService.getSolutionsByChallenge(UUID.fromString(challengeId)), HttpStatus.OK);
-	}
+
 }

@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ede2089-e0a0-47de-8643-13edc2d17cd6" name="Default Changelist" comment="" />
+    <list default="true" id="0ede2089-e0a0-47de-8643-13edc2d17cd6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Solution/src/main/java/com/innovest/solution/controller/SolutionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Solution/src/main/java/com/innovest/solution/controller/SolutionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Solution/src/main/java/com/innovest/solution/service/SolutionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Solution/src/main/java/com/innovest/solution/service/SolutionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Solution/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Solution/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapp/src/app/submit-solution.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../webapp/src/app/submit-solution.service.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +28,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.14347202" />
     <property name="project.structure.side.proportion" value="0.22905028" />
@@ -29,8 +36,10 @@
   </component>
   <component name="RunManager">
     <configuration name="SpringMongoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="corretto-11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.example.SpringMongoApplication" />
-      <module name="Spring_Mongo" />
+      <module name="challenge-create-services" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.example.*" />

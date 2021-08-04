@@ -1,0 +1,15 @@
+<h1>{{ identifier | json }}</h1>
+<ng-container *ngFor="let solution of solutions">
+  <mat-card>
+    <h1>{{ solution.solutionTitle }}</h1>
+    <h1>{{ solution.solvedBy }}</h1>
+    <h1>{{ solution.codeUrl }}</h1>
+    <!-- <h1 >{{ solution.solutionStatus}}</h1> -->
+    <p>{{ solution.solutionDescription }}</p>
+    {{ solution | json }}
+    <div *ngIf="solution.solutionTitle">
+      <button mat-raised-button color="primary">Accept</button>
+      <button mat-raised-button color="warn">Reject</button>
+    </div>
+  </mat-card>
+</ng-container>

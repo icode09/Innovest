@@ -10,10 +10,13 @@ import { LoginComponent } from './login/login.component';
 import { HeaderLandingPageComponent } from './header-landing-page/header-landing-page.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { CreateChallengeComponent } from './create-challenge/create-challenge.component';
+import {ListSolutionsComponent} from './list-solutions/list-solutions.component'
+
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'challenge-desc/:chalDesc', component: ChallengeDescComponent },
   { path: 'solution-form/:chalDesc', component: SolutionFormComponent },
+  { path: 'list-solutions/:identifier', component: ListSolutionsComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,

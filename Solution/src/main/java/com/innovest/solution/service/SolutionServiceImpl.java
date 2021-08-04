@@ -54,7 +54,10 @@ public class SolutionServiceImpl implements SolutionService {
 	@Override
 	public List<Solution> getSolutionsBySolutionStatus(SolutionStatus solutionStatus) {
 		// TODO Auto-generated method stub
-		return null;
+		Query query=new Query();
+		query.addCriteria(Criteria.where("solutionStatus").is(solutionStatus));
+		List<Solution> solutions=mongoTemplate.find(query,Solution.class);
+		return solutions;
 	}
 
 	@Override
@@ -69,7 +72,10 @@ public class SolutionServiceImpl implements SolutionService {
 	@Override
 	public List<Solution> getSolutionsByUser(UUID solvedBy) {
 		// TODO Auto-generated method stub
-		return null;
+		Query query=new Query();
+		query.addCriteria(Criteria.where("solvedBy").is(solvedBy));
+		List<Solution> solutions=mongoTemplate.find(query,Solution.class);
+		return solutions;
 	}
 
 	@Override
