@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { SharedDataService } from '../shared-data.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Challenge } from '../challenge';
+import { Challenge } from '../common/challenge';
 ////https://stackoverflow.com/questions/43159090/how-can-i-detect-service-variable-change-when-updated-from-another-component
 export interface Domain {
   name: string;
@@ -47,7 +47,7 @@ export class ChallengeDescComponent implements OnInit {
       this.route.snapshot.paramMap.get('chalDesc') || '{}'
     );
     //https://stackoverflow.com/questions/46915002/argument-of-type-string-null-is-not-assignable-to-parameter-of-type-string
-    console.log(this.sidebarService.isSidebarVisible);
+    // console.log(this.sidebarService.isSidebarVisible);
   }
   get isSidebarVisible(): boolean {
     console.log(this.sidebarService.isSidebarVisible);
