@@ -20,7 +20,7 @@ import { CreateChallengeComponent } from './create-challenge/create-challenge.co
 
 import { LoginComponent } from './login/login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatInputModule } from '@angular/material/input';
 import { HeaderLandingPageComponent } from './header-landing-page/header-landing-page.component';
@@ -32,6 +32,8 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { SearchService } from './search.service';
+import {MatSelectModule} from '@angular/material/select';
+
 
 
 @NgModule({
@@ -68,7 +70,8 @@ import { SearchService } from './search.service';
     FormsModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSelectModule
   ],
   providers: [SubmitSolutionService, SearchService],
   bootstrap: [AppComponent],
