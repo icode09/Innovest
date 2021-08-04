@@ -17,6 +17,12 @@ export class SubmitSolutionService {
       .pipe(catchError(this.errorHandler));
   }
 
+  updateSolution(solution: Solution): Observable<Solution> {
+    return this.httpClient
+      .post<Solution>('http://localhost:8100/solutions/add', solution)
+      .pipe(catchError(this.errorHandler));
+  }
+
   public errorHandler(error: Response | any) {
     if (error instanceof ErrorEvent) {
       // client-side error

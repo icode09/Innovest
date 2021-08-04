@@ -34,6 +34,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { SearchService } from './search.service';
 import {MatSelectModule} from '@angular/material/select';
 import { ListSolutionsComponent } from './list-solutions/list-solutions.component';
+import { MaterialElevationDirective } from './material-elevation.directive';
 
 
 
@@ -51,6 +52,7 @@ import { ListSolutionsComponent } from './list-solutions/list-solutions.componen
     SignupComponent,
     AlertDialogComponent,
     ListSolutionsComponent,
+    MaterialElevationDirective
   ],
   
   imports: [

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { SharedDataService } from '../shared-data.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Challenge } from '../challenge';
 ////https://stackoverflow.com/questions/43159090/how-can-i-detect-service-variable-change-when-updated-from-another-component
 export interface Domain {
   name: string;
@@ -14,24 +15,6 @@ export interface UserProfile {
   bio: String;
   avatar: String;
   avatarName: String;
-}
-export interface Challenge {
-  challengeId: number;
-  challengerId: number;
-  challengeName: string;
-  description: string;
-  rules: string;
-  abstraction: string;
-  startDate: number;
-  endDate: number;
-  paid: boolean;
-  rewardPrize: number;
-  challengeImage: string;
-  imageName: string;
-  documentUrl: string;
-  domains: String[];
-  registrations: number;
-  views: number;
 }
 
 @Component({
