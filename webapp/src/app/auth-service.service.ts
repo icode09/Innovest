@@ -19,7 +19,7 @@ export class AuthServiceService {
 
   register(user: any): Observable<any> {
     return this.http.post(
-      'http://localhost:9090/api/v1/register/registered',
+      'http://localhost:8085/api/v1/register/registered',
       user
     );
   }
