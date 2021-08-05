@@ -1,28 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Solution } from './common/solution';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Solution } from './common/solution';
 
 @Injectable({
   providedIn: 'root',
 })
-export class SubmitSolutionService {
+export class GetSolutionsService {
   constructor(private httpClient: HttpClient) {}
 
-  addSolution(solution: Solution): Observable<Solution> {
+  getSolutionsBySolvedBy(solvedBy: String): Observable<[Solution]> {
     return this.httpClient
-      .post<Solution>('http://localhost:8100/solutions/add', solution)
+      .get<[Solution]>(`http://localhost:8100/solutions/?solvedBy=${solvedBy}`)
       .pipe(catchError(this.errorHandler));
   }
 
-  updateSolutionStatus(solution: string, solutionStatus: String): Observable<Solution> {
-    console.log(solution);
+  getSolutionsByChallengeId(challengeId: String): Observable<[Solution]> {
     return this.httpClient
-      .put<Solution>(
-        `http://localhost:8100/solutions/update/solutionStatus?solutionId=${solution}&solutionStatus=${solutionStatus}`,
-        { solutionId: solution, solutionStatus: 'Accepted' }
+      .get<[Solution]>(
+        `http://localhost:8100/solutions/?challengeId=${challengeId}`
       )
       .pipe(catchError(this.errorHandler));
   }

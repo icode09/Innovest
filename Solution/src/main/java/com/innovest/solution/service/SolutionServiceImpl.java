@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import com.innovest.solution.model.Solution;
@@ -35,13 +36,25 @@ public class SolutionServiceImpl implements SolutionService {
 
 	@Override
 	public Solution updateSolution(Solution solution) {
-		Solution toUpdate = repo.findById(solution.getSolutionId()).get(); 
+		Solution toUpdate = repo.findBySolutionId(solution.getSolutionId());
+
+		System.out.println(toUpdate);
 		toUpdate.setCodeUrl(solution.getCodeUrl());
 		toUpdate.setDocumentUrl(solution.getDocumentUrl());
 		toUpdate.setSolutionDescription(solution.getSolutionDescription());
 		toUpdate.setSolutionTitle(solution.getSolutionTitle());
 		toUpdate.setSolutionStatus(solution.getSolutionStatus());
 		return repo.save(toUpdate);
+	}
+
+	@Override
+	public Solution updateSolutionStatus(UUID solutionId, SolutionStatus solutionStatus) {
+		Query query=new Query();
+		Update update= new Update().set("solutionStatus", solutionStatus);
+		query.addCriteria(Criteria.where("solutionId").is(solutionId));
+
+		Solution solution = mongoTemplate.findAndModify(query,update,Solution.class);
+		return solution;
 	}
 
 	@Override
@@ -54,7 +67,10 @@ public class SolutionServiceImpl implements SolutionService {
 	@Override
 	public List<Solution> getSolutionsBySolutionStatus(SolutionStatus solutionStatus) {
 		// TODO Auto-generated method stub
-		return null;
+		Query query=new Query();
+		query.addCriteria(Criteria.where("solutionStatus").is(solutionStatus));
+		List<Solution> solutions=mongoTemplate.find(query,Solution.class);
+		return solutions;
 	}
 
 	@Override
@@ -67,9 +83,12 @@ public class SolutionServiceImpl implements SolutionService {
 	}
 
 	@Override
-	public List<Solution> getSolutionsByUser(UUID solvedBy) {
+	public List<Solution> getSolutionsByUser(String solvedBy) {
 		// TODO Auto-generated method stub
-		return null;
+		Query query=new Query();
+		query.addCriteria(Criteria.where("solvedBy").is(solvedBy));
+		List<Solution> solutions=mongoTemplate.find(query,Solution.class);
+		return solutions;
 	}
 
 	@Override

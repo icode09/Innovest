@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute} from '@angular/router';
 import { AuthServiceService } from '../auth-service.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   loginform : FormGroup;
   isLoginFailed = false;
   errorMessage = '';
-  constructor(private authService:AuthServiceService) { 
+  constructor(private authService:AuthServiceService , private route:ActivatedRoute) { 
     this.loginform=new FormGroup({
       username: new FormControl('',[Validators.required]),
       password: new FormControl('',[Validators.required]),
@@ -20,9 +21,14 @@ export class LoginComponent implements OnInit {
     })
 
   }
-
+  infoMessage = '';
   ngOnInit(): void{
-
+    this.route.queryParams
+      .subscribe(params => {
+        if(params.registered !== undefined && params.registered === 'true') {
+            this.infoMessage = 'Registration Successful! Please Login!';
+        }
+      });
   }
   
   signIn(){

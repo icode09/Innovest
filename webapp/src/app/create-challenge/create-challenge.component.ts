@@ -36,7 +36,8 @@ export class CreateChallengeComponent implements OnInit {
     rewardPrize : [null, Validators.required],
     registrationType : ['', Validators.required],
     participationType : ['', Validators.required],
-    amount: [0]
+    amount: [0],
+    imageName : [''],
   }, {validator : StartEndDateValidator});
   
   domainList = ["Business & Entepreneurship","Chemistry","Computer/Info.technology","Engineering/Design","Environment","Food/Agriculture","Life Sciencess","Math/Statistics","Physical Sciences","Request for Partners and Suppliers","Social innovation"];

@@ -185,5 +185,5 @@ public class Challenge {
 				+ ", documentUrl=" + documentUrl + ", domain=" + "domain" + ", registrations="
 				+ registrations + ", views=" + views + "]";
 	}
-	
+	//New Comment
 }

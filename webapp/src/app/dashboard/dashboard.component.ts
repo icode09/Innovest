@@ -19,4 +19,12 @@ export class DashboardComponent implements OnInit {
   createChallenge() {
     this.router.navigate(['create-ch'],{relativeTo: this.route});
   }
+  mySolutionsList(){
+    this.router.navigate([
+      '/list-solutions',
+      JSON.stringify({
+        solvedBy:"110841e3-e6fb-4191-8fd8-5674a5107c33"
+      }),
+    ]);
+  }
 }

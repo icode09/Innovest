@@ -1,7 +1,7 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="!submitted; else elseBlock">
   <h2>Create Challenge</h2>
   <form [formGroup]="createChallengeForm" (ngSubmit)="onSubmit()">
-   
+    
     <div class="form-group">
       <label>Challenge Name</label>
       <input type="text" [class.is-invalid]="createChallengeForm?.get('challengeName')?.invalid && createChallengeForm?.get('challengeName')?.touched" formControlName="challengeName" class="form-control">
@@ -87,9 +87,12 @@
       </div>
     </div>
     <div>
-      <button [disabled]='!createChallengeForm.valid' class="btn btn-primary m2" type="submit" routerLink="/dashboard">Create Challenge</button>
+      <button [disabled]='!createChallengeForm.valid' class="btn btn-primary m2" type="submit" >Create Challenge</button>
     </div> 
   </form>
 
 
 </div>
+<ng-template #elseBlock>
+  <h2 style="color:black;"> Than you, Your Challenge is Created.</h2>
+</ng-template>

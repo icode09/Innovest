@@ -31,8 +31,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { SearchService } from './search.service';
 import {MatSelectModule} from '@angular/material/select';
 import { PaymentComponent } from './payment/payment.component';
+import { ListSolutionsComponent } from './list-solutions/list-solutions.component';
+import { MaterialElevationDirective } from './material-elevation.directive';
 
 
 
@@ -50,7 +53,10 @@ import { PaymentComponent } from './payment/payment.component';
     SignupComponent,
     AlertDialogComponent,
     PaymentComponent,
+    ListSolutionsComponent,
+    MaterialElevationDirective
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -71,9 +77,10 @@ import { PaymentComponent } from './payment/payment.component';
     MatDialogModule,
     MatProgressSpinnerModule,
     MatTooltipModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule
   ],
-  providers: [SubmitSolutionService],
+  providers: [SubmitSolutionService, SearchService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

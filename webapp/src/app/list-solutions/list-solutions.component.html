@@ -1,0 +1,31 @@
+<h1>{{ identifier | json }}</h1>
+<ng-container *ngFor="let solution of solutions" >
+  <mat-card
+    style="margin-left: 10vw; margin-right: 10vw; margin-top: 30px;"
+    appMaterialElevation
+  >
+    <mat-card-header style="display: flex;">
+      <mat-card-title style="display: inline-flex;width: 75vw;justify-content: space-between; ">
+        <div style="width: 60vw;">
+          {{  solution.solutionTitle}}
+        </div>
+        <div style=""  >
+          <div [ngStyle]="solution.solutionStatus=='Accepted' ? {'border-color': 'green', 'color' :'green'} : (solution.solutionStatus=='Rejected'?{'border-color': 'red', 'color' :'red'} :(identifier.challengeId?{'display':'none'}: {'border-color': 'purple', 'color' :'purple'})) " style="border-radius: 1px; border-style: solid; border-width: 2px; padding:3px; font-weight: normal; font-size: medium;">
+            {{solution.solutionStatus}}
+          </div>
+          <div style="justify-content: space-between;" *ngIf="solution.solutionStatus=='NotReviewed' && identifier.challengeId">
+            <button style="margin-right: 5px;" mat-raised-button (click)="acceptSolution(solution.solutionId,'Accepted')" color="primary">Accept</button>
+            <button style="margin-left: 5px" mat-raised-button (click)="acceptSolution(solution.solutionId,'Rejected')" color="warn">Reject</button>
+          </div>
+
+        </div>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ solution.solvedBy }}</p>
+      <p>{{ solution.solutionDescription }}</p>
+      <p>{{ solution.codeUrl }}</p>
+
+    </mat-card-content>
+  </mat-card>
+</ng-container>
