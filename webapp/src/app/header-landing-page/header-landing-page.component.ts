@@ -12,7 +12,7 @@ export class HeaderLandingPageComponent implements OnInit {
   loggedIn: any;
 
   ngOnInit(): void {
-    this.userName = localStorage.getItem("currently logged in user");
+    this.userName = localStorage.getItem("currentUser");
     console.log("username:", this.userName);
     if (this.userName != null) {
       this.loggedIn = true;

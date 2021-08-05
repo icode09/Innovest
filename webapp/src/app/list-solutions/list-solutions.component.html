@@ -9,7 +9,7 @@
         <div style="width: 60vw;">
           {{  solution.solutionTitle}}
         </div>
-        <div style=""  >
+        <div  >
           <div [ngStyle]="solution.solutionStatus=='Accepted' ? {'border-color': 'green', 'color' :'green'} : (solution.solutionStatus=='Rejected'?{'border-color': 'red', 'color' :'red'} :(identifier.challengeId?{'display':'none'}: {'border-color': 'purple', 'color' :'purple'})) " style="border-radius: 1px; border-style: solid; border-width: 2px; padding:3px; font-weight: normal; font-size: medium;">
             {{solution.solutionStatus}}
           </div>
