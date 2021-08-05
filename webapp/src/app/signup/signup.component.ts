@@ -24,13 +24,16 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(): void {
+  onSubmit() {
+    if(this.form.invalid){
+      return;
+    }
     console.log("form details:", this.form);
     this.authService.register(this.form).subscribe(
       data => {
         this.isSuccessful = true;
         this.isSignUpFailed = false;
-        this.router.navigate(['/login'], {queryParams: { registered: 'true' } });
+        this.router.navigate(['login'], {queryParams: { registered: 'true' } });
       },
       err => {
         this.errorMessage = err.error.message;
