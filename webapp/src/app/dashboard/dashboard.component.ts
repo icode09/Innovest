@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   userName: any;
+  showDropdown :boolean = false;
   constructor(private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
@@ -28,5 +29,8 @@ export class DashboardComponent implements OnInit {
         solvedBy: `${localStorage.getItem('currentUser')}`,
       }),
     ]);
+  }
+  profileMenu() {
+    this.showDropdown = !this.showDropdown;
   }
 }
