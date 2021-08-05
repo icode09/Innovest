@@ -33,4 +33,8 @@ export class DashboardComponent implements OnInit {
   profileMenu() {
     this.showDropdown = !this.showDropdown;
   }
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['']);
+  }
 }
