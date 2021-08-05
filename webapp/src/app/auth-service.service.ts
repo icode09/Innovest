@@ -29,6 +29,8 @@ export class AuthServiceService {
     //sessionStorage.setItem("mytoken",token);
   }
   opendashboard() {
-    this.myroute.navigate(['dashboard']);
+    this.myroute.navigate(['dashboard']).then(() => {
+      window.location.reload();
+    });
   }
 }
