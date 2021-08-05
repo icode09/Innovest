@@ -5,6 +5,7 @@ export class Solution {
     public codeUrl: string,
     public documentUrl: string,
     public challengeId: string,
-    public solvedBy:string,
+    public solvedBy: string,
+    public solutionStatus: string
   ) {}
 }

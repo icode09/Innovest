@@ -20,7 +20,8 @@ export class SolutionFormComponent implements OnInit {
     '',
     '',
     '110841e3-e6fb-4191-8fd8-5674a5107c33',
-    '110841e3-e6fb-4191-8fd8-5674a5107c33'
+    '110841e3-e6fb-4191-8fd8-5674a5107c33',
+    ''
   );
   constructor(
     private route: ActivatedRoute,
@@ -53,7 +54,8 @@ export class SolutionFormComponent implements OnInit {
           '',
           '',
           '110841e3-e6fb-4191-8fd8-5674a5107c33',
-          '110841e3-e6fb-4191-8fd8-5674a5107c33'
+          '110841e3-e6fb-4191-8fd8-5674a5107c33',
+          ''
         );
         this.errorMessage = '';
         this.openDialog();

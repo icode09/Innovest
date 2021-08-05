@@ -13,8 +13,8 @@
       <!-- <h1 >{{ solution.solutionStatus}}</h1> -->
       <p>{{ solution.solutionDescription }}</p>
       {{ solution | json }}
-      <div *ngIf="solution.solutionTitle">
-        <button mat-raised-button color="primary">Accept</button>
+      <div *ngIf="solution.solutionStatus=='NotReviewed'">
+        <button mat-raised-button (click)="acceptSolution(solution)" color="primary">Accept</button>
         <button mat-raised-button color="warn">Reject</button>
       </div>
     </mat-card-content>

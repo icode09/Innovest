@@ -47,4 +47,10 @@ public class SolutionController {
 		return new ResponseEntity<List<Solution>>(solutionService.getAllSolutions(), HttpStatus.OK);
 	}
 
+	@PutMapping("/update")
+	public ResponseEntity<Solution> updateSolution(@RequestBody Solution solution){
+		System.out.println(solution);
+		return new ResponseEntity<Solution>(solutionService.updateSolution(solution),HttpStatus.CREATED);
+	}
+
 }

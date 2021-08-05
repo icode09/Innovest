@@ -18,8 +18,10 @@ export class SubmitSolutionService {
   }
 
   updateSolution(solution: Solution): Observable<Solution> {
+    solution.solutionStatus="Accepted"
+    console.log(solution)
     return this.httpClient
-      .post<Solution>('http://localhost:8100/solutions/add', solution)
+      .put<Solution>('http://localhost:8100/solutions/update', solution)
       .pipe(catchError(this.errorHandler));
   }
 
