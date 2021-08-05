@@ -7,9 +7,13 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private router: Router) {}
 
-  ngOnInit(): void {}
+  userName: any;
+  constructor(private route:ActivatedRoute, private router:Router) { }
+
+  ngOnInit(): void {
+    this.userName = localStorage.getItem("currentUser");
+  }
 
   myChallengeList() {
     this.router.navigate(['ch-list'], { relativeTo: this.route });

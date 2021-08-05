@@ -33,6 +33,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { SearchService } from './search.service';
 import {MatSelectModule} from '@angular/material/select';
+import { PaymentComponent } from './payment/payment.component';
 import { ListSolutionsComponent } from './list-solutions/list-solutions.component';
 import { MaterialElevationDirective } from './material-elevation.directive';
 
@@ -51,6 +52,7 @@ import { MaterialElevationDirective } from './material-elevation.directive';
     HeaderLandingPageComponent,
     SignupComponent,
     AlertDialogComponent,
+    PaymentComponent,
     ListSolutionsComponent,
     MaterialElevationDirective
   ],
