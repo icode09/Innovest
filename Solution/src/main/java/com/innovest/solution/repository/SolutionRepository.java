@@ -12,5 +12,5 @@ import com.innovest.solution.model.Solution;
 
 @Repository
 public interface SolutionRepository extends MongoRepository<Solution, UUID> {
-
+    public Solution findBySolutionId(UUID solutionId);
 }

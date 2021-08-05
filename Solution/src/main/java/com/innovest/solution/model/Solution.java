@@ -31,7 +31,7 @@ public class Solution {
 	@ManyToOne
 	private UUID challengeId;
 	@ManyToOne
-	private UUID solvedBy;
+	private String solvedBy;
 	@NotBlank(message="Solution title cannot be blank or null")
 	private String solutionTitle;
 	@Lob
@@ -56,10 +56,10 @@ public class Solution {
 	public void setChallengeId(UUID challengeId) {
 		this.challengeId = challengeId;
 	}
-	public UUID getSolvedBy() {
+	public String getSolvedBy() {
 		return solvedBy;
 	}
-	public void setSolvedBy(UUID solvedBy) {
+	public void setSolvedBy(String solvedBy) {
 		this.solvedBy = solvedBy;
 	}
 	public String getSolutionTitle() {
