@@ -37,6 +37,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { ListSolutionsComponent } from './list-solutions/list-solutions.component';
 import { MaterialElevationDirective } from './material-elevation.directive';
 import { CommonModule } from '@angular/common';
+import { SolutionDescComponent } from './solution-desc/solution-desc.component';
 
 
 
@@ -55,7 +56,8 @@ import { CommonModule } from '@angular/common';
     AlertDialogComponent,
     PaymentComponent,
     ListSolutionsComponent,
-    MaterialElevationDirective
+    MaterialElevationDirective,
+    SolutionDescComponent
   ],
   
   imports: [
