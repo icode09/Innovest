@@ -20,7 +20,7 @@ export class PaymentComponent implements OnInit {
       locale: 'auto',
       token: function (token: any) {
         console.log(token)
-        alert('Token Created!!');
+        //alert('Token Created!!');
       }
     });
 

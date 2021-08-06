@@ -61,7 +61,7 @@ export class CreateChallengeComponent implements OnInit {
       locale: 'auto',
       token: function (token: any) {
         console.log(token)
-        alert('Token Created!!');
+        //alert('Token Created!!');
       }
     });
 
