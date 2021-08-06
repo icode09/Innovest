@@ -11,7 +11,6 @@ import { HeaderLandingPageComponent } from './header-landing-page/header-landing
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { CreateChallengeComponent } from './create-challenge/create-challenge.component';
 import {ListSolutionsComponent} from './list-solutions/list-solutions.component'
-import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -30,7 +29,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: '**', component: PageNotFoundComponent },
-  { path: 'payment', component: PaymentComponent},
+ 
 ];
 
 @NgModule({
