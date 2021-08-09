@@ -29,8 +29,8 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'feedback', component: FeedbackComponent},
   { path: '**', component: PageNotFoundComponent },
-  {path: 'feedback', component: FeedbackComponent},
 ];
 
 @NgModule({

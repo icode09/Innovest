@@ -29,7 +29,12 @@
                     <p class="hover-underline-animation">Become a Solver</p>
                 </a>
             </li>
-            <li class="nav-item">
+            <li *ngIf="loggedIn!=true" class="nav-item">
+                <a class="nav-link" [routerLink]="['../feedback']" routerLinkActive="router-link-active">
+                    <p class="hover-underline-animation">Contact Us</p>
+                </a>
+            </li>
+            <li *ngIf="loggedIn" class="nav-item">
                 <a class="nav-link" [routerLink]="['../feedback']" routerLinkActive="router-link-active">
                     <p class="hover-underline-animation">Contact Us</p>
                 </a>
