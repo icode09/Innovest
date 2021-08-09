@@ -73,7 +73,8 @@ export class ChallengeListComponent implements OnInit {
       else {
         this.subscribedDomainChallengeList = challenges.filter( cha =>
           // cha.domain.filter( d => this.user.domain.includes(d));
-          cha.challengerName == localStorage.getItem("currentUser")
+          cha.challengerName == localStorage.getItem("currentUser") && 
+          cha.domain.some( d => this.selectedChips.includes("All") ? this.user.domain.includes(d) : this.selectedChips.includes(d) )
         );
       }
     });
@@ -199,11 +200,24 @@ export class ChallengeListComponent implements OnInit {
     // console.log(this.challengeList[1].domain.some( d => this.selectedChips.includes(d)));
     // console.log(this.challengeList[2].domain.some( d => this.selectedChips.includes(d)));
     
-    this.subscribedDomainChallengeList = this.challengeList.filter( cha =>
-      // cha.domain === this.user.domain
-      // cha.domain.filter( d => this.user.domain.includes(d));
-      cha.domain.some( d => this.selectedChips.includes("All") ? this.user.domain.includes(d) : this.selectedChips.includes(d) )
-    );
+    // this.subscribedDomainChallengeList = this.challengeList.filter( cha =>
+    //   // cha.domain === this.user.domain
+    //   // cha.domain.filter( d => this.user.domain.includes(d));
+    //   cha.domain.some( d => this.selectedChips.includes("All") ? this.user.domain.includes(d) : this.selectedChips.includes(d) )
+    // );
+    if(this.url == 'find') {
+      this.subscribedDomainChallengeList = this.challengeList.filter( cha =>
+        // cha.domain.filter( d => this.user.domain.includes(d));
+        cha.domain.some( d => this.selectedChips.includes("All") ? this.user.domain.includes(d) : this.selectedChips.includes(d) )
+      );
+    }
+    else {
+      this.subscribedDomainChallengeList = this.challengeList.filter( cha =>
+        // cha.domain.filter( d => this.user.domain.includes(d));
+        cha.challengerName == localStorage.getItem("currentUser") &&
+        cha.domain.some( d => this.selectedChips.includes("All") ? this.user.domain.includes(d) : this.selectedChips.includes(d) )
+      );
+    }
     console.log("2.challengeList:",this.challengeList);
     console.log("2.subscribedDomainChallengeList:",this.subscribedDomainChallengeList);
   }
