@@ -43,31 +43,28 @@ export class ChallengeListComponent implements OnInit {
   constructor(private router: Router, private searchService: SearchService, private http: HttpClient) {}
 
   ngOnInit(): void {
+    console.log("Inside ngOnInit");
     this.getChallengeListFromServer();
 
-    console.log("ngOnInit: ", this.selectedChips);
-
-    this.subscribedDomainChallengeList = this.challengeList.filter( cha =>
-      // cha.domain.some( d => this.selectedChips.includes(d) )
-      cha.domain.some( d => this.user.domain.includes(d) )
-    );
-    // this.consoleButton();
-    console.log("ngOnInit 1: ", this.selectedChips);
-    
     this.chipsValue$.subscribe((selected) => {
       console.log("Inside chipsValue$.subscribe: ", this.selectedChips);
       this.selectedChips = selected.map((x: string) => x.trim());
       var a = document.getElementById("allMatChip");
       this.consoleButton();
     });
-    console.log("ngOnInit 2: ", this.selectedChips);
 
   }
 
   getChallengeListFromServer() {
     this.getChallengeList().subscribe((challenges) => {
       this.challengeList = challenges;
+      this.subscribedDomainChallengeList = challenges.filter( cha =>
+        // cha.domain.filter( d => this.user.domain.includes(d));
+        cha.domain.some( d => this.selectedChips.includes("All") ? this.user.domain.includes(d) : this.selectedChips.includes(d) )
+      );
     });
+    console.log("1.challengeList:",this.challengeList);
+    console.log("1.subscribedDomainChallengeList:",this.subscribedDomainChallengeList);
     // this.challengeList = [
     //   {
     //     challengeId: '1',
@@ -181,6 +178,8 @@ export class ChallengeListComponent implements OnInit {
       // cha.domain.filter( d => this.user.domain.includes(d));
       cha.domain.some( d => this.selectedChips.includes("All") ? this.user.domain.includes(d) : this.selectedChips.includes(d) )
     );
+    console.log("2.challengeList:",this.challengeList);
+    console.log("2.subscribedDomainChallengeList:",this.subscribedDomainChallengeList);
   }
   onSelectionChange(chip: any,c: any){
     if(chip.selected){
