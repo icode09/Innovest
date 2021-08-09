@@ -184,6 +184,14 @@ export class ChallengeListComponent implements OnInit {
     console.log("2.challengeList:",this.challengeList);
     console.log("2.subscribedDomainChallengeList:",this.subscribedDomainChallengeList);
   }
+  onSelectionChangeAllChip(allChip: any){
+    this.chipsValue$.subscribe((selected) => {
+      let selectedChips = selected.map((x: string) => x.trim());
+      if(selectedChips.length == 0){
+        allChip.select();
+      }
+    });
+  }
   onSelectionChange(chip: any,allChip: any){
     if(chip.selected){
       allChip.deselect();

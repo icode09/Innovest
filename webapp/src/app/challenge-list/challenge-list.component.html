@@ -6,7 +6,7 @@
 <!-- domain chips -->
 <br>
 <mat-chip-list class="chipList" selectable multiple [formControl]="chipsControl">
-    <mat-chip #c="matChip" (click)="c.toggleSelected(true)">All</mat-chip>
+    <mat-chip #c="matChip" (click)="c.toggleSelected(true)" (selectionChange)="onSelectionChangeAllChip(c)">All</mat-chip>
 	<mat-chip #chip="matChip" [selected]="c.selected ? false : chip.selected" 
     (click)="chip.toggleSelected(true)" 
     (selectionChange)="onSelectionChange(chip,c)"
