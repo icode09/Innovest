@@ -43,27 +43,7 @@
 									<div *ngIf="email.errors?.email">Email must be a valid email address</div>
 								</div>
 							</div>
-							<div class="form-group">
-								<div class="multi-select-dropdown">
-									<i class="fas fa-chevron-circle-down"></i>
-									<mat-form-field style="width:230px">
-										<div class="myDropdown">
-											<mat-label>Domains</mat-label>
-											<mat-select [formControl]="domains" multiple>
-												<mat-select-trigger>
-													{{domains.value ? domains.value[0] : ''}}
-													<span *ngIf="domains.value?.length > 1" class="myInput">
-														(+{{domains.value.length - 1}} {{domains.value?.length === 2 ?
-														'other' : 'others'}})
-													</span>
-												</mat-select-trigger>
-												<mat-option *ngFor="let domain of domainList" [value]="domain">
-													{{domain}}</mat-option>
-											</mat-select>
-										</div>
-									</mat-form-field>
-								</div>
-							</div>
+							
 							<div class="form-group">
 								<i class="fas fa-lock"></i>
 								<input type="password" class="myInput" placeholder="Choose Password" name="password"
@@ -88,6 +68,27 @@
 									</div>
 									<div *ngIf="f.submitted && matchingPassword.errors?.pattern">Password and Confirm
 										Password is not Matching.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="multi-select-dropdown">
+									<i class="fas fa-chevron-circle-down"></i>
+									<mat-form-field  style="width:230px">
+										<div class="myDropdown">
+											<mat-label>Domains</mat-label>
+											<mat-select [formControl]="domains" multiple>
+												<mat-select-trigger>
+													{{domains.value ? domains.value[0] : ''}}
+													<span *ngIf="domains.value?.length > 1" class="myInput">
+														(+{{domains.value.length - 1}} {{domains.value?.length === 2 ?
+														'other' : 'others'}})
+													</span>
+												</mat-select-trigger>
+												<mat-option *ngFor="let domain of domainList" [value]="domain">
+													{{domain}}</mat-option>
+											</mat-select>
+										</div>
+									</mat-form-field>
 								</div>
 							</div>
 							<div class="form-group">

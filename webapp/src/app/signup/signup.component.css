@@ -94,7 +94,7 @@ body{
 .myLeftCtn .myInput{
     width: 230px;
     border-radius: 25px;
-    margin-top: 10px;
+    margin-top: 15px;
     padding : 10px;
     padding-left: 50px;
     border : none;
@@ -106,16 +106,19 @@ body{
 .myLeftCtn  .myDropdown{
     width: 230px;
     border-radius: 25px;
-    margin-top: 10px;
+    margin-top: 0px;
     padding : 10px;
     padding-left: 50px;
     border : none;
     -webkit-box-shadow : 0px 10px 49px -14px rgba(0,0,0,0.7);
     -moz-box-shadow : 0px 10px 49px -14px rgba(0,0,0,0.7);
     box-shadow: 0px 10px 49px -14px rgba(0,0,0,0.7);
+    text-decoration: none;
     
 }
-
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
 .myLeftCtn .myInput:focus{
     outline: none;
 }

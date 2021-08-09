@@ -24,7 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatInputModule } from '@angular/material/input';
+import { MatInput, MatInputModule } from '@angular/material/input';
 import { HeaderLandingPageComponent } from './header-landing-page/header-landing-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
