@@ -11,3 +11,12 @@ spring:
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
+
+  rabbitmq:
+    queue: user.queue
+    exchange: user.exchange
+    routingkey: user.routingkey
+    host: localhost
+    username: guest
+    password: guest
+    port: 15672

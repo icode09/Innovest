@@ -14,9 +14,9 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserRepository userRepository;
 
-	public boolean validate(String username, String password) {
+	public boolean validate(String email, String password) {
 
-		if (userRepository.validate(username, password) != null) {
+		if (userRepository.validate(email, password) != null) {
 			return true;
 		} else {
 			return false; }

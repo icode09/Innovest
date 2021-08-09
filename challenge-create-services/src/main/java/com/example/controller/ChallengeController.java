@@ -2,8 +2,7 @@ package com.example.controller;
 
 import java.util.Collection;
 
-import javax.validation.Valid;
-
+import com.example.service.RabbitMQSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,21 +18,28 @@ import com.example.service.ChallengeService;
 @CrossOrigin
 @RequestMapping(value="innovest/challenge")
 public class ChallengeController {
-	
+
+	private ChallengeService challengeService;
+	private RabbitMQSender rabbitMQSender;
+
 	@Autowired
-	ChallengeService serv;
-	
+	public ChallengeController(ChallengeService challengeService, RabbitMQSender rabbitMQSender) {
+		this.challengeService=challengeService;
+		this.rabbitMQSender=rabbitMQSender;
+	}
 	@PostMapping(value="/create")
-    public Challenge createCh(@Valid @RequestBody Challenge ch)
+    public Challenge createCh(@RequestBody Challenge ch)
 	{
     	ch.setChallengeId(ch.getChallengeId());
-    	serv.createChallenge(ch);
+		System.out.println("challenge got:"+ch.getChallengeName());
+    	challengeService.createChallenge(ch);
+    	rabbitMQSender.send(ch);
 		return ch;
 	}
 
     @GetMapping(value= "/getall")
     public Collection<Challenge> getAll() {
-         return serv.getAllChallenges();
+         return challengeService.getAllChallenges();
     }
     
 }
