@@ -17,7 +17,9 @@ export class DashboardComponent implements OnInit {
     //   this.router.navigate(['../login']);
     // }
   }
-
+  myProfile(){
+    this.router.navigate(['./profile'],{relativeTo : this.route});
+  }
   myChallengeList() {
     this.router.navigate(['ch-list'], { relativeTo: this.route });
   }
