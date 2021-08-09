@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -10,7 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { HeaderLandingPageComponent } from './header-landing-page/header-landing-page.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { CreateChallengeComponent } from './create-challenge/create-challenge.component';
-import {ListSolutionsComponent} from './list-solutions/list-solutions.component'
+import {ListSolutionsComponent} from './list-solutions/list-solutions.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -23,13 +25,14 @@ const routes: Routes = [
     children: [
       { path: 'ch-list', component: ChallengeListComponent },
       { path: 'create-ch', component: CreateChallengeComponent },
+      {path : 'profile' , component : ProfileComponent},
       { path: '', redirectTo: '/dashboard/ch-list', pathMatch: 'full' },
     ],
   },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  {path: 'feedback', component: FeedbackComponent},
   { path: '**', component: PageNotFoundComponent },
- 
 ];
 
 @NgModule({

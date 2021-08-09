@@ -24,7 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatInputModule } from '@angular/material/input';
+import { MatInput, MatInputModule } from '@angular/material/input';
 import { HeaderLandingPageComponent } from './header-landing-page/header-landing-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
@@ -40,6 +40,8 @@ import { ListSolutionsComponent } from './list-solutions/list-solutions.componen
 import { MaterialElevationDirective } from './material-elevation.directive';
 import { CommonModule } from '@angular/common';
 import { SolutionDescComponent } from './solution-desc/solution-desc.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 
 
@@ -59,7 +61,9 @@ import { SolutionDescComponent } from './solution-desc/solution-desc.component';
     PaymentComponent,
     ListSolutionsComponent,
     MaterialElevationDirective,
-    SolutionDescComponent
+    SolutionDescComponent,
+    ProfileComponent,
+    FeedbackComponent
   ],
   
   imports: [

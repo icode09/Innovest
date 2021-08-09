@@ -18,7 +18,7 @@
     float: none;
     margin-top: 5vh;
     width: 55rem;
-    height: 26rem;
+    height: 100%;
     box-shadow: 5px 5px 30px grey;
 }
 .basicInfo{
@@ -29,7 +29,7 @@
 .basicInfoCard{
     display: flex;
     flex-direction: row;
-    margin: 10px;
+    margin: 10px 10px 0px 10px;
     justify-content:center;
     color: #652cb3;    
 }

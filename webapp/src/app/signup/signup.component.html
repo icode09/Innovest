@@ -17,83 +17,91 @@
 				<div class="col-md-6">
 					<div class="myLeftCtn">
 						<header>Create New Account!</header>
-							<img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-								class="profile-img-card" />
-							<form class = "myForm  text-center" *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
-								novalidate>
-								<div class="form-group">
-									<i class="fas fa-user"></i>
-									<input type="text" class="myInput" name="displayName" [(ngModel)]="form.displayName" placeholder = "Full Name" required minlength="3" maxlength="20" #displayName="ngModel" />
-									<div class="alert-danger" *ngIf="f.submitted && displayName.invalid">
-										<div *ngIf="displayName.errors?.required">Display Name is required</div>
-										<div *ngIf="displayName.errors?.minlength">Display Name must be at least 3
-											characters</div>
-										<div *ngIf="displayName.errors?.maxlength">Display Name must be at most 20
-											characters</div>
+						<img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+							class="profile-img-card" />
+						<form class="myForm  text-center" *ngIf="!isSuccessful" name="form"
+							(ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+							<div class="form-group">
+								<i class="fas fa-user"></i>
+								<input type="text" class="myInput" name="displayName" [(ngModel)]="form.displayName"
+									placeholder="Full Name" required minlength="3" maxlength="20"
+									#displayName="ngModel" />
+								<div class="alert-danger" *ngIf="f.submitted && displayName.invalid">
+									<div *ngIf="displayName.errors?.required">Display Name is required</div>
+									<div *ngIf="displayName.errors?.minlength">Display Name must be at least 3
+										characters</div>
+									<div *ngIf="displayName.errors?.maxlength">Display Name must be at most 20
+										characters</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<i class="fas fa-envelope"></i>
+								<input type="email" class="myInput" placeholder="E-mail" name="email"
+									[(ngModel)]="form.email" required email #email="ngModel" />
+								<div class="alert-danger" *ngIf="f.submitted && email.invalid">
+									<div *ngIf="email.errors?.required">Email is required</div>
+									<div *ngIf="email.errors?.email">Email must be a valid email address</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<i class="fas fa-lock"></i>
+								<input type="password" class="myInput" placeholder="Choose Password" name="password"
+									[(ngModel)]="form.password" required minlength="6" #password="ngModel" />
+								<div class="alert-danger" *ngIf="f.submitted && password.invalid">
+									<div *ngIf="password.errors?.required">Password is required</div>
+									<div *ngIf="password.errors?.minlength">Password must be at least 6 characters
 									</div>
 								</div>
-								<div class="form-group">
-									<i class="fas fa-envelope"></i>
-									<input type="email" class="myInput" placeholder="E-mail"
-										name="email" [(ngModel)]="form.email" required email #email="ngModel" />
-									<div class="alert-danger" *ngIf="f.submitted && email.invalid">
-										<div *ngIf="email.errors?.required">Email is required</div>
-										<div *ngIf="email.errors?.email">Email must be a valid email address</div>
+							</div>
+							<div class="form-group">
+								<i class="fas fa-lock"></i>
+								<input type="password" placeholder="Confirm Password" class="myInput"
+									name="matchingPassword" [(ngModel)]="form.matchingPassword" required minlength="6"
+									#matchingPassword="ngModel" pattern="{{form.password}}" />
+								<div class="alert-danger" *ngIf="f.submitted && matchingPassword.invalid">
+									<div *ngIf="matchingPassword.errors?.required">Confirm Password is required
 									</div>
+									<div *ngIf="matchingPassword.errors?.minlength">Confirm Password must be at
+										least 6
+										characters
+									</div>
+									<div *ngIf="f.submitted && matchingPassword.errors?.pattern">Password and Confirm
+										Password is not Matching.</div>
 								</div>
-								<!-- <div class="form-group">
-									<div class="multi-select-dropdown">
-									<mat-form-field appearance="fill">
-										<mat-label>Domains</mat-label>
-										<mat-select [formControl]="domains" multiple>
-										  <mat-select-trigger>
-											{{domains.value ? domains.value[0] : ''}}
-											<span *ngIf="domains.value?.length > 1" class="myInput">
-											  (+{{domains.value.length - 1}} {{domains.value?.length === 2 ? 'other' : 'others'}})
-											</span>
-										  </mat-select-trigger>
-										  <mat-option *ngFor="let domain of domainList" [value]="domain">{{domain}}</mat-option>
-										</mat-select>
-									  </mat-form-field>
-									</div>
-								</div> -->
-								<div class="form-group">
-									<i class="fas fa-lock"></i>
-									<input type="password" class="myInput" placeholder="Choose Password"
-										name="password" [(ngModel)]="form.password" required minlength="6"
-										#password="ngModel" />
-									<div class="alert-danger" *ngIf="f.submitted && password.invalid">
-										<div *ngIf="password.errors?.required">Password is required</div>
-										<div *ngIf="password.errors?.minlength">Password must be at least 6 characters
+							</div>
+							<div class="form-group">
+								<div class="multi-select-dropdown">
+									<i class="fas fa-chevron-circle-down"></i>
+									<mat-form-field  style="width:230px">
+										<div class="myDropdown">
+											<mat-label>Domains</mat-label>
+											<mat-select [formControl]="domains" multiple>
+												<mat-select-trigger>
+													{{domains.value ? domains.value[0] : ''}}
+													<span *ngIf="domains.value?.length > 1" class="myInput">
+														(+{{domains.value.length - 1}} {{domains.value?.length === 2 ?
+														'other' : 'others'}})
+													</span>
+												</mat-select-trigger>
+												<mat-option *ngFor="let domain of domainList" [value]="domain">
+													{{domain}}</mat-option>
+											</mat-select>
 										</div>
-									</div>
+									</mat-form-field>
 								</div>
-								<div class="form-group">
-									<i class="fas fa-lock"></i>
-									<input type="password" placeholder="Confirm Password"
-										class="myInput" name="matchingPassword" [(ngModel)]="form.matchingPassword"
-										required minlength="6" #matchingPassword="ngModel"  pattern="{{form.password}}"/>
-									<div class="alert-danger" *ngIf="f.submitted && matchingPassword.invalid">
-										<div *ngIf="matchingPassword.errors?.required">Confirm Password is required
-										</div>
-										<div *ngIf="matchingPassword.errors?.minlength">Confirm Password must be at
-											least 6
-											characters
-										</div>
-										<div *ngIf = "f.submitted && matchingPassword.errors?.pattern">Password and Confirm Password is not Matching.</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<button class="btn btn-primary btn-block">Sign Up</button>
-								</div>
-								<div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-									Signup failed!<br />{{ errorMessage }}
-								</div>
-								<div class="already-user">Already have an account?
-									<a [routerLink]="['../login']" routerLinkActive="router-link-active">Sign In</a>
-								</div>
-							</form>
-							<div class="alert alert-success" *ngIf="isSuccessful">Your registration is successful!</div>
+							</div>
+							<div class="form-group">
+								<button class="btn btn-primary btn-block">Sign Up</button>
+							</div>
+							<div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+								Signup failed!<br />{{ errorMessage }}
+							</div>
+							<div class="already-user">Already have an account?
+								<a [routerLink]="['../login']" routerLinkActive="router-link-active">Sign In</a>
+							</div>
+						</form>
+						<div class="alert alert-success" *ngIf="isSuccessful">Your registration is successful!</div>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -103,11 +111,12 @@
 							<h2>See a Problem Around You ?</h2>
 							<p>
 								Don't Worry! We have got your back covered.
-								Register to Innovest, post your problem. Thousands of Solvers will try to solve your problem.
+								Register to Innovest, post your problem. Thousands of Solvers will try to solve your
+								problem.
 								<br><br>Or<br><br>
-								Become a Solver and innovate your ideas to solve problems of others. 
+								Become a Solver and innovate your ideas to solve problems of others.
 							</p>
-							<a href="#"><input type="button" class = "butt_out" value="Learn More"/></a>
+							<a href="#"><input type="button" class="butt_out" value="Learn More" /></a>
 						</div>
 					</div>
 				</div>

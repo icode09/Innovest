@@ -55,6 +55,9 @@ export class CreateChallengeComponent implements OnInit {
       response => console.log('Success!', response),
       error => console.log('Error!', error)
     );
+    setTimeout(() => {
+      this.router.navigate(['dashboard']);
+    }, 500);
   }
   pay(rewardPrize:any) {    
   
