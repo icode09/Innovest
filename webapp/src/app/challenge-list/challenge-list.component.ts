@@ -162,6 +162,17 @@ export class ChallengeListComponent implements OnInit {
       console.log(this.searchArr);
     }
   }
+  mySearch(){
+    if(this.queries.query == "") {
+      this.ngOnInit();
+    }
+    else {
+      this.subscribedDomainChallengeList = this.subscribedDomainChallengeList.filter( cha =>
+        cha.challengeName.includes(this.queries.query)
+      );
+    }
+  }
+
   update_subscribedDomainChallengeList() {
     // console.log("chipsControl:", this.chipsControl);
     // console.log("challengeList:", this.challengeList);
