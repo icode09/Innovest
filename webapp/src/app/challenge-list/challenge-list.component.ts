@@ -47,9 +47,12 @@ export class ChallengeListComponent implements OnInit {
     this.getChallengeListFromServer();
 
     this.chipsValue$.subscribe((selected) => {
-      console.log("Inside chipsValue$.subscribe: ", this.selectedChips);
       this.selectedChips = selected.map((x: string) => x.trim());
-      var a = document.getElementById("allMatChip");
+      console.log("Inside chipsValue$.subscribe: ", this.selectedChips);
+      if(this.selectedChips.length == 0){
+        this.selectedChips.push("All");
+      }
+      console.log("~Inside chipsValue$.subscribe: ", this.selectedChips);
       this.consoleButton();
     });
 
@@ -181,10 +184,18 @@ export class ChallengeListComponent implements OnInit {
     console.log("2.challengeList:",this.challengeList);
     console.log("2.subscribedDomainChallengeList:",this.subscribedDomainChallengeList);
   }
-  onSelectionChange(chip: any,c: any){
+  onSelectionChange(chip: any,allChip: any){
     if(chip.selected){
-      c.deselect();
+      allChip.deselect();
+    } else {
+      this.chipsValue$.subscribe((selected) => {
+        let selectedChips = selected.map((x: string) => x.trim());
+        if(selectedChips.length == 0){
+          allChip.select();
+        }
+      });
     }
+    console.log("onSelectionChange: ",this.selectedChips);
   }
 
 }
