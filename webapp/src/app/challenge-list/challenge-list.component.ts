@@ -37,8 +37,8 @@ export class ChallengeListComponent implements OnInit {
 
   queries = {query :''};
   searchArr: object[] = [];
-  challengeList: Challenge[] = [];
-  subscribedDomainChallengeList: Challenge[] = [];
+  challengeList: Challenge[] = [];             // all challenges in challenge service
+  subscribedDomainChallengeList: Challenge[] = [];  // user subcribed domain only challenges in challenge service
 
   constructor(private router: Router, private searchService: SearchService, private http: HttpClient) {}
 
@@ -53,7 +53,7 @@ export class ChallengeListComponent implements OnInit {
         this.selectedChips.push("All");
       }
       console.log("~Inside chipsValue$.subscribe: ", this.selectedChips);
-      this.consoleButton();
+      this.update_subscribedDomainChallengeList();
     });
 
   }
@@ -162,7 +162,7 @@ export class ChallengeListComponent implements OnInit {
       console.log(this.searchArr);
     }
   }
-  consoleButton() {
+  update_subscribedDomainChallengeList() {
     // console.log("chipsControl:", this.chipsControl);
     // console.log("challengeList:", this.challengeList);
     // console.log("subscribedDomainChallengeList:", this.subscribedDomainChallengeList);
