@@ -3,6 +3,10 @@
     width: 50vw;
     margin-top: 5vh;
 }
+.chipList {
+    display: flex;
+    justify-content: center;
+}
 .challenges{
     margin: 0 auto;
     width: 55rem;

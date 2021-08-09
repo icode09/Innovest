@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Challenge } from '../common/challenge';
 import { SearchService } from '../search.service';
 import { Observable } from 'rxjs';
+import { FormControl } from '@angular/forms';
 
 
 export interface Domain {
@@ -13,7 +14,7 @@ export interface UserProfile {
   userId: number;
   userName: String;
   password: String;
-  domain: String[];
+  domain: string[];
   bio: String;
   avatar: String;
   avatarName: String;
@@ -42,25 +43,39 @@ export interface UserProfile {
   styleUrls: ['./challenge-list.component.css'],
 })
 export class ChallengeListComponent implements OnInit {
+  
+  user: UserProfile = {
+    userId:1,
+    userName: 'Rohit Kumar',
+    password: 'String;',
+    domain: ['science','Writing','Rural development','ground reality','science','Writing','Rural development','ground reality'],
+    bio: 'String',
+    avatar: 'String',
+    avatarName: 'String',
+  };
+  selectedChips: string[] = ['All'];
+  chipsControl = new FormControl('All');
+  chipsValue$ = this.chipsControl.valueChanges;
+
   queries = {query :''};
   searchArr: object[] = [];
   challengeList: Challenge[] = [];
-  users: UserProfile[] = [
-    {
-      userId: 1,
-      userName: 'Rohit Kumar',
-      password: 'String;',
-      domain: ['aerospace', 'science', 'engineering', 'rocket science'],
-      bio: 'String',
-      avatar: 'String',
-      avatarName: 'String',
-    },
-  ];
+  subscribedDomainChallengeList: Challenge[] = [];
 
   constructor(private router: Router, private searchService: SearchService, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.getChallengeListFromServer();
+
+    this.chipsValue$.subscribe((selected) => {
+      this.selectedChips = selected.map((x: string) => x.trim());
+      var a = document.getElementById("allMatChip");
+      this.consoleButton();
+    });
+
+    this.subscribedDomainChallengeList = this.challengeList.filter( cha =>
+      cha.domain.some( d => this.user.domain.includes(d) )
+    );
   }
 
   getChallengeListFromServer() {
@@ -124,7 +139,6 @@ export class ChallengeListComponent implements OnInit {
     this.router.navigate(['/challenge-desc', JSON.stringify(challenge)]);
   }
   
-
   search(): void {
     if(this.queries.query == "") {
       this.searchService.getAll().subscribe( arr => {
@@ -133,13 +147,36 @@ export class ChallengeListComponent implements OnInit {
       console.log(this.searchArr);
     }
     else {
-    this.searchService.get(this.queries.query).subscribe( arr => {
-      this.searchArr = arr;
-    });
-    console.log(this.searchArr);
+      this.searchService.get(this.queries.query).subscribe( arr => {
+        this.searchArr = arr;
+      });
+      console.log(this.searchArr);
+    }
   }
-
+  consoleButton() {
+    // console.log("chipsControl:", this.chipsControl);
+    // console.log("challengeList:", this.challengeList);
+    // console.log("subscribedDomainChallengeList:", this.subscribedDomainChallengeList);
+    // console.log("user.domain:", this.user.domain);
+    // console.log("selectedChips:", this.selectedChips);
+    // console.log("ch[1].domain:", this.challengeList[1].domain);
+    // console.log("selectedChips[0]:", this.selectedChips[0]);
+    // console.log("challengeList[1].domain[2]:", this.challengeList[1].domain[2]);
+    // console.log(this.selectedChips[0] === this.challengeList[1].domain[2]);
+    // console.log(this.challengeList[0].domain.some( d => this.selectedChips.includes(d)));
+    // console.log(this.challengeList[1].domain.some( d => this.selectedChips.includes(d)));
+    // console.log(this.challengeList[2].domain.some( d => this.selectedChips.includes(d)));
+    
+    this.subscribedDomainChallengeList = this.challengeList.filter( cha =>
+      // cha.domain === this.user.domain
+      // cha.domain.filter( d => this.user.domain.includes(d));
+      cha.domain.some( d => this.selectedChips.includes("All") ? this.user.domain.includes(d) : this.selectedChips.includes(d) )
+    );
   }
-
+  onSelectionChange(chip: any,c: any){
+    if(chip.selected){
+      c.deselect();
+    }
+  }
 
 }
