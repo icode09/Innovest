@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Solution } from '../../common/solution';
 import { SubmitSolutionService } from '../../submit-solution.service';
 import { AlertDialogComponent } from '../../alert-dialog/alert-dialog.component';
@@ -19,7 +19,8 @@ export class SolutionFormComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private submitService: SubmitSolutionService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {}
   ngOnInit(): void {
     let challenge = JSON.parse(
@@ -37,6 +38,11 @@ export class SolutionFormComponent implements OnInit {
       'NotReviewed'
     );
   }
+
+  goBack() {
+    window.history.back();
+  }
+  
 
   submitSolution() {
     this.loading = true;
@@ -82,7 +88,8 @@ export class SolutionFormComponent implements OnInit {
       data: { message: this.errorMessage },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      window.location.reload();
+      this.router.navigate(['/dashboard'])
     });
   }
 }
+
