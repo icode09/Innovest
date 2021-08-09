@@ -11,6 +11,7 @@ export class CreatingchallengeService {
   constructor(private _http: HttpClient) { }
 
   createChallenge(cd : any){
+    console.log("challenge details in dervice:", cd);
     return this._http.post<any>(this._url, cd, {
       headers : new HttpHeaders({
         'Content-Type' : 'application/json'

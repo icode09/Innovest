@@ -31,7 +31,8 @@ public class ChallengeController {
     public Challenge createCh(@RequestBody Challenge ch)
 	{
     	ch.setChallengeId(ch.getChallengeId());
-		System.out.println("challenge got:"+ch.getChallengeName());
+		System.out.println("challenge got:"+ch.getChallengerName());
+		System.out.println("challenge:"+ch);
     	challengeService.createChallenge(ch);
     	rabbitMQSender.send(ch);
 		return ch;

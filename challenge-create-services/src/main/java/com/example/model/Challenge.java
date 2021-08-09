@@ -29,24 +29,30 @@ public class Challenge {
 	private Integer views;
 	private String registrationType;
 	private String participationType;
-	
-	public String getRegistrationType() {
-		return registrationType;
+
+	public Challenge() {
 	}
 
-	public void setRegistrationType(String registrationType) {
+	public Challenge(String challengeId, String challengerName, String challengeName, String description, String rules, String abstraction, Date startDate, Date endDate, boolean paid, double rewardPrize, Integer[] challengeImage, String imageName, String documentUrl, String[] domain, Integer registrations, Integer views, String registrationType, String participationType) {
+		this.challengeId = challengeId;
+		this.challengerName = challengerName;
+		this.challengeName = challengeName;
+		this.description = description;
+		this.rules = rules;
+		this.abstraction = abstraction;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.paid = paid;
+		this.rewardPrize = rewardPrize;
+		this.challengeImage = challengeImage;
+		this.imageName = imageName;
+		this.documentUrl = documentUrl;
+		this.domain = domain;
+		this.registrations = registrations;
+		this.views = views;
 		this.registrationType = registrationType;
-	}
-
-	public String getParticipationType() {
-		return participationType;
-	}
-
-	public void setParticipationType(String participationType) {
 		this.participationType = participationType;
 	}
-
-	public Challenge() {}
 
 	public String getChallengeId() {
 		return challengeId;
@@ -61,7 +67,7 @@ public class Challenge {
 	}
 
 	public void setChallengerName(String challengerName) {
-		this.challengeName = challengerName;
+		this.challengerName = challengerName;
 	}
 
 	public String getChallengeName() {
@@ -176,14 +182,43 @@ public class Challenge {
 		this.views = views;
 	}
 
+	public String getRegistrationType() {
+		return registrationType;
+	}
+
+	public void setRegistrationType(String registrationType) {
+		this.registrationType = registrationType;
+	}
+
+	public String getParticipationType() {
+		return participationType;
+	}
+
+	public void setParticipationType(String participationType) {
+		this.participationType = participationType;
+	}
+
 	@Override
 	public String toString() {
-		return "challenge [challengeId=" + challengeId + ", challengerName=" + challengeName + ", challengeName="
-				+ challengeName + ", description=" + description + ", rules=" + rules + ", abstraction=" + abstraction
-				+ ", startDate=" + startDate + ", endDate=" + endDate + ", paid=" + paid + ", rewardPrize="
-				+ rewardPrize + ", challengeImage=" + Arrays.toString(challengeImage) + ", imageName=" + imageName
-				+ ", documentUrl=" + documentUrl + ", domain=" + "domain" + ", registrations="
-				+ registrations + ", views=" + views + "]";
+		return "Challenge{" +
+				"challengeId='" + challengeId + '\'' +
+				", challengerName='" + challengerName + '\'' +
+				", challengeName='" + challengeName + '\'' +
+				", description='" + description + '\'' +
+				", rules='" + rules + '\'' +
+				", abstraction='" + abstraction + '\'' +
+				", startDate=" + startDate +
+				", endDate=" + endDate +
+				", paid=" + paid +
+				", rewardPrize=" + rewardPrize +
+				", challengeImage=" + Arrays.toString(challengeImage) +
+				", imageName='" + imageName + '\'' +
+				", documentUrl='" + documentUrl + '\'' +
+				", domain=" + Arrays.toString(domain) +
+				", registrations=" + registrations +
+				", views=" + views +
+				", registrationType='" + registrationType + '\'' +
+				", participationType='" + participationType + '\'' +
+				'}';
 	}
-	//New Comment
 }

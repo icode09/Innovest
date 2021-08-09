@@ -7,6 +7,7 @@ export class Challenge {
     public rules: string,
     public abstraction: string,
     public domain: string[],
+    public domains: string[],
     public startDate: Date,
     public endDate: Date,
     public registrationType: string,
