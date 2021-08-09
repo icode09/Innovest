@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Challenge } from '../common/challenge';
 import { SearchService } from '../search.service';
-
 import { Observable } from 'rxjs';
 
 
