@@ -22,7 +22,9 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['ch-list'], { relativeTo: this.route });
   }
   createChallenge() {
-    this.router.navigate(['create-ch'], { relativeTo: this.route });
+    this.router.navigate(['create-ch'], { relativeTo: this.route }).then(() => {
+      window.location.reload();
+    });
   }
   mySolutionsList() {
     this.router.navigate([
