@@ -48,7 +48,7 @@ export class ChallengeListComponent implements OnInit {
     userId:1,
     userName: 'Rohit Kumar',
     password: 'String;',
-    domain: ['science','Writing','Rural development','ground reality','science','Writing','Rural development','ground reality'],
+    domain: ["Business & Entepreneurship","Chemistry","Computer/Info.technology","Engineering/Design","Environment","Food/Agriculture","Life Sciencess","Math/Statistics","Physical Sciences","Request for Partners and Suppliers","Social innovation"],
     bio: 'String',
     avatar: 'String',
     avatarName: 'String',
