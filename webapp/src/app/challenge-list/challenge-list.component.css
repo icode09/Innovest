@@ -39,3 +39,10 @@
     justify-content:center;
     margin-left: 10px;
 }
+.post{
+    margin-left:200px;
+}
+.basicInfoCard .postedBy{
+    font-weight: 500;
+    font-size: 20px;
+}

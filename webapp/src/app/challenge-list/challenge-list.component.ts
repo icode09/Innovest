@@ -68,6 +68,7 @@ export class ChallengeListComponent implements OnInit {
         this.subscribedDomainChallengeList = challenges.filter( cha =>
           // cha.domain.filter( d => this.user.domain.includes(d));
           cha.domain.some( d => this.selectedChips.includes("All") ? this.user.domain.includes(d) : this.selectedChips.includes(d) )
+          && cha.challengerName != localStorage.getItem("currentUser")
         );
       }
       else {
@@ -209,6 +210,7 @@ export class ChallengeListComponent implements OnInit {
       this.subscribedDomainChallengeList = this.challengeList.filter( cha =>
         // cha.domain.filter( d => this.user.domain.includes(d));
         cha.domain.some( d => this.selectedChips.includes("All") ? this.user.domain.includes(d) : this.selectedChips.includes(d) )
+        && cha.challengerName != localStorage.getItem("currentUser")
       );
     }
     else {
