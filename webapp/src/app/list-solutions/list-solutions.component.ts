@@ -44,6 +44,7 @@ export class ListSolutionsComponent implements OnInit {
     // solution.solutionStatus = 'Accepted';
     this.submitSolutionService.updateSolutionStatus(solutionId,solutionStatus).subscribe((result) => {
       console.log(result);
+      this.ngOnInit();
     });
   }
 }

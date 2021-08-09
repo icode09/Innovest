@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   constructor(private authService:AuthServiceService , private route:ActivatedRoute) { 
     this.loginform=new FormGroup({
-      username: new FormControl('',[Validators.required]),
+      email: new FormControl('',[Validators.required]),
       password: new FormControl('',[Validators.required]),
 
     })
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   signIn(){
       this.authService.login(this.loginform.value).subscribe((res)=>{
        
-        this.authService.storeToken(res["token"],res["username"]);
+        this.authService.storeToken(res["token"],res["email"]);
         this.authService.opendashboard();
         this.isLoginFailed = false;
         

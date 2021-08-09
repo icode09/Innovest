@@ -15,7 +15,7 @@ public class ChallengeDoc {
 	private String challengeId;
 	
 	@Field(type = FieldType.Keyword)
-	private String challengerId;
+	private String challengerName;
 	
 	@Field(type = FieldType.Text)
 	private String challengeName;
@@ -64,12 +64,12 @@ public class ChallengeDoc {
 		this.challengeId = challengeId;
 	}
 
-	public String getChallengerId() {
-		return challengerId;
+	public String getChallengerName() {
+		return challengerName;
 	}
 
-	public void setChallengerId(String challengerId) {
-		this.challengerId = challengerId;
+	public void setChallengerName(String challengerName) {
+		this.challengerName = challengerName;
 	}
 
 	public String getChallengeName() {

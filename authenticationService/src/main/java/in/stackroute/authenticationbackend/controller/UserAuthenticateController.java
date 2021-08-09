@@ -38,9 +38,9 @@ public class UserAuthenticateController {
 		String jwtToken = "";
 
 		try {
-			jwtToken = getToken(user.getUsername(), user.getPassword());
+			jwtToken = getToken(user.getEmail(), user.getPassword());
 			map.clear();
-			map.put("username",user.getUsername()); 
+			map.put("email",user.getEmail());
 			map.put("message", "user successfully logged in");
 			map.put("token", jwtToken);
 		} catch (Exception e) {
@@ -53,13 +53,13 @@ public class UserAuthenticateController {
 		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
 
-	public String getToken(String username, String password) throws Exception {
+	public String getToken(String email, String password) throws Exception {
 
-		if (username == null || password == null) {
-			throw new ServletException("Please fill in username and password");
+		if (email == null || password == null) {
+			throw new ServletException("Please fill in email and password");
 		}
 
-		boolean flag = userService.validate(username, password);
+		boolean flag = userService.validate(email, password);
 
 		if (!flag) {
 			throw new ServletException("Invalid credentials.");
@@ -67,7 +67,7 @@ public class UserAuthenticateController {
 		
 
 		String jwtToken = Jwts.builder()
-				.setSubject(username)
+				.setSubject(email)
 				.setIssuedAt(new Date())
 				.setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
 				.signWith(SignatureAlgorithm.HS256, "secretkey").compact();

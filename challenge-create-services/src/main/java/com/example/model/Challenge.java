@@ -12,7 +12,7 @@ public class Challenge {
 	@Id
 	private String challengeId;
 	
-	private String challengerId;
+	private String challengerName;
 	private String challengeName;
 	private String description;
 	private String rules;
@@ -56,12 +56,12 @@ public class Challenge {
 		this.challengeId = challengeId;
 	}
 
-	public String getChallengerId() {
-		return challengerId;
+	public String getChallengerName() {
+		return challengerName;
 	}
 
-	public void setChallengerId(String challengerId) {
-		this.challengerId = challengerId;
+	public void setChallengerName(String challengerName) {
+		this.challengeName = challengerName;
 	}
 
 	public String getChallengeName() {
@@ -178,7 +178,7 @@ public class Challenge {
 
 	@Override
 	public String toString() {
-		return "challenge [challengeId=" + challengeId + ", challengerId=" + challengerId + ", challengeName="
+		return "challenge [challengeId=" + challengeId + ", challengerName=" + challengeName + ", challengeName="
 				+ challengeName + ", description=" + description + ", rules=" + rules + ", abstraction=" + abstraction
 				+ ", startDate=" + startDate + ", endDate=" + endDate + ", paid=" + paid + ", rewardPrize="
 				+ rewardPrize + ", challengeImage=" + Arrays.toString(challengeImage) + ", imageName=" + imageName

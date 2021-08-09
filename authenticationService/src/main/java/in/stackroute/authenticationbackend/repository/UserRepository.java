@@ -8,8 +8,8 @@ import in.stackroute.authenticationbackend.model.User;
 
 public interface UserRepository extends CrudRepository<User, String>{
 
-	@Query("select u from User u where u.username = (?1) and u.password = (?2)")
-	User validate(String username,String password);
+	@Query("select u from User u where u.email = (?1) and u.password = (?2)")
+	User validate(String email,String password);
 	
 //	User findByUsernameAndPassword(String userId, String userPassword);
 	

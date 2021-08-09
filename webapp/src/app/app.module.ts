@@ -36,6 +36,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { PaymentComponent } from './payment/payment.component';
 import { ListSolutionsComponent } from './list-solutions/list-solutions.component';
 import { MaterialElevationDirective } from './material-elevation.directive';
+import { CommonModule } from '@angular/common';
+import { SolutionDescComponent } from './solution-desc/solution-desc.component';
 
 
 
@@ -54,7 +56,8 @@ import { MaterialElevationDirective } from './material-elevation.directive';
     AlertDialogComponent,
     PaymentComponent,
     ListSolutionsComponent,
-    MaterialElevationDirective
+    MaterialElevationDirective,
+    SolutionDescComponent
   ],
   
   imports: [
@@ -78,7 +81,8 @@ import { MaterialElevationDirective } from './material-elevation.directive';
     MatProgressSpinnerModule,
     MatTooltipModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [SubmitSolutionService, SearchService],
   bootstrap: [AppComponent],

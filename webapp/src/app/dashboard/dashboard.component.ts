@@ -13,6 +13,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.userName = localStorage.getItem("currentUser");
+    // if(this.userName==null) {
+    //   this.router.navigate(['../login']);
+    // }
   }
 
   myChallengeList() {
@@ -28,5 +31,11 @@ export class DashboardComponent implements OnInit {
         solvedBy: `${localStorage.getItem('currentUser')}`,
       }),
     ]);
+  }
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['']).then(() => {
+      window.location.reload();
+    });
   }
 }

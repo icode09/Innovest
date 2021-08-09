@@ -14,7 +14,7 @@
   <span *ngIf="infoMessage.length > 0">{{ infoMessage }}</span>
     <form class="form" [formGroup]="loginform" (ngSubmit)="signIn()">
             <h2>LOGIN</h2>
-            <input type=text class="box" placeholder="username" formControlName="username">
+            <input type=text class="box" placeholder="email" formControlName="email">
             <input type="password" class="box" placeholder="password" formControlName="password">
             
           <!--<mat-form-field >

@@ -7,6 +7,6 @@ import in.stackroute.authenticationbackend.model.User;
 public interface UserService {
 
 	
-	public boolean validate(String username, String password);	
+	public boolean validate(String email, String password);
 
 }

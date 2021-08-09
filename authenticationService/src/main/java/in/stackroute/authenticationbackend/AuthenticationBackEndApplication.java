@@ -1,5 +1,6 @@
 package in.stackroute.authenticationbackend;
 
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import in.stackroute.authenticationbackend.config.JwtFilter;
 
 @SpringBootApplication
+@EnableRabbit
 public class AuthenticationBackEndApplication {
 
 	/*

@@ -2,6 +2,7 @@ package com.stackroute.registrationservice.controller;
 
 import com.stackroute.registrationservice.exception.UserAlreadyExist;
 import com.stackroute.registrationservice.model.User;
+import com.stackroute.registrationservice.service.RabbitMQSender;
 import com.stackroute.registrationservice.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,9 +17,11 @@ import java.util.UUID;
 @RequestMapping("/api/v1/register")
 public class RegistrationController {
     RegistrationService registrationService;
+    RabbitMQSender rabbitMQSender;
     @Autowired
-    public RegistrationController(RegistrationService registrationService){
+    public RegistrationController(RegistrationService registrationService, RabbitMQSender rabbitMQSender){
         this.registrationService=registrationService;
+        this.rabbitMQSender=rabbitMQSender;
     }
     @PostMapping("/registered")
     public ResponseEntity<?> saveUser(@RequestBody User user) throws UserAlreadyExist {
@@ -29,11 +32,11 @@ public class RegistrationController {
             user.setUserId(uuid);
             System.out.println("User register with email:"+user.getEmail());
             userobj=registrationService.saveUser(user);
-            responseEntity= new ResponseEntity<>("User saved successfully", HttpStatus.CREATED);
+            rabbitMQSender.send(user);
+            return new ResponseEntity<>(HttpStatus.CREATED);
         } catch(Exception exc) {
-            responseEntity = new ResponseEntity<>(exc.getMessage(), HttpStatus.CONFLICT);
+            return new ResponseEntity<>(exc.getMessage(), HttpStatus.CONFLICT);
         }
-        return responseEntity;
     }
 
     @GetMapping("/data")

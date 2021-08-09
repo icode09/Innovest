@@ -30,15 +30,21 @@ export class SignupComponent implements OnInit {
     }
     console.log("form details:", this.form);
     this.authService.register(this.form).subscribe(
-      data => {
+      (data) => {
+        console.log("data:",data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
-        this.router.navigate(['login'], {queryParams: { registered: 'true' } });
+        this.router.navigate(['/login'])
+        // this.router.navigate(['login'], {queryParams: { registered: 'true' } });
       },
       err => {
-        this.errorMessage = err.error.message;
+        console.log("error:",err);
+        this.errorMessage = err.error;
         this.isSignUpFailed = true;
       }
     );
+    // this.authService.register(this.form).subscribe((data) => {
+    //   console.log("data:", data);
+    // })
   }
 }

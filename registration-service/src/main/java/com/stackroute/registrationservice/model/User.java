@@ -14,11 +14,13 @@ import java.util.UUID;
 public class User {
     @Id
     private UUID userId;
-    private String displayName;
-    private String email;
+	private String email;
+	private String displayName;
     private String password;
     private String[] domain;
     private String bio;
+
+
 	public User(UUID userId, String displayName, String email, String password, String[] domain, String bio) {
 		super();
 		this.userId = userId;
