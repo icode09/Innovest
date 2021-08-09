@@ -56,7 +56,7 @@ export class CreateChallengeComponent implements OnInit {
       error => console.log('Error!', error)
     );
   }
-  pay(amount:any) {    
+  pay(rewardPrize:any) {    
   
     var handler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51JKLrwSAQeukN9L81vhY7IqniVtz7WRhCd8filel69EzUAjbG9wdnl8qdMYcKoCM6l8YXptbzlgybWoZlPurBW4g00slp67OCL',
