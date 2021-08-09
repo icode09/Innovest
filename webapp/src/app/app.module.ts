@@ -33,8 +33,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { SearchService } from './search.service';
 import {MatSelectModule} from '@angular/material/select';
+import { PaymentComponent } from './payment/payment.component';
 import { ListSolutionsComponent } from './list-solutions/list-solutions.component';
 import { MaterialElevationDirective } from './material-elevation.directive';
+import { CommonModule } from '@angular/common';
+import { SolutionDescComponent } from './solution-desc/solution-desc.component';
 
 
 
@@ -51,8 +54,10 @@ import { MaterialElevationDirective } from './material-elevation.directive';
     HeaderLandingPageComponent,
     SignupComponent,
     AlertDialogComponent,
+    PaymentComponent,
     ListSolutionsComponent,
-    MaterialElevationDirective
+    MaterialElevationDirective,
+    SolutionDescComponent
   ],
   
   imports: [
@@ -76,7 +81,8 @@ import { MaterialElevationDirective } from './material-elevation.directive';
     MatProgressSpinnerModule,
     MatTooltipModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [SubmitSolutionService, SearchService],
   bootstrap: [AppComponent],

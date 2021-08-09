@@ -39,7 +39,7 @@ public class SolutionController {
 			return new ResponseEntity<List<Solution>>(solutionService.getSolutionsByChallenge(UUID.fromString(challengeId)), HttpStatus.OK);
 		}
 		if(solvedBy!=null){
-			return new ResponseEntity<List<Solution>>(solutionService.getSolutionsByUser(UUID.fromString(solvedBy)), HttpStatus.OK);
+			return new ResponseEntity<List<Solution>>(solutionService.getSolutionsByUser(solvedBy), HttpStatus.OK);
 		}
 		if(solutionStatus!=null){
 			return new ResponseEntity<List<Solution>>(solutionService.getSolutionsBySolutionStatus(SolutionStatus.valueOf(solutionStatus)), HttpStatus.OK);
@@ -51,6 +51,12 @@ public class SolutionController {
 	public ResponseEntity<Solution> updateSolution(@RequestBody Solution solution){
 		System.out.println(solution);
 		return new ResponseEntity<Solution>(solutionService.updateSolution(solution),HttpStatus.CREATED);
+	}
+
+	@PutMapping("/update/solutionStatus")
+	public ResponseEntity<Solution> updateSolutionStatus(@RequestParam(required = true) String solutionId ,@RequestParam(required = true) String solutionStatus){
+		System.out.println(solutionId);
+		return new ResponseEntity<Solution>(solutionService.updateSolutionStatus(UUID.fromString(solutionId), SolutionStatus.valueOf(solutionStatus) ),HttpStatus.CREATED);
 	}
 
 }

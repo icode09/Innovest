@@ -9,9 +9,10 @@ import com.innovest.solution.model.SolutionStatus;
 public interface SolutionService {
 	Solution addSolution(Solution solution);
 	Solution updateSolution(Solution solution);
+	Solution updateSolutionStatus(UUID solutionId, SolutionStatus solutionStatus);
 	List<Solution> getAllSolutions();
 	List<Solution> getSolutionsByChallenge(UUID challengeId);
-	List<Solution> getSolutionsByUser(UUID solvedBy);
+	List<Solution> getSolutionsByUser(String solvedBy);
 	List<Solution> getSolutionsBySolutionStatus(SolutionStatus solutionStatus);
 	void removeSolution(UUID solutionId);
 }

@@ -1,5 +1,6 @@
 export class Solution {
   constructor(
+    public solutionId: string,
     public solutionTitle: string,
     public solutionDescription: string,
     public codeUrl: string,

@@ -17,11 +17,13 @@ export class SubmitSolutionService {
       .pipe(catchError(this.errorHandler));
   }
 
-  updateSolution(solution: Solution): Observable<Solution> {
-    solution.solutionStatus="Accepted"
-    console.log(solution)
+  updateSolutionStatus(solution: string, solutionStatus: String): Observable<Solution> {
+    console.log(solution);
     return this.httpClient
-      .put<Solution>('http://localhost:8100/solutions/update', solution)
+      .put<Solution>(
+        `http://localhost:8100/solutions/update/solutionStatus?solutionId=${solution}&solutionStatus=${solutionStatus}`,
+        { solutionId: solution, solutionStatus: 'Accepted' }
+      )
       .pipe(catchError(this.errorHandler));
   }
 

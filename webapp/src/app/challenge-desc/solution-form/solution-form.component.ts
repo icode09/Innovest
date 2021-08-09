@@ -13,16 +13,9 @@ import { MatDialog } from '@angular/material/dialog';
 export class SolutionFormComponent implements OnInit {
   loading: boolean = false;
   public challenge: any;
+  public formData: any;
   errorMessage = '';
-  public formData = new Solution(
-    '',
-    '',
-    '',
-    '',
-    '110841e3-e6fb-4191-8fd8-5674a5107c33',
-    '110841e3-e6fb-4191-8fd8-5674a5107c33',
-    ''
-  );
+
   constructor(
     private route: ActivatedRoute,
     private submitService: SubmitSolutionService,
@@ -33,6 +26,16 @@ export class SolutionFormComponent implements OnInit {
       this.route.snapshot.paramMap.get('chalDesc') || '{}'
     ); //https://stackoverflow.com/questions/46915002/argument-of-type-string-null-is-not-assignable-to-parameter-of-type-string
     this.challenge = challenge;
+    this.formData = new Solution(
+      '',
+      '',
+      '',
+      '',
+      '',
+      `${this.challenge.challengeId}`,
+      `${localStorage.getItem('currentUser')}`,
+      'NotReviewed'
+    );
   }
 
   submitSolution() {
@@ -53,9 +56,10 @@ export class SolutionFormComponent implements OnInit {
           '',
           '',
           '',
-          '110841e3-e6fb-4191-8fd8-5674a5107c33',
-          '110841e3-e6fb-4191-8fd8-5674a5107c33',
-          ''
+          '',
+          `${this.challenge.challengeId}`,
+          `${localStorage.getItem('currentUser')}`,
+          'NotReviewed'
         );
         this.errorMessage = '';
         this.openDialog();

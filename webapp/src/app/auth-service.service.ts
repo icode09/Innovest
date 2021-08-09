@@ -25,10 +25,12 @@ export class AuthServiceService {
   }
   storeToken(token: any, username: any) {
     localStorage.setItem('mytoken', token);
-    localStorage.setItem('currently logged in user', username);
+    localStorage.setItem('currentUser', username);
     //sessionStorage.setItem("mytoken",token);
   }
   opendashboard() {
-    this.myroute.navigate(['dashboard']);
+    this.myroute.navigate(['dashboard']).then(() => {
+      window.location.reload();
+    });
   }
 }

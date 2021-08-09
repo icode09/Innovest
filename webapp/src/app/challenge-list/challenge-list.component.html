@@ -6,14 +6,14 @@
 <div class="challenges" *ngFor="let challenge of challengeList">
     <a type="button" (click)="viewChallenge(challenge)">
         <div class="card mb-3">
-            <img class="card-img-top" src="https://shorturl.at/ahGIW" alt="Card image cap{{ challenge.challengeImage }}" style="height:40vh; padding:0.5em">
+            <img class="card-img-top" src="https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/banner/60f95db3b3711_copy_of_linkedin_post__3_.png?d=1920x1920" alt="Card image cap{{ challenge.challengeImage }}" style="height:40vh; padding:0.5em">
             <div class="card-body">
                 <h3 class="card-title" matTooltip="Name">{{challenge.challengeName}}</h3>
                 <p class="card-text" matTooltip="Description">{{challenge.description}}</p>
                 <div class="basicInfo" matTooltip="End Dates">
                     <div class="basicInfoCard">
                     <i class="fas fa-hourglass-half fa-lg"></i>
-                    <h5>{{ challenge.endDate }}</h5>
+                    <h5>{{ challenge.endDate | date:'fullDate'}}</h5>
                     </div>
                     <span>&#124;</span>
                     <div class="basicInfoCard">
