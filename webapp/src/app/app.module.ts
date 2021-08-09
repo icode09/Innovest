@@ -13,6 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SolutionFormComponent } from './challenge-desc/solution-form/solution-form.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChallengeListComponent } from './challenge-list/challenge-list.component';
@@ -39,6 +41,7 @@ import { MaterialElevationDirective } from './material-elevation.directive';
 import { CommonModule } from '@angular/common';
 import { SolutionDescComponent } from './solution-desc/solution-desc.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 
 
@@ -59,7 +62,8 @@ import { ProfileComponent } from './profile/profile.component';
     ListSolutionsComponent,
     MaterialElevationDirective,
     SolutionDescComponent,
-    ProfileComponent
+    ProfileComponent,
+    FeedbackComponent
   ],
   
   imports: [
@@ -84,7 +88,8 @@ import { ProfileComponent } from './profile/profile.component';
     MatTooltipModule,
     MatSelectModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    MatButtonToggleModule
   ],
   providers: [SubmitSolutionService, SearchService],
   bootstrap: [AppComponent],

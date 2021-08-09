@@ -11,7 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { HeaderLandingPageComponent } from './header-landing-page/header-landing-page.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { CreateChallengeComponent } from './create-challenge/create-challenge.component';
-import {ListSolutionsComponent} from './list-solutions/list-solutions.component'
+import {ListSolutionsComponent} from './list-solutions/list-solutions.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -31,7 +32,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: '**', component: PageNotFoundComponent },
- 
+  {path: 'feedback', component: FeedbackComponent},
 ];
 
 @NgModule({
