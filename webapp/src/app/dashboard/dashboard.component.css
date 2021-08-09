@@ -1961,7 +1961,9 @@ display:block}
 .sidebar-light #sidebarToggle::after{color:#b7b9cc}
 .sidebar-light #sidebarToggle:hover{background-color:#dddfeb}
 .sidebar-dark .sidebar-brand{color:#fff}
-.sidebar-dark hr.sidebar-divider{border-top:1px solid rgba(255,255,255,.15)}
+.sidebar-dark hr.sidebar-divider{
+	border-top:1.5px solid rgb(90, 6, 90);
+}
 .sidebar-dark .sidebar-heading{color:rgba(255,255,255,.4)}
 .sidebar-dark .nav-item .nav-link{color:#fff;}	/* my challenges */
 .sidebar-dark .nav-item .nav-link i{color:rgba(255,255,255,.3)}
