@@ -40,6 +40,7 @@ import { ListSolutionsComponent } from './list-solutions/list-solutions.componen
 import { MaterialElevationDirective } from './material-elevation.directive';
 import { CommonModule } from '@angular/common';
 import { SolutionDescComponent } from './solution-desc/solution-desc.component';
+import { ProfileComponent } from './profile/profile.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 
 
@@ -61,6 +62,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
     ListSolutionsComponent,
     MaterialElevationDirective,
     SolutionDescComponent,
+    ProfileComponent,
     FeedbackComponent
   ],
   

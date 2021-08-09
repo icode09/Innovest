@@ -6,10 +6,6 @@ import { SearchService } from '../search.service';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 
-
-export interface Domain {
-  name: string;
-}
 export interface UserProfile {
   userId: number;
   userName: String;
@@ -19,24 +15,6 @@ export interface UserProfile {
   avatar: String;
   avatarName: String;
 }
-// export interface Challenge {
-//   challengeId: number;
-//   challengerId: number;
-//   challengeName: string;
-//   description: string;
-//   rules: string;
-//   abstraction: string;
-//   startDate: Date;
-//   endDate: Date;
-//   paid: boolean;
-//   rewardPrize: number;
-//   challengeImage: string;
-//   imageName: string;
-//   documentUrl: string;
-//   domains: String[];
-//   registrations: number;
-//   views: number;
-// }
 @Component({
   selector: 'app-challenge-list',
   templateUrl: './challenge-list.component.html',
@@ -67,68 +45,99 @@ export class ChallengeListComponent implements OnInit {
   ngOnInit(): void {
     this.getChallengeListFromServer();
 
+    console.log("ngOnInit: ", this.selectedChips);
+
+    this.subscribedDomainChallengeList = this.challengeList.filter( cha =>
+      // cha.domain.some( d => this.selectedChips.includes(d) )
+      cha.domain.some( d => this.user.domain.includes(d) )
+    );
+    // this.consoleButton();
+    console.log("ngOnInit 1: ", this.selectedChips);
+    
     this.chipsValue$.subscribe((selected) => {
+      console.log("Inside chipsValue$.subscribe: ", this.selectedChips);
       this.selectedChips = selected.map((x: string) => x.trim());
       var a = document.getElementById("allMatChip");
       this.consoleButton();
     });
+    console.log("ngOnInit 2: ", this.selectedChips);
 
-    this.subscribedDomainChallengeList = this.challengeList.filter( cha =>
-      cha.domain.some( d => this.user.domain.includes(d) )
-    );
   }
 
   getChallengeListFromServer() {
     this.getChallengeList().subscribe((challenges) => {
       this.challengeList = challenges;
-    })
+    });
     // this.challengeList = [
-    //   ...this.challengeList,
     //   {
-    //     challengeId: 1,
-    //     challengerId: 1,
+    //     challengeId: '1',
+    //     challengerName: '',
     //     challengeName: 'eSahayak Blogging Competition Week-3',
     //     description: 'string',
     //     rules: 'string',
     //     abstraction:
     //       "'All that you need to know about eSahayak Blogging Competition Week-3 eSahayak is back with the Blogging Competition. In this week we will select the top 5 published articles from eSahayak Blog and award them a certificate of excellence. Moreover, the top 2 blogs of the week will get a reward of INR 1,000 each.One person can submit as many articles as they want to. However, only one article submitted by an individual in a week will be considered for the prize money. But, submitting more articles will increase your chances of winning.We hope that this competition will provide you with an opportunity to publish your pieces, and to give you early experience with a competitive edge in the marketplace!'",
+    //     domain: ["Business & Entepreneurship","Chemistry"],
     //     startDate: new Date(),
     //     endDate: new Date(),
+    //     registrationType: 'string',
+    //     participationType: 'string',
     //     paid: true,
     //     rewardPrize: 50000,
     //     challengeImage:
     //       'https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/banner/60f95db3b3711_copy_of_linkedin_post__3_.png?d=1920x1920',
+    //     domains: [],
     //     imageName: 'string',
     //     documentUrl: 'string',
-    //     domains: ['aerospace', 'science', 'engineering', 'rocket science'],
     //     registrations: 5645,
     //     views: 6504,
     //   },
     //   {
-    //     challengeId: 2,
-    //     challengerId: 1,
+    //     challengeId: '2',
+    //     challengerName: '',
     //     challengeName: 'Water Problem in village',
     //     description: 'Village aaaa facing water shortage... read more',
     //     rules: 'rule1....rule2',
     //     abstraction:
     //       "'All that you need to know about eSahayak Blogging Competition Week-3 eSahayak is back with the Blogging Competition. In this week we will select the top 5 published articles from eSahayak Blog and award them a certificate of excellence. Moreover, the top 2 blogs of the week will get a reward of INR 1,000 each.One person can submit as many articles as they want to. However, only one article submitted by an individual in a week will be considered for the prize money. But, submitting more articles will increase your chances of winning.We hope that this competition will provide you with an opportunity to publish your pieces, and to give you early experience with a competitive edge in the marketplace!'",
+    //     domain: ["Chemistry","Computer/Info.technology","Engineering/Design"],
     //     startDate: new Date(),
     //     endDate: new Date(),
+    //     registrationType: 'string',
+    //     participationType: 'string',
     //     paid: true,
     //     rewardPrize: 24000,
     //     challengeImage:
     //       'https://images.theconversation.com/files/340018/original/file-20200605-176546-1vkao9j.jpg?ixlib=rb-1.1.0&rect=7%2C30%2C5081%2C3357&q=45&auto=format&w=496&fit=clip',
     //     imageName: 'string',
+    //     domains: [],
     //     documentUrl: 'string',
-    //     domains: [
-    //       'environmental',
-    //       'science',
-    //       'engineering',
-    //       'Rural development',
-    //     ],
     //     registrations: 565,
     //     views: 504,
     //   },
+    //   {
+    //     challengeId: '3',
+    //     challengerName: '',
+    //     challengeName: 'Waste and Land pollution',
+    //     description: 'Need urgent solution needed in ...... city near ........',
+    //     rules: 'rule1....rule2',
+    //     abstraction:
+    //       "'All that you need to know about eSahayak Blogging Competition Week-3 eSahayak is back with the Blogging Competition. In this week we will select the top 5 published articles from eSahayak Blog and award them a certificate of excellence. Moreover, the top 2 blogs of the week will get a reward of INR 1,000 each.One person can submit as many articles as they want to. However, only one article submitted by an individual in a week will be considered for the prize money. But, submitting more articles will increase your chances of winning.We hope that this competition will provide you with an opportunity to publish your pieces, and to give you early experience with a competitive edge in the marketplace!'",
+    //     domain: ["Physical Sciences","Request for Partners and Suppliers","Social innovation","Physical Sciences","Request for Partners and Suppliers","Social innovation"],
+    //     startDate: new Date(),
+    //     endDate: new Date("2021-08-16"),
+    //     registrationType: 'string',
+    //     participationType: 'string',
+    //     paid: true,
+    //     rewardPrize: 18000,
+    //     challengeImage:
+    //       'https://images.theconversation.com/files/340018/original/file-20200605-176546-1vkao9j.jpg?ixlib=rb-1.1.0&rect=7%2C30%2C5081%2C3357&q=45&auto=format&w=496&fit=clip',
+    //     imageName: 'string',
+    //     domains: [],
+    //     documentUrl: 'string',
+    //     registrations: 25,
+    //     views: 147,
+    //   }
     // ];
   }
   getChallengeList(): Observable<Challenge[]> {

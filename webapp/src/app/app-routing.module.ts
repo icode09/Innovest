@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -24,12 +25,13 @@ const routes: Routes = [
     children: [
       { path: 'ch-list', component: ChallengeListComponent },
       { path: 'create-ch', component: CreateChallengeComponent },
+      {path : 'profile' , component : ProfileComponent},
       { path: '', redirectTo: '/dashboard/ch-list', pathMatch: 'full' },
     ],
   },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'feedback', component: FeedbackComponent},
+  {path: 'feedback', component: FeedbackComponent},
   { path: '**', component: PageNotFoundComponent },
 ];
 
