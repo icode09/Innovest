@@ -13,6 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SolutionFormComponent } from './challenge-desc/solution-form/solution-form.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChallengeListComponent } from './challenge-list/challenge-list.component';
@@ -82,7 +84,8 @@ import { SolutionDescComponent } from './solution-desc/solution-desc.component';
     MatTooltipModule,
     MatSelectModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    MatButtonToggleModule
   ],
   providers: [SubmitSolutionService, SearchService],
   bootstrap: [AppComponent],

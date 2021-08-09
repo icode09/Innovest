@@ -17,13 +17,13 @@
     </div>
     <div class="form-group">
       <label>Rules</label>
-      <input type="text" [class.is-invalid]="createChallengeForm?.get('rules')?.invalid &&
-      createChallengeForm?.get('rules')?.touched" formControlName="rules" class="form-control">
+      <textarea type="text" [class.is-invalid]="createChallengeForm?.get('rules')?.invalid &&
+      createChallengeForm?.get('rules')?.touched" formControlName="rules" class="form-control" rows="3"></textarea>
     </div>
     <div class="form-group">
       <label>Abstraction</label>
-      <input type="text"  [class.is-invalid]="createChallengeForm.get('abstraction')?.invalid &&
-      createChallengeForm.get('abstraction')?.touched" formControlName="abstraction" class="form-control">
+      <textarea type="text"  [class.is-invalid]="createChallengeForm.get('abstraction')?.invalid &&
+      createChallengeForm.get('abstraction')?.touched" formControlName="abstraction" class="form-control" rows="3"></textarea>
     </div>
     <div class="form-group">
       <label>Start Date</label>
@@ -36,11 +36,6 @@
        <div *ngIf="createChallengeForm?.get('endDate')?.touched && createChallengeForm?.errors?.orderError">
           <small class="text-danger">Start Date is after End Date</small>
         </div>
-    </div>
-    <div class="form-group">
-      <label>Reward Prize</label>
-      <input type="number" [class.is-invalid]="createChallengeForm?.get('rewardPrize')?.invalid &&
-      createChallengeForm?.get('rewardPrize')?.touched" formControlName="rewardPrize" class="form-control">
     </div>
     <div class="form-group">
       <label>Domain</label>
@@ -81,9 +76,9 @@
         <label class="form-check-label" for="inlineRadio22">Unpaid</label>
       </div>
       <div *ngIf="createChallengeForm.get('participationType')?.value == 'option1'">
-        <label>Amount </label>
-        <input [class.is-invalid]="createChallengeForm?.get('amount')?.invalid &&
-        createChallengeForm?.get('amount')?.touched" type="number" formControlName="amount" class="form-control">
+        <label>Reward Prize</label>
+        <input type="number" [class.is-invalid]="createChallengeForm?.get('rewardPrize')?.invalid &&
+      createChallengeForm?.get('rewardPrize')?.touched" formControlName="rewardPrize" class="form-control">
       </div>
     </div>
     <div>
@@ -95,5 +90,5 @@
 
 </div>
 <ng-template #elseBlock>
-  <h2 style="color:black;"> Than you, Your Challenge is Created.</h2>
+  <h1 style="color:black; margin: 100px;"> Thank you!, Your Challenge is Successfully Created.</h1>
 </ng-template>
