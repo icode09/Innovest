@@ -40,9 +40,12 @@ export class ChallengeListComponent implements OnInit {
   challengeList: Challenge[] = [];             // all challenges in challenge service
   subscribedDomainChallengeList: Challenge[] = [];  // user subcribed domain only challenges in challenge service
 
+  url:string = '';
+  
   constructor(private router: Router, private searchService: SearchService, private http: HttpClient) {}
 
   ngOnInit(): void {
+    this.url = this.router.url.split('/').pop() || '';
     console.log("Inside ngOnInit");
     this.getChallengeListFromServer();
 
@@ -52,7 +55,7 @@ export class ChallengeListComponent implements OnInit {
       if(this.selectedChips.length == 0){
         this.selectedChips.push("All");
       }
-      console.log("~Inside chipsValue$.subscribe: ", this.selectedChips);
+      console.log("~Inside chipsValue$.subscribe: ", this.url);
       this.update_subscribedDomainChallengeList();
     });
 
@@ -61,11 +64,20 @@ export class ChallengeListComponent implements OnInit {
   getChallengeListFromServer() {
     this.getChallengeList().subscribe((challenges) => {
       this.challengeList = challenges;
-      this.subscribedDomainChallengeList = challenges.filter( cha =>
-        // cha.domain.filter( d => this.user.domain.includes(d));
-        cha.domain.some( d => this.selectedChips.includes("All") ? this.user.domain.includes(d) : this.selectedChips.includes(d) )
-      );
+      if(this.url == 'find') {
+        this.subscribedDomainChallengeList = challenges.filter( cha =>
+          // cha.domain.filter( d => this.user.domain.includes(d));
+          cha.domain.some( d => this.selectedChips.includes("All") ? this.user.domain.includes(d) : this.selectedChips.includes(d) )
+        );
+      }
+      else {
+        this.subscribedDomainChallengeList = challenges.filter( cha =>
+          // cha.domain.filter( d => this.user.domain.includes(d));
+          cha.challengerName == localStorage.getItem("currentUser")
+        );
+      }
     });
+    
     console.log("1.challengeList:",this.challengeList);
     console.log("1.subscribedDomainChallengeList:",this.subscribedDomainChallengeList);
     // this.challengeList = [

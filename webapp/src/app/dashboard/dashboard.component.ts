@@ -20,8 +20,10 @@ export class DashboardComponent implements OnInit {
   myProfile(){
     this.router.navigate(['./profile'],{relativeTo : this.route});
   }
-  myChallengeList() {
-    this.router.navigate(['ch-list'], { relativeTo: this.route });
+  myChallengeList(word:any) {
+    this.router.navigate(['ch-list',word], { relativeTo: this.route }).then(() => {
+      window.location.reload();
+    });
   }
   createChallenge() {
     this.router.navigate(['create-ch'], { relativeTo: this.route }).then(() => {

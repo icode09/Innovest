@@ -23,10 +23,10 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     children: [
-      { path: 'ch-list', component: ChallengeListComponent },
+      { path: 'ch-list/:list', component: ChallengeListComponent },
       { path: 'create-ch', component: CreateChallengeComponent },
       {path : 'profile' , component : ProfileComponent},
-      { path: '', redirectTo: '/dashboard/ch-list', pathMatch: 'full' },
+      { path: '', redirectTo: '/dashboard/ch-list/find', pathMatch: 'full' },
     ],
   },
   { path: 'login', component: LoginComponent },
