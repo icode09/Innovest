@@ -81,9 +81,13 @@
       createChallengeForm?.get('rewardPrize')?.touched" formControlName="rewardPrize" class="form-control">
       </div>
     </div>
-    <div>
-      <button  style="margin-right: 16px" class="btn btn-primary m2" type="button" (click)="pay(1000)" >Proceed to pay</button>
-      <button [disabled]='!createChallengeForm.valid' class="btn btn-primary m2" type="submit" >Create Challenge</button>
+    
+    <div *ngIf="createChallengeForm.get('participationType')?.value == 'option1'">
+      <button [disabled]="createChallengeForm.get('participationType')?.value == 'option2'"  class="btn btn-primary m2" type="button" (click)="pay(1000)" >Proceed to pay &nbsp;</button><br>
+    </div>
+
+    <div class="text-center">
+      <button [disabled]='!createChallengeForm.valid'  class="btn btn-primary m2" type="submit" style="column-gap: 40px">Create Challenge</button>
     </div> 
   </form>
 
