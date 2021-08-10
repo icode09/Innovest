@@ -9,13 +9,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   userName: any;
+  url:string = '';
   constructor(private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
     this.userName = localStorage.getItem("currentUser");
+    this.url = this.router.url.split('/').pop() || '';
     // if(this.userName==null) {
     //   this.router.navigate(['../login']);
     // }
+    console.log("dashboard:",this.router.url);
   }
   myProfile(){
     this.router.navigate(['./profile'],{relativeTo : this.route});
