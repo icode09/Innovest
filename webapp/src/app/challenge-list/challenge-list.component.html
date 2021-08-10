@@ -24,8 +24,10 @@
             <div class="card-body">
                 <h3 class="card-title" matTooltip="Name">{{challenge.challengeName}}</h3>
                 <p class="card-text" matTooltip="Domains">
-                    <mat-chip-list>
-                        <mat-chip *ngFor="let domain of challenge.domain">
+                    <mat-chip-list selectable multiple>
+                        <mat-chip #chip="matChip" [selected]="c.selected ? c.selected : a.includes(domain)" 
+                        (selectionChange)="hello(domain)"
+                        *ngFor="let domain of challenge.domain" >
                             {{domain}}
                         </mat-chip>
                     </mat-chip-list>

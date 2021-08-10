@@ -41,6 +41,7 @@ export class ChallengeListComponent implements OnInit {
   subscribedDomainChallengeList: Challenge[] = [];  // user subcribed domain only challenges in challenge service
 
   url:string = '';
+  a:string[]=[];
   
   constructor(private router: Router, private searchService: SearchService, private http: HttpClient) {}
 
@@ -242,6 +243,9 @@ export class ChallengeListComponent implements OnInit {
     });
   }
   onSelectionChange(chip: any,allChip: any){
+
+    console.log("onSelectionChange: ",this.selectedChips,this.chipsControl.value);
+    // this.a = this.chipsControl.value.map((x: string) => x.trim());
     if(chip.selected){
       allChip.deselect();
     } else {
@@ -252,7 +256,21 @@ export class ChallengeListComponent implements OnInit {
         }
       });
     }
-    console.log("onSelectionChange: ",this.selectedChips);
+    this.chipsValue$.subscribe((selected) =>
+      this.a = selected.map((x: string) => x.trim())
+    );
+    console.log("~onSelectionChange: ",this.selectedChips,this.chipsControl.value);
+  }
+  // onSelectionChangeListDomain(chip: any,allChip: any,domain:string){
+  //   console.log("onSelectionChangeListDomain",domain,chip.selected);
+  //   let selectedChips = this.chipsControl.value.map((x: string) => x.trim());
+  //   console.log("~onSelectionChangeListDomain",selectedChips,domain,selectedChips.includes(domain),chip.selected);
+  //   if(selectedChips.includes(domain)){
+  //     chip.select();
+  //   }
+  // }
+  hello(domain:any){
+    console.log("hello:",this.a,domain,this.a.includes(domain));
   }
 
 }
