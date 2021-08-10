@@ -47,7 +47,7 @@
                     </div>
                     <span *ngIf="url=='find'" style="font-size:22px;">&#124;</span>
                     <div *ngIf="url=='find'" class="basicInfoCard post">
-                        <h5 class="postedBy">Posted By: {{ challenge.challengerName }}</h5>
+                        <h5 class="postedBy">Posted By: {{ challenge.challengerName.split('@')[0] }}</h5>
                     </div>
                 </div>
             </div>
