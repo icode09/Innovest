@@ -15,6 +15,7 @@ public class UserServiceImpl implements UserService{
 	private UserRepository userRepository;
 
 	public boolean validate(String email, String password) {
+		email=email.trim();
 
 		if (userRepository.validate(email, password) != null) {
 			return true;
