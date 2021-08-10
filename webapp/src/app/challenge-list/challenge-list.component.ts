@@ -159,6 +159,7 @@ export class ChallengeListComponent implements OnInit {
   }
 
   viewChallenge(challenge: Challenge) {
+    challenge.challengeImage = "https://assets.weforum.org/article/image/large_bg1B3jyBjInTSH2AjIgjgoER9PYwCN-BZ_BQhdeZ92s.jpg";
     this.router.navigate(['/challenge-desc', JSON.stringify(challenge)]);
   }
   
@@ -182,7 +183,7 @@ export class ChallengeListComponent implements OnInit {
     }
     else {
       this.subscribedDomainChallengeList = this.subscribedDomainChallengeList.filter( cha =>
-        cha.challengeName.includes(this.queries.query)
+        cha.challengeName.toLocaleLowerCase().includes(this.queries.query.toLocaleLowerCase())
       );
     }
   }
