@@ -3,6 +3,10 @@
     width: 50vw;
     margin-top: 5vh;
 }
+.chipList {
+    display: flex;
+    justify-content: center;
+}
 .challenges{
     margin: 0 auto;
     width: 55rem;
@@ -14,7 +18,7 @@
     float: none;
     margin-top: 5vh;
     width: 55rem;
-    height: 25rem;
+    height: 100%;
     box-shadow: 5px 5px 30px grey;
 }
 .basicInfo{
@@ -25,7 +29,7 @@
 .basicInfoCard{
     display: flex;
     flex-direction: row;
-    margin: 10px;
+    margin: 10px 10px 0px 10px;
     justify-content:center;
     color: #652cb3;    
 }
@@ -34,4 +38,11 @@
     align-items:center;
     justify-content:center;
     margin-left: 10px;
+}
+.post{
+    margin-left:200px;
+}
+.basicInfoCard .postedBy{
+    font-weight: 500;
+    font-size: 20px;
 }

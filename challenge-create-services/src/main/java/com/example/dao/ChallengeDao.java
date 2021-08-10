@@ -7,3 +7,5 @@ import com.example.model.Challenge;
 public interface ChallengeDao extends MongoRepository<Challenge, String> {
 
 }
+
+//comment

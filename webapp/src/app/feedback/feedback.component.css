@@ -31,25 +31,6 @@ body{
     align-items: center;
 
   }
-  /* .card-container.card {
-    max-width: 450px !important;
-    padding: 40px 40px;
-    margin-top: 5em;
-  }
-  
-  .card {
-    background-color: #fff;
-    padding: 20px 25px 30px;
-    margin: 0 auto 25px;
-    margin-top: 7em;
-    padding-top: 7em;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  } */
   @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
 
 
@@ -92,9 +73,9 @@ body{
     margin-bottom: 50px;
 }
 .myLeftCtn .myInput{
-    width: 230px;
+    width: 100%;
     border-radius: 25px;
-    margin-top: 15px;
+    margin-top: 10px;
     padding : 10px;
     padding-left: 50px;
     border : none;
@@ -103,22 +84,7 @@ body{
     box-shadow: 0px 10px 49px -14px rgba(0,0,0,0.7);
 }
 
-.myLeftCtn  .myDropdown{
-    width: 230px;
-    border-radius: 25px;
-    margin-top: 0px;
-    padding : 10px;
-    padding-left: 50px;
-    border : none;
-    -webkit-box-shadow : 0px 10px 49px -14px rgba(0,0,0,0.7);
-    -moz-box-shadow : 0px 10px 49px -14px rgba(0,0,0,0.7);
-    box-shadow: 0px 10px 49px -14px rgba(0,0,0,0.7);
-    text-decoration: none;
-    
-}
-::ng-deep .mat-form-field-underline {
-    display: none;
-}
+
 .myLeftCtn .myInput:focus{
     outline: none;
 }
@@ -145,9 +111,7 @@ form{
     outline: none;
 }
 .myLeftCtn .fas{
-    position: relative;
     color: #bb36fd;
-    left: 36px;
 }
 .butt_out{
     background: transparent;

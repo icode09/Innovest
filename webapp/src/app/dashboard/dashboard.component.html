@@ -4,7 +4,7 @@
     <div id="wrapper">
   
         <!-- Sidebar -->
-        <ul class="navbar-nav sidebar sidebar-dark accordion navbar-dark bg-black py-0 px-0" id="accordionSidebar">
+        <ul class="navbar-nav sidebar sidebar-dark accordion navbar-dark bg-black py-0 px-0" id="accordionSidebar" style="position: fixed;">
   
             <!-- Sidebar - Brand -->
             <!-- <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
@@ -25,8 +25,8 @@
             <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet" />
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" data-toggle="collapse" href="#">
-                    <span>My Challenges</span>
+                <a class="nav-link collapsed" data-toggle="collapse" (click)="myChallengeList('my')" href="#">
+                    <span [ngStyle]="{'color':url == 'my' ?  'aqua': 'white'}">My Challenges</span>
                 </a>
             </li>
   
@@ -39,8 +39,8 @@
   
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" data-toggle="collapse" (click)="myChallengeList()" href="#">
-                    <span>Find Challenges</span>
+                <a class="nav-link collapsed" data-toggle="collapse" (click)="myChallengeList('find')" href="#">
+                    <span [ngStyle]="{'color':url == 'find' ?  'aqua': 'white'}">Find Challenges</span>
                 </a>
             </li>
   
@@ -53,7 +53,7 @@
             <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="../../assets/images/undraw_rocket.svg" alt="...">
                 <p class="text-center mb-2">Help improve our website</p>
-                <a class="btn btn-success btn-sm" href="#">Feedback</a>
+                <a class="btn btn-success btn-sm" [routerLink]="['../feedback']">Feedback</a>
             </div>
   
         </ul>
@@ -112,7 +112,7 @@
                             <!-- Dropdown - User Information -->
                             <!-- *ngIf="userName!=null" -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"  aria-labelledby="userDropdown">
-                                <a class="dropdown-item" data-toggle="collapse" href="#">
+                                <a class="dropdown-item" (click) = "myProfile()" data-toggle="collapse" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>

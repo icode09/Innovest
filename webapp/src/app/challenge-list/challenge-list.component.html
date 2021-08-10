@@ -1,29 +1,53 @@
 <div class="input-group" >
     <input type="search" class="form-control rounded"  placeholder="Search" aria-label="Search"
       aria-describedby="search-addon" [(ngModel)]="queries.query" />
-    <button type="button" class="btn btn-outline-primary" (click)="search()">search</button>
+    <button type="button" class="btn btn-outline-primary" (click)="mySearch()">search</button>
 </div>
-<div class="challenges" *ngFor="let challenge of challengeList">
+<!-- domain chips -->
+<br>
+<mat-chip-list class="chipList" selectable multiple [formControl]="chipsControl">
+    <mat-chip #c="matChip" (click)="c.toggleSelected(true)" (selectionChange)="onSelectionChangeAllChip(c)">All</mat-chip>
+	<mat-chip #chip="matChip" [selected]="c.selected ? false : chip.selected" 
+    (click)="chip.toggleSelected(true)" 
+    (selectionChange)="onSelectionChange(chip,c)"
+
+    *ngFor="let option of user.domain">
+        {{option}}
+	</mat-chip>
+</mat-chip-list>
+<!-- end of domain chips -->
+
+<div class="challenges" *ngFor="let challenge of subscribedDomainChallengeList">
     <a type="button" (click)="viewChallenge(challenge)">
         <div class="card mb-3">
-            <img class="card-img-top" src="https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/banner/60f95db3b3711_copy_of_linkedin_post__3_.png?d=1920x1920" alt="Card image cap{{ challenge.challengeImage }}" style="height:40vh; padding:0.5em">
+            <img class="card-img-top" src="https://assets.weforum.org/article/image/large_bg1B3jyBjInTSH2AjIgjgoER9PYwCN-BZ_BQhdeZ92s.jpg" alt="Card image cap{{ challenge.challengeImage }}" style="height:40vh; padding:0.5em">
             <div class="card-body">
                 <h3 class="card-title" matTooltip="Name">{{challenge.challengeName}}</h3>
-                <p class="card-text" matTooltip="Description">{{challenge.description}}</p>
+                <p class="card-text" matTooltip="Domains">
+                    <mat-chip-list>
+                        <mat-chip *ngFor="let domain of challenge.domain">
+                            {{domain}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </p>
                 <div class="basicInfo" matTooltip="End Dates">
                     <div class="basicInfoCard">
-                    <i class="fas fa-hourglass-half fa-lg"></i>
-                    <h5>{{ challenge.endDate | date:'fullDate'}}</h5>
+                        <i class="fas fa-hourglass-half fa-lg"></i>
+                        <h5>{{ challenge.endDate | date:'fullDate'}}</h5>
                     </div>
-                    <span>&#124;</span>
+                    <span style="font-size:22px;">&#124;</span>
                     <div class="basicInfoCard">
-                    <i class="fas fa-rupee-sign fa-lg"></i>
-                    <h5>{{ challenge.rewardPrize }}</h5>
+                        <i class="fas fa-rupee-sign fa-lg"></i>
+                        <h5>{{ challenge.rewardPrize }}</h5>
                     </div>
-                    <span>&#124;</span>
+                    <span style="font-size:22px;">&#124;</span>
                     <div class="basicInfoCard">
-                    <i class="fas fa-user-plus fa-lg"></i>
-                    <h5>{{ challenge.registrations }}</h5>
+                        <i class="fas fa-user-plus fa-lg"></i>
+                        <h5>{{ challenge.registrations }}</h5>
+                    </div>
+                    <span *ngIf="url=='find'" style="font-size:22px;">&#124;</span>
+                    <div *ngIf="url=='find'" class="basicInfoCard post">
+                        <h5 class="postedBy">Posted By: {{ challenge.challengerName }}</h5>
                     </div>
                 </div>
             </div>
