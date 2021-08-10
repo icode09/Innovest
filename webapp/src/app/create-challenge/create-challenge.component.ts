@@ -14,6 +14,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CreateChallengeComponent implements OnInit {
   handler:any = null;
   amount:any;
+  domainList: String[] = ["Business & Entepreneurship","Chemistry","Computer/Info.technology","Engineering/Design","Environment","Food/Agriculture","Life Sciencess","Math/Statistics","Physical Sciences","Request for Partners and Suppliers","Social innovation"];
+
   ngOnInit(){
     this.loadStripe();
   }
@@ -43,8 +45,6 @@ export class CreateChallengeComponent implements OnInit {
     imageName : [''],
   }, {validator : StartEndDateValidator});
   
-  domainList = ["Business & Entepreneurship","Chemistry","Computer/Info.technology","Engineering/Design","Environment","Food/Agriculture","Life Sciencess","Math/Statistics","Physical Sciences","Request for Partners and Suppliers","Social innovation"];
-
   onSubmit(){
     this.submitted =true;
     const loggedInUser = localStorage.getItem('currentUser');
@@ -73,6 +73,8 @@ export class CreateChallengeComponent implements OnInit {
     handler.open({
       name: 'Innovest',
       description: 'payment widget',
+      rewardPrize: rewardPrize*100
+
     });
   }
   loadStripe() {

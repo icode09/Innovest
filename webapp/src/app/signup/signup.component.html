@@ -76,16 +76,16 @@
 									<mat-form-field  style="width:230px">
 										<div class="myDropdown">
 											<mat-label>Domains</mat-label>
-											<mat-select [formControl]="domains" multiple>
+											<mat-select  multiple name = "domain" [(ngModel)]="form.domain" #domain = "ngModel">
 												<mat-select-trigger>
-													{{domains.value ? domains.value[0] : ''}}
-													<span *ngIf="domains.value?.length > 1" class="myInput">
-														(+{{domains.value.length - 1}} {{domains.value?.length === 2 ?
+													{{domain.value ? domain.value[0] : ''}}
+													<span *ngIf="domain.value?.length > 1" class="myInput">
+														(+{{domain.value.length - 1}} {{domain.value?.length === 2 ?
 														'other' : 'others'}})
 													</span>
 												</mat-select-trigger>
-												<mat-option *ngFor="let domain of domainList" [value]="domain">
-													{{domain}}</mat-option>
+												<mat-option *ngFor="let d of domainList" [value]="d">
+													{{d}}</mat-option>
 											</mat-select>
 										</div>
 									</mat-form-field>

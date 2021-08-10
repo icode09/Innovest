@@ -1,19 +1,25 @@
 <div class="container-fluid" *ngIf="!submitted; else elseBlock">
   <h2>Create Challenge</h2>
   <form [formGroup]="createChallengeForm" (ngSubmit)="onSubmit()">
-    
+
     <div class="form-group">
       <label>Challenge Name</label>
-      <input type="text" [class.is-invalid]="createChallengeForm?.get('challengeName')?.invalid && createChallengeForm?.get('challengeName')?.touched" formControlName="challengeName" class="form-control">
-      <div *ngIf="createChallengeForm.get('challengeName')?.invalid && createChallengeForm.get('challengeName')?.touched"> 
-      <small *ngIf= "createChallengeForm?.get('challengeName')?.errors?.required" class = "text-danger">Challenge Name is required</small>
-      <small *ngIf= "createChallengeForm?.get('challengeName')?.errors?.minlength" class = "text-danger">Challenge Name must be 3 charachters or more</small>
+      <input type="text"
+        [class.is-invalid]="createChallengeForm?.get('challengeName')?.invalid && createChallengeForm?.get('challengeName')?.touched"
+        formControlName="challengeName" class="form-control">
+      <div
+        *ngIf="createChallengeForm.get('challengeName')?.invalid && createChallengeForm.get('challengeName')?.touched">
+        <small *ngIf="createChallengeForm?.get('challengeName')?.errors?.required" class="text-danger">Challenge Name is
+          required</small>
+        <small *ngIf="createChallengeForm?.get('challengeName')?.errors?.minlength" class="text-danger">Challenge Name
+          must be 3 charachters or more</small>
       </div>
     </div>
     <div class="form-group">
       <label>Description</label>
       <textarea type="text" [class.is-invalid]="createChallengeForm?.get('description')?.invalid &&
-      createChallengeForm?.get('description')?.touched"  formControlName="description" class="form-control" rows="3"></textarea>
+      createChallengeForm?.get('description')?.touched" formControlName="description" class="form-control"
+        rows="3"></textarea>
     </div>
     <div class="form-group">
       <label>Rules</label>
@@ -27,37 +33,46 @@
     </div>
     <div class="form-group">
       <label>Start Date</label>
-      <input type="datetime-local"  [class.is-invalid]="createChallengeForm?.get('startDate')?.invalid &&
-      createChallengeForm?.get('startDate')?.touched"  formControlName="startDate" class="form-control">
+      <input type="datetime-local" [class.is-invalid]="createChallengeForm?.get('startDate')?.invalid &&
+      createChallengeForm?.get('startDate')?.touched" formControlName="startDate" class="form-control">
     </div>
     <div class="form-group">
       <label>End Date</label>
-      <input type="datetime-local" [class.is-invalid]="createChallengeForm?.errors?.orderError" formControlName="endDate" class="form-control">
-       <div *ngIf="createChallengeForm?.get('endDate')?.touched && createChallengeForm?.errors?.orderError">
-          <small class="text-danger">Start Date is after End Date</small>
-        </div>
+      <input type="datetime-local" [class.is-invalid]="createChallengeForm?.errors?.orderError"
+        formControlName="endDate" class="form-control">
+      <div *ngIf="createChallengeForm?.get('endDate')?.touched && createChallengeForm?.errors?.orderError">
+        <small class="text-danger">Start Date is after End Date</small>
+      </div>
     </div>
     <div class="form-group">
       <label>Domain</label>
       <select [class.is-invalid]="createChallengeForm?.get('domain')?.invalid &&
-      createChallengeForm?.get('domain')?.touched" formControlName="domain" class="form-control" data-width="100%" class="selectpicker" multiple>
+      createChallengeForm?.get('domain')?.touched" formControlName="domain" class="form-control" data-width="100%"
+        class="selectpicker" multiple>
         <option *ngFor="let dm of domainList" [value]="dm">{{dm}}</option>
       </select>
     </div>
+
+    <!-- <div class="form-group">
+      <label>Domain</label>
+      <mat-select style="background-color: white;" [class.is-invalid]="createChallengeForm?.get('domain')?.invalid &&
+      createChallengeForm?.get('domain')?.touched" formControlName="domain" class="form-control" data-width="100%"
+      class="selectpicker" multiple>
+        <mat-option *ngFor="let dm of domainList" [value]="dm">{{dm}}</mat-option>
+      </mat-select>
+    </div> -->
     <div class="form-group">
       <label>Registration Type</label>
 
 
       <div class="form-check  form-control" class="form-check-inline ">
-        <input class="form-check-input" type="radio" id="inlineRadio1" value="option1"
-        [class.is-invalid]="createChallengeForm?.get('registrationType')?.invalid &&
-      createChallengeForm?.get('registrationType')?.touched"  formControlName="registrationType">
+        <input class="form-check-input" type="radio" id="inlineRadio1" value="option1" [class.is-invalid]="createChallengeForm?.get('registrationType')?.invalid &&
+      createChallengeForm?.get('registrationType')?.touched" formControlName="registrationType">
         <label class="form-check-label" for="inlineRadio1">Single</label>
       </div>
       <div class="form-check  form-control" class="form-check-inline">
-        <input class="form-check-input" type="radio" id="inlineRadio2" value="option2"
-        [class.is-invalid]="createChallengeForm?.get('registrationType')?.invalid &&
-      createChallengeForm?.get('registrationType')?.touched"  formControlName="registrationType">
+        <input class="form-check-input" type="radio" id="inlineRadio2" value="option2" [class.is-invalid]="createChallengeForm?.get('registrationType')?.invalid &&
+      createChallengeForm?.get('registrationType')?.touched" formControlName="registrationType">
         <label class="form-check-label" for="inlineRadio2">Team</label>
       </div>
     </div>
@@ -78,14 +93,13 @@
       <div *ngIf="createChallengeForm.get('participationType')?.value == 'option1'">
         <label>Reward Prize</label>
         <input type="number" [class.is-invalid]="createChallengeForm?.get('rewardPrize')?.invalid &&
-      createChallengeForm?.get('rewardPrize')?.touched" formControlName="rewardPrize" class="form-control">
+      createChallengeForm?.get('rewardPrize')?.touched" formControlName="rewardPrize" class="form-control"><br>
+      <button [disabled]="createChallengeForm.get('participationType')?.value == 'option2'" class="btn btn-primary m2" type="button" (click)="pay('rewardPrize')" >Proceed to pay</button><br>
+
+
       </div>
     </div>
     
-    <div *ngIf="createChallengeForm.get('participationType')?.value == 'option1'">
-      <button [disabled]="createChallengeForm.get('participationType')?.value == 'option2'"  class="btn btn-primary m2" type="button" (click)="pay(1000)" >Proceed to pay &nbsp;</button><br>
-    </div>
-
     <div class="text-center">
       <button [disabled]='!createChallengeForm.valid'  class="btn btn-primary m2" type="submit" style="column-gap: 40px">Create Challenge</button>
     </div> 
