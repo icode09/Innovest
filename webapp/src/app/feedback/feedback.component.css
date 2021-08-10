@@ -73,7 +73,7 @@ body{
     margin-bottom: 50px;
 }
 .myLeftCtn .myInput{
-    width: 230px;
+    width: 100%;
     border-radius: 25px;
     margin-top: 10px;
     padding : 10px;
@@ -83,6 +83,8 @@ body{
     -moz-box-shadow : 0px 10px 49px -14px rgba(0,0,0,0.7);
     box-shadow: 0px 10px 49px -14px rgba(0,0,0,0.7);
 }
+
+
 .myLeftCtn .myInput:focus{
     outline: none;
 }
@@ -109,9 +111,7 @@ form{
     outline: none;
 }
 .myLeftCtn .fas{
-    position: relative;
     color: #bb36fd;
-    left: 36px;
 }
 .butt_out{
     background: transparent;
