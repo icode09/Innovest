@@ -44,4 +44,10 @@ public class RegistrationController {
         return new ResponseEntity<>("this is the data", HttpStatus.OK);
     }
 
+
+    @GetMapping("/email/{emailId}")
+    public ResponseEntity<?> getUserDetails(@RequestBody String emailId){
+        User user = registrationService.getUser(emailId);
+        return new ResponseEntity<>(user,HttpStatus.OK);
+    }
 }

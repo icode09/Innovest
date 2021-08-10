@@ -30,4 +30,9 @@ public class RegistrationServiceImpl implements RegistrationService{
        return savedUser;
     }
 
+    @Override
+    public User getUser(String emailId) {
+        return registrationRepository.findByEmail(emailId).get(0);
+    }
+
 }

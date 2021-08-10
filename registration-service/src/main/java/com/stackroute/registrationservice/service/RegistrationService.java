@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface RegistrationService {
     public User saveUser(User user) throws UserAlreadyExist;
+    public User getUser(String emailId);
 }
