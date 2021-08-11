@@ -6,7 +6,7 @@ import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.index.query.SimpleQueryStringBuilder;
+import org.elasticsearch.index.query.RegexpQueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 @Service
 public class ChallengeSearchServiceImp implements ChallengeSearchService {
 
@@ -68,7 +67,9 @@ public class ChallengeSearchServiceImp implements ChallengeSearchService {
 		try {
 			SearchRequest request = new SearchRequest(INDEX);
 			SearchSourceBuilder ssb = new SearchSourceBuilder();
-			SimpleQueryStringBuilder sqsb = QueryBuilders.simpleQueryStringQuery(text);
+			//SimpleQueryStringBuilder sqsb = QueryBuilders.simpleQueryStringQuery(text);
+			String reg = ".*" + text + ".*" ;
+			RegexpQueryBuilder sqsb = QueryBuilders.regexpQuery("challengeName", reg);
 			ssb.query(sqsb);
 			request.source(ssb);
 
