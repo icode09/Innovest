@@ -48,6 +48,10 @@
                         <i class="fas fa-user-plus fa-lg"></i>
                         <h5>{{ challenge.registrations }}</h5>
                     </div>
+                    <span style="font-size:22px;">&#124;</span>
+                    <div class="basicInfoCard">
+                        <h5>Views : {{ challenge.views }}</h5>
+                    </div>
                     <span *ngIf="url=='find'" style="font-size:22px;">&#124;</span>
                     <div *ngIf="url=='find'" class="basicInfoCard post">
                         <h5 class="postedBy">Posted By: {{ challenge.challengerName.split('@')[0] }}</h5>
