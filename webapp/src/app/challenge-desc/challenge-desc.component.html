@@ -41,7 +41,7 @@
       <div class="basicInfo">
         <div class="basicInfoCard">
           <i class="fas fa-hourglass-half fa-lg"></i>
-          <h5>{{ challenge.endDate }}</h5>
+          <h5>{{ challenge.endDate | date:'fullDate'}}</h5>
         </div>
         <span>&#124;</span>
         <div class="basicInfoCard">
@@ -84,7 +84,7 @@
       </mat-card>
       <mat-card class="downloads" style="text-align: left">
         <mat-label class="challengeTitle"
-          >Important dates& deadlines: {{ challenge.endDate }}</mat-label
+          >Important dates& deadlines: {{ challenge.endDate | date:'fullDate'}}</mat-label
         >
       </mat-card>
     </div>
