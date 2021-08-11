@@ -38,6 +38,9 @@ public class ChallengeDoc {
 	@Field(type = FieldType.Boolean)
 	private boolean paid;
 	
+	@Field(type = FieldType.Double)
+	private double rewardPrize;
+	
 	@Field(type = FieldType.Byte)
 	private Byte[] challengeImage;
 	
@@ -127,6 +130,15 @@ public class ChallengeDoc {
 	public void setPaid(boolean paid) {
 		this.paid = paid;
 	}
+	
+	public double getRewardPrize() {
+		return rewardPrize;
+	}
+
+	public void setRewardPrize(double rewardPrize) {
+		this.rewardPrize = rewardPrize;
+	}
+
 
 
 	public Byte[] getChallengeImage() {

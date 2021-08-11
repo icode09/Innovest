@@ -1,8 +1,9 @@
 <div class="input-group" >
     <input type="search" class="form-control rounded"  placeholder="Search" aria-label="Search"
       aria-describedby="search-addon" [(ngModel)]="queries.query" />
-    <button type="button" class="btn btn-outline-primary" (click)="mySearch()">search</button>
+    <button type="button" class="btn btn-outline-primary" (click)="searchClick()">search</button>
 </div>
+
 <!-- domain chips -->
 <br>
 <mat-chip-list class="chipList" selectable multiple [formControl]="chipsControl">
@@ -16,6 +17,7 @@
 	</mat-chip>
 </mat-chip-list>
 <!-- end of domain chips -->
+<div *ngIf="subscribedDomainChallengeList.length==0" style="text-align: center; align-content: center; padding-top: 15px;"> <h2> No Results Found</h2></div>
 
 <div class="challenges" *ngFor="let challenge of subscribedDomainChallengeList">
     <a type="button" (click)="viewChallenge(challenge)">
@@ -25,8 +27,7 @@
                 <h3 class="card-title" matTooltip="Name">{{challenge.challengeName}}</h3>
                 <p class="card-text" matTooltip="Domains">
                     <mat-chip-list selectable multiple>
-                        <mat-chip #chip="matChip" [selected]="c.selected ? c.selected : a.includes(domain)" 
-                        (selectionChange)="hello(domain)"
+                        <mat-chip #chip="matChip" [selected]="c.selected ? c.selected : searchDomainChips.includes(domain)" 
                         *ngFor="let domain of challenge.domain" >
                             {{domain}}
                         </mat-chip>

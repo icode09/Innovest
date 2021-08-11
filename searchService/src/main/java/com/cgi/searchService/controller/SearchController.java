@@ -33,6 +33,9 @@ public class SearchController {
 	@DeleteMapping("/delete/{id}")
 	public void deleteById(@PathVariable String id) { service.DeleteById(id);}
 
+	@DeleteMapping("/deleteAll")
+	public void deleteAll() { service.DeleteAll();}
+
 	@GetMapping("/search/{queries}")
 	public Iterable<ChallengeDoc> ChallengeSearch(@PathVariable String queries)  {
 		return service.findChallenge(queries);
