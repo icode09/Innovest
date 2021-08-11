@@ -25,7 +25,7 @@
             <img class="card-img-top" src="https://assets.weforum.org/article/image/large_bg1B3jyBjInTSH2AjIgjgoER9PYwCN-BZ_BQhdeZ92s.jpg" alt="Card image cap{{ challenge.challengeImage }}" style="height:40vh; padding:0.5em">
             <div class="card-body">
                 <h2 class="card-title" matTooltip="Name">{{challenge.challengeName}}</h2>
-                <p class="card-text" matTooltip="Domains">
+                <p class="card-text" matTooltip="domains">
                     <mat-chip-list selectable multiple>
                         <mat-chip #chip="matChip" [selected]="c.selected ? c.selected : searchDomainChips.includes(domain)" 
                         *ngFor="let domain of challenge.domain" >
@@ -33,29 +33,29 @@
                         </mat-chip>
                     </mat-chip-list>
                 </p>
-                <div class="basicInfo" matTooltip="End Dates">
+                <div class="basicInfo">
                     <div class="basicInfoCard">
                         <i class="fas fa-hourglass-half fa-lg"></i>
-                        <h5>{{ challenge.endDate | date:'fullDate'}}</h5>
+                        <h5 matTooltip="last date">{{ challenge.endDate | date:'fullDate'}}</h5>
                     </div>
                     <span style="font-size:22px;">&#124;</span>
-                    <div class="basicInfoCard">
+                    <div class="basicInfoCard" matTooltip="reward">
                         <i class="fas fa-rupee-sign fa-lg"></i>
                         <h5>{{ challenge.rewardPrize }}</h5>
                     </div>
                     <span style="font-size:22px;">&#124;</span>
-                    <div class="basicInfoCard">
+                    <div class="basicInfoCard" matTooltip="registrations">
                         <i class="fas fa-user-plus fa-lg"></i>
                         <h5>{{ challenge.registrations }}</h5>
                     </div>
                     <span style="font-size:22px;">&#124;</span>
-                    <div class="basicInfoCard">
+                    <div class="basicInfoCard" matTooltip="views">
                         <i class="fa fa-eye fa-lg"></i>
                         <h5>{{ challenge.views }}</h5>
                     </div>
                     <span *ngIf="url=='find'" style="font-size:22px;">&#124;</span>
                     <div *ngIf="url=='find'" class="basicInfoCard post">
-                        <h5 class="postedBy">Posted By: {{ challenge.challengerName.split('@')[0] }}</h5>
+                        <h5 class="postedBy" [matTooltip]=challenge.challengerName>Posted By: {{ challenge.challengerName.split('@')[0] }}</h5>
                     </div>
                 </div>
             </div>
