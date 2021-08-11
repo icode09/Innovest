@@ -186,16 +186,20 @@ export class ChallengeListComponent implements OnInit {
 
   searchClick():void {
     this.queries.error = "";
-    this.searchService.get(this.queries.query).subscribe( arr => {
-      this.searchArr = arr;
-      if(arr.length == 0) {
-        this.queries.error = "No Results Found";
-        this.subscribedDomainChallengeList = [];
-      } else {
-      console.log(arr);
-      this.subscribedDomainChallengeList = arr;
-      }
-    });
+    if(this.queries.query == ""){
+      this.ngOnInit();
+    }else{
+      this.searchService.get(this.queries.query).subscribe( arr => {
+        this.searchArr = arr;
+        if(arr.length == 0) {
+          this.queries.error = "No Results Found";
+          this.subscribedDomainChallengeList = [];
+        } else {
+        console.log(arr);
+        this.subscribedDomainChallengeList = arr;
+        }
+      });
+    }
   }
 
   update_subscribedDomainChallengeList() {
