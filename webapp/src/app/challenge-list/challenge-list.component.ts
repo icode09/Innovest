@@ -173,17 +173,6 @@ export class ChallengeListComponent implements OnInit {
       this.router.navigate(['/challenge-desc', JSON.stringify(challenge)]);
     }
   }
-  
-  // mySearch(){
-  //   if(this.queries.query == "") {
-  //     this.ngOnInit();
-  //   }
-  //   else {
-  //     this.subscribedDomainChallengeList = this.subscribedDomainChallengeList.filter( cha =>
-  //       cha.challengeName.toLocaleLowerCase().includes(this.queries.query.toLocaleLowerCase())
-  //     );
-  //   }
-  // }
 
   searchClick():void {
     // this.queries.error = "";
