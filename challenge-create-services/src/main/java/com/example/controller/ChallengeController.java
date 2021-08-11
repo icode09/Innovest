@@ -4,12 +4,7 @@ import java.util.Collection;
 
 import com.example.service.RabbitMQSender;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.model.Challenge;
 import com.example.service.ChallengeService;
@@ -42,5 +37,10 @@ public class ChallengeController {
     public Collection<Challenge> getAll() {
          return challengeService.getAllChallenges();
     }
-    
+
+	@PutMapping(value = "/updateviews/{id}")
+	public void updateViews(@PathVariable String id){
+		challengeService.updateViews(id);
+	}
+
 }
