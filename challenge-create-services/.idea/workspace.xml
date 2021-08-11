@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0ede2089-e0a0-47de-8643-13edc2d17cd6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/ChallengeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/ChallengeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapp/src/app/challenge-list/challenge-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../webapp/src/app/challenge-list/challenge-list.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
