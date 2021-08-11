@@ -17,7 +17,7 @@
 	</mat-chip>
 </mat-chip-list>
 <!-- end of domain chips -->
-<div style="text-align: center; align-content: center; padding-top: 15px;"> <h2> {{queries.error}}</h2></div>
+<div *ngIf="subscribedDomainChallengeList.length==0" style="text-align: center; align-content: center; padding-top: 15px;"> <h2> No Results Found</h2></div>
 
 <div class="challenges" *ngFor="let challenge of subscribedDomainChallengeList">
     <a type="button" (click)="viewChallenge(challenge)">

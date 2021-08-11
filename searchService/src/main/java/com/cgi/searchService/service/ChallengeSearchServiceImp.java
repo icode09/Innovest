@@ -58,6 +58,11 @@ public class ChallengeSearchServiceImp implements ChallengeSearchService {
 	}
 
 	@Override
+	public void DeleteAll() {
+		repo.deleteAll();
+	}
+
+	@Override
 	public Iterable<ChallengeDoc> findAll() {
 		return repo.findAll();
 	}

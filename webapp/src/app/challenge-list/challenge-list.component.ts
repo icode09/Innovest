@@ -47,6 +47,7 @@ export class ChallengeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.url = this.router.url.split('/').pop() || '';
+    // this.queries.error = "";
     console.log("Inside ngOnInit");
     this.getChallengeListFromServer();
 
@@ -185,14 +186,14 @@ export class ChallengeListComponent implements OnInit {
   // }
 
   searchClick():void {
-    this.queries.error = "";
+    // this.queries.error = "";
     if(this.queries.query == ""){
       this.ngOnInit();
     }else{
       this.searchService.get(this.queries.query).subscribe( arr => {
         this.searchArr = arr;
         if(arr.length == 0) {
-          this.queries.error = "No Results Found";
+          // this.queries.error = "No Results Found";
           this.subscribedDomainChallengeList = [];
         } else {
         console.log(arr);

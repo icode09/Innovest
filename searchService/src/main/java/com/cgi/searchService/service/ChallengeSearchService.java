@@ -14,6 +14,8 @@ public interface ChallengeSearchService {
 
 	public void DeleteById (String id);
 
+	public void DeleteAll();
+
 	Iterable<ChallengeDoc> findAll();
 
 	public Iterable<ChallengeDoc> findChallenge(String text);
