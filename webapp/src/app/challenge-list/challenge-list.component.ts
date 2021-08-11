@@ -41,7 +41,7 @@ export class ChallengeListComponent implements OnInit {
   subscribedDomainChallengeList: Challenge[] = [];  // user subcribed domain only challenges in challenge service
 
   url:string = '';
-  a:string[]=[];
+  searchDomainChips:string[]=[];
   
   constructor(private router: Router, private searchService: SearchService, private http: HttpClient) {}
 
@@ -204,24 +204,6 @@ export class ChallengeListComponent implements OnInit {
   }
 
   update_subscribedDomainChallengeList() {
-    // console.log("chipsControl:", this.chipsControl);
-    // console.log("challengeList:", this.challengeList);
-    // console.log("subscribedDomainChallengeList:", this.subscribedDomainChallengeList);
-    // console.log("user.domain:", this.user.domain);
-    // console.log("selectedChips:", this.selectedChips);
-    // console.log("ch[1].domain:", this.challengeList[1].domain);
-    // console.log("selectedChips[0]:", this.selectedChips[0]);
-    // console.log("challengeList[1].domain[2]:", this.challengeList[1].domain[2]);
-    // console.log(this.selectedChips[0] === this.challengeList[1].domain[2]);
-    // console.log(this.challengeList[0].domain.some( d => this.selectedChips.includes(d)));
-    // console.log(this.challengeList[1].domain.some( d => this.selectedChips.includes(d)));
-    // console.log(this.challengeList[2].domain.some( d => this.selectedChips.includes(d)));
-    
-    // this.subscribedDomainChallengeList = this.challengeList.filter( cha =>
-    //   // cha.domain === this.user.domain
-    //   // cha.domain.filter( d => this.user.domain.includes(d));
-    //   cha.domain.some( d => this.selectedChips.includes("All") ? this.user.domain.includes(d) : this.selectedChips.includes(d) )
-    // );
     if(this.url == 'find') {
       this.subscribedDomainChallengeList = this.challengeList.filter( cha =>
         // cha.domain.filter( d => this.user.domain.includes(d));
@@ -239,6 +221,7 @@ export class ChallengeListComponent implements OnInit {
     console.log("2.challengeList:",this.challengeList);
     console.log("2.subscribedDomainChallengeList:",this.subscribedDomainChallengeList);
   }
+
   onSelectionChangeAllChip(allChip: any){
     this.chipsValue$.subscribe((selected) => {
       let selectedChips = selected.map((x: string) => x.trim());
@@ -247,8 +230,8 @@ export class ChallengeListComponent implements OnInit {
       }
     });
   }
-  onSelectionChange(chip: any,allChip: any){
 
+  onSelectionChange(chip: any,allChip: any){
     console.log("onSelectionChange: ",this.selectedChips,this.chipsControl.value);
     // this.a = this.chipsControl.value.map((x: string) => x.trim());
     if(chip.selected){
@@ -262,20 +245,9 @@ export class ChallengeListComponent implements OnInit {
       });
     }
     this.chipsValue$.subscribe((selected) =>
-      this.a = selected.map((x: string) => x.trim())
+      this.searchDomainChips = selected.map((x: string) => x.trim())
     );
     console.log("~onSelectionChange: ",this.selectedChips,this.chipsControl.value);
-  }
-  // onSelectionChangeListDomain(chip: any,allChip: any,domain:string){
-  //   console.log("onSelectionChangeListDomain",domain,chip.selected);
-  //   let selectedChips = this.chipsControl.value.map((x: string) => x.trim());
-  //   console.log("~onSelectionChangeListDomain",selectedChips,domain,selectedChips.includes(domain),chip.selected);
-  //   if(selectedChips.includes(domain)){
-  //     chip.select();
-  //   }
-  // }
-  hello(domain:any){
-    console.log("hello:",this.a,domain,this.a.includes(domain));
   }
 
 }
