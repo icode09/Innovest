@@ -184,19 +184,21 @@ export class ChallengeListComponent implements OnInit {
         if(arr.length == 0) {
           // this.queries.error = "No Results Found";
           this.subscribedDomainChallengeList = [];
-        } else {
-        console.log(arr);
-        this.subscribedDomainChallengeList = arr;         // assigning search result to chall list
-        if(this.url == 'find') {
-          this.subscribedDomainChallengeList = this.subscribedDomainChallengeList.filter( cha =>
-            cha.challengerName != localStorage.getItem("currentUser")
-          );
-        }
-        else {
-          this.subscribedDomainChallengeList = this.subscribedDomainChallengeList.filter( cha =>
-            cha.challengerName == localStorage.getItem("currentUser")
-          );
-        }
+        }else {
+          console.log(arr);
+          this.subscribedDomainChallengeList = arr;         // assigning search result to chall list
+
+          /* filtering ch list for innovator and challenger*/
+          if(this.url == 'find') {
+            this.subscribedDomainChallengeList = this.subscribedDomainChallengeList.filter( cha =>
+              cha.challengerName != localStorage.getItem("currentUser")
+            );
+          }
+          else {
+            this.subscribedDomainChallengeList = this.subscribedDomainChallengeList.filter( cha =>
+              cha.challengerName == localStorage.getItem("currentUser")
+            );
+          }
         }
       });
     }
