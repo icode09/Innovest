@@ -47,7 +47,6 @@ export class ChallengeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.url = this.router.url.split('/').pop() || '';
-    // this.queries.error = "";
     console.log("Inside ngOnInit");
     this.getChallengeListFromServer();
 
@@ -68,14 +67,12 @@ export class ChallengeListComponent implements OnInit {
       this.challengeList = challenges;
       if(this.url == 'find') {
         this.subscribedDomainChallengeList = challenges.filter( cha =>
-          // cha.domain.filter( d => this.user.domain.includes(d));
           cha.domain.some( d => this.selectedChips.includes("All") ? this.user.domain.includes(d) : this.selectedChips.includes(d) )
           && cha.challengerName != localStorage.getItem("currentUser")
         );
       }
       else {
         this.subscribedDomainChallengeList = challenges.filter( cha =>
-          // cha.domain.filter( d => this.user.domain.includes(d));
           cha.challengerName == localStorage.getItem("currentUser") && 
           cha.domain.some( d => this.selectedChips.includes("All") ? this.user.domain.includes(d) : this.selectedChips.includes(d) )
         );
