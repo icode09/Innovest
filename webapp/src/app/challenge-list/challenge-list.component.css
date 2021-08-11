@@ -21,6 +21,9 @@
     height: 100%;
     box-shadow: 5px 5px 30px grey;
 }
+.card-title{
+    color: rgb(216, 33, 33);
+}
 .basicInfo{
     display: flex;
     flex-direction: row;

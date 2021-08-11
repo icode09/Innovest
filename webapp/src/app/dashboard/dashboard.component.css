@@ -1886,7 +1886,9 @@ display:block}
 	font-size:.75rem;
 	color:#fff;		/* feedback text color*/
 }
-@media (min-width:768px){.sidebar{width:14rem!important}.sidebar .nav-item .collapse{position:relative;
+@media (min-width:768px){
+	.sidebar{width:14rem!important}
+	.sidebar .nav-item .collapse{position:relative;
 left:0;
 z-index:1;
 top:0;
@@ -1898,8 +1900,12 @@ width:100%;
 text-align:left;
 padding:1rem;
 width:14rem}.sidebar .nav-item .nav-link i{font-size:.85rem;
-margin-right:.25rem}.sidebar .nav-item .nav-link span{font-size:.85rem;
-display:inline}.sidebar .nav-item .nav-link[data-toggle=collapse]::after{width:1rem;
+margin-right:.25rem}
+.sidebar .nav-item .nav-link span{
+	font-size:.90rem;		/* my challenges */
+	display:inline
+}
+.sidebar .nav-item .nav-link[data-toggle=collapse]::after{width:1rem;
 text-align:center;
 float:right;
 vertical-align:0;
