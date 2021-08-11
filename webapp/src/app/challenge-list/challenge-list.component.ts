@@ -164,7 +164,7 @@ export class ChallengeListComponent implements OnInit {
       JSON.stringify({
         challengeId: challenge.challengeId,
       }),]);
-    } else {
+    }else {
       this.updateChallengeViews(challenge);
       challenge.challengeImage = "https://assets.weforum.org/article/image/large_bg1B3jyBjInTSH2AjIgjgoER9PYwCN-BZ_BQhdeZ92s.jpg";
       this.router.navigate(['/challenge-desc', JSON.stringify(challenge)]);
