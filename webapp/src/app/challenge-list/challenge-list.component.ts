@@ -35,7 +35,7 @@ export class ChallengeListComponent implements OnInit {
   chipsControl = new FormControl('All');
   chipsValue$ = this.chipsControl.valueChanges;
 
-  queries = {query :''};
+  queries = {query :'', error:''};
   searchArr: object[] = [];
   challengeList: Challenge[] = [];             // all challenges in challenge service
   subscribedDomainChallengeList: Challenge[] = [];  // user subcribed domain only challenges in challenge service
@@ -173,29 +173,29 @@ export class ChallengeListComponent implements OnInit {
     }
   }
   
-  search(): void {
-    if(this.queries.query == "") {
-      this.searchService.getAll().subscribe( arr => {
-        this.searchArr = arr;
-      });
-      console.log(this.searchArr);
-    }
-    else {
-      this.searchService.get(this.queries.query).subscribe( arr => {
-        this.searchArr = arr;
-      });
-      console.log(this.searchArr);
-    }
-  }
-  mySearch(){
-    if(this.queries.query == "") {
-      this.ngOnInit();
-    }
-    else {
-      this.subscribedDomainChallengeList = this.subscribedDomainChallengeList.filter( cha =>
-        cha.challengeName.toLocaleLowerCase().includes(this.queries.query.toLocaleLowerCase())
-      );
-    }
+  // mySearch(){
+  //   if(this.queries.query == "") {
+  //     this.ngOnInit();
+  //   }
+  //   else {
+  //     this.subscribedDomainChallengeList = this.subscribedDomainChallengeList.filter( cha =>
+  //       cha.challengeName.toLocaleLowerCase().includes(this.queries.query.toLocaleLowerCase())
+  //     );
+  //   }
+  // }
+
+  searchClick():void {
+    this.queries.error = "";
+    this.searchService.get(this.queries.query).subscribe( arr => {
+      this.searchArr = arr;
+      if(arr.length == 0) {
+        this.queries.error = "No Results Found";
+        this.subscribedDomainChallengeList = [];
+      } else {
+      console.log(arr);
+      this.subscribedDomainChallengeList = arr;
+      }
+    });
   }
 
   update_subscribedDomainChallengeList() {

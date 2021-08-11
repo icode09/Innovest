@@ -1,8 +1,9 @@
 <div class="input-group" >
     <input type="search" class="form-control rounded"  placeholder="Search" aria-label="Search"
       aria-describedby="search-addon" [(ngModel)]="queries.query" />
-    <button type="button" class="btn btn-outline-primary" (click)="mySearch()">search</button>
+    <button type="button" class="btn btn-outline-primary" (click)="searchClick()">search</button>
 </div>
+
 <!-- domain chips -->
 <br>
 <mat-chip-list class="chipList" selectable multiple [formControl]="chipsControl">
@@ -16,6 +17,7 @@
 	</mat-chip>
 </mat-chip-list>
 <!-- end of domain chips -->
+<div style="text-align: center; align-content: center; padding-top: 15px;"> <h2> {{queries.error}}</h2></div>
 
 <div class="challenges" *ngFor="let challenge of subscribedDomainChallengeList">
     <a type="button" (click)="viewChallenge(challenge)">
