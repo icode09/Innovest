@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'solution-form/:chalDesc', component: SolutionFormComponent,canActivate: [AuthGuard] },
   { path: 'list-solutions/:identifier', component: ListSolutionsComponent,canActivate: [AuthGuard] },
   {
-    path: 'dashboard', component: DashboardComponent,
+    path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard],
     
     children: [
       { path: 'ch-list/:list', component: ChallengeListComponent },
