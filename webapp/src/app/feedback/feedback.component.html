@@ -18,7 +18,7 @@
                     <div class="myRightCtn">
                         <div class="box">
                             <header>Welcome!</header>
-                            <h2>See a Problem Around You ?</h2>
+                            <h2>Help us to improve!</h2>
                             <p>
                                 Don't Worry! We have got your back covered.
                                 Register to Innovest, post your problem. Thousands of Solvers will try to solve your
@@ -32,19 +32,19 @@
                 </div>
                 <div class="col-md-6">
                     <div class="myLeftCtn">
-                        <form class="myForm  text-center" (ngSubmit) = "sendFeedback()">
+                        <form class="myForm  text-center" #feedbackForm (ngSubmit) = "sendFeedback()">
                         <header>Help us to improve!</header>
                             <div class="form-group">
                                 <i class="fas fa-user"></i>
-                                <input type="text" class="myInput" placeholder="Your Name" required minlength="3"
-                                    maxlength="20" [(ngModel)] = "model.name"/>
+                                <input id="name" name="name" type="text" class="myInput" placeholder="Your Name" required minlength="3"
+                                    maxlength="20" [(ngModel)] = "model.name" #name="ngModel"/>
                             </div>
                             <div class="form-group">
                                 <i class="fas fa-envelope"></i>
-                                <input type="email" class="myInput" placeholder="Your E-mail" [(ngModel)] = "model.email"/>
+                                <input type="email" name="email" class="myInput" placeholder="Your E-mail" [(ngModel)] = "model.email" #email="ngModel"/>
                             </div>
                             <i class="fas fa-book"></i>
-                            <textarea type="text" class="myInput" cols="15" rows="5" placeholder="Write something.." [(ngModel)] = "model.subject"></textarea>
+                            <textarea type="text" class="myInput" name="subject" cols="15" rows="5" placeholder="Write something.." [(ngModel)] = "model.subject" #subject="ngModel"></textarea>
                             
                             <div class="form-group">
                                 <button class="btn btn-primary btn-block">Send</button>
