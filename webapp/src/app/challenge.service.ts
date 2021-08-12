@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class CreatingchallengeService {
+export class challengeService {
 
   _url = 'http://localhost:8080/innovest/challenge/create';
   constructor(private _http: HttpClient) { }
