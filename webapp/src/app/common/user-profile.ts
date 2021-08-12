@@ -1,7 +1,8 @@
 export class UserProfile {
     constructor(
-        public name : string,
+        public displayName : string,
         public username : string,
-        public domains : string[]
+        public domains : string[],
+        public bio : string
     ){}
 }
