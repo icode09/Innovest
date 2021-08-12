@@ -20,4 +20,8 @@ public interface ChallengeSearchService {
 
 	public Iterable<ChallengeDoc> findChallenge(String text);
 
+	Iterable<ChallengeDoc> findByChallengeName(String challengeName);
+
+	Iterable<ChallengeDoc> findByDomain(String domain);
+
 }

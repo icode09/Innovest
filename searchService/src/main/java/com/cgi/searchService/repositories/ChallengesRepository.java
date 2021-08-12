@@ -10,4 +10,7 @@ import com.cgi.searchService.document.ChallengeDoc;
 @Repository
 public interface ChallengesRepository extends ElasticsearchRepository<ChallengeDoc, String> {
 
+    Iterable<ChallengeDoc> findByChallengeName(String challengeName);
+
+    Iterable<ChallengeDoc> findByDomain(String domain);
 }
