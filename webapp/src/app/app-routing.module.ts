@@ -14,14 +14,16 @@ import { CreateChallengeComponent } from './create-challenge/create-challenge.co
 import {ListSolutionsComponent} from './list-solutions/list-solutions.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { SolutionDescComponent } from './solution-desc/solution-desc.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
-  { path: 'challenge-desc/:chalDesc', component: ChallengeDescComponent },
-  { path: 'solution-form/:chalDesc', component: SolutionFormComponent },
-  { path: 'list-solutions/:identifier', component: ListSolutionsComponent },
+  { path: 'challenge-desc/:chalDesc', component: ChallengeDescComponent,canActivate: [AuthGuard] },
+  { path: 'solution-form/:chalDesc', component: SolutionFormComponent,canActivate: [AuthGuard] },
+  { path: 'list-solutions/:identifier', component: ListSolutionsComponent,canActivate: [AuthGuard] },
   {
-    path: 'dashboard', component: DashboardComponent,
+    path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard],
+    
     children: [
       { path: 'ch-list/:list', component: ChallengeListComponent },
       { path: 'create-ch', component: CreateChallengeComponent },
@@ -32,7 +34,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'feedback', component: FeedbackComponent},
-  { path: 'solution-desc', component: SolutionDescComponent},
+  { path: 'solution-desc', component: SolutionDescComponent,canActivate: [AuthGuard]},
   { path: '**', component: PageNotFoundComponent },
 ];
 

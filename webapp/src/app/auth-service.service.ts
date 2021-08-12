@@ -12,6 +12,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class AuthServiceService {
+  isLogin = false;
   constructor(private http: HttpClient, private myroute: Router) {}
   login(data: any): Observable<any> {
     return this.http.post(AppConstants.login_API, data);
@@ -27,6 +28,11 @@ export class AuthServiceService {
     localStorage.setItem('mytoken', token);
     localStorage.setItem('currentUser', username);
     //sessionStorage.setItem("mytoken",token);
+  }
+  isLoggedIn() {
+    if (localStorage.getItem('mytoken')) this.isLogin = true;
+    else this.isLogin = false;
+    return this.isLogin;
   }
   opendashboard() {
     this.myroute.navigate(['dashboard']).then(() => {
