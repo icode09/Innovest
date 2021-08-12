@@ -43,7 +43,7 @@ import { SolutionDescComponent } from './solution-desc/solution-desc.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -89,7 +89,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
     MatSelectModule,
     ReactiveFormsModule,
     CommonModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatProgressBarModule
   ],
   providers: [SubmitSolutionService, SearchService],
   bootstrap: [AppComponent],

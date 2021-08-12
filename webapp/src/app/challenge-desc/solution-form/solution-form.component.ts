@@ -4,6 +4,8 @@ import { Solution } from '../../common/solution';
 import { SubmitSolutionService } from '../../submit-solution.service';
 import { AlertDialogComponent } from '../../alert-dialog/alert-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { UploadfileService } from 'src/app/uploadfile.service';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-solution-form',
@@ -16,11 +18,16 @@ export class SolutionFormComponent implements OnInit {
   public formData: any;
   errorMessage = '';
 
+
+  selectedFiles: any;
+  currentFileUpload: any;
+  progress: { percentage: number } = { percentage: 0 };
   constructor(
     private route: ActivatedRoute,
     private submitService: SubmitSolutionService,
     public dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private uploadService: UploadfileService
   ) {}
   ngOnInit(): void {
     let challenge = JSON.parse(
@@ -37,6 +44,23 @@ export class SolutionFormComponent implements OnInit {
       `${localStorage.getItem('currentUser')}`,
       'NotReviewed'
     );
+  }
+  selectFile(event:any) {
+    this.selectedFiles = event.target.files;
+  }
+
+  upload() {
+    this.progress.percentage = 0;
+
+    this.currentFileUpload = this.selectedFiles.item(0);
+    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress) {
+        this.progress.percentage = Math.round(100 * event.loaded / event.total);
+      } else if (event instanceof HttpResponse) {
+        console.log('File is uploaded!');
+      }
+    });
+    this.selectedFiles = undefined;
   }
 
   goBack() {
@@ -91,5 +115,6 @@ export class SolutionFormComponent implements OnInit {
       this.router.navigate(['/dashboard'])
     });
   }
+  
 }
 
