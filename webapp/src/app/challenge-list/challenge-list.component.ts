@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Challenge } from '../common/challenge';
+import { ChallengeService } from '../challenge.service';
 import { SearchService } from '../search.service';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
@@ -43,7 +44,7 @@ export class ChallengeListComponent implements OnInit {
   url:string = '';
   searchDomainChips:string[]=[];
   
-  constructor(private router: Router, private searchService: SearchService, private http: HttpClient) {}
+  constructor(private router: Router, private challengeService: ChallengeService, private searchService: SearchService, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.url = this.router.url.split('/').pop() || '';
@@ -63,7 +64,7 @@ export class ChallengeListComponent implements OnInit {
   }
 
   getChallengeListFromServer() {
-    this.getChallengeList().subscribe((challenges) => {
+    this.challengeService.getChallengeList().subscribe((challenges) => {
       this.challengeList = challenges;
       if(this.url == 'find') {
         this.subscribedDomainChallengeList = challenges.filter( cha =>
@@ -152,9 +153,6 @@ export class ChallengeListComponent implements OnInit {
     //     views: 147,
     //   }
     // ];
-  }
-  getChallengeList(): Observable<Challenge[]> {
-    return this.http.get<Challenge[]>("http://localhost:8080/innovest/challenge/getall");
   }
 
   viewChallenge(challenge: Challenge) {
