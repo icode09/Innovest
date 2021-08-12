@@ -24,4 +24,9 @@ export class ChallengeService {
   getChallengeList(): Observable<Challenge[]> {
     return this._http.get<Challenge[]>(this._url + "getall");
   }
+
+  updateViews(challenge:Challenge) : Observable<any> {
+    return this._http.put<any>(this._url + "updateviews/" + challenge.challengeId, challenge);
+  }
+  
 }
