@@ -174,7 +174,7 @@ export class ChallengeListComponent implements OnInit {
     if(this.queries.query == ""){
       this.ngOnInit();
     }else{
-      this.searchService.get(this.queries.query).subscribe( arr => {
+      this.searchService.searchByChallengeName(this.queries.query).subscribe( arr => {
         this.searchArr = arr;
         if(arr.length == 0) {
           // this.queries.error = "No Results Found";

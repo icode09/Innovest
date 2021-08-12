@@ -12,8 +12,12 @@ export class SearchService {
 
   constructor(private http: HttpClient) { }
 
-  get(query:String) : Observable<Challenge[]> {
+  searchByChallengeName(query:String) : Observable<Challenge[]> {
     return this.http.get<Challenge[]>(this.url + "search/" + query);
+  }
+
+  searchByDomain(query:String) : Observable<Challenge[]> {
+    return this.http.get<Challenge[]>(this.url + "findByDomain/" + query);
   }
 
   getAll() : Observable<Challenge[]> {
