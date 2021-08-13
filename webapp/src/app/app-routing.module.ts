@@ -34,11 +34,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'feedback', component: FeedbackComponent},
-<<<<<<< HEAD
   { path: 'solnDesc/:solution', component: SolutionDescComponent},
-=======
-  { path: 'solution-desc', component: SolutionDescComponent,canActivate: [AuthGuard]},
->>>>>>> 148dcc2bbbe8867a543e17443fed888fac114388
   { path: '**', component: PageNotFoundComponent },
 ];
 
@@ -47,3 +43,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
+//updates made in path: 'solnDesc/:solution', component: SolutionDescComponent
