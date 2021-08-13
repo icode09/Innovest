@@ -86,8 +86,8 @@
                                 <div class="form-group">
                                     <strong><label for="">Name : </label></strong>
                                     <input type="text" class="myInput" name="displayName" [(ngModel)]="form.displayName"
-                                        placeholder="Full Name" required minlength="3" maxlength="20"
-                                        #displayName="ngModel"  />
+                                        placeholder="Full Name"  minlength="3" maxlength="20"
+                                        #displayName="ngModel"  value="{{user.displayName}}"/>
                                     <div class="alert-danger" *ngIf="f.submitted && displayName.invalid">
                                         <div *ngIf="displayName.errors?.required">Display Name is required</div>
                                         <div *ngIf="displayName.errors?.minlength">Display Name must be at least 3
@@ -109,7 +109,7 @@
                                 <div class="form-group">
                                     <strong><label for="">Change Password : </label></strong>
                                     <input type="password" class="myInput" placeholder="Change Password" name="password"
-                                        [(ngModel)]="form.password" required minlength="6" #password="ngModel" />
+                                        [(ngModel)]="form.password"  minlength="6" #password="ngModel" />
                                     <div class="alert-danger" *ngIf="f.submitted && password.invalid">
                                         <div *ngIf="password.errors?.required">Password is required</div>
                                         <div *ngIf="password.errors?.minlength">Password must be at least 6 characters
@@ -119,7 +119,7 @@
                                 <div class="form-group">
                                     <strong><label for="">Confirm Password : </label></strong>
                                     <input type="password" placeholder="Confirm Password" class="myInput"
-                                        name="matchingPassword" [(ngModel)]="form.matchingPassword" required
+                                        name="matchingPassword" [(ngModel)]="form.matchingPassword" 
                                         minlength="6" #matchingPassword="ngModel" pattern="{{form.password}}" />
                                     <div class="alert-danger" *ngIf="f.submitted && matchingPassword.invalid">
                                         <div *ngIf="matchingPassword.errors?.required">Confirm Password is required

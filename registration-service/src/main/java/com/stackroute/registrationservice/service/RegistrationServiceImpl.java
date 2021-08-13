@@ -35,4 +35,15 @@ public class RegistrationServiceImpl implements RegistrationService{
         return registrationRepository.findByEmail(emailId).get(0);
     }
 
+    @Override
+    public User updateUser(User user) {
+        User user1 = registrationRepository.findByEmail(user.getEmail()).get(0);
+        user1.setBio(user.getBio());
+        user1.setDisplayName(user.getDisplayName());
+        user1.setDomain(user.getDomain());
+        user1.setPassword(user.getPassword());
+
+        return user1;
+    }
+
 }
