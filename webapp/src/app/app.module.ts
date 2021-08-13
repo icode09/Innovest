@@ -45,6 +45,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { SharingDataService } from './sharing-data.service';
 
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {ProgressBarModule} from "angular-progress-bar"
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     ReactiveFormsModule,
     CommonModule,
     MatButtonToggleModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    ProgressBarModule
   ],
   providers: [SubmitSolutionService, SearchService, SharingDataService],
   bootstrap: [AppComponent],
