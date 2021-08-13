@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CreatingchallengeService } from '../creatingchallenge.service';
+import { ChallengeService } from '../challenge.service';
 import {v4 as uuidv4} from 'uuid';
 import { FormBuilder, Validators } from '@angular/forms';
 import { StartEndDateValidator } from '../shared/OrderChecker.validator';
@@ -21,7 +21,7 @@ export class CreateChallengeComponent implements OnInit {
   }
   submitted = false;
 
-  constructor(private fb: FormBuilder, private  _createChallengeService: CreatingchallengeService, private router:Router){}
+  constructor(private fb: FormBuilder, private challengeService: ChallengeService, private router:Router){}
   
   createChallengeForm = this.fb.group({
     challengeId : [uuidv4()],
@@ -50,7 +50,7 @@ export class CreateChallengeComponent implements OnInit {
     const loggedInUser = localStorage.getItem('currentUser');
     this.createChallengeForm.value.challengerName = loggedInUser;
     console.log(this.createChallengeForm.value);
-    this._createChallengeService.createChallenge(this.createChallengeForm.value)
+    this.challengeService.createChallenge(this.createChallengeForm.value)
     .subscribe(
       response => console.log('Success!', response),
       error => console.log('Error!', error)

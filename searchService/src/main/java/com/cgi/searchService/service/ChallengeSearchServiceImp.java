@@ -99,4 +99,14 @@ public class ChallengeSearchServiceImp implements ChallengeSearchService {
 		return empty;
 	}
 
+	@Override
+	public Iterable<ChallengeDoc> findByChallengeName(String challengeName) {
+		return repo.findByChallengeName(challengeName);
+	}
+
+	@Override
+	public Iterable<ChallengeDoc> findByDomain(String domain) {
+		return repo.findByDomain(domain);
+	}
+
 }

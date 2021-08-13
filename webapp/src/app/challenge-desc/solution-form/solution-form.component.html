@@ -62,15 +62,17 @@
           placeholder="Code Url"
         />
       </mat-form-field>
-      <input
-        [(ngModel)]="formData.documentUrl"
-        name="documentUrl"
-        style="margin-bottom: 20px; background-color: primary"
-        class="ng-hide"
-        id="input-file-id"
-        multiple
-        type="file"
-      />
+      <div *ngIf="currentFileUpload > 0" class="progress">
+    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+      aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+      {{progress.percentage}}%</div>
+  </div>
+  
+      <label class="btn btn-default">
+        <input type="file" (change)="selectFile($event)">
+      
+      <button  mat-raised-button color="primary" type="button" style="width:90px;height:27px;" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+    </label>
       <button (click)="submitSolution()" mat-raised-button color="primary">
         Submit
       </button>

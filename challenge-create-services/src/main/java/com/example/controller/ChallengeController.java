@@ -47,6 +47,7 @@ public class ChallengeController {
     public Collection<Challenge> getAll() {
          return challengeService.getAllChallenges();
     }
+<<<<<<< HEAD
     @GetMapping(value = "/challenge/{id}")
     public ResponseEntity<Challenge> getById(@PathVariable String id){
     	return new ResponseEntity<Challenge>(challengeService.findChallengeById(id), HttpStatus.OK);
@@ -55,4 +56,12 @@ public class ChallengeController {
    
     
     
+=======
+
+	@PutMapping(value = "/updateviews/{id}")
+	public void updateViews(@PathVariable String id, @RequestBody Challenge ch){
+		challengeService.updateViews(id);
+	}
+
+>>>>>>> 148dcc2bbbe8867a543e17443fed888fac114388
 }

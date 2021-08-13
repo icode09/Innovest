@@ -1,2 +1,180 @@
-<p>UserName : {{username}}</p>
-<p>User Details : {{user}}</p>
+<div class="container">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
+                                class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <h2>{{user.displayName}}</h2>
+                                <p class="text-secondary mb-1">{{user.email}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf = "!edit" class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row text-right" >
+                            <div class="actions">
+                                <button type="button" class="btn btn-outline-primary" *ngIf="edit"
+                                    (click)="goBack()">Back</button>
+                                <button type="button" class="btn btn-outline-primary" *ngIf="!edit"
+                                    (click)="editProfile()">Edit</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h4 class="mb-0">Full Name</h4>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{user.displayName}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h4 class="mb-0">Email</h4>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{user.email}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h4 class="mb-0">Interested Domains</h4>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <ul>
+                                    <li *ngFor="let d of user.domain">
+                                        {{d}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h4 class="mb-0">Bio</h4>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{user.bio}}
+                            </div>
+                        </div>
+                        <hr>
+                        
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="edit" class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="row text-right" >
+                                <div class="actions">
+                                    <button type="button" class="btn btn-outline-primary" *ngIf="edit"
+                                        (click)="goBack()">Back</button>
+                                    
+                                </div>
+                            </div>
+                            <form class="myForm  text-left" *ngIf="!isSuccessful" name="form"
+                                (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                                <div class="form-group">
+                                    <strong><label for="">Name : </label></strong>
+                                    <input type="text" class="myInput" name="displayName" [(ngModel)]="form.displayName"
+                                        placeholder="Full Name" required minlength="3" maxlength="20"
+                                        #displayName="ngModel"  />
+                                    <div class="alert-danger" *ngIf="f.submitted && displayName.invalid">
+                                        <div *ngIf="displayName.errors?.required">Display Name is required</div>
+                                        <div *ngIf="displayName.errors?.minlength">Display Name must be at least 3
+                                            characters</div>
+                                        <div *ngIf="displayName.errors?.maxlength">Display Name must be at most 20
+                                            characters</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <strong><label for="">Email : </label></strong>
+                                    <input type="email" class="myInput" placeholder="{{user.email}}" name="email"
+                                        [(ngModel)]="form.email"  email #email="ngModel" disabled/>
+                                    <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+                                        <div *ngIf="email.errors?.required">Email is required</div>
+                                        <div *ngIf="email.errors?.email">Email must be a valid email address</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <strong><label for="">Change Password : </label></strong>
+                                    <input type="password" class="myInput" placeholder="Change Password" name="password"
+                                        [(ngModel)]="form.password" required minlength="6" #password="ngModel" />
+                                    <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+                                        <div *ngIf="password.errors?.required">Password is required</div>
+                                        <div *ngIf="password.errors?.minlength">Password must be at least 6 characters
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <strong><label for="">Confirm Password : </label></strong>
+                                    <input type="password" placeholder="Confirm Password" class="myInput"
+                                        name="matchingPassword" [(ngModel)]="form.matchingPassword" required
+                                        minlength="6" #matchingPassword="ngModel" pattern="{{form.password}}" />
+                                    <div class="alert-danger" *ngIf="f.submitted && matchingPassword.invalid">
+                                        <div *ngIf="matchingPassword.errors?.required">Confirm Password is required
+                                        </div>
+                                        <div *ngIf="matchingPassword.errors?.minlength">Confirm Password must be at
+                                            least 6
+                                            characters
+                                        </div>
+                                        <div *ngIf="f.submitted && matchingPassword.errors?.pattern">Password and
+                                            Confirm
+                                            Password is not Matching.</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="multi-select-dropdown">
+                                        <mat-form-field style="width:700px;text-align: center;padding-left: 100px;" >
+                                            <div class="myDropdown">
+                                                <strong><mat-label>Domains</mat-label></strong>
+                                                <mat-select multiple name="domain" [(ngModel)]="form.domain"
+                                                    #domain="ngModel">
+                                                    <mat-select-trigger>
+                                                        {{domain.value ? domain.value[0] : ''}}
+                                                        <span *ngIf="domain.value?.length > 1" class="myInput">
+                                                            (+{{domain.value.length - 1}} {{domain.value?.length === 2 ?
+                                                            'other' : 'others'}})
+                                                        </span>
+                                                    </mat-select-trigger>
+                                                    <mat-option *ngFor="let d of domainList" [value]="d">
+                                                        {{d}}</mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <strong><label for="">Bio : </label></strong>
+                                    <textarea type="text" class="myInput" name="bio" [(ngModel)]="form.bio"
+                                        placeholder="Tell Us About You"  maxlength="100"
+                                        #displayName="ngModel" rows="4" #bio = "ngModel"></textarea>
+                                    <div class="alert-danger" *ngIf="f.submitted && bio.invalid">
+                                        <div *ngIf="bio.errors?.maxlength">Bio Name must be at most 100
+                                            characters</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-block">Save</button>
+                                </div>
+                                <div class="alert alert-success" *ngIf="f.submitted && isSuccessful">
+                                    <strong>Successfully Saved!</strong>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

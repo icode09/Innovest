@@ -45,6 +45,14 @@ public class SearchController {
 	public Iterable<ChallengeDoc> getAll() {
 		return service.findAll();
 	}
-	
 
+	@GetMapping("/findByChallengeName/{challengeName}")
+	public Iterable<ChallengeDoc> findByChallengeName(@PathVariable String challengeName) {
+		return service.findByChallengeName(challengeName);
+	}
+
+	@GetMapping("/findByDomain/{domain}")
+	public Iterable<ChallengeDoc> findByDomain(@PathVariable String domain) {
+		return service.findByDomain(domain);
+	}
 }

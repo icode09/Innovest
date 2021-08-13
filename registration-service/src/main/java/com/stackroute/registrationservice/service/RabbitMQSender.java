@@ -1,4 +1,6 @@
+
 package com.stackroute.registrationservice.service;
+
 
 import com.stackroute.registrationservice.model.User;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

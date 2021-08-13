@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="0ede2089-e0a0-47de-8643-13edc2d17cd6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../authenticationService/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../authenticationService/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -16,6 +17,9 @@
       <change beforePath="$PROJECT_DIR$/../webapp/src/app/list-solutions/list-solutions.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../webapp/src/app/list-solutions/list-solutions.component.html" afterDir="false" />
 
     </list>
+=======
+    <list default="true" id="0ede2089-e0a0-47de-8643-13edc2d17cd6" name="Default Changelist" comment="" />
+>>>>>>> 148dcc2bbbe8867a543e17443fed888fac114388
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

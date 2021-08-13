@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Challenge } from '../common/challenge';
+import { ChallengeService } from '../challenge.service';
 import { SearchService } from '../search.service';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
@@ -43,7 +44,7 @@ export class ChallengeListComponent implements OnInit {
   url:string = '';
   searchDomainChips:string[]=[];
   
-  constructor(private router: Router, private searchService: SearchService, private http: HttpClient) {}
+  constructor(private router: Router, private challengeService: ChallengeService, private searchService: SearchService, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.url = this.router.url.split('/').pop() || '';
@@ -63,7 +64,7 @@ export class ChallengeListComponent implements OnInit {
   }
 
   getChallengeListFromServer() {
-    this.getChallengeList().subscribe((challenges) => {
+    this.challengeService.getChallengeList().subscribe((challenges) => {
       this.challengeList = challenges;
       if(this.url == 'find') {
         this.subscribedDomainChallengeList = challenges.filter( cha =>
@@ -153,20 +154,17 @@ export class ChallengeListComponent implements OnInit {
     //   }
     // ];
   }
-  getChallengeList(): Observable<Challenge[]> {
-    return this.http.get<Challenge[]>("http://localhost:8080/innovest/challenge/getall");
-  }
 
   viewChallenge(challenge: Challenge) {
-    challenge.challengeImage = "https://assets.weforum.org/article/image/large_bg1B3jyBjInTSH2AjIgjgoER9PYwCN-BZ_BQhdeZ92s.jpg";
-
     const loggedInUser = localStorage.getItem("currentUser");
     if (challenge.challengerName == loggedInUser) {
       this.router.navigate(['/list-solutions',
       JSON.stringify({
         challengeId: challenge.challengeId,
       }),]);
-    } else {
+    }else {
+      this.challengeService.updateViews(challenge).subscribe();
+      challenge.challengeImage = "https://assets.weforum.org/article/image/large_bg1B3jyBjInTSH2AjIgjgoER9PYwCN-BZ_BQhdeZ92s.jpg";
       this.router.navigate(['/challenge-desc', JSON.stringify(challenge)]);
     }
   }
@@ -176,24 +174,26 @@ export class ChallengeListComponent implements OnInit {
     if(this.queries.query == ""){
       this.ngOnInit();
     }else{
-      this.searchService.get(this.queries.query).subscribe( arr => {
+      this.searchService.searchByChallengeName(this.queries.query).subscribe( arr => {
         this.searchArr = arr;
         if(arr.length == 0) {
           // this.queries.error = "No Results Found";
           this.subscribedDomainChallengeList = [];
-        } else {
-        console.log(arr);
-        this.subscribedDomainChallengeList = arr;         // assigning search result to chall list
-        if(this.url == 'find') {
-          this.subscribedDomainChallengeList = this.subscribedDomainChallengeList.filter( cha =>
-            cha.challengerName != localStorage.getItem("currentUser")
-          );
-        }
-        else {
-          this.subscribedDomainChallengeList = this.subscribedDomainChallengeList.filter( cha =>
-            cha.challengerName == localStorage.getItem("currentUser")
-          );
-        }
+        }else {
+          console.log(arr);
+          this.subscribedDomainChallengeList = arr;         // assigning search result to chall list
+
+          /* filtering ch list for innovator and challenger*/
+          if(this.url == 'find') {
+            this.subscribedDomainChallengeList = this.subscribedDomainChallengeList.filter( cha =>
+              cha.challengerName != localStorage.getItem("currentUser")
+            );
+          }
+          else {
+            this.subscribedDomainChallengeList = this.subscribedDomainChallengeList.filter( cha =>
+              cha.challengerName == localStorage.getItem("currentUser")
+            );
+          }
         }
       });
     }

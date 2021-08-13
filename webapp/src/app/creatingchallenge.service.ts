@@ -12,11 +12,11 @@ export class CreatingchallengeService {
   _url = 'http://localhost:8080/innovest/challenge/create';
   constructor(private _http: HttpClient) { }
 
-  createChallenge(cd : any){
+  createChallenge(cd: any) {
     console.log("challenge details in dervice:", cd);
     return this._http.post<any>(this._url, cd, {
-      headers : new HttpHeaders({
-        'Content-Type' : 'application/json'
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
       })
     });
   }
@@ -36,6 +36,6 @@ export class CreatingchallengeService {
       return throwError(error);
     }
   }
-
+//comment
 
 }

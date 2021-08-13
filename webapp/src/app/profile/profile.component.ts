@@ -1,6 +1,4 @@
-import { UserProfile } from './../common/user-profile';
 import { GetProfileService } from './../get-profile.service';
-import { HttpClient } from '@angular/common/http';
 import { AuthServiceService } from './../auth-service.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,6 +11,13 @@ export class ProfileComponent implements OnInit {
 
   username : any;
   user : any;
+  edit: boolean = false;
+  form: any = {};
+  isSuccessful = false;
+  errorMessage = '';
+  domainList : string[] =["Business & Entepreneurship","Chemistry","Computer/Info.technology","Engineering/Design","Environment","Food/Agriculture","Life Sciencess","Math/Statistics","Physical Sciences","Request for Partners and Suppliers","Social innovation"]
+
+  
   
   constructor(private auth : AuthServiceService,private getProfile : GetProfileService) { }
 
@@ -24,4 +29,25 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  editProfile() {
+    this.edit = true;
+}
+goBack() {
+  this.edit = false;
+}
+onSubmit(){
+  if(this.form.invalid){
+    return;
+  }
+  console.log("form details:", this.form);
+  this.auth.register(this.form).subscribe(
+    (data) => {
+      this.isSuccessful = true;
+    },
+    err => {
+      console.log("error:",err);
+      this.errorMessage = err.error;
+    }
+  );
+}
 }

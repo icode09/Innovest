@@ -19,8 +19,11 @@ public class FeedbackServiceImp implements FeedbackService {
 
 	@Override
 	public Feedback saveFeedback(Feedback feedback) {
-		Feedback savedFeedback = new Feedback();
-		savedFeedback = feedbackRepository.save(feedback);
-		return savedFeedback;
+		return feedbackRepository.save(feedback);
 	}
+	
+	@Override
+    public Feedback getUser(String emailId) {
+        return feedbackRepository.findByEmail(emailId).get(0);
+    }
 }

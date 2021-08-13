@@ -8,13 +8,19 @@ import { Challenge } from './common/challenge';
 })
 export class SearchService {
 
+  url = 'http://localhost:8105/api/challenge/';
+
   constructor(private http: HttpClient) { }
 
-  get(query:String) : Observable<Challenge[]> {
-    return this.http.get<Challenge[]>("http://localhost:8105/api/challenge/search/" + query);
+  searchByChallengeName(query:String) : Observable<Challenge[]> {
+    return this.http.get<Challenge[]>(this.url + "search/" + query);
+  }
+
+  searchByDomain(query:String) : Observable<Challenge[]> {
+    return this.http.get<Challenge[]>(this.url + "findByDomain/" + query);
   }
 
   getAll() : Observable<Challenge[]> {
-    return this.http.get<Challenge[]>("http://localhost:8105/api/challenge/getAll");
+    return this.http.get<Challenge[]>(this.url + "getAll");
   }
 }

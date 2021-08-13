@@ -44,7 +44,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { SharingDataService } from './sharing-data.service';
 
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -90,7 +90,8 @@ import { SharingDataService } from './sharing-data.service';
     MatSelectModule,
     ReactiveFormsModule,
     CommonModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatProgressBarModule
   ],
   providers: [SubmitSolutionService, SearchService, SharingDataService],
   bootstrap: [AppComponent],
