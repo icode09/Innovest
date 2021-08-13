@@ -3,6 +3,7 @@ import { SharedDataService } from '../shared-data.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Challenge } from '../common/challenge';
+
 ////https://stackoverflow.com/questions/43159090/how-can-i-detect-service-variable-change-when-updated-from-another-component
 export interface Domain {
   name: string;

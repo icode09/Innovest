@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'feedback', component: FeedbackComponent},
-  { path: 'solution-desc', component: SolutionDescComponent},
+  { path: 'solnDesc/:solution', component: SolutionDescComponent},
   { path: '**', component: PageNotFoundComponent },
 ];
 
@@ -41,4 +41,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-//

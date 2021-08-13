@@ -1,18 +1,22 @@
-<mat-card style="height:fit-content; margin: 30px;" color="accent">
-    <mat-card-title  align="center">
-      Solution Title
+
+<mat-card style="height:fit-content; margin: 100px;" color="accent">
+    <mat-card-title  align="center" style="margin: 20px;">
+    {{solution.solutionTitle}}
     </mat-card-title>
-    <mat-card-subtitle>Challenge Name: xxx</mat-card-subtitle>
-    <mat-card-subtitle>Solution Status: xxx</mat-card-subtitle>
+    <mat-card-subtitle>Solution URL: {{solution.codeUrl}}</mat-card-subtitle>
+    <mat-card-subtitle>Solution Status: {{solution.solutionStatus}}</mat-card-subtitle>
+    <mat-card-subtitle>Challenge Name: {{challenge.challengeName}}</mat-card-subtitle>
+    <mat-card-subtitle>Challenger Name: {{challenge.challengerName}} </mat-card-subtitle>
+    <p>logged In user :{{loggedInUser}} </p>
     <img mat-card-image src="https://cdn.pixabay.com/photo/2018/09/22/10/58/business-3694993_960_720.jpg" alt="Cover Photo">
     <mat-card-content>
       Solution Description =>
-      <div class="sol-desc">
-        xxx Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi, voluptates quas, animi earum quibusdam delectus corporis esse, alias explicabo ab amet quasi nam perferendis consectetur inventore sint voluptas quos sapiente reprehenderit! Consequuntur, ipsam tenetur.
-      </div>
+      <div class="sol-desc">  {{solution.solutionDescription}}  </div>
     </mat-card-content>
     <mat-card-actions align="end">
-      <button mat-raised-button>Edit</button>
+      <button hidden="!showUpdateButton" mat-raised-button>Edit Solution</button>
+      <button [hidden]="!(challenge.challengerName == loggedInUser)" mat-raised-button>Give a feedback</button>
+
     </mat-card-actions>
   </mat-card>
   <!---->

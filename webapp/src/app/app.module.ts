@@ -42,6 +42,7 @@ import { CommonModule } from '@angular/common';
 import { SolutionDescComponent } from './solution-desc/solution-desc.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { SharingDataService } from './sharing-data.service';
 
 
 
@@ -91,7 +92,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
     CommonModule,
     MatButtonToggleModule
   ],
-  providers: [SubmitSolutionService, SearchService],
+  providers: [SubmitSolutionService, SearchService, SharingDataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

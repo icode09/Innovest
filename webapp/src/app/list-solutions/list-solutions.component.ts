@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { Solution } from '../common/solution';
 import { GetSolutionsService } from '../get-solutions.service';
+import { SharingDataService } from '../sharing-data.service';
 import { SubmitSolutionService } from '../submit-solution.service';
 
 @Component({
@@ -14,7 +15,9 @@ export class ListSolutionsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private getSolutionsService: GetSolutionsService,
-    private submitSolutionService: SubmitSolutionService
+    private submitSolutionService: SubmitSolutionService,
+    private router: Router,
+    private _sharingData: SharingDataService
   ) {}
   public solutions: Solution[] | undefined;
   ngOnInit(): void {
@@ -38,6 +41,8 @@ export class ListSolutionsComponent implements OnInit {
           console.log(result);
         });
     }
+    
+    
   }
 
   acceptSolution(solutionId: string, solutionStatus: string) {
@@ -47,4 +52,9 @@ export class ListSolutionsComponent implements OnInit {
       this.ngOnInit();
     });
   }
+  onSelect(solution : Solution){
+    this.router.navigate(['solnDesc', JSON.stringify(solution)]);
+    this._sharingData.setChallengeId(solution.challengeId);
+  }
+  
 }
