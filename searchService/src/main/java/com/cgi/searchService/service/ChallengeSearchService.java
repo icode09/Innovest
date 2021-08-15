@@ -24,4 +24,6 @@ public interface ChallengeSearchService {
 
 	Iterable<ChallengeDoc> findByDomain(String domain);
 
+	Iterable<ChallengeDoc> findByDomainList(String[] domainList);
+
 }

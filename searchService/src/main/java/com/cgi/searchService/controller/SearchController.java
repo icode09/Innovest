@@ -17,7 +17,7 @@ public class SearchController {
 	private ChallengeSearchService service;
 	
 	
-	@PostMapping
+	@PostMapping("/add")
 	public void add(@RequestBody ChallengeDoc challenge) {
 		service.addChallenge(challenge);
 	}
@@ -55,4 +55,9 @@ public class SearchController {
 	public Iterable<ChallengeDoc> findByDomain(@PathVariable String domain) {
 		return service.findByDomain(domain);
 	}
+	@GetMapping("/findByDomainList")
+	public Iterable<ChallengeDoc> findByDomainList(@RequestBody String[] domainList) {
+		return service.findByDomainList(domainList);
+	}
+
 }

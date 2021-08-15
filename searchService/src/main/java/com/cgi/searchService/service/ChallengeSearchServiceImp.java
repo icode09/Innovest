@@ -17,9 +17,9 @@ import com.cgi.searchService.document.ChallengeDoc;
 import com.cgi.searchService.repositories.ChallengesRepository;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+
 @Service
 public class ChallengeSearchServiceImp implements ChallengeSearchService {
 
@@ -107,6 +107,17 @@ public class ChallengeSearchServiceImp implements ChallengeSearchService {
 	@Override
 	public Iterable<ChallengeDoc> findByDomain(String domain) {
 		return repo.findByDomain(domain);
+	}
+
+	@Override
+	public Iterable<ChallengeDoc> findByDomainList(String[] domainList) {
+		Collection<ChallengeDoc> list = new ArrayList<>();
+		for(String domain:domainList){
+			list.addAll((Collection<ChallengeDoc>)repo.findByDomain(domain));
+		}
+		Set<String> challengeIdList = new HashSet<>();
+		list.removeIf(ch -> !challengeIdList.add(ch.getChallengeId()));
+		return list;
 	}
 
 }
