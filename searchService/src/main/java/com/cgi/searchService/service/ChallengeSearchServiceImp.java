@@ -11,6 +11,7 @@ import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.cgi.searchService.document.ChallengeDoc;
@@ -117,6 +118,22 @@ public class ChallengeSearchServiceImp implements ChallengeSearchService {
 		}
 		Set<String> challengeIdList = new HashSet<>();
 		list.removeIf(ch -> !challengeIdList.add(ch.getChallengeId()));
+		return list;
+	}
+
+	@Override
+	public ChallengeDoc findTopByOrderByViews() {
+		return repo.findTopByOrderByViewsDesc();
+	}
+
+	@Override
+	public Iterable<ChallengeDoc> findByViewsLessThanEqual() {
+		List<ChallengeDoc> list = (List<ChallengeDoc>) findChallenge("");
+		list = list.stream()
+				.sorted(Comparator.comparing(ChallengeDoc::getViews,Comparator.reverseOrder()))
+				.limit(2)
+				.collect(Collectors.toList());
+//		list.sort(Comparator.comparing(ChallengeDoc::getViews,Comparator.reverseOrder()));
 		return list;
 	}
 
