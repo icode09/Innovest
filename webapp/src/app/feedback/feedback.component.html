@@ -17,14 +17,10 @@
                 <div class="col-md-6">
                     <div class="myRightCtn">
                         <div class="box">
-                            <header>Welcome!</header>
-                            <h2>Help us to improve!</h2>
+                            <h2 style="font-size: 30px; color: wheat;">Help us to improve!</h2>
                             <p>
-                                Don't Worry! We have got your back covered.
-                                Register to Innovest, post your problem. Thousands of Solvers will try to solve your
-                                problem.
-                                <br><br>Or<br><br>
-                                Become a Solver and innovate your ideas to solve problems of others.
+                                We welcome your ideas, requests or comments about <i>INNOVEST</i>.
+                                We'll use them to improve our service.
                             </p>
                             <a href="#"><input type="button" class="butt_out" value="Learn More" /></a>
                         </div>
@@ -32,27 +28,72 @@
                 </div>
                 <div class="col-md-6">
                     <div class="myLeftCtn">
-                        <form class="myForm  text-center" #feedbackForm (ngSubmit) = "sendFeedback()">
-                        <header>Help us to improve!</header>
+                        <form 
+                        class="myForm  text-center" 
+                        *ngIf="!isSuccessful"
+                        #feedbackForm = "ngForm" novalidate
+                        (ngSubmit)="feedbackForm.form.valid && sendFeedback()">
+                            <header>Help us to improve!</header>
+                            <small class="px-3">Please let us know about your chat experience.</small>
+                            <div class="d-flex flex-row justify-content-center mt-2"> <img src="https://img.icons8.com/emoji/48/000000/angry-face-emoji--v2.png" /> <img src="https://img.icons8.com/fluent/48/000000/sad.png" /> <img src="https://img.icons8.com/color/48/000000/happy.png" /> <img src="https://img.icons8.com/emoji/48/000000/smiling-face.png" /> <img src="https://img.icons8.com/color/48/000000/lol.png" /> </div>
+            
                             <div class="form-group">
                                 <i class="fas fa-user"></i>
-                                <input id="name" name="name" type="text" class="myInput" placeholder="Your Name" required minlength="3"
-                                    maxlength="20" [(ngModel)] = "model.name" #name="ngModel"/>
+                                <input 
+                                id="name" 
+                                name="name" 
+                                type="text" 
+                                class="myInput" 
+                                placeholder="Your Name"
+                                required minlength="3" 
+                                maxlength="20" 
+                                [(ngModel)]="form.name" 
+                                #name="ngModel" />
+                                <div class="alert-danger" *ngIf="feedbackForm.submitted && name.invalid">
+                                    <div *ngIf="name.errors?.required">Name is required</div>
+                                </div>
                             </div>
+                            
                             <div class="form-group">
                                 <i class="fas fa-envelope"></i>
-                                <input type="email" name="email" class="myInput" placeholder="Your E-mail" [(ngModel)] = "model.email" #email="ngModel"/>
+                                <input 
+                                type="email" 
+                                name="email" 
+                                class="myInput" 
+                                placeholder="Your E-mail"
+                                [(ngModel)]="form.email" 
+                                #email="ngModel" />
+                                <div class="alert-danger" *ngIf="feedbackForm.submitted && email.invalid">
+                                    <div *ngIf="email.errors?.required">Email is required</div>
+                                </div>
                             </div>
-                            <i class="fas fa-book"></i>
-                            <textarea type="text" class="myInput" name="subject" cols="15" rows="5" placeholder="Write something.." [(ngModel)] = "model.subject" #subject="ngModel"></textarea>
                             
+                            <div class="form-group">
+                            <i class="fas fa-book" style="top: -105px;"></i>
+                            <textarea 
+                                type="text" 
+                                class="myInput" 
+                                name="subject" 
+                                cols="15" rows="5"
+                                placeholder="Write your message.." 
+                                [(ngModel)]="form.subject"
+                                #subject="ngModel">
+                            </textarea>
+                            <div class="alert-danger" *ngIf="feedbackForm.submitted && name.invalid">
+                                <div *ngIf="name.errors?.required">Write your message!</div>
+                            </div>
+                            </div>
+                            
+
                             <div class="form-group">
                                 <button class="btn btn-primary btn-block">Send</button>
                             </div>
                         </form>
+                        
+						<div class="alert alert-success" *ngIf="isSuccessful">Your message has been sent</div>
                     </div>
                 </div>
-               
+
             </div>
         </div>
     </div>
