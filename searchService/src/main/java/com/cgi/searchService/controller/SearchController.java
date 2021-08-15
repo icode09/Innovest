@@ -55,6 +55,7 @@ public class SearchController {
 	public Iterable<ChallengeDoc> findByDomain(@PathVariable String domain) {
 		return service.findByDomain(domain);
 	}
+	
 	@GetMapping("/findByDomainList")
 	public Iterable<ChallengeDoc> findByDomainList(@RequestParam String[] domainList) {
 		return service.findByDomainList(domainList);
