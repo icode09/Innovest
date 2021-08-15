@@ -15,5 +15,4 @@ public interface ChallengesRepository extends ElasticsearchRepository<ChallengeD
 
     Iterable<ChallengeDoc> findByDomain(String domain);
 
-    ChallengeDoc findTopByOrderByViewsDesc();
 }

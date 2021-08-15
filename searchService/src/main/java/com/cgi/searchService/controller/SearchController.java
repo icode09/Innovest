@@ -61,11 +61,6 @@ public class SearchController {
 		return service.findByDomainList(domainList);
 	}
 
-	@GetMapping("/findMostViewed")
-	public ChallengeDoc findTopByOrderByViews() {
-		return service.findTopByOrderByViews();
-	}
-
 	@GetMapping("/findTop/{limit}")					// most viewed challenges in dashboard
 	public Iterable<ChallengeDoc> findTopChallenges(@PathVariable Integer limit) {
 		return service.findTopChallenges(limit);

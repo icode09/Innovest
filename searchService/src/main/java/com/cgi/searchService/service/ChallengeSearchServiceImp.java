@@ -122,11 +122,6 @@ public class ChallengeSearchServiceImp implements ChallengeSearchService {
 	}
 
 	@Override
-	public ChallengeDoc findTopByOrderByViews() {
-		return repo.findTopByOrderByViewsDesc();
-	}
-
-	@Override
 	public Iterable<ChallengeDoc> findTopChallenges(Integer limit) {
 		List<ChallengeDoc> list = (List<ChallengeDoc>) findChallenge("");
 		list = list.stream()
