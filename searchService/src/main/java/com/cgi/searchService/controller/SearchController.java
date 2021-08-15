@@ -55,8 +55,8 @@ public class SearchController {
 	public Iterable<ChallengeDoc> findByDomain(@PathVariable String domain) {
 		return service.findByDomain(domain);
 	}
-	
-	@GetMapping("/findByDomainList")
+
+	@GetMapping("/findByDomainList")				// recommended challenges in dashboard
 	public Iterable<ChallengeDoc> findByDomainList(@RequestParam String[] domainList) {
 		return service.findByDomainList(domainList);
 	}
@@ -66,7 +66,7 @@ public class SearchController {
 		return service.findTopByOrderByViews();
 	}
 
-	@GetMapping("/findTop/{limit}")
+	@GetMapping("/findTop/{limit}")					// most viewed challenges in dashboard
 	public Iterable<ChallengeDoc> findTopChallenges(@PathVariable Integer limit) {
 		return service.findTopChallenges(limit);
 	}
