@@ -1,11 +1,15 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { Challenge } from '../common/challenge';
-import { ChallengeService } from '../challenge.service';
 import { SearchService } from '../search.service';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
+import { __await } from 'tslib';
+import { ChallengeService } from '../challenge.service';
+
+
+declare const annyang: any;
 
 export interface UserProfile {
   userId: number;
@@ -38,13 +42,14 @@ export class ChallengeListComponent implements OnInit {
 
   queries = {query :'', error:''};
   searchArr: object[] = [];
+  searchPlaceHolder: String = 'Search';
   challengeList: Challenge[] = [];             // all challenges in challenge service
   subscribedDomainChallengeList: Challenge[] = [];  // user subcribed domain only challenges in challenge service
 
   url:string = '';
   searchDomainChips:string[]=[];
   
-  constructor(private router: Router, private challengeService: ChallengeService, private searchService: SearchService, private http: HttpClient) {}
+  constructor(private router: Router, private challengeService: ChallengeService, private searchService: SearchService, private http: HttpClient, private ngZone: NgZone) {}
 
   ngOnInit(): void {
     this.url = this.router.url.split('/').pop() || '';
@@ -245,5 +250,100 @@ export class ChallengeListComponent implements OnInit {
     );
     console.log("~onSelectionChange: ",this.selectedChips,this.chipsControl.value);
   }
+
+
+
+
+  //Voice Recognition functions Start....................................................................................................
+  voiceActiveSectionDisabled: boolean = true;
+	voiceActiveSectionError: boolean = false;
+	voiceActiveSectionSuccess: boolean = false;
+	voiceActiveSectionListening: boolean = false;
+	voiceText: any;
+
+	initializeVoiceRecognitionCallback(): void {
+    this.searchPlaceHolder = 'Starting';
+		annyang.addCallback('error', (err: { error: string; }) => {
+      if(err.error === 'network'){
+        this.searchPlaceHolder = "No Internet Connection";
+        annyang.abort();
+        setTimeout(() => {
+          this.ngZone.run(() => this.voiceActiveSectionSuccess = true);
+        },5000);
+         // new 5
+        
+      } else if (this.voiceText === undefined) {
+        
+				this.ngZone.run(() => this.voiceActiveSectionError = true);
+				annyang.abort();
+			}
+		});
+
+		annyang.addCallback('soundstart', (res: any) => {
+      this.searchPlaceHolder = 'Listening....';
+      this.ngZone.run(() => this.voiceActiveSectionListening = true);
+      
+		});
+
+		annyang.addCallback('end', () => {
+      if (this.voiceText === undefined) {
+        this.searchPlaceHolder = "No Internet Connection";
+        this.ngZone.run(() => this.voiceActiveSectionError = true);
+        this.searchPlaceHolder = "Search";
+				annyang.abort();
+			}
+		});
+
+		annyang.addCallback('result', (userSaid: any[]) => {
+      this.searchPlaceHolder = 'Listening....';
+			this.ngZone.run(() => this.voiceActiveSectionError = false);
+      
+			let queryText: any = userSaid[0];
+
+			annyang.abort();
+
+      this.voiceText = queryText;
+      this.queries.query = this.voiceText; //new 1
+
+			this.ngZone.run(() => this.voiceActiveSectionListening = false);
+      this.ngZone.run(() => this.voiceActiveSectionSuccess = true);
+      this.searchClick(); // new 2
+      
+		});
+	}
+
+	startVoiceRecognition(): void {
+    this.voiceActiveSectionDisabled = false;
+		this.voiceActiveSectionError = false;
+		this.voiceActiveSectionSuccess = false;
+    this.voiceText = undefined;
+    this.queries.query = '';
+
+		if (annyang) {
+			let commands = {
+				'demo-annyang': () => { }
+			};
+
+			annyang.addCommands(commands);
+
+      this.initializeVoiceRecognitionCallback();
+
+			annyang.start({ autoRestart: false });
+		}
+	}
+
+	closeVoiceRecognition(): void {
+    this.voiceActiveSectionDisabled = true;
+		this.voiceActiveSectionError = false;
+		this.voiceActiveSectionSuccess = false;
+		this.voiceActiveSectionListening = false;
+		this.voiceText = undefined;
+    this.searchPlaceHolder = 'Search'; // new 4
+    this.queries.query = ''; // new 3
+
+		if(annyang){
+      annyang.abort();
+    }
+	}
 
 }
