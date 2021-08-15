@@ -13,6 +13,5 @@ public interface ChallengeService {
 	public Challenge findChallengeById(String id);
 	public void deleteChallengeById(String id);
 	public void updateChallenge(Challenge ch);
-	
-
+	public void updateViews(String id);
 }

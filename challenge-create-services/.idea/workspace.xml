@@ -4,29 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
     <list default="true" id="0ede2089-e0a0-47de-8643-13edc2d17cd6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../authenticationService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../authenticationService/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/ChallengeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/ChallengeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/ChallengeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/ChallengeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/ChallengeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/ChallengeServiceImpl.java" afterDir="false" />
     </list>
-=======
-<<<<<<< HEAD
-    <list default="true" id="0ede2089-e0a0-47de-8643-13edc2d17cd6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../authenticationService/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../authenticationService/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-
-      <change beforePath="$PROJECT_DIR$/../webapp/src/app/auth-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../webapp/src/app/auth-service.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapp/src/app/challenge-desc/solution-form/solution-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../webapp/src/app/challenge-desc/solution-form/solution-form.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapp/src/app/common/app.constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../webapp/src/app/common/app.constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapp/src/app/dashboard/dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../webapp/src/app/dashboard/dashboard.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapp/src/app/header-landing-page/header-landing-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../webapp/src/app/header-landing-page/header-landing-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webapp/src/app/list-solutions/list-solutions.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../webapp/src/app/list-solutions/list-solutions.component.html" afterDir="false" />
-
-    </list>
-=======
-    <list default="true" id="0ede2089-e0a0-47de-8643-13edc2d17cd6" name="Default Changelist" comment="" />
->>>>>>> 148dcc2bbbe8867a543e17443fed888fac114388
->>>>>>> 0d7991bcc794a1a0835e1bfbc2e58ac3e36013a3
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

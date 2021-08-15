@@ -53,9 +53,6 @@ public class ChallengeController {
     	return new ResponseEntity<Challenge>(challengeService.findChallengeById(id), HttpStatus.OK);
 		
     }
-   
-    
-    
 
 	@PutMapping(value = "/updateviews/{id}")
 	public void updateViews(@PathVariable String id, @RequestBody Challenge ch){
