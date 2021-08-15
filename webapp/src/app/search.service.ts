@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Challenge } from './common/challenge';
 
 @Injectable({
@@ -18,6 +18,10 @@ export class SearchService {
 
   searchByDomain(query:String) : Observable<Challenge[]> {
     return this.http.get<Challenge[]>(this.url + "findByDomain/" + query);
+  }
+
+  searchByDomainList(query:String[]) : Observable<Challenge[]> {
+    return this.http.get<Challenge[]>(this.url + "findByDomainList/?domainList=" + query.join(", "));
   }
 
   getAll() : Observable<Challenge[]> {
