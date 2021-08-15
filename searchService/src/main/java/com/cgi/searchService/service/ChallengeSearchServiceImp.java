@@ -127,11 +127,11 @@ public class ChallengeSearchServiceImp implements ChallengeSearchService {
 	}
 
 	@Override
-	public Iterable<ChallengeDoc> findByViewsLessThanEqual() {
+	public Iterable<ChallengeDoc> findTopChallenges(Integer limit) {
 		List<ChallengeDoc> list = (List<ChallengeDoc>) findChallenge("");
 		list = list.stream()
 				.sorted(Comparator.comparing(ChallengeDoc::getViews,Comparator.reverseOrder()))
-				.limit(2)
+				.limit(limit)
 				.collect(Collectors.toList());
 //		list.sort(Comparator.comparing(ChallengeDoc::getViews,Comparator.reverseOrder()));
 		return list;

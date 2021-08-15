@@ -55,8 +55,9 @@ public class ChallengeController {
     }
 
 	@PutMapping(value = "/updateviews/{id}")
-	public void updateViews(@PathVariable String id, @RequestBody Challenge ch){
-		challengeService.updateViews(id);
+	public void updateViews(@PathVariable String id){
+		Challenge ch = challengeService.updateViews(id);
+		rabbitMQSender.send(ch);
 	}
 
 }

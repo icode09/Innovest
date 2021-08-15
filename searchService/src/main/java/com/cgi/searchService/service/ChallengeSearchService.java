@@ -28,5 +28,5 @@ public interface ChallengeSearchService {
 
 	ChallengeDoc findTopByOrderByViews();
 
-	Iterable<ChallengeDoc> findByViewsLessThanEqual();
+	Iterable<ChallengeDoc> findTopChallenges(Integer limit);
 }

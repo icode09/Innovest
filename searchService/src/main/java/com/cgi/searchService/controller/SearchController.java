@@ -65,9 +65,9 @@ public class SearchController {
 		return service.findTopByOrderByViews();
 	}
 
-	@GetMapping("/findTop10")
-	public Iterable<ChallengeDoc> findByViewsLessThanEqual() {
-		return service.findByViewsLessThanEqual();
+	@GetMapping("/findTop/{limit}")
+	public Iterable<ChallengeDoc> findTopChallenges(@PathVariable Integer limit) {
+		return service.findTopChallenges(limit);
 	}
 
 

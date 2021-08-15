@@ -24,6 +24,10 @@ export class SearchService {
     return this.http.get<Challenge[]>(this.url + "findByDomainList/?domainList=" + query.join(", "));
   }
 
+  findTopChallenges(query:number) : Observable<Challenge[]> {
+    return this.http.get<Challenge[]>(this.url + "findTop/" + query);
+  }
+
   getAll() : Observable<Challenge[]> {
     return this.http.get<Challenge[]>(this.url + "getAll");
   }
