@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
   // domain = new FormControl();
-  domainList : string[] = ['Environment' , 'Power' , "AutoMobile" , "Aerospace" , "Infrastructure"];
+  domainList : string[] = ["Business & Entepreneurship","Chemistry","Computer/Info.technology","Engineering/Design","Environment","Food/Agriculture","Life Sciencess","Math/Statistics","Physical Sciences","Request for Partners and Suppliers","Social innovation"];
 
   
   constructor(private authService: AuthServiceService,private router : Router) { }
