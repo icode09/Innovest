@@ -40,9 +40,10 @@ onSubmit(){
     return;
   }
   console.log("form details:", this.form);
-  this.auth.register(this.form).subscribe(
+  this.auth.updateUser(this.form).subscribe(
     (data) => {
       this.isSuccessful = true;
+      this.goBack();
     },
     err => {
       console.log("error:",err);
