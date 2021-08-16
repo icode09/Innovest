@@ -12,7 +12,7 @@
     <div class="row mx-auto my-auto justify-content-center">
         <div id="carousel-1" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner" role="listbox">
-                <ng-container *ngFor="let challenge of challengeList; let i = index">
+                <ng-container *ngFor="let challenge of recommendedChallenges; let i = index">
                         <div class="carousel-item recommended" [ngClass]="{active: i==0}">
                             <div class="col-md-4">
                                 <a href="{{viewChallengeDesc(challenge)}}">
@@ -45,7 +45,7 @@
             <h2 class="card-group-title">Recently added Challenges</h2>
         </li>
         <li class="navbar-nav ml-auto" style="padding-right: 3rem;">
-            <a data-toggle="collapse" (click)="viewAllChallenges('recommended')" href="#">
+            <a data-toggle="collapse" (click)="viewAllChallenges('latest')" href="#">
                 <h2>view all</h2>
             </a>
         </li>
@@ -53,7 +53,7 @@
     <div class="row mx-auto my-auto justify-content-center">
         <div id="carousel-2" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner" role="listbox">
-                <ng-container class="hello" *ngFor="let challenge of challengeList; let i = index">
+                <ng-container class="hello" *ngFor="let challenge of recentyAddedChallenges; let i = index">
                         <div class="carousel-item" [ngClass]="{active: i==0}">
                             <div class="col-md-4">
                                 <a href="{{viewChallengeDesc(challenge)}}">
@@ -86,7 +86,7 @@
             <h2 class="card-group-title">Top Challenges</h2>
         </li>
         <li class="navbar-nav ml-auto" style="padding-right: 3rem;">
-            <a data-toggle="collapse" (click)="viewAllChallenges('recommended')" href="#">
+            <a data-toggle="collapse" (click)="viewAllChallenges('top')" href="#">
                 <h2>view all</h2>
             </a>
         </li>
@@ -94,7 +94,7 @@
     <div class="row mx-auto my-auto justify-content-center">
         <div id="carousel-3" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner" role="listbox">
-                <ng-container class="hello" *ngFor="let challenge of challengeList; let i = index">
+                <ng-container class="hello" *ngFor="let challenge of topChallenges; let i = index">
                         <div class="carousel-item" [ngClass]="{active: i==0}">
                             <div class="col-md-4">
                                 <a href="{{viewChallengeDesc(challenge)}}">
