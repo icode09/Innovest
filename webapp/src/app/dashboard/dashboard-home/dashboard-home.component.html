@@ -1,3 +1,9 @@
+<div *ngIf="progressbar" class="d-flex justify-content-center" style="margin-top: 50vh;margin-bottom: 50vh;">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+<div *ngIf="progressbar==false">
 <div class="container text-center my-3">
     <nav class="navbar">
         <li class="navbar-nav mr-auto">
@@ -158,4 +164,5 @@
             </a>
         </div>
     </div>
+</div>
 </div>

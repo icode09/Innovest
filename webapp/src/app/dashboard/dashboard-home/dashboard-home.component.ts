@@ -21,11 +21,15 @@ export class DashboardHomeComponent implements OnInit {
   recommendedChallenges: Challenge[] = [];
   recentyAddedChallenges: Challenge[] = [];
   topChallenges: Challenge[] = [];
+  progressbar: boolean = true;
 
   catagoriesList: String[] = ["Business & Entepreneurship","Chemistry","Computer/Info.technology","Engineering/Design","Environment","Food/Agriculture","Life Sciencess","Math/Statistics","Physical Sciences","Request for Partners and Suppliers","Social innovation"];
   constructor(private challengeService: ChallengeService, private searchService: SearchService, private router: Router,private http:HttpClient) { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.progressbar = false;
+    }, 600);
     this.userName = localStorage.getItem("currentUser");
     this.getUserDetails().subscribe((user) => {
       this.user = user;
