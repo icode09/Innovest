@@ -20,8 +20,9 @@ export class SearchService {
     return this.http.get<Challenge[]>(this.url + "findByDomain/" + query);
   }
 
-  searchByDomainList(query:String[]) : Observable<Challenge[]> {
-    return this.http.get<Challenge[]>(this.url + "findByDomainList/?domainList=" + query.join(", "));
+  searchByDomainList(domain:String[],userName:String) : Observable<Challenge[]> {
+    return this.http.get<Challenge[]>(this.url+ "findByDomainList/?domainList=" +encodeURIComponent(domain.join(", ")) 
+                                              + "&userName=" +userName);
   }
 
   findTopChallenges(query:number) : Observable<Challenge[]> {

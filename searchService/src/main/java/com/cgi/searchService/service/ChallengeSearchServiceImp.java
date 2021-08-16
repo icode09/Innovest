@@ -111,13 +111,17 @@ public class ChallengeSearchServiceImp implements ChallengeSearchService {
 	}
 
 	@Override
-	public Iterable<ChallengeDoc> findByDomainList(String[] domainList) {
+	public Iterable<ChallengeDoc> findByDomainList(String[] domainList, String userName) {
 		Collection<ChallengeDoc> list = new ArrayList<>();
 		for(String domain:domainList){
 			list.addAll((Collection<ChallengeDoc>)repo.findByDomain(domain));
 		}
 		Set<String> challengeIdList = new HashSet<>();
 		list.removeIf(ch -> !challengeIdList.add(ch.getChallengeId()));
+		Collection<ChallengeDoc> newList = new ArrayList<>();
+		list = list.stream()
+					.filter(ch -> ch.getChallengerName() == null || !ch.getChallengerName().equals(userName))
+					.collect(Collectors.toList());
 		return list;
 	}
 

@@ -57,8 +57,8 @@ public class SearchController {
 	}
 
 	@GetMapping("/findByDomainList")				// recommended challenges in dashboard
-	public Iterable<ChallengeDoc> findByDomainList(@RequestParam String[] domainList) {
-		return service.findByDomainList(domainList);
+	public Iterable<ChallengeDoc> findByDomainList(@RequestParam String[] domainList,@RequestParam String userName) {
+		return service.findByDomainList(domainList,userName);
 	}
 
 	@GetMapping("/findTop/{limit}")					// most viewed challenges in dashboard
