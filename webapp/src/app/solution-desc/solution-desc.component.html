@@ -1,5 +1,5 @@
 
-<mat-card style="height:fit-content; margin: 100px;" color="accent">
+<mat-card style="height:fit-content; margin: 20px 100px 10px 100px;;" color="accent">
     <mat-card-title  align="center" style="margin: 20px;">
     {{solution.solutionTitle}}
     </mat-card-title>
@@ -14,9 +14,15 @@
       <div class="sol-desc">  {{solution.solutionDescription}}  </div>
     </mat-card-content>
     <mat-card-actions align="end">
-      <button hidden="!showUpdateButton" mat-raised-button>Edit Solution</button>
-      <button [hidden]="!(challenge.challengerName == loggedInUser)" mat-raised-button>Give a feedback</button>
+      <button [hidden]="!showUpdateButton" mat-raised-button>Edit Solution</button>
+      <button [hidden]="!(challenge.challengerName == loggedInUser)" (click)="raiseFeedback()" mat-raised-button>Give a feedback</button>
 
     </mat-card-actions>
   </mat-card>
   <!---->
+<div *ngIf="activeFeedback">
+  <mat-form-field appearane="fill" style="height:fit-content; margin: 10px 100px 10px 100px; width:fit-content;" >
+    <mat-label>Feedback</mat-label>
+    <input matInput>
+  </mat-form-field>
+</div>

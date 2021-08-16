@@ -14,6 +14,7 @@ import { SharingDataService } from '../sharing-data.service';
 export class SolutionDescComponent implements OnInit {
   public loggedInUser = localStorage.getItem("currentUser");
   public solution: Solution;
+  public activeFeedback: boolean = false;
   
   public showUpdateButton = false;
   public showFeedbackButton = false;
@@ -49,10 +50,13 @@ export class SolutionDescComponent implements OnInit {
       console.log(this.showFeedbackButton);
       
 
+
       
     
   }
-  
+  raiseFeedback(){
+    this.activeFeedback = true;
+  }
 
 
 
