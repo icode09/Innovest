@@ -81,7 +81,7 @@
                                     
                                 </div>
                             </div>
-                            <form class="myForm  text-left" *ngIf="!isSuccessful" name="form"
+                            <form class="myForm" *ngIf="!isSuccessful" name="form"
                                 (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
                                 <div class="form-group">
                                     <strong><label for="">Name : </label></strong>
@@ -98,7 +98,7 @@
                                 </div>
                                 <div class="form-group">
                                     <strong><label for="">Email : </label></strong>
-                                    <input type="email" class="myInput" placeholder="{{user.email}}" name="email"
+                                    <input type="email" class="myInput" name="email"
                                         [(ngModel)]="form.value.email" required email #email="ngModel" disabled/>
                                     <div class="alert-danger" *ngIf="f.submitted && email.invalid">
                                         <div *ngIf="email.errors?.required">Email is required</div>
@@ -134,10 +134,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <strong><label for="">Select Domains : </label></strong>
                                     <div class="multi-select-dropdown">
-                                        <mat-form-field style="width:700px;text-align: center;padding-left: 100px;" >
+                                        <mat-form-field>
                                             <div class="myDropdown">
-                                                <strong><mat-label>Select Domains</mat-label></strong>
                                                 <mat-select multiple name="domain" [(ngModel)]="form.value.domain"
                                                     #domain="ngModel">
                                                     <mat-select-trigger>

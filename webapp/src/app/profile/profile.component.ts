@@ -2,6 +2,7 @@ import { GetProfileService } from './../get-profile.service';
 import { AuthServiceService } from './../auth-service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -30,6 +31,7 @@ export class ProfileComponent implements OnInit {
   ];
 
   constructor(
+    private route : Router,
     private auth: AuthServiceService,
     private getProfile: GetProfileService,
     private fb: FormBuilder
@@ -51,7 +53,7 @@ export class ProfileComponent implements OnInit {
   initForm() {
     console.log("initializing form");
     this.form = this.fb.group({
-      // userId: [''],
+      userId: [''],
       displayName: ['', [Validators.required]],
       email: ['', [Validators.required]],
       password:['', [Validators.required]],
@@ -59,7 +61,7 @@ export class ProfileComponent implements OnInit {
       domain: [''],
       bio: [''],
     });
-    // this.form.get('userId').setValue(this.user.userId);
+    this.form.get('userId').setValue(this.user.userId);
     this.form.get('displayName').setValue(this.user.displayName);
     this.form.get('email').setValue(this.user.email);
     this.form.get('password').setValue(this.user.password);
@@ -76,11 +78,12 @@ export class ProfileComponent implements OnInit {
       return;
     }
     console.log('form details:', this.form.value);
-    // let formDetails = JSON.stringify(this.form.value);
     this.auth.updateUser(this.form.value).subscribe(
       (data) => {
         this.isSuccessful = true;
+        this.route.navigate(['/dashboard/profile']);
         this.goBack();
+
       },
       (err) => {
         console.log('error:', err);
