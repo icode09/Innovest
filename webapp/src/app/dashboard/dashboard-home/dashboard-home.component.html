@@ -1,0 +1,161 @@
+<div class="container text-center my-3">
+    <nav class="navbar">
+        <li class="navbar-nav mr-auto">
+            <h2 class="card-group-title">Recommended Challenges</h2>
+        </li>
+        <li class="navbar-nav ml-auto" style="padding-right: 3rem;">
+            <a data-toggle="collapse" (click)="viewAllChallenges('recommended')" href="#">
+                <h2>view all</h2>
+            </a>
+        </li>
+    </nav>
+    <div class="row mx-auto my-auto justify-content-center">
+        <div id="carousel-1" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <ng-container *ngFor="let challenge of challengeList; let i = index">
+                        <div class="carousel-item recommended" [ngClass]="{active: i==0}">
+                            <div class="col-md-4">
+                                <a href="{{viewChallengeDesc(challenge)}}">
+                                    <div class="card">
+                                        <img class="card-img-top" src="https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/banner/60f95db3b3711_copy_of_linkedin_post__3_.png?d=1920x1920" alt="Card image cap{{ challenge.challengeImage }}" style="height:40vh; padding:0.5em">
+                                        <div class="card-body">
+                                            <h2 class="card-title" matTooltip="Name">{{challenge.challengeName}}</h2>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                </ng-container>
+            </div>
+            <a class="carousel-control-prev bg-transparent w-auto" href="#carousel-1" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next bg-transparent w-auto" href="#carousel-1" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<hr><hr>
+
+<div class="container text-center my-3 my-container">
+    <nav class="navbar">
+        <li class="navbar-nav mr-auto">
+            <h2 class="card-group-title">Recently added Challenges</h2>
+        </li>
+        <li class="navbar-nav ml-auto" style="padding-right: 3rem;">
+            <a data-toggle="collapse" (click)="viewAllChallenges('recommended')" href="#">
+                <h2>view all</h2>
+            </a>
+        </li>
+    </nav>
+    <div class="row mx-auto my-auto justify-content-center">
+        <div id="carousel-2" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <ng-container class="hello" *ngFor="let challenge of challengeList; let i = index">
+                        <div class="carousel-item" [ngClass]="{active: i==0}">
+                            <div class="col-md-4">
+                                <a href="{{viewChallengeDesc(challenge)}}">
+                                    <div class="card">
+                                        <img class="card-img-top" src="https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/banner/60f95db3b3711_copy_of_linkedin_post__3_.png?d=1920x1920" alt="Card image cap{{ challenge.challengeImage }}" style="height:40vh; padding:0.5em">
+                                        <div class="card-body">
+                                            <h2 class="card-title" matTooltip="Name">{{challenge.challengeName}}</h2>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                </ng-container>
+            </div>
+            <a class="carousel-control-prev bg-transparent w-auto" href="#carousel-2" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next bg-transparent w-auto" href="#carousel-2" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<hr><hr>
+
+<div class="container text-center my-3 my-container">
+    <nav class="navbar">
+        <li class="navbar-nav mr-auto">
+            <h2 class="card-group-title">Top Challenges</h2>
+        </li>
+        <li class="navbar-nav ml-auto" style="padding-right: 3rem;">
+            <a data-toggle="collapse" (click)="viewAllChallenges('recommended')" href="#">
+                <h2>view all</h2>
+            </a>
+        </li>
+    </nav>
+    <div class="row mx-auto my-auto justify-content-center">
+        <div id="carousel-3" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <ng-container class="hello" *ngFor="let challenge of challengeList; let i = index">
+                        <div class="carousel-item" [ngClass]="{active: i==0}">
+                            <div class="col-md-4">
+                                <a href="{{viewChallengeDesc(challenge)}}">
+                                    <div class="card">
+                                        <img class="card-img-top" src="https://assets.weforum.org/article/image/large_bg1B3jyBjInTSH2AjIgjgoER9PYwCN-BZ_BQhdeZ92s.jpg" alt="Card image cap{{ challenge.challengeImage }}" style="height:40vh; padding:0.5em">
+                                        <div class="card-body">
+                                            <h2 class="card-title" matTooltip="Name">{{challenge.challengeName}}</h2>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                </ng-container>
+            </div>
+            <a class="carousel-control-prev bg-transparent w-auto" href="#carousel-3" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next bg-transparent w-auto" href="#carousel-3" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<hr><hr>
+
+<div class="container text-center my-3 my-container">
+    <nav class="navbar">
+        <li class="navbar-nav mr-auto">
+            <h2 class="card-group-title">Catagories</h2>
+        </li>
+        <li class="navbar-nav ml-auto" style="padding-right: 3rem;">
+            <a data-toggle="collapse" (click)="viewAllChallenges('catagories')" href="#">
+                <h2>view all</h2>
+            </a>
+        </li>
+    </nav>
+    <div class="row mx-auto my-auto justify-content-center">
+        <div id="carousel-4" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <ng-container class="hello" *ngFor="let catagory of catagoriesList; let i = index">
+                        <div class="hello carousel-item" [ngClass]="{active: i==0}">
+                            <div class="col-md-4">
+                                <a href="">
+                                    <div class="card">
+                                        <img class="card-img-top" src="https://assets.weforum.org/article/image/large_bg1B3jyBjInTSH2AjIgjgoER9PYwCN-BZ_BQhdeZ92s.jpg" alt="Card image cap" style="height:40vh; padding:0.5em">
+                                        <div class="card-body">
+                                            <h2 class="card-title" matTooltip="Name">{{catagory}}</h2>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                </ng-container>
+            </div>
+            <a class="carousel-control-prev bg-transparent w-auto" href="#carousel-4" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next bg-transparent w-auto" href="#carousel-4" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+</div>

@@ -45,7 +45,9 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { SharingDataService } from './sharing-data.service';
 
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {ProgressBarModule} from "angular-progress-bar"
+import {ProgressBarModule} from "angular-progress-bar";
+import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-home.component';
+import { DashboardSidebarComponent } from './dashboard/dashboard-sidebar/dashboard-sidebar.component'
 
 @NgModule({
   declarations: [
@@ -65,7 +67,9 @@ import {ProgressBarModule} from "angular-progress-bar"
     MaterialElevationDirective,
     SolutionDescComponent,
     ProfileComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    DashboardHomeComponent,
+    DashboardSidebarComponent
   ],
   
   imports: [
