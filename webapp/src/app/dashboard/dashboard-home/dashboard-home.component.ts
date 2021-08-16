@@ -16,7 +16,7 @@ export class DashboardHomeComponent implements OnInit {
 
   userName:any;
   user:UserProfile | undefined;
-  userDomains:string[] = [];
+  userDomains:string[] = ["Business & Entepreneurship","Chemistry","Computer/Info.technology","Engineering/Design","Environment","Food/Agriculture","Life Sciencess","Math/Statistics","Physical Sciences","Request for Partners and Suppliers","Social innovation"];
   challengeList: Challenge[] = [];
   recommendedChallenges: Challenge[] = [];
   recentyAddedChallenges: Challenge[] = [];
@@ -29,7 +29,9 @@ export class DashboardHomeComponent implements OnInit {
     this.userName = localStorage.getItem("currentUser");
     this.getUserDetails().subscribe((user) => {
       this.user = user;
-      this.userDomains = user.domain;
+      if(user.domain==null || user.domain.length==0){
+        this.userDomains = user.domain;
+      }
     });
     this.getChallengeList().subscribe((challenges) => {
       this.challengeList = challenges;
