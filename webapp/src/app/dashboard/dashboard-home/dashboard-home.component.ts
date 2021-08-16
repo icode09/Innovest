@@ -43,7 +43,7 @@ export class DashboardHomeComponent implements OnInit {
     this.searchService.searchByDomainList(this.userDomains,this.userName).subscribe((challenges) => {
       this.recommendedChallenges = challenges;
     });
-    this.searchService.findRecentyAddedChallenges(10).subscribe((challenges) => {
+    this.searchService.findRecentyAddedChallenges(10,this.userName).subscribe((challenges) => {
       this.recentyAddedChallenges = challenges;
     });
     this.searchService.findTopChallenges(10).subscribe((challenges) => {

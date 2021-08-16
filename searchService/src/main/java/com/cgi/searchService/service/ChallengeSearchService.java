@@ -28,5 +28,5 @@ public interface ChallengeSearchService {
 
 	Iterable<ChallengeDoc> findTopChallenges(Integer limit);
 
-	Iterable<ChallengeDoc> findLatestChallenges(Integer limit);
+	Iterable<ChallengeDoc> findLatestChallenges(Integer limit, String userName);
 }

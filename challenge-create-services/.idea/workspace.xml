@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ede2089-e0a0-47de-8643-13edc2d17cd6" name="Default Changelist" comment="" />
+    <list default="true" id="0ede2089-e0a0-47de-8643-13edc2d17cd6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../searchService/src/main/java/com/cgi/searchService/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../searchService/src/main/java/com/cgi/searchService/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../searchService/src/main/java/com/cgi/searchService/service/ChallengeSearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../searchService/src/main/java/com/cgi/searchService/service/ChallengeSearchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../searchService/src/main/java/com/cgi/searchService/service/ChallengeSearchServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../searchService/src/main/java/com/cgi/searchService/service/ChallengeSearchServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapp/src/app/dashboard/dashboard-home/dashboard-home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../webapp/src/app/dashboard/dashboard-home/dashboard-home.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapp/src/app/dashboard/dashboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../webapp/src/app/dashboard/dashboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webapp/src/app/search.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../webapp/src/app/search.service.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -29,8 +29,8 @@ export class SearchService {
     return this.http.get<Challenge[]>(this.url + "findTop/" + query);
   }
 
-  findRecentyAddedChallenges(query:number) : Observable<Challenge[]> {
-    return this.http.get<Challenge[]>(this.url + "findLatest/" + query);
+  findRecentyAddedChallenges(query:number,userName:String) : Observable<Challenge[]> {
+    return this.http.get<Challenge[]>(this.url + "findLatest/?limit=" + query + "&userName=" +userName);
   }
 
   getAll() : Observable<Challenge[]> {

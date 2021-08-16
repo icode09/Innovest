@@ -66,9 +66,9 @@ public class SearchController {
 		return service.findTopChallenges(limit);
 	}
 
-	@GetMapping("/findLatest/{limit}")					// most viewed challenges in dashboard
-	public Iterable<ChallengeDoc> findLatestChallenges(@PathVariable Integer limit) {
-		return service.findLatestChallenges(limit);
+	@GetMapping("/findLatest")					// most viewed challenges in dashboard
+	public Iterable<ChallengeDoc> findLatestChallenges(@RequestParam Integer limit, @RequestParam String userName) {
+		return service.findLatestChallenges(limit, userName);
 	}
 
 
