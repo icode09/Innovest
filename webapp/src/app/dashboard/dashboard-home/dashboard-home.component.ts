@@ -22,6 +22,8 @@ export class DashboardHomeComponent implements OnInit {
   recentyAddedChallenges: Challenge[] = [];
   topChallenges: Challenge[] = [];
   progressbar: boolean = true;
+  queries = {query :''};
+  searchPlaceHolder: String = 'Search';
 
   catagoriesList: String[] = ["Business & Entepreneurship","Chemistry","Computer/Info.technology","Engineering/Design","Environment","Food/Agriculture","Life Sciencess","Math/Statistics","Physical Sciences","Request for Partners and Suppliers","Social innovation"];
   constructor(private challengeService: ChallengeService, private searchService: SearchService, private router: Router,private http:HttpClient) { }
@@ -29,7 +31,7 @@ export class DashboardHomeComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.progressbar = false;
-    }, 600);
+    }, 500);
     this.userName = localStorage.getItem("currentUser");
     this.getUserDetails().subscribe((user) => {
       this.user = user;
@@ -101,6 +103,18 @@ export class DashboardHomeComponent implements OnInit {
     this.router.navigate(['dashboard/ch-list/find']).then(() => {
       window.location.reload();
     });
+  }
+  searchClick(){
+    if(this.queries.query == ""){
+      this.ngOnInit();
+    }
+    else{
+      localStorage.setItem('searchQuery', this.queries.query);
+      this.router.navigate(['dashboard/ch-list/find']);
+    }
+  }
+  startVoiceRecognition(){
+    this.router.navigate(['dashboard/ch-list/find']);
   }
 
 }

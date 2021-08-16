@@ -1,9 +1,27 @@
-<div *ngIf="progressbar" class="d-flex justify-content-center" style="margin-top: 50vh;margin-bottom: 50vh;">
+<div *ngIf="progressbar" class="d-flex justify-content-center" style="margin-top: 60vh;margin-bottom: 50vh;">
     <div class="spinner-border" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
 </div>
 <div *ngIf="progressbar==false">
+
+<!-- search bar starts -->
+<div class="input-group" >
+
+    <input type="search" class="form-control rounded"  [placeholder]="searchPlaceHolder" aria-label="Search"
+        aria-describedby="search-addon" [(ngModel)]="queries.query" />
+    <button type="button" class="btn btn-outline-primary" (click)="searchClick()">search</button>
+
+    <!-- Voice Recognition Html Start-->
+    <div id="voiceSection">
+        <button type="button" (click)="startVoiceRecognition()" id="recordButton"><i class="fa fa-microphone"></i></button>
+    </div>
+    <!-- Voice Recognition Html Ends-->
+    
+</div>
+<!-- search bar end -->
+
+
 <div class="container text-center my-3">
     <nav class="navbar">
         <li class="navbar-nav mr-auto">
