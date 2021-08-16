@@ -10,7 +10,8 @@
     <br>
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" data-toggle="collapse" (click)="dashboardHome()" data-toggle="collapse" href="#"> 
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" data-toggle="collapse" 
+                    data-bs-dismiss="offcanvas" (click)="dashboardHome()" data-toggle="collapse" href="#"> 
             <div class="sidebar-brand-text mx-3">Dashboard</div>
         </a>
     </li>
@@ -22,21 +23,21 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <br>
     <li class="nav-item">
-        <a class="nav-link collapsed" data-toggle="collapse" (click)="gotoChallengeList('my')" href="#">
+        <a class="nav-link collapsed" data-toggle="collapse" data-bs-dismiss="offcanvas" (click)="gotoChallengeList('my')" href="#">
             <span>My Challenges</span>
         </a>
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" data-toggle="collapse" (click)="mySolutionsList()" href="#">
+        <a class="nav-link collapsed" data-toggle="collapse" data-bs-dismiss="offcanvas" (click)="mySolutionsList()" href="#">
             <span>My Solutions</span>
         </a>
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" data-toggle="collapse" (click)="gotoChallengeList('find')" href="#">
+        <a class="nav-link collapsed" data-toggle="collapse" data-bs-dismiss="offcanvas" (click)="gotoChallengeList('find')" href="#">
             <span>Find Challenges</span>
         </a>
     </li>
