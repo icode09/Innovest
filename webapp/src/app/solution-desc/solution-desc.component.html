@@ -3,7 +3,10 @@
     <mat-card-title  align="center" style="margin: 20px;">
     {{solution.solutionTitle}}
     </mat-card-title>
+    <div class="editButton">
     <mat-card-subtitle>Solution URL: {{solution.codeUrl}}</mat-card-subtitle>
+    <button type="button" class="btn btn-outline-primary" *ngIf="!edit" (click)="editProfile()">Edit</button>
+  </div>
     <mat-card-subtitle>Solution Status: {{solution.solutionStatus}}</mat-card-subtitle>
     <mat-card-subtitle>Challenge Name: {{challenge.challengeName}}</mat-card-subtitle>
     <mat-card-subtitle>Challenger Name: {{challenge.challengerName}} </mat-card-subtitle>

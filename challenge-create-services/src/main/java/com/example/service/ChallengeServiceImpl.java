@@ -36,6 +36,13 @@ public class ChallengeServiceImpl implements ChallengeService{
 		dao.save(ch);
 	}
 
+	@Override
+	public Challenge updateViews(String id) {
+		Challenge ch = dao.findById(id).get();
+		ch.setViews(ch.getViews()+1);
+		dao.save(ch);
+		return ch;
+	}
 
 
 	@Override

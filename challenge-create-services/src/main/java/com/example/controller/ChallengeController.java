@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,21 +48,16 @@ public class ChallengeController {
     public Collection<Challenge> getAll() {
          return challengeService.getAllChallenges();
     }
-<<<<<<< HEAD
     @GetMapping(value = "/challenge/{id}")
     public ResponseEntity<Challenge> getById(@PathVariable String id){
     	return new ResponseEntity<Challenge>(challengeService.findChallengeById(id), HttpStatus.OK);
 		
     }
-   
-    
-    
-=======
 
 	@PutMapping(value = "/updateviews/{id}")
-	public void updateViews(@PathVariable String id, @RequestBody Challenge ch){
-		challengeService.updateViews(id);
+	public void updateViews(@PathVariable String id){
+		Challenge ch = challengeService.updateViews(id);
+		rabbitMQSender.send(ch);
 	}
 
->>>>>>> 148dcc2bbbe8867a543e17443fed888fac114388
 }

@@ -50,4 +50,11 @@ public class RegistrationController {
         User user = registrationService.getUser(emailId);
         return new ResponseEntity<>(user,HttpStatus.OK);
     }
+
+    @PostMapping("/update")
+    public ResponseEntity<?> updateUserDetails(@RequestBody User user){
+        System.out.println("user details:"+user.getEmail());
+        User updatedUser = registrationService.updateUser(user);
+        return new ResponseEntity<>(updatedUser,HttpStatus.CREATED);
+    }
 }

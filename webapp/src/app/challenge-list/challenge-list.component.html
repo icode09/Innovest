@@ -1,8 +1,42 @@
 <div class="input-group" >
-    <input type="search" class="form-control rounded"  placeholder="Search" aria-label="Search"
+   
+    <input type="search" class="form-control rounded"  [placeholder]="searchPlaceHolder" aria-label="Search"
       aria-describedby="search-addon" [(ngModel)]="queries.query" />
     <button type="button" class="btn btn-outline-primary" (click)="searchClick()">search</button>
+
+
+    <!-- Voice Recognition Html Start-->
+    <div id="voiceSection" *ngIf="voiceActiveSectionDisabled; else voicesection;">
+        <button type="button" (click)="startVoiceRecognition()" id="recordButton"><i class="fa fa-microphone"></i></button>
+    </div>
+    <ng-template #voicesection>
+        <ng-container *ngIf="!voiceActiveSectionError; else failure">
+            <ng-container *ngIf="voiceText; else start">
+                <!-- <span>{{voiceText}}</span> -->
+            </ng-container>
+            <ng-template #start>
+            <ng-container
+                *ngIf="voiceActiveSectionListening; else beginning">
+                <!-- <span>Listening...</span> -->
+            </ng-container>
+            <ng-template #beginning>
+                <!-- <span>Start talking...</span> -->
+            </ng-template>
+            </ng-template>
+        </ng-container>
+        <ng-template #failure>
+            <!-- <span>Didn't catch that</span> -->
+        </ng-template>
+        <div>
+            <button id="Restart" (click)="startVoiceRecognition()"><i class="fas fa-redo"></i></button>
+            <button id="Close" (click)="closeVoiceRecognition()"><i class="fas fa-times"></i></button>
+            
+        </div>
+    </ng-template>
+    <!-- Voice Recognition Html Ends-->
+
 </div>
+
 
 <!-- domain chips -->
 <br>
@@ -55,7 +89,7 @@
                     </div>
                     <span *ngIf="url=='find'" style="font-size:22px;">&#124;</span>
                     <div *ngIf="url=='find'" class="basicInfoCard post">
-                        <h5 class="postedBy" [matTooltip]=challenge.challengerName>Posted By: {{ challenge.challengerName.split('@')[0] }}</h5>
+                        <h5 *ngIf="challenge.challengerName!=null" class="postedBy" [matTooltip]=challenge.challengerName>Posted By: {{ challenge.challengerName.split('@')[0] }}</h5>
                     </div>
                 </div>
             </div>

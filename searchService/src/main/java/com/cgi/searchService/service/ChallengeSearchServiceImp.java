@@ -11,15 +11,16 @@ import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.cgi.searchService.document.ChallengeDoc;
 import com.cgi.searchService.repositories.ChallengesRepository;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+
 @Service
 public class ChallengeSearchServiceImp implements ChallengeSearchService {
 
@@ -107,6 +108,46 @@ public class ChallengeSearchServiceImp implements ChallengeSearchService {
 	@Override
 	public Iterable<ChallengeDoc> findByDomain(String domain) {
 		return repo.findByDomain(domain);
+	}
+
+	@Override
+	public Iterable<ChallengeDoc> findByDomainList(String[] domainList, String userName) {
+		Collection<ChallengeDoc> list = new ArrayList<>();
+		for(String domain:domainList){
+			list.addAll((Collection<ChallengeDoc>)repo.findByDomain(domain));
+		}
+		Set<String> challengeIdList = new HashSet<>();
+		list.removeIf(ch -> !challengeIdList.add(ch.getChallengeId()));
+		Collection<ChallengeDoc> newList = new ArrayList<>();
+		list = list.stream()
+					.filter(ch -> ch.getChallengerName() == null || !ch.getChallengerName().equals(userName))
+					.collect(Collectors.toList());
+		return list;
+	}
+
+	@Override
+	public Iterable<ChallengeDoc> findTopChallenges(Integer limit) {
+		List<ChallengeDoc> list = (List<ChallengeDoc>) findChallenge("");
+		list = list.stream()
+				.sorted(Comparator.comparing(ChallengeDoc::getViews,Comparator.reverseOrder()))
+				.limit(limit)
+				.collect(Collectors.toList());
+//		list.sort(Comparator.comparing(ChallengeDoc::getViews,Comparator.reverseOrder()));
+		return list;
+	}
+
+	@Override
+	public Iterable<ChallengeDoc> findLatestChallenges(Integer limit, String userName) {
+		List<ChallengeDoc> list = (List<ChallengeDoc>) findChallenge("");
+		list = list.stream()
+				.sorted(Comparator.comparing(ChallengeDoc::getStartDate,Comparator.reverseOrder()))
+				.limit(limit)
+				.collect(Collectors.toList());
+//		list.sort(Comparator.comparing(ChallengeDoc::getViews,Comparator.reverseOrder()));
+		list = list.stream()
+				.filter(ch -> ch.getChallengerName() == null || !ch.getChallengerName().equals(userName))
+				.collect(Collectors.toList());
+		return list;
 	}
 
 }
