@@ -170,7 +170,7 @@ export class ChallengeListComponent implements OnInit {
     }else {
       this.challengeService.updateViews(challenge).subscribe();
       challenge.challengeImage = "https://assets.weforum.org/article/image/large_bg1B3jyBjInTSH2AjIgjgoER9PYwCN-BZ_BQhdeZ92s.jpg";
-      this.router.navigate(['/challenge-desc', JSON.stringify(challenge)]);
+      this.router.navigate(['dashboard/challenge-desc', JSON.stringify(challenge)]);
     }
   }
 

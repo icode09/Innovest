@@ -95,7 +95,7 @@ export class DashboardHomeComponent implements OnInit {
     // console.log(challenge.challengeName);
     // this.router.navigate(['/challenge-desc', JSON.stringify(challenge)]);
     challenge.challengeImage = "https://assets.weforum.org/article/image/large_bg1B3jyBjInTSH2AjIgjgoER9PYwCN-BZ_BQhdeZ92s.jpg";
-    return "http://localhost:4200/challenge-desc/"+encodeURIComponent(JSON.stringify(challenge));
+    return "http://localhost:4200/dashboard/challenge-desc/"+encodeURIComponent(JSON.stringify(challenge));
   }
   viewAllChallenges(word:string){
     this.router.navigate(['dashboard/ch-list/find']).then(() => {

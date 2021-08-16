@@ -18,14 +18,16 @@ import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-hom
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
-  { path: 'challenge-desc/:chalDesc', component: ChallengeDescComponent},
+  // { path: 'challenge-desc/:chalDesc', component: ChallengeDescComponent},
   { path: 'solution-form/:chalDesc', component: SolutionFormComponent },
-  { path: 'list-solutions/:identifier', component: ListSolutionsComponent},
+  // { path: 'list-solutions/:identifier', component: ListSolutionsComponent},
   {
     path: 'dashboard', component: DashboardComponent,
     children: [
       { path: 'home', component: DashboardHomeComponent },
       { path: 'ch-list/:list', component: ChallengeListComponent },
+      { path: 'challenge-desc/:chalDesc', component: ChallengeDescComponent},
+      { path: 'list-solutions/:identifier', component: ListSolutionsComponent},
       { path: 'create-ch', component: CreateChallengeComponent },
       { path: 'profile', component : ProfileComponent},
       { path: '', redirectTo: '/dashboard/home', pathMatch: 'full' },
