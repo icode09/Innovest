@@ -15,9 +15,8 @@ export class DashboardComponent implements OnInit {
     this.userName = localStorage.getItem("currentUser");
   }
   myProfile(){
-    this.router.navigate(['profile'],{relativeTo : this.route}).then(() => {
-      window.location.reload();
-    });
+    this.router.navigate(['profile'],{relativeTo : this.route});
+      // .then(() => {window.location.reload();});
   }
   createChallenge() {
     this.router.navigate(['create-ch'], { relativeTo: this.route }).then(() => {

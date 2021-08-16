@@ -15,20 +15,17 @@ export class DashboardSidebarComponent implements OnInit {
     this.userName = localStorage.getItem("currentUser");
   }
   dashboardHome(){
-    this.router.navigate(['home'],{relativeTo : this.route}).then(() => {
-      window.location.reload();
-    });
+    this.router.navigate(['home'],{relativeTo : this.route});
+    // .then(() => { window.location.reload();});
   }
   gotoChallengeList(word:any) {
-    this.router.navigate(['ch-list',word], { relativeTo: this.route }).then(() => {
-      window.location.reload();
-    });
+    this.router.navigate(['ch-list',word], { relativeTo: this.route });
   }
   mySolutionsList() {
     this.router.navigate([
       '/list-solutions',
       JSON.stringify({
-        solvedBy: `${localStorage.getItem('currentUser')}`,
+        solvedBy: `${this.userName}`,
       }),
     ]);
   }
