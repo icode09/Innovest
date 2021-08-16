@@ -4,27 +4,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
 
-  userName: any;
-  url:string = '';
+  userName:any;
   constructor(private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
     this.userName = localStorage.getItem("currentUser");
-    this.url = this.router.url.split('/').pop() || '';
-    // if(this.userName==null) {
-    //   this.router.navigate(['../login']);
-    // }
-    console.log("dashboard:",this.router.url);
   }
   myProfile(){
-    this.router.navigate(['./profile'],{relativeTo : this.route});
-  }
-  myChallengeList(word:any) {
-    this.router.navigate(['ch-list',word], { relativeTo: this.route }).then(() => {
+    this.router.navigate(['profile'],{relativeTo : this.route}).then(() => {
       window.location.reload();
     });
   }
@@ -33,18 +24,11 @@ export class DashboardComponent implements OnInit {
       window.location.reload();
     });
   }
-  mySolutionsList() {
-    this.router.navigate([
-      '/list-solutions',
-      JSON.stringify({
-        solvedBy: `${localStorage.getItem('currentUser')}`,
-      }),
-    ]);
-  }
   logout() {
     localStorage.clear();
     this.router.navigate(['']).then(() => {
       window.location.reload();
     });
   }
+
 }
