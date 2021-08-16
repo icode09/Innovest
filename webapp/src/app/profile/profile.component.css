@@ -60,7 +60,7 @@ form{
     height: 100%;
 }
 .card-body .myInput{
-    width : 400px;
+    width : 230px;
     padding-left : 30px;
     position: relative;
     margin-left: 50px;
@@ -70,4 +70,11 @@ form{
     display: inline-block;
     width: 230px;
     text-align: right;
+}
+.card-body .multi-select-dropdown{
+    width : 230px;
+    padding-left : 30px;
+    position: relative;
+    margin-left: 50px;
+    display: inline-flex;
 }

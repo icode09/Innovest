@@ -5,7 +5,11 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/authenticationDB?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
     username: root
-    password: root
+<<<<<<< HEAD
+    password: Root1234
+=======
+    password: pentiumd09
+>>>>>>> 8e5b9713df90301e447f67f51f7442238b7e432d
   application:
     name: authentication-service
 
