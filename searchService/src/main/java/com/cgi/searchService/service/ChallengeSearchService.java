@@ -27,4 +27,6 @@ public interface ChallengeSearchService {
 	Iterable<ChallengeDoc> findByDomainList(String[] domainList);
 
 	Iterable<ChallengeDoc> findTopChallenges(Integer limit);
+
+	Iterable<ChallengeDoc> findLatestChallenges(Integer limit);
 }

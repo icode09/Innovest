@@ -132,4 +132,15 @@ public class ChallengeSearchServiceImp implements ChallengeSearchService {
 		return list;
 	}
 
+	@Override
+	public Iterable<ChallengeDoc> findLatestChallenges(Integer limit) {
+		List<ChallengeDoc> list = (List<ChallengeDoc>) findChallenge("");
+		list = list.stream()
+				.sorted(Comparator.comparing(ChallengeDoc::getStartDate,Comparator.reverseOrder()))
+				.limit(limit)
+				.collect(Collectors.toList());
+//		list.sort(Comparator.comparing(ChallengeDoc::getViews,Comparator.reverseOrder()));
+		return list;
+	}
+
 }

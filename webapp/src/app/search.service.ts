@@ -28,6 +28,10 @@ export class SearchService {
     return this.http.get<Challenge[]>(this.url + "findTop/" + query);
   }
 
+  findRecentyAddedChallenges(query:number) : Observable<Challenge[]> {
+    return this.http.get<Challenge[]>(this.url + "findLatest/" + query);
+  }
+
   getAll() : Observable<Challenge[]> {
     return this.http.get<Challenge[]>(this.url + "getAll");
   }
