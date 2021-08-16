@@ -99,7 +99,7 @@
                                 <div class="form-group">
                                     <strong><label for="">Email : </label></strong>
                                     <input type="email" class="myInput" placeholder="{{user.email}}" name="email"
-                                        [(ngModel)]="form.email" required email #email="ngModel" disabled/>
+                                        [(ngModel)]="form.email" required email #email="ngModel" value = "{{user.email}}" disabled/>
                                     <div class="alert-danger" *ngIf="f.submitted && email.invalid">
                                         <div *ngIf="email.errors?.required">Email is required</div>
                                         <div *ngIf="email.errors?.email">Email must be a valid email address</div>

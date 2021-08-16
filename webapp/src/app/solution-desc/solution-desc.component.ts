@@ -20,7 +20,7 @@ export class SolutionDescComponent implements OnInit {
   public challenge: Challenge  = new Challenge("", "", "lkdsclmds", "", "","",["",""],["",""],new Date(),new Date(), "","",false,0,"","","",0,0);
   private challengeId: string = '';
   public challengername: string = '';
-  
+  edit:boolean = false;
   constructor(private route: ActivatedRoute, private _challengeService: CreatingchallengeService, private _sharingData: SharingDataService) {
     let sol = JSON.parse(this.route.snapshot.paramMap.get('solution') || '{}');
     this.solution = sol;
@@ -54,7 +54,10 @@ export class SolutionDescComponent implements OnInit {
   }
   
 
-
+  editProfile() {
+    this.edit = true;
+    
+}
 
 
 }
