@@ -10,11 +10,11 @@
 
     <input type="search" class="form-control rounded"  [placeholder]="searchPlaceHolder" aria-label="Search"
         aria-describedby="search-addon" [(ngModel)]="queries.query" />
-    <button type="button" class="btn btn-outline-primary" (click)="searchClick()">search</button>
+    <button type="button" class="btn btn-outline-primary" (click)="search('text')">search</button>
 
     <!-- Voice Recognition Html Start-->
     <div id="voiceSection">
-        <button type="button" (click)="startVoiceRecognition()" id="recordButton"><i class="fa fa-microphone"></i></button>
+        <button type="button" (click)="search('voice')" id="recordButton"><i class="fa fa-microphone"></i></button>
     </div>
     <!-- Voice Recognition Html Ends-->
     

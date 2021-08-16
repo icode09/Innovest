@@ -33,12 +33,14 @@ export class DashboardHomeComponent implements OnInit {
       this.progressbar = false;
     }, 500);
     this.userName = localStorage.getItem("currentUser");
-    this.getUserDetails().subscribe((user) => {
-      this.user = user;
-      if(user.domain==null || user.domain.length==0){
-        this.userDomains = user.domain;
-      }
-    });
+    if(this.userName != null){
+      this.getUserDetails().subscribe((user) => {
+        this.user = user;
+        if(user.domain==null || user.domain.length==0){
+          this.userDomains = user.domain;
+        }
+      });
+    }
     this.getChallengeList().subscribe((challenges) => {
       this.challengeList = challenges;
     });
@@ -104,17 +106,19 @@ export class DashboardHomeComponent implements OnInit {
       window.location.reload();
     });
   }
-  searchClick(){
-    if(this.queries.query == ""){
-      this.ngOnInit();
+  search(word:any){
+    if(word == 'text'){
+      if(this.queries.query == ""){
+        this.ngOnInit();
+      }else{
+        localStorage.setItem('searchQuery', this.queries.query);
+        this.router.navigate(['dashboard/ch-list/find']);
+      }
     }
-    else{
-      localStorage.setItem('searchQuery', this.queries.query);
+    else if(word == 'voice'){
+      localStorage.setItem('searchVoice', 'voice');
       this.router.navigate(['dashboard/ch-list/find']);
     }
-  }
-  startVoiceRecognition(){
-    this.router.navigate(['dashboard/ch-list/find']);
   }
 
 }
