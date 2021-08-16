@@ -13,20 +13,17 @@ import { UserProfile } from 'src/app/common/user-profile';
 export class DashboardHomeComponent implements OnInit {
 
   userName:any;
-  catagoriesList: string[] = []; 
   challengeList: Challenge[] = []; 
+  catagoriesList: String[] = ["Business & Entepreneurship","Chemistry","Computer/Info.technology","Engineering/Design","Environment","Food/Agriculture","Life Sciencess","Math/Statistics","Physical Sciences","Request for Partners and Suppliers","Social innovation"];
   constructor(private router: Router,private http:HttpClient) { }
 
   ngOnInit(): void {
-    // this.userName = localStorage.getItem("currentUser");
-    this.userName = "dilip1234@gmail.com"
+    this.userName = localStorage.getItem("currentUser");
     this.getChallengeList().subscribe((challenges) => {
       this.challengeList = challenges;
     });
     this.getUserDetails().subscribe((user) => {
       let user1:UserProfile = user;
-      console.log(user1);
-      this.catagoriesList = user1.domain;
     });
   }
   ngAfterViewChecked(){  
@@ -68,7 +65,7 @@ export class DashboardHomeComponent implements OnInit {
     return this.http.get<Challenge[]>("http://localhost:8080/innovest/challenge/getall");
   }
   getUserDetails(): Observable<UserProfile> {
-    return this.http.get<UserProfile>("http://localhost:8082/api/v1/register/email/?emailId=dilip1234@gmail.com");
+    return this.http.get<UserProfile>("http://localhost:8082/api/v1/register/email/?emailId=" + this.userName);
   }
   viewChallengeDesc(challenge:Challenge){
     // console.log(challenge.challengeName);

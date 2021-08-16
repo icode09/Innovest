@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { SharedDataService } from '../shared-data.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Challenge } from '../common/challenge';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 ////https://stackoverflow.com/questions/43159090/how-can-i-detect-service-variable-change-when-updated-from-another-component
 export interface Domain {
@@ -24,6 +25,11 @@ export interface UserProfile {
   styleUrls: ['./challenge-desc.component.css'],
 })
 export class ChallengeDescComponent implements OnInit {
+  form: any = {}
+  isSuccessful = false;
+  errorMessage = '';
+  listener;
+  @Input() scrolled:boolean = false;
   challenge: Challenge;
   users: UserProfile[] = [
     {
@@ -41,7 +47,9 @@ export class ChallengeDescComponent implements OnInit {
   constructor(
     private sidebarService: SharedDataService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private http:HttpClient,
+    private renderer2: Renderer2
   ) {
     this.asideVisible = this.sidebarService.isSidebarVisible;
     this.challenge = JSON.parse(
@@ -49,14 +57,53 @@ export class ChallengeDescComponent implements OnInit {
     );
     //https://stackoverflow.com/questions/46915002/argument-of-type-string-null-is-not-assignable-to-parameter-of-type-string
     // console.log(this.sidebarService.isSidebarVisible);
+    this.listener = this.renderer2.listen('window', 'scroll', (e) => {
+      if(this.getYPosition(e)>455){
+        this.scrolled = true;
+        
+      }else{
+        this.scrolled= false;
+      }
+      console.log(this.getYPosition(e), this.scrolled)
+    });
   }
   get isSidebarVisible(): boolean {
     console.log(this.sidebarService.isSidebarVisible);
     return this.sidebarService.isSidebarVisible;
   }
   @ViewChild('drawer') drawer!: MatSidenav;
+
+  @HostListener('document:scroll')
+
   ngOnInit(): void {}
 
+  sendFeedback():void{
+    if(this.form.invalid){
+      return;
+    }
+    let url = "http://localhost:8070/api/v1/feedback/feedback";
+    this.http.post(url, this.form).subscribe(
+      (data) => {
+        console.log("data:",data);
+        this.isSuccessful = true;
+        this.router.navigate(['/login'])
+        // this.router.navigate(['login'], {queryParams: { registered: 'true' } });
+      },
+    (err: HttpErrorResponse) => {
+      if (err.error instanceof Error) {
+        console.log("Client-side error occured.");
+      } else {
+        console.log("Server-side error occurred.");
+      }
+    }
+    );
+  
+  }
+ 
+
+  getYPosition(e: any): number {
+    return e.target.scrollingElement.scrollTop;
+  }
   register(challenge: Challenge) {
     this.router.navigate([
       '/solution-form',

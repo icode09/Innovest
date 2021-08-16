@@ -18,9 +18,9 @@ import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-hom
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
-  { path: 'challenge-desc/:chalDesc', component: ChallengeDescComponent,canActivate: [AuthGuard] },
-  { path: 'solution-form/:chalDesc', component: SolutionFormComponent,canActivate: [AuthGuard] },
-  { path: 'list-solutions/:identifier', component: ListSolutionsComponent,canActivate: [AuthGuard] },
+  { path: 'challenge-desc/:chalDesc', component: ChallengeDescComponent},
+  { path: 'solution-form/:chalDesc', component: SolutionFormComponent },
+  { path: 'list-solutions/:identifier', component: ListSolutionsComponent},
   {
     path: 'dashboard', component: DashboardComponent,
     children: [
