@@ -54,7 +54,7 @@ export class DashboardHomeComponent implements OnInit {
   }
   ngAfterViewChecked(){  
     let items = document.querySelectorAll('.carousel .carousel-item');
-    console.log("length",items.length);
+    // console.log("length",items.length);
 
     items.forEach((el) => {
       const minPerSlide = 3;
@@ -71,7 +71,7 @@ export class DashboardHomeComponent implements OnInit {
     });
 
     items = document.querySelectorAll('.hello');
-    console.log("length",items.length);
+    // console.log("length",items.length);
 
     items.forEach((el) => {
       const minPerSlide = 3;

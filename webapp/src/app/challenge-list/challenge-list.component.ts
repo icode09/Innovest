@@ -55,6 +55,13 @@ export class ChallengeListComponent implements OnInit {
     this.url = this.router.url.split('/').pop() || '';
     console.log("Inside ngOnInit");
     this.getChallengeListFromServer();
+    let search = localStorage.getItem('searchQuery');
+    localStorage.removeItem('searchQuery');
+    if(search!=null){
+      this.queries.query = search;
+      this.searchClick();
+    }
+    console.log("search:",search);
 
     this.chipsValue$.subscribe((selected) => {
       this.selectedChips = selected.map((x: string) => x.trim());
