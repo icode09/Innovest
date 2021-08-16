@@ -43,7 +43,7 @@
 									<div *ngIf="email.errors?.email">Email must be a valid email address</div>
 								</div>
 							</div>
-							
+
 							<div class="form-group">
 								<i class="fas fa-lock"></i>
 								<input type="password" class="myInput" placeholder="Choose Password" name="password"
@@ -73,10 +73,11 @@
 							<div class="form-group">
 								<div class="multi-select-dropdown">
 									<i class="fas fa-chevron-circle-down"></i>
-									<mat-form-field  style="width:230px">
+									<mat-form-field style="width:230px">
 										<div class="myDropdown">
 											<mat-label>Domains</mat-label>
-											<mat-select  multiple name = "domain" [(ngModel)]="form.domain" #domain = "ngModel">
+											<mat-select multiple name="domain" [(ngModel)]="form.domain"
+												#domain="ngModel">
 												<mat-select-trigger>
 													{{domain.value ? domain.value[0] : ''}}
 													<span *ngIf="domain.value?.length > 1" class="myInput">
@@ -90,9 +91,10 @@
 										</div>
 									</mat-form-field>
 								</div>
+
 							</div>
 							<div class="form-group">
-								<button class="btn btn-primary btn-block">Sign Up</button>
+								<button class="btn btn-primary">Sign Up</button>
 							</div>
 							<div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
 								Signup failed!<br />{{ errorMessage }}
