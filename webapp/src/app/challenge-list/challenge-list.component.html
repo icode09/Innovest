@@ -1,4 +1,3 @@
-
 <div class="input-group" >
    
     <input type="search" class="form-control rounded"  [placeholder]="searchPlaceHolder" aria-label="Search"
@@ -9,34 +8,34 @@
     <!-- Voice Recognition Html Start-->
     <div id="voiceSection" *ngIf="voiceActiveSectionDisabled; else voicesection;">
         <button type="button" (click)="startVoiceRecognition()" id="recordButton"><i class="fa fa-microphone"></i></button>
-      </div>
-      <ng-template #voicesection>
+    </div>
+    <ng-template #voicesection>
         <ng-container *ngIf="!voiceActiveSectionError; else failure">
-          <ng-container *ngIf="voiceText; else start">
-             <!-- <span>{{voiceText}}</span> -->
-          </ng-container>
-          <ng-template #start>
+            <ng-container *ngIf="voiceText; else start">
+                <!-- <span>{{voiceText}}</span> -->
+            </ng-container>
+            <ng-template #start>
             <ng-container
-              *ngIf="voiceActiveSectionListening; else beginning">
-              <!-- <span>Listening...</span> -->
+                *ngIf="voiceActiveSectionListening; else beginning">
+                <!-- <span>Listening...</span> -->
             </ng-container>
             <ng-template #beginning>
-             <!-- <span>Start talking...</span> -->
+                <!-- <span>Start talking...</span> -->
             </ng-template>
-          </ng-template>
+            </ng-template>
         </ng-container>
         <ng-template #failure>
-          <!-- <span>Didn't catch that</span> -->
+            <!-- <span>Didn't catch that</span> -->
         </ng-template>
         <div>
             <button id="Restart" (click)="startVoiceRecognition()"><i class="fas fa-redo"></i></button>
-          <button id="Close" (click)="closeVoiceRecognition()"><i class="fas fa-times"></i></button>
-          
+            <button id="Close" (click)="closeVoiceRecognition()"><i class="fas fa-times"></i></button>
+            
         </div>
-      </ng-template>
-      <!-- Voice Recognition Html Ends-->
+    </ng-template>
+    <!-- Voice Recognition Html Ends-->
 
-    </div>
+</div>
 
 
 <!-- domain chips -->
