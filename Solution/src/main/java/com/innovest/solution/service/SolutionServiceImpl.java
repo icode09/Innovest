@@ -58,6 +58,16 @@ public class SolutionServiceImpl implements SolutionService {
 	}
 
 	@Override
+	public Solution updateReviewComments(UUID solutionId, String[] reviewComments) {
+		Query query=new Query();
+		Update update= new Update().set("reviewComments", reviewComments);
+		query.addCriteria(Criteria.where("solutionId").is(solutionId));
+
+		Solution solution = mongoTemplate.findAndModify(query,update,Solution.class);
+		return solution;
+	}
+
+	@Override
 	public List<Solution> getAllSolutions() {
 		System.out.println(repo.findAll());
 		return (List<Solution>) repo.findAll();

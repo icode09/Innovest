@@ -10,6 +10,7 @@ public interface SolutionService {
 	Solution addSolution(Solution solution);
 	Solution updateSolution(Solution solution);
 	Solution updateSolutionStatus(UUID solutionId, SolutionStatus solutionStatus);
+	Solution updateReviewComments(UUID solutionId, String[] reviewComments);
 	List<Solution> getAllSolutions();
 	List<Solution> getSolutionsByChallenge(UUID challengeId);
 	List<Solution> getSolutionsByUser(String solvedBy);

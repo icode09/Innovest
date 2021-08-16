@@ -43,6 +43,8 @@ public class Solution {
 	private String codeUrl;
 	@Nullable
 	private SolutionStatus solutionStatus;
+	@Nullable
+	private String[] reviewComments;
 	
 	public UUID getSolutionId() {
 		return solutionId;
@@ -91,5 +93,13 @@ public class Solution {
 	}
 	public void setSolutionStatus(SolutionStatus solutionStatus) {
 		this.solutionStatus = solutionStatus;
+	}
+
+	public String[] getReviewComments() {
+		return reviewComments;
+	}
+
+	public void setReviewComments(String[] reviewComments) {
+		this.reviewComments = reviewComments;
 	}
 }

@@ -59,4 +59,10 @@ public class SolutionController {
 		return new ResponseEntity<Solution>(solutionService.updateSolutionStatus(UUID.fromString(solutionId), SolutionStatus.valueOf(solutionStatus) ),HttpStatus.CREATED);
 	}
 
+	@PutMapping("/update/reviewComments")
+	public ResponseEntity<Solution> updateReviewComments(@RequestParam(required = true) String solutionId ,@RequestParam(required = true) String[] reviewComments){
+		System.out.println(solutionId);
+		return new ResponseEntity<Solution>(solutionService.updateReviewComments(UUID.fromString(solutionId), reviewComments ),HttpStatus.CREATED);
+	}
+
 }
