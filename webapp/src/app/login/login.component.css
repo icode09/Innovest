@@ -6,7 +6,7 @@
 }
 .main-div{
     display: flex;
-    height: 500px;
+    height: 470px;
     width: 800px;
     border-radius: 25px;
     margin: auto;
@@ -34,6 +34,9 @@
     border-radius: 25px;
 
 }
+.box:focus{
+    outline: none;
+}
 .error{
     color: red;
 }
@@ -45,37 +48,42 @@
 
 }
 .box{
-    padding:12px;
-    width: 65%;
-    margin: 15px;
-    border: 1px solid black;
-    outline: none;
-    border-radius: 20px;
+    width: 230px;
+    border-radius: 25px;
+    margin-top: 15px;
+    padding : 10px;
+    padding-left: 50px;
+    border : none;
+    -webkit-box-shadow : 0px 10px 49px -14px rgba(0,0,0,0.7);
+    -moz-box-shadow : 0px 10px 49px -14px rgba(0,0,0,0.7);
+    box-shadow: 0px 10px 49px -14px rgba(0,0,0,0.7);
+}
+.fas{
+    position: relative;
+    color: #bb36fd;
+    left: 36px;
 }
 #submit{
     padding: 3px 10px;
     width: 30%;
     margin-top: 40px;
     background-color: white;
-    color:black;
+    color:#bb36fd;
     font-weight: bold;
     border: none;
     border-left: none;
     border-radius: 20px;
 }
-#submit:hover{
-    cursor: pointer;
-    background-color:blueviolet;
-}
 .side{
     display: flex;
     border-radius: 25px;
-    
+     position: relative;
 
 }
 .side img{
     width: 450px;
     height: 450px
+    
 }
 .circles{
     position: absolute;
