@@ -52,5 +52,9 @@
     height: 2vh;
 }
 
-
-
+.dropdown-menu{
+    font-size:.85rem;
+}
+.dropdown-item:focus, .dropdown-item:hover{
+    color:blueviolet;
+}
