@@ -4,6 +4,7 @@ import com.stackroute.registrationservice.exception.UserAlreadyExist;
 import com.stackroute.registrationservice.model.User;
 import com.stackroute.registrationservice.repository.RegistrationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,8 @@ import java.util.List;
 public class RegistrationServiceImpl implements RegistrationService{
     RegistrationRepository registrationRepository;
 
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
    @Autowired
    public RegistrationServiceImpl(RegistrationRepository registrationRepository){
@@ -37,13 +40,15 @@ public class RegistrationServiceImpl implements RegistrationService{
 
     @Override
     public User updateUser(User user) {
-        User user1 = registrationRepository.findByEmail(user.getEmail()).get(0);
-        user1.setBio(user.getBio());
-        user1.setDisplayName(user.getDisplayName());
-        user1.setDomain(user.getDomain());
-        user1.setPassword(user.getPassword());
+        User toUpdate = registrationRepository.findByUserId(user.getUserId());
 
-        return user1;
-    }
+        System.out.println(toUpdate);
+        toUpdate.setDomain(user.getDomain());
+        toUpdate.setDisplayName(user.getDisplayName());
+        toUpdate.setPassword(user.getPassword());
+        toUpdate.setBio(user.getBio());
+
+        return registrationRepository.save(toUpdate);
+   }
 
 }

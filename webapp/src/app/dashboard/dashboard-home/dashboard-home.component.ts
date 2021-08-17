@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Challenge } from 'src/app/common/challenge';
 import { UserProfile } from 'src/app/common/user-profile';
+import { SearchService } from 'src/app/search.service';
+import { ChallengeService } from 'src/app/challenge.service';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -13,22 +15,48 @@ import { UserProfile } from 'src/app/common/user-profile';
 export class DashboardHomeComponent implements OnInit {
 
   userName:any;
-  challengeList: Challenge[] = []; 
+  user:UserProfile | undefined;
+  userDomains:string[] = ["Business & Entepreneurship","Chemistry","Computer/Info.technology","Engineering/Design","Environment","Food/Agriculture","Life Sciencess","Math/Statistics","Physical Sciences","Request for Partners and Suppliers","Social innovation"];
+  challengeList: Challenge[] = [];
+  recommendedChallenges: Challenge[] = [];
+  recentyAddedChallenges: Challenge[] = [];
+  topChallenges: Challenge[] = [];
+  progressbar: boolean = true;
+  queries = {query :''};
+  searchPlaceHolder: String = 'Search';
+
   catagoriesList: String[] = ["Business & Entepreneurship","Chemistry","Computer/Info.technology","Engineering/Design","Environment","Food/Agriculture","Life Sciencess","Math/Statistics","Physical Sciences","Request for Partners and Suppliers","Social innovation"];
-  constructor(private router: Router,private http:HttpClient) { }
+  constructor(private challengeService: ChallengeService, private searchService: SearchService, private router: Router,private http:HttpClient) { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.progressbar = false;
+    }, 500);
     this.userName = localStorage.getItem("currentUser");
+    if(this.userName != null){
+      this.getUserDetails().subscribe((user) => {
+        this.user = user;
+        if(user.domain==null || user.domain.length==0){
+          this.userDomains = user.domain;
+        }
+      });
+    }
     this.getChallengeList().subscribe((challenges) => {
       this.challengeList = challenges;
     });
-    this.getUserDetails().subscribe((user) => {
-      let user1:UserProfile = user;
+    this.searchService.searchByDomainList(this.userDomains,this.userName).subscribe((challenges) => {
+      this.recommendedChallenges = challenges;
+    });
+    this.searchService.findRecentyAddedChallenges(10,this.userName).subscribe((challenges) => {
+      this.recentyAddedChallenges = challenges;
+    });
+    this.searchService.findTopChallenges(10).subscribe((challenges) => {
+      this.topChallenges = challenges;
     });
   }
   ngAfterViewChecked(){  
     let items = document.querySelectorAll('.carousel .carousel-item');
-    console.log("length",items.length);
+    // console.log("length",items.length);
 
     items.forEach((el) => {
       const minPerSlide = 3;
@@ -45,7 +73,7 @@ export class DashboardHomeComponent implements OnInit {
     });
 
     items = document.querySelectorAll('.hello');
-    console.log("length",items.length);
+    // console.log("length",items.length);
 
     items.forEach((el) => {
       const minPerSlide = 3;
@@ -71,12 +99,26 @@ export class DashboardHomeComponent implements OnInit {
     // console.log(challenge.challengeName);
     // this.router.navigate(['/challenge-desc', JSON.stringify(challenge)]);
     challenge.challengeImage = "https://assets.weforum.org/article/image/large_bg1B3jyBjInTSH2AjIgjgoER9PYwCN-BZ_BQhdeZ92s.jpg";
-    return "http://localhost:4200/challenge-desc/"+encodeURIComponent(JSON.stringify(challenge));
+    return "http://localhost:4200/dashboard/challenge-desc/"+encodeURIComponent(JSON.stringify(challenge));
   }
   viewAllChallenges(word:string){
     this.router.navigate(['dashboard/ch-list/find']).then(() => {
       window.location.reload();
     });
+  }
+  search(word:any){
+    if(word == 'text'){
+      if(this.queries.query == ""){
+        this.ngOnInit();
+      }else{
+        localStorage.setItem('searchQuery', this.queries.query);
+        this.router.navigate(['dashboard/ch-list/find']);
+      }
+    }
+    else if(word == 'voice'){
+      localStorage.setItem('searchVoice', 'voice');
+      this.router.navigate(['dashboard/ch-list/find']);
+    }
   }
 
 }

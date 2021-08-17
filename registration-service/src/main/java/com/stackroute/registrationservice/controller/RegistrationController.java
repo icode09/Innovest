@@ -53,6 +53,7 @@ public class RegistrationController {
 
     @PostMapping("/update")
     public ResponseEntity<?> updateUserDetails(@RequestBody User user){
+        System.out.println("user details:"+user.getEmail());
         User updatedUser = registrationService.updateUser(user);
         return new ResponseEntity<>(updatedUser,HttpStatus.CREATED);
     }

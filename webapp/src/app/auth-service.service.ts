@@ -20,12 +20,12 @@ export class AuthServiceService {
 
   register(user: any): Observable<any> {
     return this.http.post(
-      'http://localhost:8081/api/v1/register/registered',
+      'http://localhost:8082/api/v1/register/registered',
       user
     );
   }
   updateUser(user :any) : Observable<any>{
-    return this.http.post('http://localhost:8081/api/v1/register/update',user);
+    return this.http.post('http://localhost:8082/api/v1/register/update',user);
   }
   storeToken(token: any, username: any) {
     localStorage.setItem('mytoken', token);

@@ -14,8 +14,15 @@
   <span *ngIf="infoMessage.length > 0">{{ infoMessage }}</span>
     <form class="form" [formGroup]="loginform" (ngSubmit)="signIn()">
             <h2>LOGIN</h2>
-            <input type=text class="box" placeholder="email" formControlName="email">
-            <input type="password" class="box" placeholder="password" formControlName="password">
+            <div class="form-group">
+              <i class="fas fa-envelope"></i>
+              <input type="email" class="box" placeholder="email" formControlName="email">
+            </div>
+            <div class="form-group">
+              <i class="fas fa-lock"></i>
+              <input type="password" class="box" placeholder="password" formControlName="password">
+            </div>
+            
             
           <!--<mat-form-field >
             <input matInput placeholder="Password" >
@@ -27,7 +34,7 @@
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
           </mat-form-field>-->
-        <button type="submit" id="submit">Login</button>
+        <button type="submit" class="btn btn-primary btn-block" id="submit">Login</button>
          <!--<input type="submit" value="SIGN IN" id="submit">-->
          <div class="error" *ngIf="isLoginFailed"><br />{{ errorMessage }}
         </div>

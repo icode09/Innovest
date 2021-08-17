@@ -137,13 +137,16 @@ public class ChallengeSearchServiceImp implements ChallengeSearchService {
 	}
 
 	@Override
-	public Iterable<ChallengeDoc> findLatestChallenges(Integer limit) {
+	public Iterable<ChallengeDoc> findLatestChallenges(Integer limit, String userName) {
 		List<ChallengeDoc> list = (List<ChallengeDoc>) findChallenge("");
 		list = list.stream()
 				.sorted(Comparator.comparing(ChallengeDoc::getStartDate,Comparator.reverseOrder()))
 				.limit(limit)
 				.collect(Collectors.toList());
 //		list.sort(Comparator.comparing(ChallengeDoc::getViews,Comparator.reverseOrder()));
+		list = list.stream()
+				.filter(ch -> ch.getChallengerName() == null || !ch.getChallengerName().equals(userName))
+				.collect(Collectors.toList());
 		return list;
 	}
 
