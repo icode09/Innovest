@@ -59,9 +59,9 @@ body {
   footer.sticky-footer{
     padding:2rem 0;
     flex-shrink:0;
-    position: absolute;
-    bottom: -90%;
-    width: -webkit-fill-available;
+    /* position: inherit;
+    bottom: 0;
+    width: -webkit-fill-available; */
   }
   footer.sticky-footer .copyright{
     line-height:1;

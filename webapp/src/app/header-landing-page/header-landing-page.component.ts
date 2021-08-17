@@ -40,7 +40,9 @@ export class HeaderLandingPageComponent implements OnInit {
 
   }
   gotoChallengeList(word:any) {
-    this.router.navigate(['dashboard/ch-list',word]);
+    this.router.navigate(['dashboard/ch-list',word]).then(() => {
+      window.location.reload();
+    });
   }
   mySolutionsList() {
     this.router.navigate([
