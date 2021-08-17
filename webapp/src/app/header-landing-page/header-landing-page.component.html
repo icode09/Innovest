@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li *ngIf="loggedIn" class="nav-item">
-                <a class="nav-link" (click)="createChallenge()">
+                <a class="nav-link" [routerLink]="['../create-ch']" routerLinkActive="router-link-active">
                     <p class="hover-underline-animation">Become a Challenger</p>
                 </a>
             </li>
@@ -31,7 +31,7 @@
             </li>
             
             <li *ngIf="loggedIn" class="nav-item">
-                <a class="nav-link" (click)="gotoChallengeList('find')">
+                <a class="nav-link" data-toggle="collapse" (click)="gotoChallengeList('find')" href="">
                     <p class="hover-underline-animation">Become a Solver</p>
                 </a>
             </li>
@@ -75,7 +75,7 @@
                         <i class="fas fa-atom fa-sm fa-fw mr-2 text-gray-400"></i>
                         My Challenges
                     </a>
-                    <a class="dropdown-item" data-toggle="collapse" (click)="gotoChallengeList('my')" href="#">
+                    <a class="dropdown-item" data-toggle="collapse" (click)="mySolutionsList()" href="#">
                         <i class="fas fa-bullseye fa-sm fa-fw mr-2 text-gray-400"></i>
                         My Solutions
                     </a>
@@ -89,6 +89,6 @@
         </ul>
     </div>
 </nav>
-<section style="margin-bottom: 10vh;"></section>
+<section style="margin-bottom: 10vh; padding-bottom: 1.5rem;"></section>
 <!--Navigation Ends-->
 
