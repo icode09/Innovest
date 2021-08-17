@@ -14,21 +14,21 @@ import {ListSolutionsComponent} from './list-solutions/list-solutions.component'
 import { FeedbackComponent } from './feedback/feedback.component';
 import { SolutionDescComponent } from './solution-desc/solution-desc.component';
 import { AuthGuard } from './auth.guard';
+import { HeaderLandingPageComponent } from './header-landing-page/header-landing-page.component';
 import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-home.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
-  // { path: 'challenge-desc/:chalDesc', component: ChallengeDescComponent},
+  { path: 'challenge-desc/:chalDesc', component: ChallengeDescComponent},
   { path: 'solution-form/:chalDesc', component: SolutionFormComponent },
-  // { path: 'list-solutions/:identifier', component: ListSolutionsComponent},
+  { path: 'list-solutions/:identifier', component: ListSolutionsComponent},
+  { path: 'profile', component : ProfileComponent},
+  { path: 'create-ch', component: CreateChallengeComponent },
+  { path: 'ch-list/:list', component: ChallengeListComponent },
   {
     path: 'dashboard', component: DashboardComponent,
     children: [
       { path: 'home', component: DashboardHomeComponent },
-      { path: 'ch-list/:list', component: ChallengeListComponent },
-      { path: 'challenge-desc/:chalDesc', component: ChallengeDescComponent},
-      { path: 'list-solutions/:identifier', component: ListSolutionsComponent},
-      { path: 'create-ch', component: CreateChallengeComponent },
       { path: 'profile', component : ProfileComponent},
       { path: '', redirectTo: '/dashboard/home', pathMatch: 'full' },
     ],

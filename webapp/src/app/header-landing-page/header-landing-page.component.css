@@ -9,7 +9,11 @@
     font-size:small;
     justify-content: space-around;
 }
-
+.img-profile{
+    margin-left: 1em;
+    height: 2rem;
+    width: 2rem;
+  }
 
 .hover-underline-animation {
     display: inline-block;

@@ -20,7 +20,6 @@ import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
 export class SolutionDescComponent implements OnInit {
   public loggedInUser = localStorage.getItem("currentUser");
   public solution: Solution;
-  public activeFeedback: boolean = false;
   
   public showUpdateButton = false;
   public showFeedbackButton = false;
@@ -39,7 +38,7 @@ export class SolutionDescComponent implements OnInit {
   selectedFiles: any;
   currentFileUpload: any;
   progress: { percentage: number } = { percentage: 0 };
-
+  activeFeedback :boolean = false;
 
   constructor(private route: ActivatedRoute, private _challengeService: CreatingchallengeService, private _sharingData: SharingDataService,
     private fb:FormBuilder,
@@ -73,13 +72,11 @@ export class SolutionDescComponent implements OnInit {
       console.log(this.showFeedbackButton);
       
 
-
       
     
   }
-  raiseFeedback(){
-    this.activeFeedback = true;
-  }
+  
+
 
   onEditSolution(){
     this.edit = true;
@@ -128,8 +125,7 @@ export class SolutionDescComponent implements OnInit {
           '',
           `${this.challenge.challengeId}`,
           `${localStorage.getItem('currentUser')}`,
-          'NotReviewed',
-          ['']
+          'NotReviewed'
         );
         this.errorMessage = '';
         this.openDialog();
@@ -153,5 +149,8 @@ export class SolutionDescComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       this.router.navigate(['/dashboard'])
     });
+  }
+  raiseFeedback(){
+    this.activeFeedback = true;
   }
 }
