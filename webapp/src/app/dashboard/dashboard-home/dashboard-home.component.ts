@@ -55,16 +55,16 @@ export class DashboardHomeComponent implements OnInit {
     });
   }
   ngAfterViewChecked(){  
-    let items = document.querySelectorAll('.carousel .carousel-item');
+    let items1 = document.querySelectorAll('.recommended');
     // console.log("length",items.length);
 
-    items.forEach((el) => {
+    items1.forEach((el) => {
       const minPerSlide = 3;
       let next = el.nextElementSibling;
       for (var i=1; i<minPerSlide; i++) {
           if (!next) {
               // wrap carousel by using first child
-            next = items[0];
+            next = items1[0];
           }
           let cloneChild = next.cloneNode(true);
           el.appendChild(cloneChild.childNodes[0]);
@@ -72,16 +72,33 @@ export class DashboardHomeComponent implements OnInit {
       }
     });
 
-    items = document.querySelectorAll('.hello');
-    // console.log("length",items.length);
+    let items2 = document.querySelectorAll('.latest');
+    // console.log("length",items2.length);
 
-    items.forEach((el) => {
+    items2.forEach((el) => {
       const minPerSlide = 3;
       let next = el.nextElementSibling;
       for (var i=1; i<minPerSlide; i++) {
           if (!next) {
               // wrap carousel by using first child
-            next = items[0];
+            next = items2[0];
+          }
+          let cloneChild = next.cloneNode(true);
+          el.appendChild(cloneChild.childNodes[0]);
+          next = next.nextElementSibling;
+      }
+    });
+
+    let items3 = document.querySelectorAll('.top');
+    // console.log("length",items3.length);
+
+    items3.forEach((el) => {
+      const minPerSlide = 3;
+      let next = el.nextElementSibling;
+      for (var i=1; i<minPerSlide; i++) {
+          if (!next) {
+              // wrap carousel by using first child
+            next = items3[0];
           }
           let cloneChild = next.cloneNode(true);
           el.appendChild(cloneChild.childNodes[0]);
