@@ -19,16 +19,17 @@
                     <p class="hover-underline-animation">View Challenges</p>
                 </a>
             </li>
-            <li *ngIf="loggedIn!=true" class="nav-item">
-                <a class="nav-link" [routerLink]="['../login']" routerLinkActive="router-link-active">
-                    <p class="hover-underline-animation">Become a Challenger</p>
-                </a>
-            </li>
             <li *ngIf="loggedIn" class="nav-item">
                 <a class="nav-link" (click)="createChallenge()">
                     <p class="hover-underline-animation">Become a Challenger</p>
                 </a>
             </li>
+            <li *ngIf="loggedIn!=true" class="nav-item">
+                <a class="nav-link" [routerLink]="['../login']" routerLinkActive="router-link-active">
+                    <p class="hover-underline-animation">Become a Challenger</p>
+                </a>
+            </li>
+            
             <li *ngIf="loggedIn" class="nav-item">
                 <a class="nav-link" (click)="gotoChallengeList('find')">
                     <p class="hover-underline-animation">Become a Solver</p>

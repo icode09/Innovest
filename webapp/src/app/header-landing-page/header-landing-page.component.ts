@@ -36,9 +36,8 @@ export class HeaderLandingPageComponent implements OnInit {
       // .then(() => {window.location.reload();});
   }
   createChallenge() {
-    this.router.navigate(['create-ch'], { relativeTo: this.route }).then(() => {
-      window.location.reload();
-    });
+    this.router.navigate(['create-ch'], { relativeTo: this.route });
+
   }
   gotoChallengeList(word:any) {
     this.router.navigate(['ch-list',word], { relativeTo: this.route });
