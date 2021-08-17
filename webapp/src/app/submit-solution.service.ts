@@ -44,6 +44,14 @@ export class SubmitSolutionService {
       )
       .pipe(catchError(this.errorHandler));
   }
+  updateSolution(solution: Solution, file: FormData):Observable<Solution> {
+    return this.httpClient
+      .post<Solution>(
+        `http://localhost:8100/solutions/update?file${file}`,
+        solution
+      )
+      .pipe(catchError(this.errorHandler));
+  }
 
   public errorHandler(error: Response | any) {
     if (error instanceof ErrorEvent) {

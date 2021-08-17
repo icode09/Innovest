@@ -43,17 +43,31 @@
       </mat-form-field>
 
       <div *ngIf="currentFileUpload" class="progress">
-        <div class="progress-bar progress-bar-info progress-bar-striped  progress-bar-animated" role="progressbar"
-          attr.aria-valuenow="{{progress.percentage}}" aria-valuemin="0" aria-valuemax="100"
-          [ngStyle]="{width:progress.percentage+'%'}">
-          {{progress.percentage}}%</div>
-
+        <div
+          class="
+            progress-bar
+            progress-bar-info
+            progress-bar-striped
+            progress-bar-animated
+          "
+          role="progressbar"
+          attr.aria-valuenow="{{ progress.percentage }}"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          [ngStyle]="{ width: progress.percentage + '%' }"
+        >
+          {{ progress.percentage }}%
+        </div>
       </div>
       <label class="btn btn-default">
-        <input type="file" (change)="selectFile($event)">
+        <input
+          type="file"
+          class="form-control"
+          style="padding: 4px"
+          accept=".pdf"
+          (change)="onFileChanged($event)"
+        />
 
-        <button mat-raised-button color="primary" type="button" style="width:90px;height:35px;"
-          [disabled]="!selectedFiles" (click)="upload()">Upload</button>
       </label>
       <button (click)="submitSolution()" mat-raised-button color="primary">
         Submit
