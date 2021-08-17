@@ -139,5 +139,4 @@ export class DashboardHomeComponent implements OnInit {
       this.router.navigate(['dashboard/ch-list/find']);
     }
   }
-
 }
