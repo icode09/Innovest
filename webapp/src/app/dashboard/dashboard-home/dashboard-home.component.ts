@@ -98,6 +98,8 @@ export class DashboardHomeComponent implements OnInit {
   viewChallengeDesc(challenge:Challenge){
     // console.log(challenge.challengeName);
     // this.router.navigate(['/challenge-desc', JSON.stringify(challenge)]);
+    // this.challengeService.updateViews(challenge).subscribe();
+    localStorage.setItem('chClicked', 'yes');
     challenge.challengeImage = "https://assets.weforum.org/article/image/large_bg1B3jyBjInTSH2AjIgjgoER9PYwCN-BZ_BQhdeZ92s.jpg";
     return "http://localhost:4200/challenge-desc/"+encodeURIComponent(JSON.stringify(challenge));
   }

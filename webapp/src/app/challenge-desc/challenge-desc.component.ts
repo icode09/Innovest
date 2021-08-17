@@ -4,6 +4,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Challenge } from '../common/challenge';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { ChallengeService } from '../challenge.service';
 
 ////https://stackoverflow.com/questions/43159090/how-can-i-detect-service-variable-change-when-updated-from-another-component
 export interface Domain {
@@ -49,7 +50,8 @@ export class ChallengeDescComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private http:HttpClient,
-    private renderer2: Renderer2
+    private renderer2: Renderer2,
+    private challengeService: ChallengeService
   ) {
     this.asideVisible = this.sidebarService.isSidebarVisible;
     this.challenge = JSON.parse(
@@ -75,7 +77,16 @@ export class ChallengeDescComponent implements OnInit {
 
   @HostListener('document:scroll')
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    /* for updating challenge views */
+    let message = localStorage.getItem('chClicked');
+    localStorage.removeItem('chClicked');
+    if(message != null && message == 'yes' && this.challenge != null) {
+      console.log(this.challenge.challengeId);
+      this.challengeService.updateViews(this.challenge.challengeId).subscribe();
+    }
+    /* for updating challenge views - ends */
+  }
 
   sendFeedback():void{
     if(this.form.invalid){
