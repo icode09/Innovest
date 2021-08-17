@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Challenge } from '../common/challenge';
 import { Solution } from '../common/solution';
@@ -15,16 +14,13 @@ import { SharingDataService } from '../sharing-data.service';
 export class SolutionDescComponent implements OnInit {
   public loggedInUser = localStorage.getItem("currentUser");
   public solution: Solution;
-  public activeFeedback: boolean = false;
   
   public showUpdateButton = false;
   public showFeedbackButton = false;
   public challenge: Challenge  = new Challenge("", "", "lkdsclmds", "", "","",["",""],["",""],new Date(),new Date(), "","",false,0,"","","",0,0);
   private challengeId: string = '';
   public challengername: string = '';
-  public reviewComments: string[] = ["Hi changed this", "Changed that"];
-  edit:boolean = false;
-  feedback= new FormControl('');
+  
   constructor(private route: ActivatedRoute, private _challengeService: CreatingchallengeService, private _sharingData: SharingDataService) {
     let sol = JSON.parse(this.route.snapshot.paramMap.get('solution') || '{}');
     this.solution = sol;
@@ -53,18 +49,12 @@ export class SolutionDescComponent implements OnInit {
       console.log(this.showFeedbackButton);
       
 
-
       
     
   }
-  raiseFeedback(){
-    this.activeFeedback = true;
-  }
+  
 
-  editProfile() {
-    this.edit = true;
-    
-}
+
 
 
 }

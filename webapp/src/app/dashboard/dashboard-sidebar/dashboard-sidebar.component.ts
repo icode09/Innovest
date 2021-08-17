@@ -23,7 +23,7 @@ export class DashboardSidebarComponent implements OnInit {
   }
   mySolutionsList() {
     this.router.navigate([
-      'dashboard/list-solutions',
+      '/list-solutions',
       JSON.stringify({
         solvedBy: `${this.userName}`,
       }),
