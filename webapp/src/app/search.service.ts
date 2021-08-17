@@ -20,17 +20,20 @@ export class SearchService {
     return this.http.get<Challenge[]>(this.url + "findByDomain/" + query);
   }
 
-  searchByDomainList(domain:String[],userName:String) : Observable<Challenge[]> {
+  // Recommended Challenges
+  searchByDomainList(domain:String[], userName:String) : Observable<Challenge[]> {
     return this.http.get<Challenge[]>(this.url+ "findByDomainList/?domainList=" +encodeURIComponent(domain.join(", ")) 
                                               + "&userName=" +userName);
   }
 
-  findTopChallenges(query:number) : Observable<Challenge[]> {
-    return this.http.get<Challenge[]>(this.url + "findTop/" + query);
+  // Top Challenges
+  findTopChallenges(limit:number, userName:String) : Observable<Challenge[]> {
+    return this.http.get<Challenge[]>(this.url + "findTop/?limit=" + limit + "&userName=" +userName);
   }
 
-  findRecentyAddedChallenges(query:number,userName:String) : Observable<Challenge[]> {
-    return this.http.get<Challenge[]>(this.url + "findLatest/?limit=" + query + "&userName=" +userName);
+  // Recently Added Challenges
+  findRecentyAddedChallenges(limit:number, userName:String) : Observable<Challenge[]> {
+    return this.http.get<Challenge[]>(this.url + "findLatest/?limit=" + limit + "&userName=" +userName);
   }
 
   getAll() : Observable<Challenge[]> {
