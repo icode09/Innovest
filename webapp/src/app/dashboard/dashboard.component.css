@@ -12,7 +12,7 @@ body {
 }
 .topbar {
   top: 0;
-  height: 4.375rem;
+  height: 4rem;
   position: fixed;
   margin-top: 10vh;
   min-width: -webkit-fill-available;
@@ -62,13 +62,12 @@ body {
 footer.sticky-footer{
   padding:2rem 0;
   flex-shrink:0;
+  bottom: 0;
+  width: -webkit-fill-available;
 }
 footer.sticky-footer .copyright{
   line-height:1;
   font-size:.8rem
-}
-body.sidebar-toggled footer.sticky-footer{
-  width:100%
 }
 /*footer*/
   

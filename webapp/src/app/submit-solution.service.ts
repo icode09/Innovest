@@ -11,18 +11,36 @@ import { catchError } from 'rxjs/operators';
 export class SubmitSolutionService {
   constructor(private httpClient: HttpClient) {}
 
-  addSolution(solution: Solution): Observable<Solution> {
+  addSolution(solution: Solution, file: FormData): Observable<Solution> {
     return this.httpClient
-      .post<Solution>('http://localhost:8100/solutions/add', solution)
+      .post<Solution>(
+        `http://localhost:8100/solutions/add?file${file}`,
+        solution
+      )
       .pipe(catchError(this.errorHandler));
   }
 
-  updateSolutionStatus(solution: string, solutionStatus: String): Observable<Solution> {
+  updateSolutionStatus(
+    solution: string,
+    solutionStatus: String
+  ): Observable<Solution> {
     console.log(solution);
     return this.httpClient
       .put<Solution>(
         `http://localhost:8100/solutions/update/solutionStatus?solutionId=${solution}&solutionStatus=${solutionStatus}`,
         { solutionId: solution, solutionStatus: 'Accepted' }
+      )
+      .pipe(catchError(this.errorHandler));
+  }
+
+  updateReviewComments(
+    solutionId: string,
+  reviewComments: []
+  ): Observable<Solution> {
+    return this.httpClient
+      .put<Solution>(
+        `http://localhost:8100/solutions/update/reviewComments?solutionId=${solutionId}&reviewComments=${reviewComments}`,
+        { solutionId: solutionId }
       )
       .pipe(catchError(this.errorHandler));
   }
