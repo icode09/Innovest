@@ -1,14 +1,24 @@
+<mat-card *ngIf="scrolled"  style="display: flex; flex-direction: row;position:fixed;z-index: 10000;top: 10vh;width:70vw; height:6vh; justify-content:center; align-items:center;text-align:center; justify-content:center;margin-left: 15vw;margin-right: 15vw;margin-top: 1px;transition: all 5s ease;  ">
+
+
+      <div style="text-align: center;justify-content: center;" class="challengeName">
+        <h1 style="text-align:center;justify-content: center;margin-top: 13px;" class="challengeTitle">{{ challenge.challengeName }}</h1>
+      </div>
+      <div >
+        <button
+          mat-raised-button
+          (click)="register(challenge)"
+          routerActive="active"
+          color="primary"
+        >
+          Register
+        </button>
+      </div>
+
+
+</mat-card>
 <div>
-  <button
-    *ngIf="scrolled"
-    mat-raised-button
-    (click)="register(challenge)"
-    routerActive="active"
-    color="primary"
-    style="position: fixed; z-index: 199; margin-left: 48vw; bottom: 30px"
-  >
-    Register
-  </button>
+
   <mat-drawer-container autosize>
     <div class="banner">
       <img
@@ -19,8 +29,10 @@
       />
     </div>
 
-    <mat-card class="registerCard">
-      <div class="challengeInfoDiv">
+    
+
+    <mat-card  class="registerCard">
+      <div  class="challengeInfoDiv">
         <mat-card class="profileImageCard">
           <img
             width="100%"

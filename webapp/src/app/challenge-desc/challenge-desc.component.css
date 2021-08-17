@@ -123,6 +123,7 @@ mat-label {
   background-color: white;
   width: 100vw;
   height: 80vh;
+  z-index: 100;
 }
 .rewardBanner {
   width: 50vw;
@@ -131,6 +132,7 @@ mat-label {
   height: 30vh;
   color: primary;
   background-color: rgb(224, 72, 224);
+  z-index: 100;
 }
 .feedBackContainer {
   width: 100vw;

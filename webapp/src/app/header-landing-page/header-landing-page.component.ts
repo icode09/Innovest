@@ -32,16 +32,23 @@ export class HeaderLandingPageComponent implements OnInit {
       this.sidebarService.toggleSidebarVisibility()
   }
   myProfile(){
-    this.router.navigate(['profile'],{relativeTo : this.route});
+    this.router.navigate(['dashboard/profile']);
       // .then(() => {window.location.reload();});
   }
   createChallenge() {
-    this.router.navigate(['create-ch'], { relativeTo: this.route }).then(() => {
-      window.location.reload();
-    });
+    this.router.navigate(['dashboard/create-ch']);
+
   }
   gotoChallengeList(word:any) {
-    this.router.navigate(['ch-list',word], { relativeTo: this.route });
+    this.router.navigate(['dashboard/ch-list',word]);
+  }
+  mySolutionsList() {
+    this.router.navigate([
+      'list-solutions',
+      JSON.stringify({
+        solvedBy: `${this.userName}`,
+      }),
+    ]);
   }
   logout() {
     localStorage.clear();

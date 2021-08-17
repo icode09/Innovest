@@ -22,13 +22,12 @@ const routes: Routes = [
   { path: 'challenge-desc/:chalDesc', component: ChallengeDescComponent},
   { path: 'solution-form/:chalDesc', component: SolutionFormComponent },
   { path: 'list-solutions/:identifier', component: ListSolutionsComponent},
-  { path: 'profile', component : ProfileComponent},
-  { path: 'create-ch', component: CreateChallengeComponent },
-  { path: 'ch-list/:list', component: ChallengeListComponent },
   {
     path: 'dashboard', component: DashboardComponent,
     children: [
       { path: 'home', component: DashboardHomeComponent },
+      { path: 'ch-list/:list', component: ChallengeListComponent },
+      { path: 'create-ch', component: CreateChallengeComponent },
       { path: 'profile', component : ProfileComponent},
       { path: '', redirectTo: '/dashboard/home', pathMatch: 'full' },
     ],
