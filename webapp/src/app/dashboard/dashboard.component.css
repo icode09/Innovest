@@ -12,7 +12,7 @@ body {
 }
 .topbar {
   top: 0;
-  height: 4.375rem;
+  height: 4rem;
   position: fixed;
   margin-top: 10vh;
   min-width: -webkit-fill-available;
