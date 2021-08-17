@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ChallengeService {
 
-  _url = 'http://localhost:8080/innovest/challenge/';
+  _url = '/innovest/challenge/';
   constructor(private _http: HttpClient) { }
 
   createChallenge(cd : any){

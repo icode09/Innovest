@@ -24,6 +24,12 @@
     <modules>
         <module>eureka-server</module>
         <module>spring-cloud-gateway</module>
+        <module>registration-service</module>
+        <module>authenticationService</module>
+        <module>challenge-create-services</module>
+        <module>Solution</module>
+        <module>searchService</module>
+        <module>FeedbackService</module>
     </modules>
     <dependencies>
 

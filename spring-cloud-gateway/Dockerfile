@@ -1,7 +1,7 @@
-FROM openjdk:11-jre-slim
+FROM openjdk:11
 
-ADD ./target/gateway-1.0.0.jar /usr/src/gateway-1.0.0.jar
+EXPOSE 8080
 
-WORKDIR usr/src
+ADD ./target/gateway-1.0.0.jar gateway-1.0.0.jar
 
-ENTRYPOINT ["java","-jar", "gateway-1.0.0.jar"]
+ENTRYPOINT ["java","-jar", "/gateway-1.0.0.jar"]

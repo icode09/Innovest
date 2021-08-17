@@ -22,7 +22,7 @@ import com.example.service.ChallengeService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(value="innovest/challenge")
+@RequestMapping(value="/innovest/challenge")
 public class ChallengeController {
 
 	private ChallengeService challengeService;

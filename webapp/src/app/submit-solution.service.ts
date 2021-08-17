@@ -13,7 +13,7 @@ export class SubmitSolutionService {
 
   addSolution(solution: Solution): Observable<Solution> {
     return this.httpClient
-      .post<Solution>('http://localhost:8100/solutions/add', solution)
+      .post<Solution>('/solutions/add', solution)
       .pipe(catchError(this.errorHandler));
   }
 
@@ -21,7 +21,7 @@ export class SubmitSolutionService {
     console.log(solution);
     return this.httpClient
       .put<Solution>(
-        `http://localhost:8100/solutions/update/solutionStatus?solutionId=${solution}&solutionStatus=${solutionStatus}`,
+        `/solutions/update/solutionStatus?solutionId=${solution}&solutionStatus=${solutionStatus}`,
         { solutionId: solution, solutionStatus: 'Accepted' }
       )
       .pipe(catchError(this.errorHandler));
@@ -33,7 +33,7 @@ export class SubmitSolutionService {
   ): Observable<Solution> {
     return this.httpClient
       .put<Solution>(
-        `http://localhost:8100/solutions/update/reviewComments?solutionId=${solutionId}&reviewComments=${reviewComments}`,
+        `/solutions/update/reviewComments?solutionId=${solutionId}&reviewComments=${reviewComments}`,
         { solutionId: solutionId }
       )
       .pipe(catchError(this.errorHandler));
@@ -41,7 +41,7 @@ export class SubmitSolutionService {
   updateSolution(solution: Solution, file: FormData):Observable<Solution> {
     return this.httpClient
       .post<Solution>(
-        `http://localhost:8100/solutions/update?file${file}`,
+        `/solutions/update?file${file}`,
         solution
       )
       .pipe(catchError(this.errorHandler));

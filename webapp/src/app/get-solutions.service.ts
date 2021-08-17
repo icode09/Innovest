@@ -12,14 +12,14 @@ export class GetSolutionsService {
 
   getSolutionsBySolvedBy(solvedBy: String): Observable<[Solution]> {
     return this.httpClient
-      .get<[Solution]>(`http://localhost:8100/solutions/?solvedBy=${solvedBy}`)
+      .get<[Solution]>(`/solutions/?solvedBy=${solvedBy}`)
       .pipe(catchError(this.errorHandler));
   }
 
   getSolutionsByChallengeId(challengeId: String): Observable<[Solution]> {
     return this.httpClient
       .get<[Solution]>(
-        `http://localhost:8100/solutions/?challengeId=${challengeId}`
+        `/solutions/?challengeId=${challengeId}`
       )
       .pipe(catchError(this.errorHandler));
   }
