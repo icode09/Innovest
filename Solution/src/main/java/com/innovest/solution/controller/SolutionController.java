@@ -1,5 +1,6 @@
 package com.innovest.solution.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import java.util.UUID;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import com.innovest.solution.model.Solution;
 import com.innovest.solution.model.SolutionStatus;
 import com.innovest.solution.service.SolutionService;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
@@ -26,10 +28,14 @@ public class SolutionController {
 		this.solutionService = solutionService;
 	}
 	@PostMapping("/add")
-	public ResponseEntity<Solution> addSolution(@RequestBody Solution solution){
+	public ResponseEntity<Solution> addSolution(@RequestBody Solution solution,@RequestParam(value = "file",required = false) MultipartFile file) throws IOException {
 		UUID uuid = UUID.randomUUID();
 		solution.setSolutionId(uuid);
 		solution.setSolutionStatus(SolutionStatus.NotReviewed);
+		solution.setFileByte(file.getBytes());
+		solution.setFileName(file.getName());
+		String fileUrl=solutionService.uploadFile(file);
+		solution.setDocumentUrl(fileUrl);
 		return new ResponseEntity<Solution>(solutionService.addSolution(solution),HttpStatus.CREATED);
 	}
 	@CrossOrigin
