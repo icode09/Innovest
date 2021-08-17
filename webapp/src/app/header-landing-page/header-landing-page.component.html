@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li *ngIf="loggedIn" class="nav-item">
-                <a class="nav-link" [routerLink]="['dashboard/create-ch']" routerLinkActive="router-link-active">
+                <a class="nav-link" data-toggle="collapse" (click)="createChallenge()" href="">
                     <p class="hover-underline-animation">Become a Challenger</p>
                 </a>
             </li>

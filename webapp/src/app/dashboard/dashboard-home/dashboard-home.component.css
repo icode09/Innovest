@@ -102,7 +102,7 @@ height: 100%;
 
 .carousel-control-next,
 .carousel-control-prev {
-    filter: invert(100%);
+    filter: invert(40%);
 }
 .carousel-control-prev{
     margin-left: -20px;
