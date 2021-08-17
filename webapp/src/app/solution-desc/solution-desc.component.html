@@ -1,22 +1,73 @@
-
-<mat-card style="height:fit-content; margin: 100px;" color="accent">
-    <mat-card-title  align="center" style="margin: 20px;">
+<mat-card style="height:fit-content; margin: 20px 100px 10px 100px;;" color="accent">
+  <mat-card-title align="center" style="margin: 20px;">
     {{solution.solutionTitle}}
-    </mat-card-title>
-    <mat-card-subtitle>Solution URL: {{solution.codeUrl}}</mat-card-subtitle>
-    <mat-card-subtitle>Solution Status: {{solution.solutionStatus}}</mat-card-subtitle>
-    <mat-card-subtitle>Challenge Name: {{challenge.challengeName}}</mat-card-subtitle>
-    <mat-card-subtitle>Challenger Name: {{challenge.challengerName}} </mat-card-subtitle>
-    <p>logged In user :{{loggedInUser}} </p>
-    <img mat-card-image src="https://cdn.pixabay.com/photo/2018/09/22/10/58/business-3694993_960_720.jpg" alt="Cover Photo">
-    <mat-card-content>
-      Solution Description =>
-      <div class="sol-desc">  {{solution.solutionDescription}}  </div>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button hidden="!showUpdateButton" mat-raised-button>Edit Solution</button>
-      <button [hidden]="!(challenge.challengerName == loggedInUser)" mat-raised-button>Give a feedback</button>
+  </mat-card-title>
+  <mat-card-subtitle>Solution URL: {{solution.codeUrl}}</mat-card-subtitle>
+  <mat-card-subtitle>Solution Status: {{solution.solutionStatus}}</mat-card-subtitle>
+  <mat-card-subtitle>Challenge Name: {{challenge.challengeName}}</mat-card-subtitle>
+  <mat-card-subtitle>Challenger Name: {{challenge.challengerName}} </mat-card-subtitle>
 
-    </mat-card-actions>
-  </mat-card>
-  <!---->
+  <img mat-card-image src="https://cdn.pixabay.com/photo/2018/09/22/10/58/business-3694993_960_720.jpg"
+    alt="Cover Photo">
+  <mat-card-content>
+    Solution Description =>
+    <div class="sol-desc"> {{solution.solutionDescription}} </div>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button [hidden]="!showUpdateButton" mat-raised-button (click)="onEditSolution()">Edit Solution</button>
+    <button [hidden]="!(challenge.challengerName == loggedInUser || solution.solvedBy == loggedInUser)"
+      (click)="raiseFeedback()" mat-raised-button>Add Comment Review</button>
+
+  </mat-card-actions>
+</mat-card>
+<!---->
+<!---->
+<div *ngIf="edit">
+  <div class="container-fluid">
+    <form id="solutionForm" #solutionForm="ngForm" action="" class="item">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Solution Title</mat-label>
+        <input [(ngModel)]="form.value.solutionTitle" name="solutionTitle" matInput required type="text"
+          placeholder="Solution Title" />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea [(ngModel)]="form.value.solutionDescription" name="solutionDescription" required matInput
+          placeholder="Description" rows="7" cols="50"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Code Url</mat-label>
+        <input [(ngModel)]="form.value.codeUrl" name="codeUrl" matInput type="url" placeholder="Code Url" />
+      </mat-form-field>
+
+      <div *ngIf="currentFileUpload" class="progress">
+        <div class="progress-bar progress-bar-info progress-bar-striped  progress-bar-animated" role="progressbar"
+          attr.aria-valuenow="{{progress.percentage}}" aria-valuemin="0" aria-valuemax="100"
+          [ngStyle]="{width:progress.percentage+'%'}">
+          {{progress.percentage}}%</div>
+
+      </div>
+      <label class="btn btn-default">
+        <input type="file" (change)="selectFile($event)">
+
+        <button mat-raised-button color="primary" type="button" style="width:90px;height:35px;"
+          [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+      </label>
+      <button (click)="submitSolution()" mat-raised-button color="primary">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+<div *ngIf="activeFeedback">
+  <mat-form-field class="example-full-width" appearane="fill"
+    style="height:fit-content; margin: 10px 100px 10px 100px; width:fit-content;">
+    <mat-label>Feedback</mat-label>
+    <input matInput [formControl]="feedback">
+  </mat-form-field>
+</div>
+
+<!---->
+<!---->

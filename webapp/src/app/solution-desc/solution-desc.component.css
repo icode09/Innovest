@@ -1,0 +1,33 @@
+.editButton {
+    display: inline-flex;
+    text-align: right;
+}
+
+.example-full-width {
+    width: 100%;
+  }
+  #solutionForm {
+    margin-top: 10vh;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    font-family: sans-serif;
+    font-size: medium;
+    font-weight: lighter;
+    display: flex;
+    flex-direction: column;
+  }
+  @media screen and (max-width: 729px) {
+    .innerContainer {
+      flex-wrap: wrap;
+    }
+    .item:first-child {
+      flex-basis: 100%;
+      width: 90vw;
+      margin-right: 10vw;
+    }
+    .item:nth-child(2) {
+      width: 90vw;
+      margin-right: 10vw;
+    }
+  }
+  
