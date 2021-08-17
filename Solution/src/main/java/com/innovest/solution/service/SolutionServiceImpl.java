@@ -1,26 +1,43 @@
 package com.innovest.solution.service;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import java.util.UUID;
 
+import com.amazonaws.AmazonServiceException;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import com.innovest.solution.model.Solution;
 import com.innovest.solution.model.SolutionStatus;
 import com.innovest.solution.repository.SolutionRepository;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.annotation.PostConstruct;
 
 
 @Service
 public class SolutionServiceImpl implements SolutionService {
 
 	SolutionRepository repo;
-	
+	private AmazonS3 s3client;
+
 	@Autowired
 	public SolutionServiceImpl(SolutionRepository repo) {
 		super();
@@ -105,6 +122,71 @@ public class SolutionServiceImpl implements SolutionService {
 	public void removeSolution(UUID solutionId) {
 		// TODO Auto-generated method stub
 		repo.deleteById(solutionId);
+	}
+
+
+	@Value("${aws.s3.bucket}")
+	private String bucketName;
+	@Value("${aws.s3.endpointUrl}")
+	private String endpointUrl;
+	@Value("${aws.access_key_id}")
+	private String accessKeyId;
+	@Value("${aws.secret_access_key}")
+	private String secretAccessKey;
+	@Value("${aws.s3.region}")
+	private String region;
+
+	@PostConstruct
+	private void initializeAmazon() {
+		BasicAWSCredentials creds = new BasicAWSCredentials(accessKeyId, secretAccessKey);
+		this.s3client = AmazonS3ClientBuilder
+				.standard()
+				.withRegion(Regions.fromName(region))
+				.withCredentials(new AWSStaticCredentialsProvider(creds))
+				.build();
+	}
+
+	@Override
+	@Async
+	public String uploadFile(MultipartFile multipartFile) {
+		String fileUrl = "";
+		try {
+			final File file = convertMultiPartFileToFile(multipartFile);
+			String fileName = generateFileName(multipartFile);
+			fileUrl = endpointUrl + "/" + bucketName + "/" + fileName;
+			uploadFileToS3Bucket(fileName, file);
+			file.delete();    // To remove the file locally created in the project folder.
+		} catch (final AmazonServiceException ex) {
+		}
+		return fileUrl;
+	}
+
+
+	private String generateFileName(MultipartFile multiPart) {
+		return new Date().getTime() + "-" + multiPart.getOriginalFilename()
+				.replace(" ", "_");
+	}
+	private File convertMultiPartFileToFile(final MultipartFile multipartFile) {
+		final File file = new File(multipartFile.getOriginalFilename());
+		try (final FileOutputStream outputStream = new FileOutputStream(file)) {
+			outputStream.write(multipartFile.getBytes());
+		} catch (final IOException ex) {
+
+		} catch (Exception exception) {
+
+		}
+		return file;
+	}
+	private void uploadFileToS3Bucket(final String fileName, final File file) {
+		try {
+
+			final PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, fileName, file);
+
+			s3client.putObject(putObjectRequest);
+
+		} catch (Exception exc) {
+
+		}
 	}
 	
 }
