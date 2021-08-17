@@ -32,15 +32,15 @@ export class HeaderLandingPageComponent implements OnInit {
       this.sidebarService.toggleSidebarVisibility()
   }
   myProfile(){
-    this.router.navigate(['profile']);
+    this.router.navigate(['dashboard/profile']);
       // .then(() => {window.location.reload();});
   }
   createChallenge() {
-    this.router.navigate(['create-ch']);
+    this.router.navigate(['dashboard/create-ch']);
 
   }
   gotoChallengeList(word:any) {
-    this.router.navigate(['ch-list',word]);
+    this.router.navigate(['dashboard/ch-list',word]);
   }
   mySolutionsList() {
     this.router.navigate([

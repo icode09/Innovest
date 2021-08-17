@@ -10,7 +10,7 @@
     <div id="navb" class="navbar-collapse collapse hide">
         <ul class="navbar-nav">
             <li *ngIf="loggedIn" class="nav-item">
-                <a class="nav-link" [routerLink]="['../dashboard']" routerLinkActive="router-link-active">
+                <a class="nav-link" [routerLink]="['dashboard']" routerLinkActive="router-link-active">
                     <p class="hover-underline-animation">View Challenges</p>
                 </a>
             </li>
@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li *ngIf="loggedIn" class="nav-item">
-                <a class="nav-link" [routerLink]="['../create-ch']" routerLinkActive="router-link-active">
+                <a class="nav-link" [routerLink]="['dashboard/create-ch']" routerLinkActive="router-link-active">
                     <p class="hover-underline-animation">Become a Challenger</p>
                 </a>
             </li>
@@ -67,7 +67,7 @@
                     <img class="img-profile rounded-circle" src="../../assets/images/undraw_profile.svg">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"  aria-labelledby="userDropdown">
-                    <a class="dropdown-item" [routerLink]="['../profile']" routerLinkActive="router-link-active" data-toggle="collapse">
+                    <a class="dropdown-item" [routerLink]="['dashboard/profile']" routerLinkActive="router-link-active" data-toggle="collapse">
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Profile
                     </a>
@@ -89,6 +89,6 @@
         </ul>
     </div>
 </nav>
-<section style="margin-bottom: 10vh; padding-bottom: 1.5rem;"></section>
+<section style="margin-bottom: 10vh;"></section>
 <!--Navigation Ends-->
 
