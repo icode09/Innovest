@@ -15,10 +15,10 @@ export class ChallengeService {
   createChallenge(cd : any){
     console.log("challenge details in dervice:", cd);
     return this._http.post<any>(this._url, cd, {
-      headers : new HttpHeaders({
-        'Content-Type' : 'multipart/form-data'
+     // headers : new HttpHeaders({
+       // 'Content-Type' : 'multipart/form-data'
 
-      })
+      //})
     });
   }
 

@@ -127,7 +127,8 @@ export class SolutionDescComponent implements OnInit {
           '',
           `${this.challenge.challengeId}`,
           `${localStorage.getItem('currentUser')}`,
-          'NotReviewed'
+          'NotReviewed',
+          ['']
         );
         this.errorMessage = '';
         this.openDialog();

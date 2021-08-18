@@ -49,8 +49,8 @@ public class ChallengeController {
 	}*/
 	@CrossOrigin
 	@PostMapping("/upload")
-    public ResponseEntity<Challenge> uploadFile(@RequestParam(value = "file",required=false )MultipartFile file, @RequestBody Challenge ch) throws IOException {
-        //Challenge challengeObj = new ObjectMapper().readValue(Challenge, Challenge.class);
+    public ResponseEntity<Challenge> uploadFile(@RequestParam(value = "file",required = false )MultipartFile file, @RequestParam(value = "input" )String input) throws IOException {
+        Challenge ch = new ObjectMapper().readValue(input, Challenge.class);
         //System.out.println("challenge name:"+challengeObj.getChallengerName());
         System.out.println("challenge got:"+ch.getChallengerName());
         //System.out.println("challenge name:"+challengeObj.getChallengeTitle());
