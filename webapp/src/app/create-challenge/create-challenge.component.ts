@@ -38,22 +38,33 @@ export class CreateChallengeComponent implements OnInit {
     documentUrl : [''],
     registrations:[0],
     views:[0],
-    rewardPrize : [null, Validators.required],
+    rewardPrize : [0],
     registrationType : ['', Validators.required],
     participationType : ['', Validators.required],
     amount: [0],
     imageName : [''],
+    file:[''],
   }, {validator : StartEndDateValidator});
   
+  selectedFile: any;
+public onFileSubmit(event:any) {
+    const file = event.target.files[0];
+    this.selectedFile = file;
+  }
   onSubmit(){
     this.submitted =true;
     const loggedInUser = localStorage.getItem('currentUser');
     this.createChallengeForm.value.challengerName = loggedInUser;
-    console.log(this.createChallengeForm.value);
-    this.challengeService.createChallenge(this.createChallengeForm.value)
+    const item =this.createChallengeForm.value ;
+    const uploadFileData = new FormData();
+    console.log('file:', this.selectedFile);
+    uploadFileData.append('challenge', JSON.stringify(item));
+    uploadFileData.append('file', this.selectedFile);
+    this.challengeService.createChallenge(uploadFileData)
     .subscribe(
       response => console.log('Success!', response),
       error => console.log('Error!', error)
+
     );
     setTimeout(() => {
       this.router.navigate(['dashboard']);

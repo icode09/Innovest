@@ -9,14 +9,15 @@ import { Observable } from 'rxjs';
 })
 export class ChallengeService {
 
-  _url = 'http://localhost:8080/innovest/challenge/';
+  _url = 'http://localhost:8080/innovest/challenge/upload';
   constructor(private _http: HttpClient) { }
 
   createChallenge(cd : any){
     console.log("challenge details in dervice:", cd);
-    return this._http.post<any>(this._url + "create", cd, {
+    return this._http.post<any>(this._url, cd, {
       headers : new HttpHeaders({
-        'Content-Type' : 'application/json'
+        'Content-Type' : 'multipart/form-data'
+
       })
     });
   }

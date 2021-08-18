@@ -29,11 +29,33 @@ public class Challenge {
 	private Integer views;
 	private String registrationType;
 	private String participationType;
+	private byte[] fileByte;
+	private String file;
+
+	public byte[] getFileByte() {
+		return fileByte;
+	}
+
+	public void setFileByte(byte[] fileByte) {
+		this.fileByte = fileByte;
+	}
+
+	public String getFile() {
+		return file;
+	}
+
+	public void setFile(String file) {
+		this.file = file;
+	}
 
 	public Challenge() {
 	}
 
-	public Challenge(String challengeId, String challengerName, String challengeName, String description, String rules, String abstraction, Date startDate, Date endDate, boolean paid, double rewardPrize, Integer[] challengeImage, String imageName, String documentUrl, String[] domain, Integer registrations, Integer views, String registrationType, String participationType) {
+	public Challenge(String challengeId, String challengerName, String challengeName, String description, String rules,
+			String abstraction, Date startDate, Date endDate, boolean paid, double rewardPrize,
+			Integer[] challengeImage, String imageName, String documentUrl, String[] domain, Integer registrations,
+			Integer views, String registrationType, String participationType, byte[] fileByte, String file) {
+		
 		this.challengeId = challengeId;
 		this.challengerName = challengerName;
 		this.challengeName = challengeName;
@@ -52,7 +74,11 @@ public class Challenge {
 		this.views = views;
 		this.registrationType = registrationType;
 		this.participationType = participationType;
+		this.fileByte = fileByte;
+		this.file = file;
 	}
+
+	
 
 	public String getChallengeId() {
 		return challengeId;

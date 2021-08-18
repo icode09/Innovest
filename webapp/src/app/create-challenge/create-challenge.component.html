@@ -94,12 +94,13 @@
         <label>Reward Prize</label>
         <input type="number" [class.is-invalid]="createChallengeForm?.get('rewardPrize')?.invalid &&
       createChallengeForm?.get('rewardPrize')?.touched" formControlName="rewardPrize" class="form-control"><br>
+      
       <button [disabled]="createChallengeForm.get('participationType')?.value == 'option2'" class="btn btn-primary m2" type="button" (click)="pay('rewardPrize')" >Proceed to pay</button><br>
-
-
       </div>
     </div>
-    
+    <p style="font-size: medium; color: black; margin-top: 2%;font-family:Lora;">Upload Document</p>
+<input type="file" class="form-control" style="padding: 4px" accept=".txt"
+          (change)="onFileSubmit($event)" />
     <div class="text-center">
       <button [disabled]='!createChallengeForm.valid'  class="btn btn-primary m2" type="submit" style="column-gap: 40px">Create Challenge</button>
     </div> 
