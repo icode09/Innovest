@@ -1,6 +1,6 @@
 import { UploadfileService } from 'src/app/uploadfile.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Challenge } from '../common/challenge';
 import { Solution } from '../common/solution';
@@ -23,12 +23,13 @@ export class SolutionDescComponent implements OnInit {
   
   public showUpdateButton = false;
   public showFeedbackButton = false;
-  public challenge: Challenge  = new Challenge("", "", "lkdsclmds", "", "","",["",""],["",""],new Date(),new Date(), "","",false,0,"","","",0,0);
+  public challenge: Challenge  = new Challenge("", "", "", "", "","",["",""],["",""],new Date(),new Date(), "","",false,0,"","","",0,0);
   private challengeId: string = '';
   public challengername: string = '';
-  public reviewComments: string[] = ["Hi changed this", "Changed that"];
+  public reviewComments: string[] = [];
   edit:boolean = false;
-  feedback= new FormControl('');
+  feedbackForm = new FormGroup({feedback: new FormControl('')});
+  
 
   form:any;
 
@@ -79,7 +80,9 @@ export class SolutionDescComponent implements OnInit {
 
 
   onEditSolution(){
-    this.edit = true;
+    if(!this.edit) this.edit = true;
+    else this.edit = false;
+    
     this.initForm();
   }
   initForm() {
@@ -154,4 +157,14 @@ export class SolutionDescComponent implements OnInit {
   raiseFeedback(){
     this.activeFeedback = true;
   }
+
+  onfbSubmit(){
+    this.activeFeedback = false;
+    console.log(this.feedbackForm.value);
+    let rc: string = this.feedbackForm.value.feedback;
+    this.reviewComments.push(rc);
+  
+    this.submitService.updateReviewComments(this.solution.solutionId,this.reviewComments)
+  }
 }
+//comment is here
