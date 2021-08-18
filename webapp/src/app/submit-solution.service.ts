@@ -35,7 +35,7 @@ export class SubmitSolutionService {
 
   updateReviewComments(
     solutionId: string,
-    reviewComments: []
+    reviewComments: string[]
   ): Observable<Solution> {
     return this.httpClient
       .put<Solution>(

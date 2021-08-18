@@ -76,11 +76,32 @@
   </div>
 </div>
 <div *ngIf="activeFeedback">
+  <form [formGroup]="feedbackForm" (ngSubmit)="onfbSubmit()">
+  <div class="form-group">
   <mat-form-field class="example-full-width" appearane="fill"
     style="height:fit-content; margin: 10px 100px 10px 100px; width:fit-content;">
     <mat-label>Feedback</mat-label>
-    <input matInput [formControl]="feedback">
+    <input matInput class="form-Control" formControlName ="feedback">
   </mat-form-field>
+  </div>
+  <div class="text-center">
+    <button mat-raised-button color="primary" type="submit" style="column-gap: 40px">Post</button>
+  </div>
+</form>
+{{feedbackForm.value | json}}
+</div>
+
+<div *ngFor="let fb of reviewComments">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Reviews/Comments</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+      {{fb}}
+    </p>
+    </mat-card-content>
+  </mat-card>
 </div>
 
 <!---->
