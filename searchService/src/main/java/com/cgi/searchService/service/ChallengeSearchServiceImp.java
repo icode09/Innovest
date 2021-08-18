@@ -1,6 +1,6 @@
 package com.cgi.searchService.service;
 
-import com.google.gson.Gson;
+import com.google.gson.*;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
@@ -18,6 +18,7 @@ import com.cgi.searchService.document.ChallengeDoc;
 import com.cgi.searchService.repositories.ChallengesRepository;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -88,7 +89,13 @@ public class ChallengeSearchServiceImp implements ChallengeSearchService {
 			for (SearchHit hit : searchHits) {
 				String sourceAsString = hit.getSourceAsString();
 				if (sourceAsString != null) {
-					Gson gson = new Gson();
+					final Gson gson = new GsonBuilder()
+							.registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {
+								public Date deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
+									return new Date(jsonElement.getAsJsonPrimitive().getAsLong());
+								}
+							})
+							.create();
 					challenges.add(gson.fromJson(sourceAsString, ChallengeDoc.class));
 				}
 			}
