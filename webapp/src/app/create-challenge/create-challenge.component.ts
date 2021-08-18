@@ -41,9 +41,8 @@ export class CreateChallengeComponent implements OnInit {
     rewardPrize : [0],
     registrationType : ['', Validators.required],
     participationType : ['', Validators.required],
-    amount: [0],
     imageName : [''],
-    file:[''],
+    
   }, {validator : StartEndDateValidator});
   
   selectedFile: any;
@@ -58,7 +57,7 @@ public onFileSubmit(event:any) {
     const item =this.createChallengeForm.value ;
     const uploadFileData = new FormData();
     console.log('file:', this.selectedFile);
-    uploadFileData.append('challenge', JSON.stringify(item));
+    uploadFileData.append('input', JSON.stringify(item));
     uploadFileData.append('file', this.selectedFile);
     this.challengeService.createChallenge(uploadFileData)
     .subscribe(
