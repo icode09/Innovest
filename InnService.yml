@@ -19,9 +19,9 @@ services:
     ports:
       - 8082:8082
 
-  authenticationService:
+  authentication-service:
     build: authenticationService/
-    container_name: authenticationService
+    container_name: authentication-service
     restart: always
     network_mode: "host"
     hostname: localhost
@@ -37,27 +37,27 @@ services:
     ports:
       - 8085:8085
 
-  Solution:
+  solution:
     build: Solution/
-    container_name: Solution
+    container_name: solution
     restart: always
     network_mode: "host"
     hostname: localhost
     ports:
       - 8100:8100
 
-  FeedbackService:
+  feedback-service:
     build: FeedbackService/
-    container_name: FeedbackService
+    container_name: feedback-service
     restart: always
     network_mode: "host"
     hostname: localhost
     ports:
       - 8070:8070
 
-  searchService:
+  search-service:
     build: searchService/
-    container_name: searchService
+    container_name: search-service
     restart: always
     network_mode: "host"
     hostname: localhost
