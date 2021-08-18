@@ -18,8 +18,8 @@ export class SolutionFormComponent implements OnInit {
   public formData: any;
   errorMessage = '';
 
+  selectedFile!: File;
 
-  selectedFiles: any;
   currentFileUpload: any;
   progress: { percentage: number } = { percentage: 0 };
   constructor(
@@ -42,26 +42,18 @@ export class SolutionFormComponent implements OnInit {
       '',
       `${this.challenge.challengeId}`,
       `${localStorage.getItem('currentUser')}`,
-      'NotReviewed'
+      'NotReviewed',
+      ['']
     );
   }
-  selectFile(event:any) {
-    this.selectedFiles = event.target.files;
+
+
+  public onFileChanged(event: any) {
+    const file = event.target.files[0];
+    this.selectedFile = file;
   }
 
-  upload() {
-    this.progress.percentage = 0;
 
-    this.currentFileUpload = this.selectedFiles.item(0);
-    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
-      if (event.type === HttpEventType.UploadProgress) {
-        this.progress.percentage = Math.round(100 * event.loaded / event.total);
-      } else if (event instanceof HttpResponse) {
-        console.log('File is uploaded!');
-      }
-    });
-    this.selectedFiles = undefined;
-  }
 
   goBack() {
     window.history.back();
@@ -70,6 +62,10 @@ export class SolutionFormComponent implements OnInit {
 
   submitSolution() {
     this.loading = true;
+    const uploadFileData = new FormData();
+    console.log('file:', this.selectedFile);
+    uploadFileData.append('file', this.selectedFile);
+
     if (
       this.formData.solutionTitle === '' ||
       this.formData.solutionDescription === ''
@@ -78,7 +74,7 @@ export class SolutionFormComponent implements OnInit {
       alert(this.errorMessage);
       return;
     }
-    this.submitService.addSolution(this.formData).subscribe(
+    this.submitService.addSolution(this.formData, uploadFileData).subscribe(
       (result) => {
         this.loading = false;
         this.formData = new Solution(
@@ -89,7 +85,8 @@ export class SolutionFormComponent implements OnInit {
           '',
           `${this.challenge.challengeId}`,
           `${localStorage.getItem('currentUser')}`,
-          'NotReviewed'
+          'NotReviewed',
+          ['']
         );
         this.errorMessage = '';
         this.openDialog();

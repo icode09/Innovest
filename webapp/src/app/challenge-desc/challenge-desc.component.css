@@ -1,5 +1,5 @@
 .banner {
-  height:50vh;
+  height: 50vh;
   width: 100vw;
   border-bottom: 10px;
   border-bottom-color: #652cb3;
@@ -138,53 +138,46 @@ mat-label {
   width: 100vw;
 }
 
-
-
-
-
-
-.myInput{
+.myInput {
   width: 70vw;
   border-radius: 25px;
   margin-top: 15px;
-  padding : 20px;
+  padding: 20px;
   padding-left: 50px;
-  border : none;
-  -webkit-box-shadow : 0px 10px 49px -14px rgba(0,0,0,0.7);
-  -moz-box-shadow : 0px 10px 49px -14px rgba(0,0,0,0.7);
-  box-shadow: 0px 10px 49px -14px rgba(0,0,0,0.7);
+  border: none;
+  -webkit-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
 }
-.myInput:focus{
+.myInput:focus {
   outline: none;
 }
 
-.myLeftCtn .btn{
-  background: linear-gradient(45deg,#bb36fd,#9b00e8);
+.myLeftCtn .btn {
+  background: linear-gradient(45deg, #bb36fd, #9b00e8);
   color: #fff;
   width: 200px;
-  border : none;
+  border: none;
   border-radius: 25px;
-  padding : 10px;
-  margin-top : 20px;
-  -webkit-box-shadow : 0px 10px 41px -11px rgba(0,0,0,.0.7);
-  -moz-box-shadow : 0px 10px 41px -11px rgba(0,0,0,.0.7);
-  box-shadow: 0px 10px 41px -11px rgba(0,0,0,.0.7);
+  padding: 10px;
+  margin-top: 20px;
+  -webkit-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
 }
-.myLeftCtn .btn:hover{
-  background: linear-gradient(45deg,#c85bff,#b726ff);
+.myLeftCtn .btn:hover {
+  background: linear-gradient(45deg, #c85bff, #b726ff);
 }
-.myLeftCtn .btn:focus{
+.myLeftCtn .btn:focus {
   outline: none;
 }
-.myLeftCtn .fas{
+.myLeftCtn .fas {
   position: relative;
   color: #bb36fd;
   left: 36px;
 }
 
-.feedbackForm{
+.feedbackForm {
   margin-left: 40px;
-  margin-top:30px;
+  margin-top: 30px;
 }
-
-

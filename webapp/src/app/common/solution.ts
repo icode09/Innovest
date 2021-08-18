@@ -7,6 +7,7 @@ export class Solution {
     public documentUrl: string,
     public challengeId: string,
     public solvedBy: string,
-    public solutionStatus: string
+    public solutionStatus: string,
+    public reviewComments:[string]
   ) {}
 }
