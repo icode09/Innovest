@@ -14,10 +14,11 @@ export class ChallengeService {
 
   createChallenge(cd : any){
     console.log("challenge details in dervice:", cd);
-    return this._http.post<any>(this._url + "create", cd, {
-      headers : new HttpHeaders({
-        'Content-Type' : 'application/json'
-      })
+    return this._http.post<any>(this._url+"/upload", cd, {
+     // headers : new HttpHeaders({
+       // 'Content-Type' : 'multipart/form-data'
+
+      //})
     });
   }
 
@@ -25,8 +26,8 @@ export class ChallengeService {
     return this._http.get<Challenge[]>(this._url + "getall");
   }
 
-  updateViews(challenge:Challenge) : Observable<any> {
-    return this._http.put<any>(this._url + "updateviews/" + challenge.challengeId, challenge);
+  updateViews(id:string) : Observable<any> {
+    return this._http.put<any>(this._url + "updateviews/" + id, Challenge);
   }
   
 }

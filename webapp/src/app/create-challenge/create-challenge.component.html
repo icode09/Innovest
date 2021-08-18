@@ -28,8 +28,9 @@
     </div>
     <div class="form-group">
       <label>Abstraction</label>
-      <textarea type="text"  [class.is-invalid]="createChallengeForm.get('abstraction')?.invalid &&
-      createChallengeForm.get('abstraction')?.touched" formControlName="abstraction" class="form-control" rows="3"></textarea>
+      <textarea type="text" [class.is-invalid]="createChallengeForm.get('abstraction')?.invalid &&
+      createChallengeForm.get('abstraction')?.touched" formControlName="abstraction" class="form-control"
+        rows="3"></textarea>
     </div>
     <div class="form-group">
       <label>Start Date</label>
@@ -76,33 +77,36 @@
         <label class="form-check-label" for="inlineRadio2">Team</label>
       </div>
     </div>
-    <div class="form-group">
-      <label>Participation Type</label>
-
-
-      <div class="form-check  form-control" class="form-check-inline">
-        <input class="form-check-input" type="radio" id="inlineRadio1" value="option1"
-          formControlName="participationType">
-        <label class="form-check-label" for="inlineRadio11">Paid</label>
-      </div>
-      <div class="form-check  form-control" class="form-check-inline">
-        <input class="form-check-input" type="radio" id="inlineRadio2" value="option2"
-          formControlName="participationType">
-        <label class="form-check-label" for="inlineRadio22">Unpaid</label>
-      </div>
-      <div *ngIf="createChallengeForm.get('participationType')?.value == 'option1'">
-        <label>Reward Prize</label>
-        <input type="number" [class.is-invalid]="createChallengeForm?.get('rewardPrize')?.invalid &&
-      createChallengeForm?.get('rewardPrize')?.touched" formControlName="rewardPrize" class="form-control"><br>
-      <button [disabled]="createChallengeForm.get('participationType')?.value == 'option2'" class="btn btn-primary m2" type="button" (click)="pay('rewardPrize')" >Proceed to pay</button><br>
-
-
-      </div>
-    </div>
-    
+    <p style="font-size: medium; color: black; margin-top: 2%;font-family:Lora;">Upload Document</p>
+    <input type="file" class="form-control" style="padding: 4px" accept=".pdf" (change)="onFileSubmit($event)" />
     <div class="text-center">
-      <button [disabled]='!createChallengeForm.valid'  class="btn btn-primary m2" type="submit" style="column-gap: 40px">Create Challenge</button>
-    </div> 
+      <div class="form-group">
+        <label>Participation Type</label>
+
+
+        <div class="form-check  form-control" class="form-check-inline">
+          <input class="form-check-input" type="radio" id="inlineRadio1" value="option1"
+            formControlName="participationType">
+          <label class="form-check-label" for="inlineRadio11">Paid</label>
+        </div>
+        <div class="form-check  form-control" class="form-check-inline">
+          <input class="form-check-input" type="radio" id="inlineRadio2" value="option2"
+            formControlName="participationType">
+          <label class="form-check-label" for="inlineRadio22">Unpaid</label>
+        </div>
+        <div *ngIf="createChallengeForm.get('participationType')?.value == 'option1'">
+          <label>Reward Prize</label>
+          <input type="number" [class.is-invalid]="createChallengeForm?.get('rewardPrize')?.invalid &&
+      createChallengeForm?.get('rewardPrize')?.touched" formControlName="rewardPrize" class="form-control"><br>
+
+          <button [disabled]="createChallengeForm.get('participationType')?.value == 'option2'"
+            class="btn btn-primary m2" type="button" (click)="pay('rewardPrize')">Proceed to pay</button><br>
+        </div>
+      </div>
+
+      <button [disabled]='!createChallengeForm.valid' class="btn btn-primary m2" type="submit"
+        style="column-gap: 40px">Create Challenge</button>
+    </div>
   </form>
 
 

@@ -1,17 +1,26 @@
 <mat-card style="height:fit-content; margin: 20px 100px 10px 100px;;" color="accent">
   <mat-card-title align="center" style="margin: 20px;">
-    {{solution.solutionTitle}}
+    {{solution.solutionTitle | titlecase}}
   </mat-card-title>
-  <mat-card-subtitle>Solution URL: {{solution.codeUrl}}</mat-card-subtitle>
-  <mat-card-subtitle>Solution Status: {{solution.solutionStatus}}</mat-card-subtitle>
-  <mat-card-subtitle>Challenge Name: {{challenge.challengeName}}</mat-card-subtitle>
-  <mat-card-subtitle>Challenger Name: {{challenge.challengerName}} </mat-card-subtitle>
-
-  <img mat-card-image src="https://cdn.pixabay.com/photo/2018/09/22/10/58/business-3694993_960_720.jpg"
-    alt="Cover Photo">
+  <!-- <img mat-card-image src="https://cdn.pixabay.com/photo/2018/09/22/10/58/business-3694993_960_720.jpg"
+    alt="Cover Photo"> -->
   <mat-card-content>
-    Solution Description =>
-    <div class="sol-desc"> {{solution.solutionDescription}} </div>
+    <div class="mat-h2">Challenge Name: {{challenge.challengeName}}</div>
+    <div class="mat-h2">Solved By: {{solution.solvedBy}}</div>
+    <div class="mat-h2">Solution Description: {{solution.solutionDescription}} </div>
+    <div class="mat-h2">Solution URL: <button mat-raised-button (click)="openTab(solution.codeUrl)">Open</button></div>
+    <div class="mat-h2">Document URL: <button mat-raised-button (click)="openTab(solution.documentUrl)">Open</button></div>
+    <div class="mat-h2">Solution Status: {{solution.solutionStatus}}</div>
+
+    <div *ngFor="let fb of solution.reviewComments">
+      <mat-card>
+        <mat-card-content>
+          <p>
+            {{fb.commentedBy}} commented on solution as {{fb.comment}}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </mat-card-content>
   <mat-card-actions align="end">
     <button [hidden]="!showUpdateButton" mat-raised-button (click)="onEditSolution()">Edit Solution</button>
@@ -43,30 +52,18 @@
       </mat-form-field>
 
       <div *ngIf="currentFileUpload" class="progress">
-        <div
-          class="
+        <div class="
             progress-bar
             progress-bar-info
             progress-bar-striped
             progress-bar-animated
-          "
-          role="progressbar"
-          attr.aria-valuenow="{{ progress.percentage }}"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          [ngStyle]="{ width: progress.percentage + '%' }"
-        >
+          " role="progressbar" attr.aria-valuenow="{{ progress.percentage }}" aria-valuemin="0" aria-valuemax="100"
+          [ngStyle]="{ width: progress.percentage + '%' }">
           {{ progress.percentage }}%
         </div>
       </div>
       <label class="btn btn-default">
-        <input
-          type="file"
-          class="form-control"
-          style="padding: 4px"
-          accept=".pdf"
-          (change)="onFileChanged($event)"
-        />
+        <input type="file" class="form-control" style="padding: 4px" accept=".pdf" (change)="onFileChanged($event)" />
 
       </label>
       <button (click)="submitSolution()" mat-raised-button color="primary">
@@ -76,12 +73,21 @@
   </div>
 </div>
 <div *ngIf="activeFeedback">
-  <mat-form-field class="example-full-width" appearane="fill"
-    style="height:fit-content; margin: 10px 100px 10px 100px; width:fit-content;">
-    <mat-label>Feedback</mat-label>
-    <input matInput [formControl]="feedback">
-  </mat-form-field>
+  <form [formGroup]="feedbackForm" (ngSubmit)="onfbSubmit()">
+    <div class="form-group">
+      <mat-form-field class="example-full-width" appearane="fill"
+        style="height:fit-content; margin: 10px 100px 10px 100px; width:fit-content;">
+        <mat-label>Feedback</mat-label>
+        <input matInput class="form-Control" formControlName="comment">
+      </mat-form-field>
+    </div>
+    <div class="text-center">
+      <button mat-raised-button color="primary" type="submit" style="column-gap: 40px">Post</button>
+    </div>
+  </form>
 </div>
+
+
 
 <!---->
 <!---->

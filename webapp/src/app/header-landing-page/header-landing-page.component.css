@@ -4,11 +4,16 @@
 }
 
 .nav-link{
-    color: wheat !important;
+    color: white !important;
     font-weight: 400;
     font-size:small;
     justify-content: space-around;
 }
+
+.nav-link:hover {
+    transform: scale(1.07);
+}
+
 .img-profile{
     margin-left: 1em;
     height: 2rem;
@@ -18,7 +23,8 @@
 .hover-underline-animation {
     display: inline-block;
     position: relative;
-    color: wheat;
+    color: white;
+    font-weight: bold;
 }
   
 .hover-underline-animation:after {
@@ -29,7 +35,7 @@
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: rgb(255, 99, 9);
+    background-color: rgb(230, 255, 9);
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
@@ -52,5 +58,20 @@
     height: 2vh;
 }
 
+.dropdown-menu{
+    font-size:.85rem;
+}
+.dropdown-item:focus, .dropdown-item:hover{
+    color:blueviolet;
+}
 
-
+#navb {
+    padding-left: 20px;
+    padding-top: 5px;
+    vertical-align: middle;
+    margin-top: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+    color: white;
+    
+}

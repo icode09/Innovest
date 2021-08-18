@@ -3,6 +3,7 @@ package com.innovest.solution.service;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +16,8 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.innovest.solution.model.ReviewComment;
+import com.mongodb.client.result.UpdateResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -75,15 +78,38 @@ public class SolutionServiceImpl implements SolutionService {
 
     @Override
     public Solution updateSolution(Solution solution) {
-        Solution toUpdate = repo.findBySolutionId(solution.getSolutionId());
+//        Solution toUpdate = repo.findBySolutionId(solution.getSolutionId());
+//
+//        System.out.println(toUpdate.getSolutionId());
+//        toUpdate.setCodeUrl(solution.getCodeUrl());
+//        toUpdate.setSolutionDescription(solution.getSolutionDescription());
+//        toUpdate.setSolutionTitle(solution.getSolutionTitle());
+//        toUpdate.setSolutionStatus(solution.getSolutionStatus());
+//        return repo.save(toUpdate);
 
-        System.out.println(toUpdate);
-        toUpdate.setCodeUrl(solution.getCodeUrl());
-        toUpdate.setDocumentUrl(solution.getDocumentUrl());
-        toUpdate.setSolutionDescription(solution.getSolutionDescription());
-        toUpdate.setSolutionTitle(solution.getSolutionTitle());
-        toUpdate.setSolutionStatus(solution.getSolutionStatus());
-        return repo.save(toUpdate);
+        Query query = new Query();
+        query.addCriteria(Criteria.where("solutionId").is(solution.getSolutionId()));
+        Update update = new Update();
+        update.set("solutionTitle", solution.getSolutionTitle());
+        update.set("codeUrl", solution.getCodeUrl());
+        update.set("solutionDescription", solution.getSolutionDescription());
+        Solution updatedSolution = mongoTemplate.findAndModify(query, update, Solution.class);
+        return updatedSolution;
+    }
+
+    @Override
+    public Solution updateFile(Solution solution) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("solutionId").is(solution.getSolutionId()));
+        Update update = new Update();
+        update.set("solutionTitle", solution.getSolutionTitle());
+        update.set("codeUrl", solution.getCodeUrl());
+        update.set("solutionDescription", solution.getSolutionDescription());
+        update.set("fileByte", solution.getFileByte());
+        update.set("fileName", solution.getFileName());
+        update.set("documentUrl", solution.getDocumentUrl());
+        Solution updatedSolution = mongoTemplate.findAndModify(query, update, Solution.class);
+        return updatedSolution;
     }
 
     @Override
@@ -96,13 +122,31 @@ public class SolutionServiceImpl implements SolutionService {
         return solution;
     }
 
-    @Override
-    public Solution updateReviewComments(UUID solutionId, String[] reviewComments) {
-        Query query = new Query();
-        Update update = new Update().set("reviewComments", reviewComments);
-        query.addCriteria(Criteria.where("solutionId").is(solutionId));
+//    @Override
+//    public Solution updateReviewComments(UUID solutionId, String[] reviewComments) {
+//        Query query = new Query();
+//        Update update = new Update().set("reviewComments", reviewComments);
+//        query.addCriteria(Criteria.where("solutionId").is(solutionId));
+//
+//        Solution solution = mongoTemplate.findAndModify(query, update, Solution.class);
+//        return solution;
+//    }
 
-        Solution solution = mongoTemplate.findAndModify(query, update, Solution.class);
+    @Override
+    public Solution updateReviewComments(ReviewComment reviewComment, UUID solutionId) {
+        Solution solution = repo.findBySolutionId(solutionId);
+        Query query = new Query(Criteria.where("solutionId").is(solutionId));
+        Update updateQuery = new Update();
+        List<ReviewComment> existingFeed = solution.getReviewComments();
+        if (existingFeed == null) {
+            List<ReviewComment> feedbackList = new ArrayList<>();
+            feedbackList.add(reviewComment);
+            updateQuery.set("reviewComments", feedbackList);
+        } else {
+            existingFeed.add(reviewComment);
+            updateQuery.set("reviewComments", existingFeed);
+        }
+        UpdateResult result = mongoTemplate.upsert(query, updateQuery, "solution");
         return solution;
     }
 
@@ -161,6 +205,11 @@ public class SolutionServiceImpl implements SolutionService {
         return fileUrl;
     }
 
+    @Override
+    public Solution getSolutionById(UUID solutionId) {
+        return repo.findBySolutionId(solutionId);
+    }
+
 
     private String generateFileName(MultipartFile multiPart) {
         return new Date().getTime() + "-" + multiPart.getOriginalFilename()
@@ -186,5 +235,6 @@ public class SolutionServiceImpl implements SolutionService {
         } catch (Exception exc) {
         }
     }
+
 
 }

@@ -4,6 +4,23 @@
     </div>
 </div>
 <div *ngIf="progressbar==false">
+
+<!-- search bar starts -->
+<div class="input-group" >
+
+    <input type="search" class="form-control rounded"  [placeholder]="searchPlaceHolder" aria-label="Search"
+        aria-describedby="search-addon" [(ngModel)]="queries.query" />
+    <button type="button" class="btn btn-outline-primary" (click)="search('text')">search</button>
+
+    <!-- Voice Recognition Html Start-->
+    <div id="voiceSection">
+        <button type="button" (click)="search('voice')" id="recordButton"><i class="fa fa-microphone"></i></button>
+    </div>
+    <!-- Voice Recognition Html Ends-->
+    
+</div>
+<!-- search bar end -->
+
 <div class="container text-center my-3">
     <nav class="navbar">
         <li class="navbar-nav mr-auto">
@@ -59,12 +76,12 @@
     <div class="row mx-auto my-auto justify-content-center">
         <div id="carousel-2" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner" role="listbox">
-                <ng-container class="hello" *ngFor="let challenge of recentyAddedChallenges; let i = index">
-                        <div class="carousel-item" [ngClass]="{active: i==0}">
+                <ng-container *ngFor="let challenge of recentyAddedChallenges; let i = index">
+                        <div class="carousel-item latest" [ngClass]="{active: i==0}">
                             <div class="col-md-4">
                                 <a href="{{viewChallengeDesc(challenge)}}">
                                     <div class="card">
-                                        <img class="card-img-top" src="https://d8it4huxumps7.cloudfront.net/uploads/images/opportunity/banner/60f95db3b3711_copy_of_linkedin_post__3_.png?d=1920x1920" alt="Card image cap{{ challenge.challengeImage }}" style="height:40vh; padding:0.5em">
+                                        <img class="card-img-top" src="https://static6.depositphotos.com/1005979/663/i/950/depositphotos_6637570-stock-photo-problem-solvers-ready-to-solve.jpg" alt="Card image cap{{ challenge.challengeImage }}" style="height:40vh; padding:0.5em">
                                         <div class="card-body">
                                             <h2 class="card-title" matTooltip="Name">{{challenge.challengeName}}</h2>
                                         </div>
@@ -101,7 +118,7 @@
         <div id="carousel-3" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner" role="listbox">
                 <ng-container class="hello" *ngFor="let challenge of topChallenges; let i = index">
-                        <div class="carousel-item" [ngClass]="{active: i==0}">
+                        <div class="carousel-item top" [ngClass]="{active: i==0}">
                             <div class="col-md-4">
                                 <a href="{{viewChallengeDesc(challenge)}}">
                                     <div class="card">
@@ -125,9 +142,9 @@
     </div>
 </div>
 
-<hr><hr>
+<!-- <hr><hr> -->
 
-<div class="container text-center my-3 my-container">
+<!-- <div class="container text-center my-3 my-container">
     <nav class="navbar">
         <li class="navbar-nav mr-auto">
             <h2 class="card-group-title">Catagories</h2>
@@ -164,5 +181,5 @@
             </a>
         </div>
     </div>
-</div>
+</div> -->
 </div>

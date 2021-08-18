@@ -54,7 +54,23 @@ export class ChallengeListComponent implements OnInit {
   ngOnInit(): void {
     this.url = this.router.url.split('/').pop() || '';
     console.log("Inside ngOnInit");
-    this.getChallengeListFromServer();
+
+    this.getChallengeListFromServer();    // getting all the challenges from challenge service
+
+    let searchText = localStorage.getItem('searchQuery');
+    localStorage.removeItem('searchQuery');
+    if(searchText != null){
+      this.queries.query = searchText;
+      this.searchClick();
+    }
+    console.log("search:",searchText);
+
+    let searchVoice = localStorage.getItem('searchVoice');
+    localStorage.removeItem('searchVoice');
+    if(searchVoice != null && searchVoice == 'voice'){
+      this.startVoiceRecognition();
+    }
+    console.log("search:",searchVoice);
 
     this.chipsValue$.subscribe((selected) => {
       this.selectedChips = selected.map((x: string) => x.trim());
@@ -168,7 +184,8 @@ export class ChallengeListComponent implements OnInit {
         challengeId: challenge.challengeId,
       }),]);
     }else {
-      this.challengeService.updateViews(challenge).subscribe();
+      localStorage.removeItem('chClicked');
+      this.challengeService.updateViews(challenge.challengeId).subscribe();
       challenge.challengeImage = "https://assets.weforum.org/article/image/large_bg1B3jyBjInTSH2AjIgjgoER9PYwCN-BZ_BQhdeZ92s.jpg";
       this.router.navigate(['/challenge-desc', JSON.stringify(challenge)]);
     }

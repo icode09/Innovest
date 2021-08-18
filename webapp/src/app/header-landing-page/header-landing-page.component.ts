@@ -36,11 +36,15 @@ export class HeaderLandingPageComponent implements OnInit {
       // .then(() => {window.location.reload();});
   }
   createChallenge() {
-    this.router.navigate(['dashboard/create-ch']);
+    this.router.navigate(['dashboard/create-ch']).then(() => {
+      window.location.reload();
+    });
 
   }
   gotoChallengeList(word:any) {
-    this.router.navigate(['dashboard/ch-list',word]);
+    this.router.navigate(['dashboard/ch-list',word]).then(() => {
+      window.location.reload();
+    });
   }
   mySolutionsList() {
     this.router.navigate([

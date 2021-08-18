@@ -1,8 +1,9 @@
 <!--Navigation Bar-->
 <nav class="navbar navbar-expand-sm bg-info navbar-dark sticky-top scrolling-navbar" style="position: fixed; top: 0; width: 100%;">
-    <a class="navbar-brand" href="#">
+    <img src="../../assets/images/innovest logo 2.png">
+    <!--<a class="navbar-brand" href="#">
         <h1><i>INNOVEST</i></h1>
-    </a>
+    </a> -->
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb"
         aria-expanded="true">
         <span class="navbar-toggler-icon"></span>
@@ -20,7 +21,7 @@
                 </a>
             </li>
             <li *ngIf="loggedIn" class="nav-item">
-                <a class="nav-link" [routerLink]="['dashboard/create-ch']" routerLinkActive="router-link-active">
+                <a class="nav-link" data-toggle="collapse" (click)="createChallenge()" href="">
                     <p class="hover-underline-animation">Become a Challenger</p>
                 </a>
             </li>
@@ -89,6 +90,6 @@
         </ul>
     </div>
 </nav>
-<section style="margin-bottom: 10vh;"></section>
+
 <!--Navigation Ends-->
 

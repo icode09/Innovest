@@ -1,3 +1,5 @@
+import { ReviewComments } from "./reviewComment";
+
 export class Solution {
   constructor(
     public solutionId: string,
@@ -7,6 +9,7 @@ export class Solution {
     public documentUrl: string,
     public challengeId: string,
     public solvedBy: string,
-    public solutionStatus: string
+    public solutionStatus: string,
+    public reviewComments: ReviewComments[]
   ) {}
 }
