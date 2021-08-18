@@ -79,7 +79,9 @@ export class SolutionDescComponent implements OnInit {
 
 
   onEditSolution(){
-    this.edit = true;
+    if(!this.edit) this.edit = true;
+    else this.edit = false;
+    
     this.initForm();
   }
   initForm() {
