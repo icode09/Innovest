@@ -23,7 +23,7 @@ export class SolutionDescComponent implements OnInit {
   
   public showUpdateButton = false;
   public showFeedbackButton = false;
-  public challenge: Challenge  = new Challenge("", "", "lkdsclmds", "", "","",["",""],["",""],new Date(),new Date(), "","",false,0,"","","",0,0);
+  public challenge: Challenge  = new Challenge("", "", "", "", "","",["",""],["",""],new Date(),new Date(), "","",false,0,"","","",0,0);
   private challengeId: string = '';
   public challengername: string = '';
   public reviewComments: string[] = [];
@@ -80,7 +80,9 @@ export class SolutionDescComponent implements OnInit {
 
 
   onEditSolution(){
-    this.edit = true;
+    if(!this.edit) this.edit = true;
+    else this.edit = false;
+    
     this.initForm();
   }
   initForm() {
