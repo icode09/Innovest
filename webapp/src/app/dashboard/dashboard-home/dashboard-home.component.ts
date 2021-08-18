@@ -6,6 +6,7 @@ import { Challenge } from 'src/app/common/challenge';
 import { UserProfile } from 'src/app/common/user-profile';
 import { SearchService } from 'src/app/search.service';
 import { ChallengeService } from 'src/app/challenge.service';
+import { GetProfileService } from 'src/app/get-profile.service';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -26,7 +27,10 @@ export class DashboardHomeComponent implements OnInit {
   searchPlaceHolder: String = 'Search';
 
   catagoriesList: String[] = ["Business & Entepreneurship","Chemistry","Computer/Info.technology","Engineering/Design","Environment","Food/Agriculture","Life Sciencess","Math/Statistics","Physical Sciences","Request for Partners and Suppliers","Social innovation"];
-  constructor(private challengeService: ChallengeService, private searchService: SearchService, private router: Router,private http:HttpClient) { }
+  constructor(private challengeService: ChallengeService,
+    private searchService: SearchService,
+    private getProfileService: GetProfileService,
+    private router: Router,private http:HttpClient) { }
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -34,14 +38,14 @@ export class DashboardHomeComponent implements OnInit {
     }, 500);
     this.userName = localStorage.getItem("currentUser");
     if(this.userName != null){
-      this.getUserDetails().subscribe((user) => {
+      this.getProfileService.getUserProfile(this.userName).subscribe((user) => {
         this.user = user;
         if(user.domain==null || user.domain.length==0){
           this.userDomains = user.domain;
         }
       });
     }
-    this.getChallengeList().subscribe((challenges) => {
+    this.challengeService.getChallengeList().subscribe((challenges) => {
       this.challengeList = challenges;
     });
     this.searchService.searchByDomainList(this.userDomains,this.userName).subscribe((challenges) => {
@@ -106,12 +110,9 @@ export class DashboardHomeComponent implements OnInit {
       }
     });
   }
-  getChallengeList(): Observable<Challenge[]> {
-    return this.http.get<Challenge[]>("http://localhost:8080/innovest/challenge/getall");
-  }
-  getUserDetails(): Observable<UserProfile> {
-    return this.http.get<UserProfile>("http://localhost:8082/api/v1/register/email/?emailId=" + this.userName);
-  }
+  // getUserDetails(): Observable<UserProfile> {
+  //   return this.http.get<UserProfile>("http://localhost:8082/api/v1/register/email/?emailId=" + this.userName);
+  // }
   viewChallengeDesc(challenge:Challenge){
     // console.log(challenge.challengeName);
     // this.router.navigate(['/challenge-desc', JSON.stringify(challenge)]);
