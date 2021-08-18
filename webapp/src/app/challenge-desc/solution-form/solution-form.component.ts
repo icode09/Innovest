@@ -74,7 +74,7 @@ export class SolutionFormComponent implements OnInit {
       alert(this.errorMessage);
       return;
     }
-    this.submitService.addSolution(this.formData, uploadFileData).subscribe(
+    this.submitService.addSolution(this.formData, this.selectedFile).subscribe(
       (result) => {
         this.loading = false;
         this.formData = new Solution(
@@ -109,7 +109,11 @@ export class SolutionFormComponent implements OnInit {
       data: { message: this.errorMessage },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.router.navigate(['/dashboard'])
+      console.log(result)
+      if(!result){
+        this.router.navigate(['/dashboard'])
+      }
+
     });
   }
   

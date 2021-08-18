@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Solution } from './common/solution';
@@ -11,12 +11,14 @@ import { catchError } from 'rxjs/operators';
 export class SubmitSolutionService {
   constructor(private httpClient: HttpClient) {}
 
-  addSolution(solution: Solution, file: FormData): Observable<Solution> {
+  addSolution(solution: Solution, file: any): Observable<Solution> {
+    var fileUrl = ``;
+    console.log(file);
+    if (file) {
+      fileUrl = `?file=${file}`;
+    }
     return this.httpClient
-      .post<Solution>(
-        `http://localhost:8100/solutions/add?file${file}`,
-        solution
-      )
+      .post<Solution>(`http://localhost:8100/solutions/add${fileUrl}`, solution)
       .pipe(catchError(this.errorHandler));
   }
 

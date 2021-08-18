@@ -1,6 +1,7 @@
 package com.innovest.solution.controller;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import java.util.UUID;
@@ -28,14 +29,17 @@ public class SolutionController {
 		this.solutionService = solutionService;
 	}
 	@PostMapping("/add")
-	public ResponseEntity<Solution> addSolution(@RequestBody Solution solution,@RequestParam(value = "file",required = false) MultipartFile file) throws IOException {
+	public ResponseEntity<Solution> addSolution(@RequestBody Solution solution,@RequestParam(required = false) MultipartFile file) throws IOException {
 		UUID uuid = UUID.randomUUID();
-		solution.setSolutionId(uuid);
+		solution.setSolutionId(uuid); 
 		solution.setSolutionStatus(SolutionStatus.NotReviewed);
-		solution.setFileByte(file.getBytes());
-		solution.setFileName(file.getName());
-		String fileUrl=solutionService.uploadFile(file);
-		solution.setDocumentUrl(fileUrl);
+		if(file!=null) {
+			solution.setFileByte(file.getBytes());
+			solution.setFileName(file.getName());
+			String fileUrl=solutionService.uploadFile(file);
+			solution.setDocumentUrl(fileUrl);
+		}
+
 		return new ResponseEntity<Solution>(solutionService.addSolution(solution),HttpStatus.CREATED);
 	}
 	@CrossOrigin
