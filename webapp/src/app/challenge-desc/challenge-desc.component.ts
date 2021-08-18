@@ -66,7 +66,6 @@ export class ChallengeDescComponent implements OnInit {
       }else{
         this.scrolled= false;
       }
-      console.log(this.getYPosition(e), this.scrolled)
     });
   }
   get isSidebarVisible(): boolean {
