@@ -43,7 +43,7 @@ export class SolutionFormComponent implements OnInit {
       `${this.challenge.challengeId}`,
       `${localStorage.getItem('currentUser')}`,
       'NotReviewed',
-      ['']
+      []
     );
   }
 
@@ -62,10 +62,6 @@ export class SolutionFormComponent implements OnInit {
 
   submitSolution() {
     this.loading = true;
-    const uploadFileData = new FormData();
-    console.log('file:', this.selectedFile);
-    uploadFileData.append('file', this.selectedFile);
-
     if (
       this.formData.solutionTitle === '' ||
       this.formData.solutionDescription === ''
@@ -74,7 +70,13 @@ export class SolutionFormComponent implements OnInit {
       alert(this.errorMessage);
       return;
     }
-    this.submitService.addSolution(this.formData, this.selectedFile).subscribe(
+
+    const item =this.formData ;
+    const uploadFileData = new FormData();
+    console.log('file:', this.selectedFile);
+    uploadFileData.append('input', JSON.stringify(item));
+    uploadFileData.append('file', this.selectedFile);
+    this.submitService.addSolution(uploadFileData).subscribe(
       (result) => {
         this.loading = false;
         this.formData = new Solution(
@@ -86,7 +88,7 @@ export class SolutionFormComponent implements OnInit {
           `${this.challenge.challengeId}`,
           `${localStorage.getItem('currentUser')}`,
           'NotReviewed',
-          ['']
+          []
         );
         this.errorMessage = '';
         this.openDialog();

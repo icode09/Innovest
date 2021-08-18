@@ -8,7 +8,7 @@ import { Challenge } from './common/challenge';
 })
 export class SearchService {
 
-  url = 'http://localhost:8105/api/challenge/';
+  url = '/api/challenge/';
 
   constructor(private http: HttpClient) { }
 

@@ -26,7 +26,7 @@ import com.example.service.ChallengeService;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value="innovest/challenge")
+@RequestMapping(value="/innovest/challenge")
 public class ChallengeController {
 
 	private ChallengeService challengeService;

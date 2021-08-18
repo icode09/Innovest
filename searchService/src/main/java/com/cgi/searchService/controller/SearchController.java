@@ -68,6 +68,8 @@ public class SearchController {
 
 	@GetMapping("/findLatest")					// Latest challenges in dashboard
 	public Iterable<ChallengeDoc> findLatestChallenges(@RequestParam Integer limit, @RequestParam String userName) {
+		System.out.println("limit:"+limit);
+		System.out.println("userName:"+userName);
 		return service.findLatestChallenges(limit, userName);
 	}
 

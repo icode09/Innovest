@@ -110,16 +110,19 @@ export class DashboardHomeComponent implements OnInit {
       }
     });
   }
-  // getUserDetails(): Observable<UserProfile> {
-  //   return this.http.get<UserProfile>("http://localhost:8082/api/v1/register/email/?emailId=" + this.userName);
-  // }
+  getChallengeList(): Observable<Challenge[]> {
+    return this.http.get<Challenge[]>("/innovest/challenge/getall");
+  }
+  getUserDetails(): Observable<UserProfile> {
+    return this.http.get<UserProfile>("/api/v1/register/email/?emailId=" + this.userName);
+  }
   viewChallengeDesc(challenge:Challenge){
     // console.log(challenge.challengeName);
     // this.router.navigate(['/challenge-desc', JSON.stringify(challenge)]);
     // this.challengeService.updateViews(challenge).subscribe();
     localStorage.setItem('chClicked', 'yes');
     challenge.challengeImage = "https://assets.weforum.org/article/image/large_bg1B3jyBjInTSH2AjIgjgoER9PYwCN-BZ_BQhdeZ92s.jpg";
-    return "http://localhost:4200/challenge-desc/"+encodeURIComponent(JSON.stringify(challenge));
+    return "http://localhost:4200/#/challenge-desc/"+encodeURIComponent(JSON.stringify(challenge));
   }
   viewAllChallenges(word:string){
     this.router.navigate(['dashboard/ch-list/find']).then(() => {

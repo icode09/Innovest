@@ -9,7 +9,7 @@ import { Challenge } from './common/challenge';
 })
 export class CreatingchallengeService {
 
-  _url = 'http://localhost:8080/innovest/challenge/create';
+  _url = '/innovest/challenge/create';
   constructor(private _http: HttpClient) { }
 
   createChallenge(cd: any) {
@@ -23,7 +23,7 @@ export class CreatingchallengeService {
   getChallengeByChallengeId(challengeId: String): Observable<Challenge> {
     return this._http
       .get<Challenge>(
-        `http://localhost:8080/innovest/challenge/challenge/${challengeId}`
+        `/innovest/challenge/challenge/${challengeId}`
       )
       .pipe(catchError(this.errorHandler));
   }

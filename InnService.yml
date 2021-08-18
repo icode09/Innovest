@@ -1,0 +1,74 @@
+version: "2"
+
+services:
+  spring-cloud-gateway:
+    build: spring-cloud-gateway/
+    container_name: spring-cloud-gateway
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8080:8080
+
+  registration-service:
+    build: registration-service/
+    container_name: registration-service
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8082:8082
+
+  authenticationService:
+    build: authenticationService/
+    container_name: authenticationService
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8090:8090
+
+  challenge-create-services:
+    build: challenge-create-services/
+    container_name: challenge-create-services
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8085:8085
+
+  Solution:
+    build: Solution/
+    container_name: Solution
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8100:8100
+
+  FeedbackService:
+    build: FeedbackService/
+    container_name: FeedbackService
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8070:8070
+
+  searchService:
+    build: searchService/
+    container_name: searchService
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8105:8105
+
+  webapp:
+    build: ./webapp/
+    container_name: webapp
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 4200:4200

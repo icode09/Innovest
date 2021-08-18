@@ -12,8 +12,8 @@ public class AppConfig {
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
                 //mention all the routes of all the services
-        		.route(r -> r.path("innovest/challenge/**")
-                        .uri("http://localhost:8080/"))
+        		.route(r -> r.path("/innovest/challenge/**")
+                        .uri("http://localhost:8085/"))
                        // .id("challenge_create_service_Module"))
 
                 .route(r -> r.path("/api/v1/register/**")

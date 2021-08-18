@@ -91,7 +91,7 @@ export class ChallengeDescComponent implements OnInit {
     if(this.form.invalid){
       return;
     }
-    let url = "http://localhost:8070/api/v1/feedback/feedback";
+    let url = "/api/v1/feedback/feedback";
     this.http.post(url, this.form).subscribe(
       (data) => {
         console.log("data:",data);
