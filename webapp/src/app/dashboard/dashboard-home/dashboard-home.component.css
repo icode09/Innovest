@@ -1,3 +1,21 @@
+.input-group{
+    margin: 0 auto;
+    width: 50vw;
+    margin-top: 5vh;
+}
+#recordButton {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+    width: 35px;
+    height: 38px;
+    font-size: 18px;
+}
 .container{
     padding-bottom: 1.5em;
 }
@@ -84,7 +102,7 @@ height: 100%;
 
 .carousel-control-next,
 .carousel-control-prev {
-    filter: invert(100%);
+    filter: invert(40%);
 }
 .carousel-control-prev{
     margin-left: -20px;

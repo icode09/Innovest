@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import {SharedDataService} from '../shared-data.service'
 
 @Component({
@@ -20,7 +21,7 @@ export class HeaderLandingPageComponent implements OnInit {
       this.loggedIn = false;
     }
   }
-  constructor(private sidebarService: SharedDataService) { }
+  constructor(private route:ActivatedRoute, private sidebarService: SharedDataService, private router: Router) { }
 
   get isSidebarVisible(): boolean {
       return this.sidebarService.isSidebarVisible;
@@ -29,6 +30,35 @@ export class HeaderLandingPageComponent implements OnInit {
   toggleSidebar() {
       console.log("in toggle Headers")
       this.sidebarService.toggleSidebarVisibility()
+  }
+  myProfile(){
+    this.router.navigate(['dashboard/profile']);
+      // .then(() => {window.location.reload();});
+  }
+  createChallenge() {
+    this.router.navigate(['dashboard/create-ch']).then(() => {
+      window.location.reload();
+    });
+
+  }
+  gotoChallengeList(word:any) {
+    this.router.navigate(['dashboard/ch-list',word]).then(() => {
+      window.location.reload();
+    });
+  }
+  mySolutionsList() {
+    this.router.navigate([
+      'list-solutions',
+      JSON.stringify({
+        solvedBy: `${this.userName}`,
+      }),
+    ]);
+  }
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['']).then(() => {
+      window.location.reload();
+    });
   }
 
 }

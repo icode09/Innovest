@@ -10,7 +10,7 @@
     <div id="navb" class="navbar-collapse collapse hide">
         <ul class="navbar-nav">
             <li *ngIf="loggedIn" class="nav-item">
-                <a class="nav-link" [routerLink]="['../dashboard']" routerLinkActive="router-link-active">
+                <a class="nav-link" [routerLink]="['dashboard']" routerLinkActive="router-link-active">
                     <p class="hover-underline-animation">View Challenges</p>
                 </a>
             </li>
@@ -20,7 +20,18 @@
                 </a>
             </li>
             <li *ngIf="loggedIn" class="nav-item">
-                <a class="nav-link" [routerLink]="['../dashboard']" routerLinkActive="router-link-active">
+                <a class="nav-link" data-toggle="collapse" (click)="createChallenge()" href="">
+                    <p class="hover-underline-animation">Become a Challenger</p>
+                </a>
+            </li>
+            <li *ngIf="loggedIn!=true" class="nav-item">
+                <a class="nav-link" [routerLink]="['../login']" routerLinkActive="router-link-active">
+                    <p class="hover-underline-animation">Become a Challenger</p>
+                </a>
+            </li>
+            
+            <li *ngIf="loggedIn" class="nav-item">
+                <a class="nav-link" data-toggle="collapse" (click)="gotoChallengeList('find')" href="">
                     <p class="hover-underline-animation">Become a Solver</p>
                 </a>
             </li>
@@ -47,6 +58,33 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active"><span class="fas fa-sign-in-alt"></span> Login</a>
+            </li>
+        </ul>
+        <ul *ngIf="loggedIn" class="nav navbar-nav ml-auto">
+            <li class="nav-item dropdown no-arrow">
+                <a class="nav-link" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <span class="text-gray-600 small">{{userName }}</span>
+                    <img class="img-profile rounded-circle" src="../../assets/images/undraw_profile.svg">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"  aria-labelledby="userDropdown">
+                    <a class="dropdown-item" [routerLink]="['dashboard/profile']" routerLinkActive="router-link-active" data-toggle="collapse">
+                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Profile
+                    </a>
+                    <a class="dropdown-item" data-toggle="collapse" (click)="gotoChallengeList('my')" href="#">
+                        <i class="fas fa-atom fa-sm fa-fw mr-2 text-gray-400"></i>
+                        My Challenges
+                    </a>
+                    <a class="dropdown-item" data-toggle="collapse" (click)="mySolutionsList()" href="#">
+                        <i class="fas fa-bullseye fa-sm fa-fw mr-2 text-gray-400"></i>
+                        My Solutions
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" (click)="logout()" href="#" data-toggle="modal" data-target="#logoutModal">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Logout
+                    </a>
+                </div>
             </li>
         </ul>
     </div>

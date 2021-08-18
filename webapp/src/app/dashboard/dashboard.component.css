@@ -49,19 +49,23 @@ body {
     flex-flow: row nowrap;
     justify-content: flex-start;
   } */
+
+  .main-content{
+    padding-top: 0.5rem;
+  }
   
   
   /*footer*/
   footer.sticky-footer{
     padding:2rem 0;
     flex-shrink:0;
+    /* position: inherit;
+    bottom: 0;
+    width: -webkit-fill-available; */
   }
   footer.sticky-footer .copyright{
     line-height:1;
     font-size:.8rem
-  }
-  body.sidebar-toggled footer.sticky-footer{
-    width:100%
   }
   /*footer*/
   

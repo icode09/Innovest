@@ -14,6 +14,7 @@ import {ListSolutionsComponent} from './list-solutions/list-solutions.component'
 import { FeedbackComponent } from './feedback/feedback.component';
 import { SolutionDescComponent } from './solution-desc/solution-desc.component';
 import { AuthGuard } from './auth.guard';
+import { HeaderLandingPageComponent } from './header-landing-page/header-landing-page.component';
 import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-home.component';
 
 const routes: Routes = [

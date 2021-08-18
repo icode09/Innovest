@@ -9,7 +9,11 @@
     font-size:small;
     justify-content: space-around;
 }
-
+.img-profile{
+    margin-left: 1em;
+    height: 2rem;
+    width: 2rem;
+  }
 
 .hover-underline-animation {
     display: inline-block;
@@ -48,5 +52,9 @@
     height: 2vh;
 }
 
-
-
+.dropdown-menu{
+    font-size:.85rem;
+}
+.dropdown-item:focus, .dropdown-item:hover{
+    color:blueviolet;
+}

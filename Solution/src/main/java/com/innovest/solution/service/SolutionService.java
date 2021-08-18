@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import com.innovest.solution.model.Solution;
 import com.innovest.solution.model.SolutionStatus;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface SolutionService {
 	Solution addSolution(Solution solution);
@@ -16,4 +17,5 @@ public interface SolutionService {
 	List<Solution> getSolutionsByUser(String solvedBy);
 	List<Solution> getSolutionsBySolutionStatus(SolutionStatus solutionStatus);
 	void removeSolution(UUID solutionId);
+    String uploadFile(MultipartFile multipartFile);
 }

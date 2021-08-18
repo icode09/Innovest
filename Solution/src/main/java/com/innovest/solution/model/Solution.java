@@ -45,6 +45,10 @@ public class Solution {
 	private SolutionStatus solutionStatus;
 	@Nullable
 	private String[] reviewComments;
+	@Nullable
+	private byte[] fileByte;
+	@Nullable
+	private String fileName;
 	
 	public UUID getSolutionId() {
 		return solutionId;
@@ -101,5 +105,21 @@ public class Solution {
 
 	public void setReviewComments(String[] reviewComments) {
 		this.reviewComments = reviewComments;
+	}
+
+	public byte[] getFileByte() {
+		return fileByte;
+	}
+
+	public void setFileByte(byte[] fileByte) {
+		this.fileByte = fileByte;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 }
