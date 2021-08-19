@@ -38,6 +38,9 @@ export class FeedbackComponent implements OnInit {
       }
     }
     );
+    setTimeout(() => {
+      this.router.navigate(['']);
+    }, 500);
   }
     
 }
