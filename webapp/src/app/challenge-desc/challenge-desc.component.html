@@ -118,9 +118,9 @@
     </mat-card>
     <div class="smallCardsDiv">
       <mat-card class="downloads">
-        <mat-label class="challengeTitle">Download Attachments:</mat-label>
-        <button style="margin-left: 30px" mat-stroked-button color="primary">
-          Download
+        <mat-label class="challengeTitle">Attachments:</mat-label>
+        <button (click)="openTab(challenge.documentUrl) style="margin-left: 30px" mat-stroked-button color="primary">
+          Open
         </button>
       </mat-card>
       <mat-card class="downloads" style="text-align: left">

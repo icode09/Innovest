@@ -1,4 +1,11 @@
-import { Component, HostListener, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Input,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { SharedDataService } from '../shared-data.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -26,11 +33,11 @@ export interface UserProfile {
   styleUrls: ['./challenge-desc.component.css'],
 })
 export class ChallengeDescComponent implements OnInit {
-  form: any = {}
+  form: any = {};
   isSuccessful = false;
   errorMessage = '';
   listener;
-  @Input() scrolled:boolean = false;
+  @Input() scrolled: boolean = false;
   challenge: Challenge;
   users: UserProfile[] = [
     {
@@ -49,7 +56,7 @@ export class ChallengeDescComponent implements OnInit {
     private sidebarService: SharedDataService,
     private router: Router,
     private route: ActivatedRoute,
-    private http:HttpClient,
+    private http: HttpClient,
     private renderer2: Renderer2,
     private challengeService: ChallengeService
   ) {
@@ -60,11 +67,10 @@ export class ChallengeDescComponent implements OnInit {
     //https://stackoverflow.com/questions/46915002/argument-of-type-string-null-is-not-assignable-to-parameter-of-type-string
     // console.log(this.sidebarService.isSidebarVisible);
     this.listener = this.renderer2.listen('window', 'scroll', (e) => {
-      if(this.getYPosition(e)>455){
+      if (this.getYPosition(e) > 455) {
         this.scrolled = true;
-        
-      }else{
-        this.scrolled= false;
+      } else {
+        this.scrolled = false;
       }
     });
   }
@@ -75,41 +81,42 @@ export class ChallengeDescComponent implements OnInit {
   @ViewChild('drawer') drawer!: MatSidenav;
 
   @HostListener('document:scroll')
-
   ngOnInit(): void {
     /* for updating challenge views */
     let message = localStorage.getItem('chClicked');
     localStorage.removeItem('chClicked');
-    if(message != null && message == 'yes' && this.challenge != null) {
+    if (message != null && message == 'yes' && this.challenge != null) {
       console.log(this.challenge.challengeId);
       this.challengeService.updateViews(this.challenge.challengeId).subscribe();
     }
     /* for updating challenge views - ends */
   }
 
-  sendFeedback():void{
-    if(this.form.invalid){
+  sendFeedback(): void {
+    if (this.form.invalid) {
       return;
     }
-    let url = "/api/v1/feedback/feedback";
+    let url = '/api/v1/feedback/feedback';
     this.http.post(url, this.form).subscribe(
       (data) => {
-        console.log("data:",data);
+        console.log('data:', data);
         this.isSuccessful = true;
-        this.router.navigate(['/login'])
+        this.router.navigate(['/login']);
         // this.router.navigate(['login'], {queryParams: { registered: 'true' } });
       },
-    (err: HttpErrorResponse) => {
-      if (err.error instanceof Error) {
-        console.log("Client-side error occured.");
-      } else {
-        console.log("Server-side error occurred.");
+      (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          console.log('Client-side error occured.');
+        } else {
+          console.log('Server-side error occurred.');
+        }
       }
-    }
     );
-  
   }
- 
+
+  openTab(url: any) {
+    window.open(url, '_blank');
+  }
 
   getYPosition(e: any): number {
     return e.target.scrollingElement.scrollTop;
