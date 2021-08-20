@@ -1,10 +1,19 @@
-<div style="background-color:thistle;width:100vw;position:absolute;top:0;height: auto; min-height: 112%;">
-  <ng-container style="margin-left: 10vw; margin-right: 10vw; margin-top: 30px;">
+<div
+  style="
+    background-color: thistle;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    height: auto;
+    min-height: 112%;
+  "
+>
+  <ng-container style="margin-left: 10vw; margin-right: 10vw; margin-top: 30px">
     <div style="margin-top: 15vh; margin-left: 10vw">
       <h1 *ngIf="identifier.solvedBy" class="title">Your Solutions:</h1>
       <h1 *ngIf="identifier.challengeId" class="title">Recieved Solutions:</h1>
     </div>
-    
+
     <ng-container *ngFor="let solution of solutions">
       <mat-card
         style="margin-left: 10vw; margin-right: 10vw; margin-top: 30px"
@@ -72,18 +81,28 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <p >
-            <i style="color: purple; margin-right: 10px" class="fas fa-scroll"></i
+          <p>
+            <i
+              style="color: purple; margin-right: 10px"
+              class="fas fa-scroll"
+            ></i
             >{{ solution.solutionDescription }}
           </p>
-          <a style="margin-right: 20px" *ngIf="solution.codeUrl" (click)="openTab(solution.documentUrl)>
+          <a
+            style="margin-right: 20px"
+            *ngIf="solution.codeUrl"
+            (click)="openTab(solution.documentUrl)"
+          >
             <i
               style="color: purple; margin-right: 10px"
               class="fas fa-file-code"
             ></i
             >{{ solution.codeUrl }}</a
           >
-          <a *ngIf="solution.documentUrl"  (click)="openTab(solution.documentUrl)>
+          <a
+            *ngIf="solution.documentUrl"
+            (click)="openTab(solution.documentUrl)"
+          >
             <i
               style="color: purple; margin-right: 10px"
               class="fas fa-paperclip"
