@@ -304,7 +304,7 @@ export class ChallengeListComponent implements OnInit {
 
 		annyang.addCallback('end', () => {
       if (this.voiceText === undefined) {
-        this.searchPlaceHolder = "No Internet Connection";
+        //this.searchPlaceHolder = "No Internet Connection";
         this.ngZone.run(() => this.voiceActiveSectionError = true);
         this.searchPlaceHolder = "Search";
 				annyang.abort();
