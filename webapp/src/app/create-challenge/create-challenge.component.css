@@ -171,3 +171,17 @@ label{
 h2{
     color: black;
 }
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0.5%;
+    grid-gap: 5rem;
+
+}
+.item{
+    
+    margin: 10px;
+}
+input{
+    width: 100%;
+}

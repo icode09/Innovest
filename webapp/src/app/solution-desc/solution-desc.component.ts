@@ -245,4 +245,4 @@ export class SolutionDescComponent implements OnInit {
     window.open(url, "_blank");
   }
 }
-//comment is here
+//new comment is here
