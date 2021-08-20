@@ -85,8 +85,8 @@
                                 (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
                                 <div class="form-group">
                                     <strong><label for="">Name : </label></strong>
-                                    <input type="text" class="myInput" name="displayName" [(ngModel)]="form.displayName"
-                                        placeholder="Full Name" required minlength="3" maxlength="20"
+                                    <input type="text" class="myInput" name="displayName" [(ngModel)]="form.value.displayName"
+                                        placeholder="Full Name"  minlength="3" maxlength="20"
                                         #displayName="ngModel"  value="{{user.displayName}}"/>
                                     <div class="alert-danger" *ngIf="f.submitted && displayName.invalid">
                                         <div *ngIf="displayName.errors?.required">Display Name is required</div>
@@ -99,7 +99,7 @@
                                 <div class="form-group">
                                     <strong><label for="">Email : </label></strong>
                                     <input type="email" class="myInput" placeholder="{{user.email}}" name="email"
-                                        [(ngModel)]="form.email" required email #email="ngModel" disabled/>
+                                        [(ngModel)]="form.value.email" required email #email="ngModel" disabled/>
                                     <div class="alert-danger" *ngIf="f.submitted && email.invalid">
                                         <div *ngIf="email.errors?.required">Email is required</div>
                                         <div *ngIf="email.errors?.email">Email must be a valid email address</div>
@@ -109,7 +109,7 @@
                                 <div class="form-group">
                                     <strong><label for="">Change Password : </label></strong>
                                     <input type="password" class="myInput" placeholder="Change Password" name="password"
-                                        [(ngModel)]="form.password" required minlength="6" #password="ngModel" />
+                                        [(ngModel)]="form.value.password"  minlength="6" #password="ngModel" />
                                     <div class="alert-danger" *ngIf="f.submitted && password.invalid">
                                         <div *ngIf="password.errors?.required">Password is required</div>
                                         <div *ngIf="password.errors?.minlength">Password must be at least 6 characters
@@ -118,8 +118,8 @@
                                 </div>
                                 <div class="form-group">
                                     <strong><label for="">Confirm Password : </label></strong>
-                                    <input type="password" required placeholder="Confirm Password" class="myInput"
-                                        name="matchingPassword" [(ngModel)]="form.matchingPassword" 
+                                    <input type="password"  placeholder="Confirm Password" class="myInput"
+                                        name="matchingPassword" [(ngModel)]="form.value.matchingPassword" 
                                         minlength="6" #matchingPassword="ngModel" pattern="{{form.password}}" />
                                     <div class="alert-danger" *ngIf="f.submitted && matchingPassword.invalid">
                                         <div *ngIf="matchingPassword.errors?.required">Confirm Password is required
@@ -138,7 +138,7 @@
                                         <mat-form-field style="width:700px;text-align: center;padding-left: 100px;" >
                                             <div class="myDropdown">
                                                 <strong><mat-label>Select Domains</mat-label></strong>
-                                                <mat-select multiple name="domain" [(ngModel)]="form.domain"
+                                                <mat-select multiple name="domain" [(ngModel)]="form.value.domain"
                                                     #domain="ngModel">
                                                     <mat-select-trigger>
                                                         {{domain.value ? domain.value[0] : ''}}
@@ -156,7 +156,7 @@
                                 </div>
                                 <div class="form-group">
                                     <strong><label for="">Bio : </label></strong>
-                                    <textarea type="text" class="myInput" name="bio" [(ngModel)]="form.bio"
+                                    <textarea type="text" class="myInput" name="bio" [(ngModel)]="form.value.bio"
                                         placeholder="Tell Us About You"  maxlength="100"
                                         #displayName="ngModel" rows="4" #bio = "ngModel"></textarea>
                                     <div class="alert-danger" *ngIf="f.submitted && bio.invalid">
