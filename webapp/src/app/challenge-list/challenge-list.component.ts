@@ -55,13 +55,15 @@ export class ChallengeListComponent implements OnInit {
     this.url = this.router.url.split('/').pop() || '';
     console.log("Inside ngOnInit");
 
-    this.getChallengeListFromServer();    // getting all the challenges from challenge service
+    
 
     let searchText = localStorage.getItem('searchQuery');
     localStorage.removeItem('searchQuery');
     if(searchText != null){
       this.queries.query = searchText;
       this.searchClick();
+    } else {
+        this.getChallengeListFromServer();    // getting all the challenges from challenge service
     }
     console.log("search:",searchText);
 
