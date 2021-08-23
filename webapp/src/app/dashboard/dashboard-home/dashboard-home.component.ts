@@ -122,7 +122,7 @@ export class DashboardHomeComponent implements OnInit {
     // this.challengeService.updateViews(challenge).subscribe();
     localStorage.setItem('chClicked', 'yes');
     challenge.challengeImage = "https://assets.weforum.org/article/image/large_bg1B3jyBjInTSH2AjIgjgoER9PYwCN-BZ_BQhdeZ92s.jpg";
-    return "http://innovest.stackroute.io/#/challenge-desc/"+encodeURIComponent(JSON.stringify(challenge));
+    return "https://innovest.stackroute.io/#/challenge-desc/"+encodeURIComponent(JSON.stringify(challenge));
   }
   viewAllChallenges(word:string){
     this.router.navigate(['dashboard/ch-list/find']).then(() => {
@@ -142,5 +142,11 @@ export class DashboardHomeComponent implements OnInit {
       localStorage.setItem('searchVoice', 'voice');
       this.router.navigate(['dashboard/ch-list/find']);
     }
+  }
+
+  getImageUrl() {
+    const randomNum = Math.floor((Math.random() * 5) + 1);
+    // d.imageUrl='assets/Health/'+randomNum+'.jpg';
+    return '../../../assets/Environment/'+randomNum+'.jpg';
   }
 }
