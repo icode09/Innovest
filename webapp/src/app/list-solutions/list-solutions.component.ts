@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router,ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Solution } from '../common/solution';
 import { GetSolutionsService } from '../get-solutions.service';
 import { SharingDataService } from '../sharing-data.service';
@@ -41,20 +41,22 @@ export class ListSolutionsComponent implements OnInit {
           console.log(result);
         });
     }
-    
-    
+  }
+  openTab(url: any) {
+    window.open(url, '_blank');
   }
 
   acceptSolution(solutionId: string, solutionStatus: string) {
     // solution.solutionStatus = 'Accepted';
-    this.submitSolutionService.updateSolutionStatus(solutionId,solutionStatus).subscribe((result) => {
-      console.log(result);
-      this.ngOnInit();
-    });
+    this.submitSolutionService
+      .updateSolutionStatus(solutionId, solutionStatus)
+      .subscribe((result) => {
+        console.log(result);
+        this.ngOnInit();
+      });
   }
-  onSelect(solution : Solution){
+  onSelect(solution: Solution) {
     this.router.navigate(['solnDesc', JSON.stringify(solution)]);
     this._sharingData.setChallengeId(solution.challengeId);
   }
-  
 }

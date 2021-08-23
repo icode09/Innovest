@@ -39,7 +39,7 @@ export class CreateChallengeComponent implements OnInit {
     registrations:[0],
     views:[0],
     rewardPrize : [0],
-    registrationType : ['', Validators.required],
+    registrationType : [''],
     participationType : ['', Validators.required],
     imageName : [''],
     

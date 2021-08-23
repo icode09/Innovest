@@ -32,19 +32,38 @@
       createChallengeForm.get('abstraction')?.touched" formControlName="abstraction" class="form-control"
         rows="3"></textarea>
     </div>
-    <div class="form-group">
+    <div class="container">
+      <div class="item">
+        <div class="form-group">
+          <label>Start Date</label>
+          <input type="datetime-local" [class.is-invalid]="createChallengeForm?.get('startDate')?.invalid &&
+          createChallengeForm?.get('startDate')?.touched" formControlName="startDate" class="form-control">
+        </div>
+      </div>
+      <div class="item">
+        <div class="form-group">
+          <label>End Date</label>
+          <input type="datetime-local" [class.is-invalid]="createChallengeForm?.errors?.orderError"
+            formControlName="endDate" class="form-control">
+          <div *ngIf="createChallengeForm?.get('endDate')?.touched && createChallengeForm?.errors?.orderError">
+            <small class="text-danger">Start Date is after End Date</small>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--     <div class="form-group">
       <label>Start Date</label>
       <input type="datetime-local" [class.is-invalid]="createChallengeForm?.get('startDate')?.invalid &&
       createChallengeForm?.get('startDate')?.touched" formControlName="startDate" class="form-control">
-    </div>
-    <div class="form-group">
+    </div> -->
+ <!--    <div class="form-group">
       <label>End Date</label>
       <input type="datetime-local" [class.is-invalid]="createChallengeForm?.errors?.orderError"
         formControlName="endDate" class="form-control">
       <div *ngIf="createChallengeForm?.get('endDate')?.touched && createChallengeForm?.errors?.orderError">
         <small class="text-danger">Start Date is after End Date</small>
       </div>
-    </div>
+    </div> -->
     <div class="form-group">
       <label>Domain</label>
       <select [class.is-invalid]="createChallengeForm?.get('domain')?.invalid &&
@@ -62,7 +81,7 @@
         <mat-option *ngFor="let dm of domainList" [value]="dm">{{dm}}</mat-option>
       </mat-select>
     </div> -->
-    <div class="form-group">
+<!--     <div class="form-group">
       <label>Registration Type</label>
 
 
@@ -76,11 +95,13 @@
       createChallengeForm?.get('registrationType')?.touched" formControlName="registrationType">
         <label class="form-check-label" for="inlineRadio2">Team</label>
       </div>
-    </div>
-    <p style="font-size: medium; color: black; margin-top: 2%;font-family:Lora;">Upload Document</p>
+    </div> -->
+    <!--style="font-size: medium; color: black; margin-top: 2%;font-family:Lora;"-->
+    <p>Upload Document</p>
     <input type="file" class="form-control" style="padding: 4px" accept=".pdf" (change)="onFileSubmit($event)" />
+    
     <div class="text-center">
-      <div class="form-group">
+      <div class="form-group" style="margin: 5px;">
         <label>Participation Type</label>
 
 
