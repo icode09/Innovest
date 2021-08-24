@@ -1,5 +1,5 @@
-<div class="full-content text-light">
-<mat-card style="height:fit-content; margin: 20px 100px 10px 100px; background-color: transparent;" color="accent">
+<div class="full-content text-light" style="padding-bottom: 20px; padding-top: 20px;">
+<mat-card style="height:fit-content; margin: 20px 100px 10px 100px; background-color: white;" color="accent">
   <mat-card-title align="center" style="margin: 20px;">
     {{solution.solutionTitle | titlecase}}
   </mat-card-title>
@@ -9,15 +9,21 @@
     <div class="mat-h2">Challenge Name: {{challenge.challengeName}}</div>
     <div class="mat-h2">Solved By: {{solution.solvedBy}}</div>
     <div class="mat-h2">Solution Description: {{solution.solutionDescription}} </div>
-    <div class="mat-h2">Solution URL: <button mat-raised-button (click)="openTab(solution.codeUrl)">Open</button></div>
-    <div class="mat-h2">Document URL: <button mat-raised-button (click)="openTab(solution.documentUrl)">Open</button></div>
+    <div class="mat-h2">Solution URL: <span style="color: blue;">{{solution.codeUrl}}</span>
+      <!-- <button mat-raised-button (click)="openTab(solution.codeUrl)">Open</button> -->
+      <i matTooltip="open link in new window" (click)="openTab(solution.codeUrl)" class="fas fa-external-link-alt"></i>
+    </div>
+    <div class="mat-h2">Document URL: <span style="color: blue;">{{solution.documentUrl}}</span>
+       <!-- <button mat-raised-button (click)="openTab(solution.documentUrl)">Open</button> -->
+       <i matTooltip="open link in new window" (click)="openTab(solution.documentUrl)" class="fas fa-external-link-alt"></i>
+      </div>
     <div class="mat-h2">Solution Status: {{solution.solutionStatus}}</div>
 
     <div *ngFor="let fb of solution.reviewComments">
-      <mat-card>
+      <mat-card style="background-color: antiquewhite; margin-bottom: 10px;" >
         <mat-card-content>
           <p>
-            {{fb.commentedBy}} commented on solution as {{fb.comment}}
+            <strong>{{fb.commentedBy}}</strong> commented on solution as <strong>{{fb.comment}}</strong>
           </p>
         </mat-card-content>
       </mat-card>
@@ -32,60 +38,69 @@
 </mat-card>
 <!---->
 <!---->
-<div *ngIf="edit">
-  <div class="container-fluid">
-    <form id="solutionForm" #solutionForm="ngForm" action="" class="item">
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Solution Title</mat-label>
-        <input [(ngModel)]="form.value.solutionTitle" name="solutionTitle" matInput required type="text"
-          placeholder="Solution Title" />
-      </mat-form-field>
 
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Description</mat-label>
-        <textarea [(ngModel)]="form.value.solutionDescription" name="solutionDescription" required matInput
-          placeholder="Description" rows="7" cols="50"></textarea>
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Code Url</mat-label>
-        <input [(ngModel)]="form.value.codeUrl" name="codeUrl" matInput type="url" placeholder="Code Url" />
-      </mat-form-field>
-
-      <div *ngIf="currentFileUpload" class="progress">
-        <div class="
-            progress-bar
-            progress-bar-info
-            progress-bar-striped
-            progress-bar-animated
-          " role="progressbar" attr.aria-valuenow="{{ progress.percentage }}" aria-valuemin="0" aria-valuemax="100"
-          [ngStyle]="{ width: progress.percentage + '%' }">
-          {{ progress.percentage }}%
+<div *ngIf="edit" style="padding-bottom: 20px;">
+  <mat-card style="height:fit-content; margin: 20px 100px 10px 100px; background-color: white;" color="accent">
+    <mat-card-title align="center" style="margin: 20px;">
+      Edit Your Solution Here...!!
+    </mat-card-title>
+    <div class="container-fluid">
+      <form id="solutionForm" #solutionForm="ngForm" action="" class="item">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Solution Title</mat-label>
+          <input [(ngModel)]="form.value.solutionTitle" name="solutionTitle" matInput required type="text"
+            placeholder="Solution Title" />
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea [(ngModel)]="form.value.solutionDescription" name="solutionDescription" required matInput
+            placeholder="Description" rows="7" cols="50"></textarea>
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Code Url</mat-label>
+          <input [(ngModel)]="form.value.codeUrl" name="codeUrl" matInput type="url" placeholder="Code Url" />
+        </mat-form-field>
+  
+        <div *ngIf="currentFileUpload" class="progress">
+          <div class="
+              progress-bar
+              progress-bar-info
+              progress-bar-striped
+              progress-bar-animated
+            " role="progressbar" attr.aria-valuenow="{{ progress.percentage }}" aria-valuemin="0" aria-valuemax="100"
+            [ngStyle]="{ width: progress.percentage + '%' }">
+            {{ progress.percentage }}%
+          </div>
         </div>
-      </div>
-      <label class="btn btn-default">
-        <input type="file" class="form-control" style="padding: 4px" accept=".pdf" (change)="onFileChanged($event)" />
-
-      </label>
-      <button (click)="submitSolution()" mat-raised-button color="primary">
-        Submit
-      </button>
-    </form>
-  </div>
+        <label class="btn btn-default">
+          <input type="file" class="form-control" style="padding: 4px" accept=".pdf" (change)="onFileChanged($event)" />
+  
+        </label>
+        <button (click)="submitSolution()" mat-raised-button color="primary">
+          Submit
+        </button>
+      </form>
+    </div>
+  </mat-card>
 </div>
-<div *ngIf="activeFeedback">
-  <form [formGroup]="feedbackForm" (ngSubmit)="onfbSubmit()">
-    <div class="form-group">
-      <mat-form-field class="example-full-width" appearane="fill"
-        style="height:fit-content; margin: 10px 100px 10px 100px; width:fit-content;">
-        <mat-label>Feedback</mat-label>
-        <input matInput class="form-Control" formControlName="comment">
-      </mat-form-field>
-    </div>
-    <div class="text-center">
-      <button mat-raised-button color="primary" type="submit" style="column-gap: 40px">Post</button>
-    </div>
-  </form>
+<div *ngIf="activeFeedback" style="padding-bottom: 20px;">
+  <mat-card style="height:fit-content; margin: 20px 100px 10px 100px; background-color: white;" color="accent">
+    <mat-card-title align="center" style="margin: 20px;">
+      Leave Your Comment...!!</mat-card-title>
+    <form [formGroup]="feedbackForm" (ngSubmit)="onfbSubmit()">
+      <div class="form-group">
+        <mat-form-field class="example-full-width" appearane="fill">
+          <mat-label>Feedback</mat-label>
+          <input matInput class="form-Control" formControlName="comment">
+        </mat-form-field>
+      </div>
+      <div class="text-center">
+        <button mat-raised-button color="primary" type="submit" style="column-gap: 40px">Post</button>
+      </div>
+    </form>
+  </mat-card>
 </div>
 </div>
 

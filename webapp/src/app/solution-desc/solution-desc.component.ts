@@ -218,7 +218,12 @@ export class SolutionDescComponent implements OnInit {
     });
   }
   raiseFeedback() {
-    this.activeFeedback = true;
+    if (this.activeFeedback) {
+      this.activeFeedback = false;
+    } else {
+      this.activeFeedback = true;
+    }
+    
   }
 
   onfbSubmit() {
